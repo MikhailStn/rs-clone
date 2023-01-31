@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const e=document.createElement("div");e.textContent="Rs clone",e.className="div",document.body.append(e)})()})();
