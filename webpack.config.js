@@ -107,7 +107,7 @@ module.exports = () => {
     );
 
     ghpages.publish("dist", {
-      message: "build: online-store production",
+      message: "build: rs-clone production",
     });
   } else {
     config.mode = "development";
