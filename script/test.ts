@@ -1,6 +1,7 @@
+import { createElementWithClass } from "./utils";
+
 export const test = () => {
-  const div = document.createElement("div");
+  const div = createElementWithClass("div", "container");
   div.textContent = "Rs clone";
-  div.className = "div";
   document.body.append(div);
 };
