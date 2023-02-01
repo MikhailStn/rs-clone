@@ -1,0 +1,11 @@
+body{
+    background-color: #fff;
+}
+
+.wrapper{
+    width: 100%;
+    height: 20px;
+}
+.wrapper:nth-child(odd){
+    background-color: red;
+}
