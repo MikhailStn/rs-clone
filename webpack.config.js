@@ -15,6 +15,7 @@ const stylesHandler = isProduction
 const config = {
   entry: "./index.ts",
   output: {
+    publicPath: '/',
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].[contenthash].js",
     clean: isProduction,
