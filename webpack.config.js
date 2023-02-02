@@ -16,6 +16,7 @@ const config = {
   entry: "./index.ts",
   output: {
     path: path.resolve(__dirname, "./dist"),
+    publicPath: "/",
     filename: "[name].[contenthash].js",
     clean: isProduction,
     assetModuleFilename: (pathData) => {
@@ -28,6 +29,8 @@ const config = {
     },
   },
   devServer: {
+    historyApiFallback: true,
+    publicPath: "/",
     static: {
       directory: path.join(__dirname, "dist"),
     },
