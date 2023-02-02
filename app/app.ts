@@ -1,9 +1,7 @@
 //import { test } from "../script/test";
 
-import { mainOwner } from "../pages/main-owner";
+import { mainOwner } from "../script/pages/commonPages/main-owner";
 
 export const app = () => {
   mainOwner();
 };
-
-console.log("111111111111");

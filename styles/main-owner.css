@@ -1,11 +1,74 @@
-body{
-    background-color: #fff;
-}
-
 .wrapper{
     width: 100%;
-    height: 20px;
+    min-height: 20px;
+    padding: 50px 24px;
+    display: flex;
+    justify-content: space-around;
 }
-.wrapper:nth-child(odd){
-    background-color: red;
+.wrapper:nth-child(even){
+    background-color: #faf8ff;
+}
+span{
+    font-family: HalenoirExpanded;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: rgb(46, 44, 52);
+    word-spacing: 3px;
+    text-align: center;/**/
+}
+
+
+.leftText{
+    margin-left: 36px;
+    width: 50%;
+}
+.rightImg{
+    min-height: 300px;
+    max-height: 522px;
+    margin-right: 36px;
+    width: 50%;
+    height: 350px;
+}
+.imgDiv{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.imgDiv img{
+    height: 100%;
+    width: auto;
+    border-radius: 32px;
+}
+
+.filter{
+    height: 50px;
+}
+h1{
+    margin: 0;
+    font-family: HalenoirExpanded;/**/
+    font-size: 2.25rem;
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+p{
+    font-family: KumbhSans,Lato,sans-serif;/**/
+    font-weight: 400;
+    line-height: 1.5;
+    color: #27272e;
+}
+section h2{
+    text-align:center;
+    font-family: HalenoirExpanded;
+    font-size: 32px;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    font-weight: 300;
+    margin-bottom: 16px;
 }

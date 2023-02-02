@@ -30,6 +30,8 @@
             {
               "endOfLine": "auto"
             }
-        ]
+        ],
+        "max-len": 0,
+        "function-paren-newline": ["error", "never"]
     }
 }

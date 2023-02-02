@@ -1,0 +1,25 @@
+.header{
+    background-color: rgb(251, 221, 122);
+    height: 110px;
+    position:relative;
+    position: sticky;
+}
+.head{
+    color: #fff;
+    background-color: #CA96E1;
+    height: 64px;
+    position: absolute;
+	bottom:0;
+    width: 100%;
+    
+}
+.head a{
+    font-size: 1.35rem;
+    line-height: 1.3;
+    letter-spacing: 0.013rem;
+    font-family: KumbhSans,Lato,sans-serif;
+    font-weight: 700;
+}
+.header div{
+    padding: 0 25px;
+}
