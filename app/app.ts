@@ -1,5 +1,5 @@
-import { test } from "../script/test";
+import { router } from "../script/router";
 
 export const app = () => {
-  test();
+  router();
 };
