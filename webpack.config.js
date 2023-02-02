@@ -30,7 +30,6 @@ const config = {
   },
   devServer: {
     historyApiFallback: true,
-    publicPath: "/",
     static: {
       directory: path.join(__dirname, "dist"),
     },
