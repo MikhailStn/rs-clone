@@ -1,0 +1,84 @@
+.registration-block-wrapper{
+    display: flex;
+    flex-direction: row;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #27272e;
+}
+.img-registration-wrapper{
+    max-width: 620px;
+}
+.img-registration{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.block-inputs-text-registration{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 48px 80px;
+    align-items: center;
+}
+.link-owner-registration,
+.link-petsitter-registration{
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    color: #27272e;
+    width: 220px;
+    height: 50px;
+    border: 1px solid #ebeaed;
+    border-radius: 5px;
+    padding: 15px 16px;
+    font-size: 20px;
+    font-size: 1rem;
+    text-align: center;
+    transition: .5s;
+}
+.link-owner-registration.active,
+.link-petsitter-registration.active{
+    background-color: #fbdd7a;
+}
+.link-owner-registration:hover,
+.link-petsitter-registration:hover{
+    background:  #fdf1ca;
+}
+.input-registration{
+    background-clip: padding-box;
+    border: 1px solid #ebeaed;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition: .5s;
+    outline: none;
+    width: 485px;
+    height: 53px;
+    transition: .5s;
+}
+.input-firstname,
+.input-lastname{
+    width: 240px;
+}
+.btn-registration{
+    background-color: #ca96e1;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 485px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    transition: .5s;
+}
+.btn-registration:hover{
+    background-color: #a278b4;
+}
+

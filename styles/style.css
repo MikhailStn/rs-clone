@@ -1,0 +1,13 @@
+@import "./petsitters.css";
+@import "./login.css";
+@import "./authRegistration.css";
+
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lato', sans-serif;
+}
+a {
+    text-decoration: none;
+}

@@ -24,6 +24,5 @@
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-var-requires": "error",
         "max-len": 0,
-        "function-paren-newline": ["error", "never"]
     }
 }
