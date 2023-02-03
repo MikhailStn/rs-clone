@@ -1,5 +1,9 @@
 @import "./petsitters.css";
+@import "./login.css";
 
+*{
+    box-sizing: border-box;
+}
 body{
     font-family: 'Lato', sans-serif;
 }
