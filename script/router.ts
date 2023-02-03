@@ -1,11 +1,10 @@
 import petsAddShowPage from "./pages/commonPages/petsAdd";
 import petsitters from "./pages/petsitters/petsitters";
 import authLogin from "./pages/login/authLogin";
-import authRegPetsit from "./pages/login/authRegPetsit";
 import searchShowPage from "./pages/commonPages/search";
 import mainShowPage from "./pages/commonPages/main";
 import errorShowPage from "./pages/404Page/errorPage";
-import authRegOwner from "./pages/login/autRegOwner";
+import authRegister from "./pages/login/authRegistration";
 
 export const router = () => {
   type Rout = {
@@ -23,11 +22,11 @@ export const router = () => {
     },
     {
       path: "/auth/register/petsitter",
-      template: authRegPetsit,
+      template: authRegister,
     },
     {
       path: "/auth/register/owner",
-      template: authRegOwner,
+      template: authRegister,
     },
     {
       path: "/petsitter",

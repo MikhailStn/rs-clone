@@ -21,6 +21,9 @@ function renderLoginPage(){
   const passwordTextError = createHtmlElement('p', 'password-text-error-login', '', 'Enter your password');
   inputLoginPassword.after(passwordTextError);
   const btnLogin = createHtmlElement('button', 'btn-login', '', 'Log in');
+  if(btnLogin instanceof HTMLButtonElement){
+    btnLogin.type = 'submit';
+  }
   loginBlockWrapper.append(btnLogin);
   if(inputLoginEmail instanceof HTMLInputElement){
     inputLoginEmail.type = 'email';
@@ -39,7 +42,6 @@ function renderLoginPage(){
       inputLoginPassword.type = 'text';
       inputLoginPassword.setAttribute("required", "");
       inputLoginPassword.placeholder = 'Password';
-      //inputLoginPassword.pattern = "^([0-9a-zа-яA-ZА-Я\,]{5,}) ([0-9a-zа-яA-ZА-Я\,]{5,}) ([0-9a-zа-яA-ZА-Я\-]{5,})(.)*$";
       btnLogin.addEventListener('click', ()=>{
           if(!inputLoginPassword.checkValidity() && !passwordTextError.classList.contains('active')){
             passwordTextError.classList.add('active');
