@@ -1,8 +1,6 @@
 {
-    "plugins": ["prettier", "import", "@typescript-eslint"],
+    "plugins": ["import", "@typescript-eslint"],
     "extends": [
-        "plugin:prettier/recommended",
-        "prettier",
         "eslint:recommended", 
         "plugin:@typescript-eslint/recommended"
     ],
@@ -25,12 +23,6 @@
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-var-requires": "error",
-        "prettier/prettier": [
-            "error",
-            {
-              "endOfLine": "auto"
-            }
-        ],
         "max-len": 0,
         "function-paren-newline": ["error", "never"]
     }
