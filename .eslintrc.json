@@ -1,29 +1,28 @@
-{ 
+{
     "plugins": ["import", "@typescript-eslint"],
-"extends": [
-    "eslint:recommended", 
-    "plugin:@typescript-eslint/recommended"
-],
-"root": true,
-"parser": "@typescript-eslint/parser",
-"parserOptions": {
-    "tsconfigRootDir": "__dirname",
-    "project": "[./tsconfig.json]",
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-},
-"env": {
-    "es6": true,
-    "browser": true,
-    "node": true
-},
-"rules": {
-    "no-debugger": "off",
-    "no-console": 0,
-    "class-methods-use-this": "off",
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-var-requires": "error",
-    "max-len": 0,
-    "function-paren-newline": ["error", "never"]
-}
+    "extends": [
+        "eslint:recommended", 
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "tsconfigRootDir": "__dirname",
+        "project": "[./tsconfig.json]",
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "no-debugger": "off",
+        "no-console": 0,
+        "class-methods-use-this": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-var-requires": "error",
+        "max-len": 0,
+    }
 }
