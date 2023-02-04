@@ -1,6 +1,7 @@
 @import "./normalize.css";
 @import "./header";
 @import "./main-owner";
+@import "./petsitters";
 
 
 body{

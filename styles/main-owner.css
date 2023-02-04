@@ -26,11 +26,16 @@ span{
     margin-right: auto;
 }
 
-.leftText{/*, .left{*/
+.leftText{
     margin-left: 36px;
     width: 50%;
 }
-.rightImg{  /*, .right{*/
+.flag{
+    margin-top: 30px;
+    width: 200px;
+
+}
+.rightImg{
     min-height: 300px;
     max-height: 522px;
     margin-right: 36px;
@@ -76,11 +81,22 @@ section h2{
     line-height: 1.25;
     letter-spacing: -0.04em;
     font-weight: 400;
-}
+}/*
 svg{
     width: 20px;
     height: 20px;
-    background-color:red;
+    margin-right: 10px;
+}*/
+.svg{
+    width: 30px;
+    height: 30px;
+    /*background-color:red;*/
+    margin-right: 10px;
+    fill:red;
+}
+embed{
+    width: 100%;
+    height: 100%;
 }
 .line{
     display: flex;
@@ -97,8 +113,10 @@ svg{
 }
 .center{
     display: flex;
-    justify-content:center;
     flex-direction: column;
+}
+.center .line{
+    justify-content:center;
 }
 .rectangle{
     color: #FFF;
@@ -116,9 +134,7 @@ svg{
 .section3, .section5{
     flex-direction: row-reverse;
 }
-.svg{
-    margin-right: 10px;
-}
+
 section h1{
     margin-bottom: 80px;
 }
