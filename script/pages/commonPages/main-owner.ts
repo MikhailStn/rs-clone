@@ -1,6 +1,7 @@
 import { createHtmlElement } from "../../utils";
 import { headerOwner } from "../pageComponents/headers";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
+import { footerFun } from "../pageComponents/footer";
 
 export function mainOwner(): void {
   headerOwner(document.body);
@@ -149,7 +150,7 @@ section3Right.innerHTML =`<h2>Go on vacation and we'll take care of your pet</h2
   const section6 = createSliderReview();
 
 
-  const section7 = createHtmlElement("section", "wrapper");
+  //const section7 = createHtmlElement("section", "wrapper");
 
   //document.body.append(header1);
   document.body.append(banner);
@@ -159,7 +160,8 @@ section3Right.innerHTML =`<h2>Go on vacation and we'll take care of your pet</h2
   document.body.append(section4);
   document.body.append(section5);
   document.body.append(section6);
-  document.body.append(section7);
+  //document.body.append(section7);
+
 
   banner.append(bannerContent);
   bannerContent.append(bannerLeft);
@@ -179,6 +181,8 @@ section3Right.innerHTML =`<h2>Go on vacation and we'll take care of your pet</h2
   section3.append(section3Content);
   section3Content.append(section3Left);
   section3Content.append(section3Right);
+
+  footerFun(document.body);
 
 //  section6.append(sliderBlock);
 
