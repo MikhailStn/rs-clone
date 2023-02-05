@@ -8,6 +8,12 @@
     height: 100vh;
     padding-top: 48px;
 }
+.form-login{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+}
 .login-block-wrapper{
     display: flex;
     flex-direction: column;
@@ -56,17 +62,21 @@
     border: 1px solid #ebeaed;
     border-radius: 5px;
     margin-top: 30px;
+    margin-bottom: 20px;
     transition: .5s;
     outline: none;
     width: 485px;
     height: 53px;
     transition: .5s;
 }
-.input-login:focus:invalid{
-    border: 2px solid #f37059;
+.input-login:invalid{
+  border: 2px solid #f37059;
   }
+.input-login:invalid:placeholder-shown{
+  border: 2px solid #ebeaed;
+}
 .input-login:valid{
-    border: 3px solid #ca96e1;
+    border: 2px solid #ca96e1;
   }
 .registration-text-login{
     margin-top: 40px;
@@ -74,6 +84,35 @@
     width: 485px;
     font-size: 0.788rem;
     line-height: 1.7;
+}
+.input-login:invalid:placeholder-shown + .email-text-error-login,
+.input-login:valid + p,
+.input-login:invalid:placeholder-shown + .password-text-error-login{
+    display: none;
+}
+.email-text-error-login,
+#email-error.active{
+    display: block;
+    top: 20px;
+    position: absolute;
+    left: 10px;
+    color: #f37059;
+    background-color: #ffffff;
+    z-index: 2;
+}
+.password-text-error-login,
+#password-error.active{
+    display: block;
+    top: 94px;
+    position: absolute;
+    left: 10px;
+    color: #f37059;
+    background-color: #ffffff;
+    z-index: 2;
+}
+.input-login-email:invalid + p,
+.input-login-password:invalid + p{
+    display: block;
 }
 .registration-text-login p{
     text-align: center;
@@ -88,6 +127,12 @@
 
 @media(max-width: 900px){
 
+    .login-block-wrapper{
+        padding: 10px;
+    }
+    .form-login{
+        width: 310px;
+    }
     .input-login{
         max-width: 100%;
     }
