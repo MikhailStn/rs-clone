@@ -23,6 +23,6 @@
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-var-requires": "error",
-        "max-len": 0,
+        "max-len": 0
     }
 }
