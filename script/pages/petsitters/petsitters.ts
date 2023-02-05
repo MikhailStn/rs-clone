@@ -1,5 +1,7 @@
 import { createHtmlElement } from "../../utils";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
+import { header } from "../pageComponents/headers";
+import { footerFun } from "../pageComponents/footer";
 
 const sectionPetsitters = createHtmlElement('section', 'section-common-petsitters');
 
@@ -13,7 +15,7 @@ function renderPetsitMainPage(){
   topBlockPetsit.append(topTexPetsitContainer);
   const tittleTopPetsitBlock = createHtmlElement('h2', 'title-top-petsit-block', '', 'Become a petsitter and earn money doing what you love!');
   topTexPetsitContainer.append(tittleTopPetsitBlock);
-  const topTextPetsit = createHtmlElement('div', 'top-text-petsit', '', 'Petsy is a platform for people who love animals. We support You and help you develop Your business. Become a professional petsitter together with us!');
+  const topTextPetsit = createHtmlElement('div', 'top-text-petsit', '', 'Petsi is a platform for people who love animals. We support You and help you develop Your business. Become a professional petsitter together with us!');
   tittleTopPetsitBlock.after(topTextPetsit);
   const btnCreateAcc = createBtnCreatAcc();
   topTextPetsit.after(btnCreateAcc);
@@ -25,9 +27,9 @@ function renderPetsitMainPage(){
     imgTopPetsit.src = 'https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fpetsitter_hero.jpg&w=1920&q=75';
     imgTopPetsit.alt = "girl and dog";
   }
-  const petsitBlock1 = createPetsitBlock('Your business card', 'Petsy\'s pet sitter profile is your public business card and will help you establish credibility as a pet sitter in the eyes of pet owners.', 'https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fpetsitter_profile.jpg&w=1920&q=75', 'block-revert');
+  const petsitBlock1 = createPetsitBlock('Your business card', 'Petsi\'s pet sitter profile is your public business card and will help you establish credibility as a pet sitter in the eyes of pet owners.', 'https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fpetsitter_profile.jpg&w=1920&q=75', 'block-revert');
   sectionPetsitters.append(petsitBlock1);
-  const petsitBlock2 = createPetsitBlock('Transparent billing rules', 'Petsy is completely free for owners and for caregivers. We only make a living from commission on orders, which we then use to develop the portal and promote the petsitter profession, which will translate into the number of orders you acquire.', 'https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fpetsitter_accounting.jpg&w=1920&q=75');
+  const petsitBlock2 = createPetsitBlock('Transparent billing rules', 'Petsi is completely free for owners and for caregivers. We only make a living from commission on orders, which we then use to develop the portal and promote the petsitter profession, which will translate into the number of orders you acquire.', 'https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fpetsitter_accounting.jpg&w=1920&q=75');
   sectionPetsitters.append(petsitBlock2);
   const petsitBlock3 = createPetsitBlock('Business support', 'We do everything to help you grow your business. Extensive panel, training, simple registration and verification. Take care of your pets and we\'ll take care of everything around you!', 'https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fpetsitter_support.jpg&w=1920&q=75', 'block-revert');
   sectionPetsitters.append(petsitBlock3);
@@ -43,7 +45,7 @@ function createPetsitBlock(title: string, commonText: string, srcBl: string, cla
   if(classNameBl) petsitBlock.classList.add(classNameBl);
   const textPetsitBlock = createHtmlElement('div', 'petsit-text-block');
   petsitBlock.append(textPetsitBlock);
-  const litleTitlePetsitBlock = createHtmlElement('h5', 'little-title-petsit-block', '', 'PETSY');
+  const litleTitlePetsitBlock = createHtmlElement('h5', 'little-title-petsit-block', '', 'PETSI');
   textPetsitBlock.append(litleTitlePetsitBlock);
   const titlePetsitBlock = createHtmlElement('h2', 'petsit-title-block', '', title);
   textPetsitBlock.append(titlePetsitBlock);
@@ -190,10 +192,10 @@ function createContactPetsitSection(){
 
 
 export default function petsitters() {
-  const main = document.querySelector(".main");
-  if (main) {
-    main.innerHTML = "";
+  document.body.innerHTML = '';
+   header(document.body);
     renderPetsitMainPage();
-    return main?.append(sectionPetsitters);
-  }
+    document.body.append(sectionPetsitters);
+    footerFun(sectionPetsitters);
+    return document.body;
 }

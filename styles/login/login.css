@@ -85,3 +85,14 @@
 .link-for-registr-in-login:hover{
     text-decoration: underline;
 }
+
+@media(max-width: 900px){
+
+    .input-login{
+        max-width: 100%;
+    }
+    .registration-text-login {
+        width: 320px;
+    }
+
+}

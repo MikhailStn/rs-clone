@@ -1,9 +1,14 @@
+.registration-section{
+    height: calc(100vh - 100px);
+}
 .registration-block-wrapper{
     display: flex;
     flex-direction: row;
     max-width: 1240px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 65px;
     color: #27272e;
 }
 .img-registration-wrapper{
@@ -82,3 +87,33 @@
     background-color: #a278b4;
 }
 
+@media(max-width: 900px){
+
+    .img-registration-wrapper{
+        display: none;
+    }
+    .block-inputs-text-registration{
+        padding: 48px 40px;
+    }
+    .block-link-role-registration{
+        display: flex;
+        justify-content: center;
+        width: 330px;
+    }
+    .link-owner-registration,
+    .link-petsitter-registration{
+        width: 100%;
+    }
+    .input-registration,
+    .btn-registration{
+        width: 100%;
+    }
+
+}
+@media(max-width: 420px){
+
+    .block-inputs-text-registration{
+        padding: 30px 0px;
+    }
+
+}

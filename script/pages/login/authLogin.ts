@@ -8,7 +8,7 @@ function renderLoginPage(){
   loginSection.append(loginLayout);
   const loginBlockWrapper = createHtmlElement('div', 'login-block-wrapper');
   loginLayout.append(loginBlockWrapper);
-  const titleLogin = createHtmlElement('h1', 'login-title', '', 'Petsy');
+  const titleLogin = createHtmlElement('h1', 'login-title', '', 'Petsi');
   loginBlockWrapper.append(titleLogin);
   const textAfterTitleLogin = createHtmlElement('div', 'text-after-title-login','', 'Welcome back!');
   loginBlockWrapper.append(textAfterTitleLogin);
@@ -51,7 +51,7 @@ function renderLoginPage(){
       })
     }
   const registText = createHtmlElement('div', 'registration-text-login');
-  registText.innerHTML = '<p>Would you like to join Petsy? <a class = "link-for-registr-in-login" href = "/auth/register/owner">Create an account</a></p>';
+  registText.innerHTML = '<p>Would you like to join Petsi? <a class = "link-for-registr-in-login" href = "/auth/register/owner">Create an account</a></p>';
   loginBlockWrapper.append(registText);
   return loginSection;
 }

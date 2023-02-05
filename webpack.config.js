@@ -5,6 +5,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const ghpages = require("gh-pages");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -44,6 +45,11 @@ const config = {
       template: path.resolve("index.html"),
     }),
     new ESLintPlugin({ extensions: [".ts"] }),
+    new CopyPlugin({ 
+      patterns: [ 
+        { from: 'assets', to: './img' }, 
+      ], 
+    }),
   ],
   module: {
     rules: [
