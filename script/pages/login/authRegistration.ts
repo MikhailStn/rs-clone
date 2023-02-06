@@ -247,6 +247,7 @@ function renderRegistrPage(role: string) {
   inputSecondPassword.pattern = "^(.){4,10}$";
   inputSecondPassword.setAttribute("required", "");
   btnRegistration.addEventListener("click", (event) => {
+    event.preventDefault();
     if (inputPassword.value !== inputSecondPassword.value) {
       event.preventDefault();
       secondPasswordTextError.classList.remove("active");
@@ -265,7 +266,7 @@ function renderRegistrPage(role: string) {
   btnRegistration.addEventListener("click", () => {
     let link = "";
     let role = "";
-    if (btnRegistration.id == "btn-registration-pet-owner") {
+    if (btnRegistration.id == "registration-pet-owner") {
       link = "http://localhost:5000/auth/register/owner";
       role = "OWNER";
     } else if (btnRegistration.id == "btn-registration-petsitter") {
@@ -293,7 +294,7 @@ function renderRegistrPage(role: string) {
       fetch(`${link}`, fecthData)
         .then((response) => {
           console.log(response.status);
-          if (response.status == 400) {
+          if (response.status == 200) {
             return response.json();
           } else {
             return;
@@ -318,8 +319,9 @@ function renderRegistrPage(role: string) {
       (btnRegistration.id = "registration-petsitter"));
   formRegistration.append(btnRegistration);
   if (btnRegistration instanceof HTMLButtonElement) {
-    btnRegistration.type = "submit";
-    btnRegistration.disabled = true;
+    //btnRegistration.type = "submit";
+    //btnRegistration.disabled = true;
+    console.log(1)
   }
   formRegistration.addEventListener("input", (event) => {
     checkValidityForm(event, btnRegistration);

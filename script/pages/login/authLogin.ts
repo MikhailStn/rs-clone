@@ -53,7 +53,8 @@ function renderLoginPage() {
     btnLogin.type = "submit";
   }
   formLogin.append(btnLogin);
-  btnLogin.addEventListener("click", () => {
+  btnLogin.addEventListener("click", (event) => {
+    event.preventDefault();
     const fetchData = {
       method: "POST",
       headers: {
