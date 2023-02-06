@@ -103,7 +103,7 @@
 .password-text-error-login,
 #password-error.active{
     display: block;
-    top: 94px;
+    top: 120px;
     position: absolute;
     left: 10px;
     color: #f37059;

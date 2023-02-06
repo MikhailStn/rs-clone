@@ -48,7 +48,7 @@ function renderLoginPage(){
       })
     }
     if(inputLoginPassword instanceof HTMLInputElement){
-      inputLoginPassword.type = 'text';
+      inputLoginPassword.type = 'password';
       inputLoginPassword.name = 'password';
       inputLoginPassword.setAttribute("required", "");
       inputLoginPassword.placeholder = 'Password';

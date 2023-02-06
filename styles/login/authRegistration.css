@@ -52,20 +52,77 @@
 .link-petsitter-registration:hover{
     background:  #fdf1ca;
 }
+.registration-form{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+}
 .input-registration{
     background-clip: padding-box;
     border: 1px solid #ebeaed;
     border-radius: 5px;
     margin-top: 30px;
+    padding-left: 10px;
     transition: .5s;
     outline: none;
     width: 485px;
     height: 53px;
     transition: .5s;
 }
+.input-registration:invalid{
+    border: 2px solid #f37059;
+}
+.input-registration:placeholder-shown{
+    border: 2px solid #ebeaed;
+}
+.input-registration:valid,
+.input-registration:hover{
+    border: 2px solid #ca96e1;
+}
 .input-firstname,
 .input-lastname{
     width: 240px;
+}
+.text-error-registration{
+    display: none;
+    color: #f37059;
+    position: absolute;
+    left: 20px;
+    background-color: #ffffff;
+    z-index: 2;
+}
+.text-error-registration.active{
+    display: block;
+}
+#second-password-error{
+    display: block;
+}
+#second-password-error.active{
+    display: none;
+}
+.city-text-error-registration{
+    top: -9px;
+}
+.first-name-text-error-registration{
+    top: 65px;
+}
+.last-name-text-error-registration{
+    top: 65px;
+    left: 260px;
+}
+.phone-text-error-registration{
+    top: 138px;
+}
+.email-error-registration{
+    top: 241px;
+}
+.sec-passw-error-registration{
+    top: 446px;
+    display: none;
+}
+.password-error-registration{
+    top: 344px;
 }
 .btn-registration{
     background-color: #ca96e1;
@@ -84,6 +141,18 @@
 }
 .btn-registration:hover{
     background-color: #a278b4;
+}
+.btn-registration:disabled{
+    background-color: #ebeaed;
+}
+.link-sign-in-registration{
+    color: #ca96e1;
+    transition: .5s;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.link-sign-in-registration{
+    color: #a278b4;
 }
 
 @media(max-width: 900px){
@@ -106,6 +175,22 @@
     .input-registration,
     .btn-registration{
         width: 100%;
+    }
+    .last-name-text-error-registration{
+        top: 120px;
+        left: 20px;
+    }
+    .phone-text-error-registration{
+        top: 190px;
+    }
+    .email-error-registration{
+        top: 294px;
+    }
+    .sec-passw-error-registration{
+        top: 439px;
+    }
+    .password-error-registration{
+        top: 367px;
     }
 
 }

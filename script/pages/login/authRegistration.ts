@@ -12,6 +12,7 @@ function renderRegistrPage(role: string) {
   const imgRegitration = createHtmlElement('img', 'img-registration');
   if (imgRegitration instanceof HTMLImageElement) {
     role === 'owner' ? imgRegitration.src = 'https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_owner.jpg&w=1920&q=75' : imgRegitration.src = 'https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_petsitter.jpg&w=1920&q=75';
+    role === 'owner' ? imgRegitration.alt = 'girl with cat' : imgRegitration.alt = 'white dog';
   }
   regitrBlockWrapper.append(imageRegistWrap);
   imageRegistWrap.append(imgRegitration);
@@ -37,64 +38,149 @@ function renderRegistrPage(role: string) {
     linkPetsit.href = '/auth/register/petsitter';
     linkOwner.href = '/auth/register/owner';
   }
+  const formRegistration = createHtmlElement('form','registration-form', `registation-form-${role}`);
+  blockInputsAndText.append(formRegistration);
   const inputPlaceOfLive = createHtmlElement('input', 'input-place-of-live input-registration', 'city');
-  blockInputsAndText.append(inputPlaceOfLive);
+  const dataListCity = createHtmlElement('datalist','','city-variable') as HTMLDListElement;
+  dataListCity.innerHTML= '<option value="Minsk"></option><option value="Brest"></option><option value="Vitebsk"></option><option value="Grodno"></option><option value="Gomel"></option><option value="Mogilev"></option>';
+  const placeTextError = createHtmlElement('p', 'city-text-error-registration text-error-registration', 'city-error', 'Enter city from list');
+  formRegistration.append(inputPlaceOfLive);
+  inputPlaceOfLive.after(dataListCity);
+  inputPlaceOfLive.after(placeTextError);
   if (inputPlaceOfLive instanceof HTMLInputElement) {
     inputPlaceOfLive.type = 'text';
+    inputPlaceOfLive.name = 'af2Km9q';
     inputPlaceOfLive.placeholder = 'City';
+    inputPlaceOfLive.pattern = "[Mm]insk|[Bb]rest|[Vv]itebsk|[Gg]rodno|[Gg]omel|[Mm]ogilev";
+    inputPlaceOfLive.setAttribute("list", "city-variable");
+    inputPlaceOfLive.setAttribute("autocomplete","off");
+    inputPlaceOfLive.setAttribute("required", "");
   }
+  inputPlaceOfLive.addEventListener('input', checkValidity);
   const blockNameInputs = createHtmlElement('div', 'block-names-inputs');
-  blockInputsAndText.append(blockNameInputs);
+  formRegistration.append(blockNameInputs);
   const inputFirstName = createHtmlElement('input', 'input-firstname input-registration', 'firstname');
+  const firstNameTextError = createHtmlElement('p', 'first-name-text-error-registration text-error-registration', 'first-name-error', 'Enter your name');
   blockNameInputs.append(inputFirstName);
+  inputFirstName.after(firstNameTextError);
   if (inputFirstName instanceof HTMLInputElement) {
     inputFirstName.type = 'text';
     inputFirstName.placeholder = 'Firstname';
+    inputFirstName.name = 'firstname';
+    inputFirstName.setAttribute("required", "");
   }
+  inputFirstName.addEventListener('input', checkValidity);
   const inputLastName = createHtmlElement('input', 'input-lastname input-registration', 'lastname');
+  const lastNameTextError = createHtmlElement('p', 'last-name-text-error-registration text-error-registration', 'last-name-error', 'Enter your lastname');
   blockNameInputs.append(inputLastName);
+  inputLastName.after(lastNameTextError);
   if (inputLastName instanceof HTMLInputElement) {
     inputLastName.type = 'text';
     inputLastName.placeholder = 'Lastname';
+    inputLastName.name = 'lastname';
+    inputLastName.setAttribute("required", "");
   }
+  inputLastName.addEventListener('input', checkValidity);
   const inputNumber = createHtmlElement('input', 'input-phone-number input-registration', 'phone-number');
-  blockInputsAndText.append(inputNumber);
+  const phoneTextError = createHtmlElement('p', 'phone-text-error-registration text-error-registration', 'phone-error', 'Enter your correct phone');
+  formRegistration.append(inputNumber);
+  inputNumber.after(phoneTextError);
   if (inputNumber instanceof HTMLInputElement) {
     inputNumber.type = 'text';
-    inputNumber.placeholder = 'Phone number';
+    inputNumber.placeholder = 'Phone number without "+"';
+    inputNumber.name = 'phone';
+    inputNumber.pattern = "^[0-9]{9,}$";
+    inputNumber.setAttribute("required", "");
   }
+  inputNumber.addEventListener('input', checkValidity);
   const emailInput = createHtmlElement('input', 'input-email-registration input-registration', 'email');
-  blockInputsAndText.append(emailInput);
+  const emailTextError = createHtmlElement('p', 'email-error-registration text-error-registration', 'email-error-registration', 'Enter your correct email');
+  formRegistration.append(emailInput);
+  emailInput.after(emailTextError);
   if (emailInput instanceof HTMLInputElement) {
     emailInput.type = 'email';
     emailInput.placeholder = 'E-mail';
+    emailInput.name = 'email';
+    emailInput.setAttribute("required", "");
   }
-  const inputPassword = createHtmlElement('input', 'input-password-registration input-registration', 'password');
-  blockInputsAndText.append(inputPassword);
+  emailInput.addEventListener('input', checkValidity);
+  const inputPassword = createHtmlElement('input', 'input-password-registration input-registration', 'password') as HTMLInputElement;
+  const passwordTextError = createHtmlElement('p', 'password-error-registration text-error-registration', 'password-error-registration', 'Your password must be 4 to 10 characters long');
+  formRegistration.append(inputPassword);
+  inputPassword.after(passwordTextError);
   if (inputPassword instanceof HTMLInputElement) {
-    inputPassword.type = 'text';
+    inputPassword.type = 'password';
     inputPassword.placeholder = 'Password';
+    inputPassword.name = 'password';
+    inputPassword.pattern = "^(.){4,10}$";
+    inputPassword.setAttribute("required", "");
   }
+  inputPassword.addEventListener('input', checkValidity);
   const inputSecondPassword = createHtmlElement('input', 'input-repeat-password-registration input-registration', 'repeat-password');
-  blockInputsAndText.append(inputSecondPassword);
+  const secondPasswordTextError = createHtmlElement('p', 'sec-passw-error-registration text-error-registration active', 'second-password-error', 'Your passwords don\'t match!');
+  formRegistration.append(inputSecondPassword);
+  inputSecondPassword.after(secondPasswordTextError);
+  const btnRegistration = createHtmlElement('button', 'btn-registration', `btn-registration-${role}`) as HTMLButtonElement;
   if (inputSecondPassword instanceof HTMLInputElement) {
-    inputSecondPassword.type = 'text';
+    inputSecondPassword.type = 'password';
     inputSecondPassword.placeholder = 'Repeat password';
+    inputSecondPassword.name = 'repeatPassword';
+    inputSecondPassword.pattern = "^(.){4,10}$";
+    inputSecondPassword.setAttribute("required", "");
+    btnRegistration.addEventListener('click',(event)=>{
+      if(inputPassword.value !== inputSecondPassword.value){
+        event.preventDefault();
+        secondPasswordTextError.classList.remove("active");
+      }else{
+        secondPasswordTextError.classList.add("active");
+      }
+    })
+    inputSecondPassword.addEventListener('input',()=>{
+      if(inputPassword.value !== inputSecondPassword.value){
+        secondPasswordTextError.classList.remove("active");
+      }else{
+        secondPasswordTextError.classList.add("active");
+      }
+    })
   }
-  const btnRegistration = createHtmlElement('button', 'btn-registration');
   role === "owner" ? (
     btnRegistration.innerHTML = 'Register as a pet owner',
     btnRegistration.id = "registration-pet-owner") : (
     btnRegistration.innerHTML = 'Register as a petsitter',
     btnRegistration.id = 'registration-petsitter');
-  blockInputsAndText.append(btnRegistration);
+  formRegistration.append(btnRegistration);
   if (btnRegistration instanceof HTMLButtonElement) {
     btnRegistration.type = 'submit';
+    btnRegistration.disabled = true;
   }
+  formRegistration.addEventListener('input', (event)=>{
+    checkValidityForm(event, btnRegistration);
+  });
+
   const textQuestion = createHtmlElement('div', 'text-question-registration');
   textQuestion.innerHTML = '<p>Already have an account on Petsi?<a class="link-sign-in-registration" href = "/auth/login">Sign in</a></p>';
   blockInputsAndText.append(textQuestion);
 }
+
+function checkValidity(event: Event) {
+  const input = event.target;
+    if(input instanceof HTMLInputElement && !input.checkValidity()){
+      if(input.nextElementSibling)input.nextElementSibling.classList.add('active');
+    }else if(input instanceof HTMLInputElement){
+      if(input.nextElementSibling)input.nextElementSibling.classList.remove('active');
+    }
+}
+function checkValidityForm(event: Event, button:HTMLButtonElement) {
+  if(event.target && event.target instanceof HTMLInputElement){
+    const formNode = event.target.form;
+    if(formNode){
+    const isValid = formNode.checkValidity();
+    button.disabled = !isValid;
+    console.log(button.disabled);
+  }
+}
+}
+
 
 export default function authRegister() {
     document.body.innerHTML = '';
