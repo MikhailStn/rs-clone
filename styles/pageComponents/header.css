@@ -1,9 +1,15 @@
+header{
+
+}
 .header{
     background-color: rgb(251, 221, 122);
     height: 110px;
-    position: sticky;
+    position: fixed;
     top: 0;
+    width: 100%;
+    z-index: 2;
     box-shadow: 0 5px 5px grey;
+
 }
 .head{
     color: #fff;
@@ -87,3 +93,6 @@ font-weight: 700;
     background-color: rgb(251, 221, 122);
     color:black;
 }
+.header2 .btnRight .btn:nth-child(even):hover{
+    background-color: #f7c926;
+} 

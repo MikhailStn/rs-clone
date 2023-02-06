@@ -1,0 +1,235 @@
+.section-common-petsitters{
+    width: 100vw;
+    height: 100vh;
+    color: #27272e;
+}
+.top-block-wrapper{
+    width: 100%;
+    height: 600px;
+    background-color: #fdf1ca;
+}
+.top-block-petsitter{
+    display: flex;
+    max-width: 1192px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    gap: 128px;
+}
+.title-top-petsit-block,
+.petsit-title-block{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 45px;
+}
+.top-text-petsit,
+.common-text-petsit-block,
+.little-title-petsit-block{
+    color: #71717A;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+.btn-create-account{
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    margin-top: 60px;
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    width: 156px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    background:  #ca96e1;
+    padding: 15px 16px;
+    font-size: 20px;
+    font-size: 1rem;
+    text-align: center;
+    transition: .5s;
+}
+.btn-create-account:hover,
+.btn-view-profile:hover,
+.btn-sign-up-contact:hover{
+    background:  #a278b4;
+}
+.img-top-petsit{
+    border-radius: 32px;
+    max-width: 532px;
+    max-height: 479px;
+}
+.petsit-main-page-block{
+    display: flex;
+    max-width: 1192px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 128px;
+    align-items: center;
+}
+.block-revert{
+    flex-direction: row-reverse;
+}
+.petsit-text-block{
+    max-width: 532px;
+}
+.block-box-img-petsit-main{
+    max-width: 532px;
+}
+.img-petsit-block{
+    width: 100%;
+    border-radius: 32px;
+    object-fit: contain;
+}
+.slider-petsit-container{
+    background-color: #fdf1c9;
+    width: 100vw;
+    height: 480px;
+}
+.slider-petsit-wrapper{
+    display: flex;
+    padding-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 857px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    line-height: 1.77;
+    color: #27272e;
+}
+.img-slider-item-container{
+    width: 250px;
+    height: 250px;
+}
+.img-petsit-slider-item{
+    border-radius: 32px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.btn-view-profile{
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    margin-top: 60px;
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    width: 140px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    background: #ca96e1;
+    padding: 9px 16px;
+    font-size: 20px;
+    font-size: 1rem;
+    text-align: center;
+    transition: .5s;
+}
+.img-btn-slider-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.slider-petsit-item{
+    display: flex;
+    gap: 64px;
+}
+.pagination-petsit-slider-container{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+.stars-slider-container{
+    color: #FBDD7A;
+}
+.review-owner-text{
+    display: inline;
+    float: right;
+    font-weight: bold;
+    justify-content: flex-end;
+}
+.pagination-btn-petsit{
+    display: flex;
+    cursor: pointer;
+    width: 29px;
+    height: 29px;
+    font-size: 2rem;
+    align-items:center;
+    transition: .5s;
+}
+.pagination-btn-petsit:hover{
+    border-radius: 50%;
+    background-color: #d6caa3;
+}
+.contact-petsitter-wrapper-main-page{
+    display: flex;
+    width: 1192px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 128px;
+    align-items: center;
+}
+.img-contact-main-petsit-wrapper{
+    width: 532px;
+    height: 482px;
+    padding-top: 70px;
+}
+.img-contact-main-petsit{
+    border-radius: 32px 32px 0 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.input-contact-petsit-main-wrapper{
+    display: flex;
+    position: relative;
+    gap: 10px;
+}
+.input-text-contact-petsit-container{
+    width: 532px;
+}
+.input-contact-email{
+    background-clip: padding-box;
+    border: 1px solid #ca96e1;
+    border-radius: 5px;
+    transition: .5s;
+    outline: none;
+    width: 350px;
+    height: 45px;
+}
+.input-contact-email:focus:invalid{
+    border: 2px solid #f37059;
+  }
+.input-contact-email:valid{
+    border: 3px solid #ca96e1;
+  }
+.btn-sign-up-contact{
+    background-color: #ca96e1;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    transition: .5s;
+}
+.email-text-error-petsit-contact-main{
+    display: none;
+}
+.email-text-error-petsit-contact-main:focus.active,
+.email-text-error-petsit-contact-main.active{
+    display: block;
+    color: #f37059;
+    position: absolute;
+    top: 40px;
+}
