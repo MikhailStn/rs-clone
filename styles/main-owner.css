@@ -3,6 +3,7 @@
     min-height: 20px;/**/
     padding: 50px 24px;
 }
+
 .wrapper:nth-child(even){
     background-color: #faf8ff;
 }
@@ -90,9 +91,7 @@ svg{
 .svg{
     width: 30px;
     height: 30px;
-    /*background-color:red;*/
     margin-right: 10px;
-    fill:red;
 }
 embed{
     width: 100%;
@@ -104,6 +103,11 @@ embed{
 }
 .line p, span{
     color: #71717A;
+}
+.section1{
+    position: relative;
+    top: -190px;
+    height: 100px;
 }
 
 .section2 .right .line{
@@ -118,19 +122,7 @@ embed{
 .center .line{
     justify-content:center;
 }
-.rectangle{
-    color: #FFF;
-    background-color: #CA96E1;
-    border: 0;
-    padding: 15px 20px;
-    width: 200px;
-    border-radius: 8px;
-    margin: 0 auto;
-    display: block;
-}
-.rectangle:hover{
-    background-color: #a15fbd;
-}
+
 .section3, .section5{
     flex-direction: row-reverse;
 }

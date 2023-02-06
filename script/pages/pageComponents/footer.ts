@@ -11,6 +11,8 @@ export function footerFun(tagParent: HTMLElement): void {
     imgRS.src = "img/rs_school_js.svg";
     const githubs = createHtmlElement("div", "githubs");
 
+    const year = createHtmlElement('div', 'year-footer', '', '2023');
+
     const a1 = createHtmlElement ('a')  as HTMLAnchorElement; 
     a1.href = "https://github.com/hannarim-23";
     const github1 = new Image(); github1.src = "img/github_m.svg";
@@ -26,6 +28,7 @@ export function footerFun(tagParent: HTMLElement): void {
     tagParent.append(footer);
     footer.append(blocks);
     blocks.append(logoRS);
+    blocks.append(year);
     blocks.append(githubs);
     logoRS.append(a0);
     a0.append(imgRS);

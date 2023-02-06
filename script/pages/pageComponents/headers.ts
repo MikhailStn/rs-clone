@@ -6,7 +6,7 @@ export function headerOwner(tagParent: HTMLElement): void {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "pets");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   const headerNotification = createHtmlElement("div", "notification first", "", "");
   const btnNotification = createHtmlElement("button", "btn", "notification");
   const notificationImg = new Image();
@@ -34,7 +34,7 @@ export function header(tagParent: HTMLElement): void {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "pets");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   const btnFind = createHtmlElement("button", "btn rectangle", "btnFind", "Find a pet sitter");
   const btnBecome = createHtmlElement("button", "btn rectangle", "btnBecome", "Become a pet sitter");
 
@@ -60,7 +60,7 @@ export function headerPetsitter(tagParent: HTMLElement): void {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "pets");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   const headerNotification = createHtmlElement("div", "notification first", "", "");
   const btnNotification = createHtmlElement("button", "btn ", "notification");
   const notificationImg = new Image();

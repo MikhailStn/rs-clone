@@ -2,6 +2,7 @@ import { createHtmlElement } from "../../utils";
 import { headerOwner } from "../pageComponents/headers";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
 import { footerFun } from "../pageComponents/footer";
+import { filterHow } from "../pageComponents/filter";
 
 export function mainOwner(): void {
   headerOwner(document.body);
@@ -18,7 +19,10 @@ export function mainOwner(): void {
   const img1 = new Image();
   img1.src = "https://petsy.pl/_next/image/?url=%2Fimages%2Flandings%2Fhero.jpg&w=1920&q=75";
 
-  const filter = createHtmlElement("div", "wrapper filter");/*!!!!!*/
+  const section1 = createHtmlElement("section", "wrapper section1");
+  const section1Content = createHtmlElement("div", "content");
+  //const filter = createHtmlElement("div", "wrapper filter");
+  filterHow(section1Content);
 
   const section2 = createHtmlElement("section", "wrapper section2");
   const section2Content = createHtmlElement("div", "content");
@@ -154,7 +158,9 @@ section3Right.innerHTML =`<h2>Go on vacation and we'll take care of your pet</h2
 
   //document.body.append(header1);
   document.body.append(banner);
-  document.body.append(filter);
+  document.body.append(section1);
+  //document.body.append(filter);
+  //filterHow(document.body);/** */
   document.body.append(section2);
   document.body.append(section3);
   document.body.append(section4);
@@ -172,6 +178,8 @@ section3Right.innerHTML =`<h2>Go on vacation and we'll take care of your pet</h2
 
   bannerRight.append(bannerImg);
   bannerImg.append(img1);
+
+  section1.append(section1Content);
 
   section2.append(section2Title);
   section2.append(section2Content);
@@ -229,10 +237,6 @@ for (let i = 0; i < buttons.length; i++) {
 
 }
 
-
-
-
-
 }
 
 
@@ -244,6 +248,10 @@ function createBtnViewProf(){
   }
   return btnViewProf;
 }
+
+
+
+
 
 
 function createSliderReview(){
