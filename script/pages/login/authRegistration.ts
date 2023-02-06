@@ -176,7 +176,6 @@ function checkValidityForm(event: Event, button:HTMLButtonElement) {
     if(formNode){
     const isValid = formNode.checkValidity();
     button.disabled = !isValid;
-    console.log(button.disabled);
   }
 }
 }
