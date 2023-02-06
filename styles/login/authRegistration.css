@@ -1,0 +1,203 @@
+.registration-section{
+    height: calc(100vh - 100px);
+}
+.registration-block-wrapper{
+    display: flex;
+    flex-direction: row;
+    max-width: 1240px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #27272e;
+}
+.img-registration-wrapper{
+    max-width: 620px;
+}
+.img-registration{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.block-inputs-text-registration{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 48px 80px;
+    align-items: center;
+}
+.link-owner-registration,
+.link-petsitter-registration{
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    color: #27272e;
+    width: 220px;
+    height: 50px;
+    border: 1px solid #ebeaed;
+    border-radius: 5px;
+    padding: 15px 16px;
+    font-size: 20px;
+    font-size: 1rem;
+    text-align: center;
+    transition: .5s;
+}
+.link-owner-registration.active,
+.link-petsitter-registration.active{
+    background-color: #fbdd7a;
+}
+.link-owner-registration:hover,
+.link-petsitter-registration:hover{
+    background:  #fdf1ca;
+}
+.registration-form{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+}
+.input-registration{
+    background-clip: padding-box;
+    border: 1px solid #ebeaed;
+    border-radius: 5px;
+    margin-top: 30px;
+    padding-left: 10px;
+    transition: .5s;
+    outline: none;
+    width: 485px;
+    height: 53px;
+    transition: .5s;
+}
+.input-registration:invalid{
+    border: 2px solid #f37059;
+}
+.input-registration:placeholder-shown{
+    border: 2px solid #ebeaed;
+}
+.input-registration:valid,
+.input-registration:hover{
+    border: 2px solid #ca96e1;
+}
+.input-firstname,
+.input-lastname{
+    width: 240px;
+}
+.text-error-registration{
+    display: none;
+    color: #f37059;
+    position: absolute;
+    left: 20px;
+    background-color: #ffffff;
+    z-index: 2;
+}
+.text-error-registration.active{
+    display: block;
+}
+#second-password-error{
+    display: block;
+}
+#second-password-error.active{
+    display: none;
+}
+.city-text-error-registration{
+    top: -9px;
+}
+.first-name-text-error-registration{
+    top: 65px;
+}
+.last-name-text-error-registration{
+    top: 65px;
+    left: 260px;
+}
+.phone-text-error-registration{
+    top: 138px;
+}
+.email-error-registration{
+    top: 241px;
+}
+.sec-passw-error-registration{
+    top: 446px;
+    display: none;
+}
+.password-error-registration{
+    top: 344px;
+}
+.btn-registration{
+    background-color: #ca96e1;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 485px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    transition: .5s;
+}
+.btn-registration:hover{
+    background-color: #a278b4;
+}
+.btn-registration:disabled{
+    background-color: #ebeaed;
+}
+.link-sign-in-registration{
+    color: #ca96e1;
+    transition: .5s;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.link-sign-in-registration{
+    color: #a278b4;
+}
+
+@media(max-width: 900px){
+
+    .img-registration-wrapper{
+        display: none;
+    }
+    .block-inputs-text-registration{
+        padding: 48px 40px;
+    }
+    .block-link-role-registration{
+        display: flex;
+        justify-content: center;
+        width: 330px;
+    }
+    .link-owner-registration,
+    .link-petsitter-registration{
+        width: 100%;
+    }
+    .input-registration,
+    .btn-registration{
+        width: 100%;
+    }
+    .last-name-text-error-registration{
+        top: 120px;
+        left: 20px;
+    }
+    .phone-text-error-registration{
+        top: 190px;
+    }
+    .email-error-registration{
+        top: 294px;
+    }
+    .sec-passw-error-registration{
+        top: 439px;
+    }
+    .password-error-registration{
+        top: 367px;
+    }
+
+}
+@media(max-width: 420px){
+
+    .block-inputs-text-registration{
+        padding: 30px 0px;
+    }
+
+}
