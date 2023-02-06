@@ -5,6 +5,7 @@ import searchShowPage from "./pages/commonPages/search";
 import mainShowPage from "./pages/commonPages/main";
 import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
+import authPetsitterForm from "./pages/login/authForm";
 
 export const router = () => {
   type Rout = {
@@ -41,6 +42,10 @@ export const router = () => {
       template: searchShowPage,
     },
     {
+      path: "/auth/register/form",
+      template: authPetsitterForm,
+    },
+    {
       path: "/",
       template: mainShowPage,
     },
@@ -69,8 +74,7 @@ export const router = () => {
   });
 
   const renderUI = () => {
-    const route = routes.find((route) =>
-      window.location.pathname.includes(route.path));
+    const route = routes.find((route) => window.location.pathname.includes(route.path));
 
     if (route) {
       route.template();

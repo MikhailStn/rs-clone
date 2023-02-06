@@ -5,26 +5,21 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const ghpages = require("gh-pages");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
-const stylesHandler = isProduction
-  ? MiniCssExtractPlugin.loader
-  : "style-loader";
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "style-loader";
 
 const config = {
   entry: "./index.ts",
   output: {
-    publicPath: '/',
+    publicPath: "/",
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].[contenthash].js",
     clean: isProduction,
     assetModuleFilename: (pathData) => {
-      const filepath = path
-        .dirname(pathData.filename)
-        .split("/")
-        .slice(1)
-        .join("/");
+      const filepath = path.dirname(pathData.filename).split("/").slice(1).join("/");
       return `${filepath}/[name][ext]`;
     },
   },
@@ -44,6 +39,9 @@ const config = {
       template: path.resolve("index.html"),
     }),
     new ESLintPlugin({ extensions: [".ts"] }),
+    new CopyPlugin({
+      patterns: [{ from: "assets", to: "./img" }],
+    }),
   ],
   module: {
     rules: [

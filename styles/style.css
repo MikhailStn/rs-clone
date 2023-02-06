@@ -1,13 +1,14 @@
 @import "./petsitters.css";
 @import "./login.css";
 @import "./authRegistration.css";
+@import "./petsittersForm.css";
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    font-family: 'Lato', sans-serif;
+body {
+  font-family: "Lato", sans-serif;
 }
 a {
-    text-decoration: none;
+  text-decoration: none;
 }

@@ -1,72 +1,38 @@
 import { createHtmlElement } from "../../utils";
-const registrationSection = createHtmlElement(
-  "section",
-  "registration-section"
-);
+const registrationSection = createHtmlElement("section", "registration-section");
 
 function renderRegistrPage(role: string) {
   registrationSection.innerHTML = "";
-  const regitrBlockWrapper = createHtmlElement(
-    "div",
-    "registration-block-wrapper"
-  );
+  const regitrBlockWrapper = createHtmlElement("div", "registration-block-wrapper");
   registrationSection.append(regitrBlockWrapper);
   const imageRegistWrap = createHtmlElement("div", "img-registration-wrapper");
   const imgRegitration = createHtmlElement("img", "img-registration");
   if (imgRegitration instanceof HTMLImageElement) {
     role === "owner"
-      ? (imgRegitration.src =
-          "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_owner.jpg&w=1920&q=75")
-      : (imgRegitration.src =
-          "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_petsitter.jpg&w=1920&q=75");
+      ? (imgRegitration.src = "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_owner.jpg&w=1920&q=75")
+      : (imgRegitration.src = "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_petsitter.jpg&w=1920&q=75");
   }
   regitrBlockWrapper.append(imageRegistWrap);
   imageRegistWrap.append(imgRegitration);
-  const blockInputsAndText = createHtmlElement(
-    "div",
-    "block-inputs-text-registration"
-  );
+  const blockInputsAndText = createHtmlElement("div", "block-inputs-text-registration");
   regitrBlockWrapper.append(blockInputsAndText);
-  const linkOnMain = createHtmlElement(
-    "a",
-    "link-on-main-from-registration",
-    "",
-    "Back to home page"
-  );
+  const linkOnMain = createHtmlElement("a", "link-on-main-from-registration", "", "Back to home page");
   blockInputsAndText.append(linkOnMain);
-  const textForRegistrRole = createHtmlElement(
-    "h1",
-    "text-for-registration-role"
-  );
+  const textForRegistrRole = createHtmlElement("h1", "text-for-registration-role");
   role === "owner"
-    ? (textForRegistrRole.innerHTML =
-        "Time for you and the best care for your pet")
-    : (textForRegistrRole.innerHTML =
-        "Become a petsitter. Earn by spending time among animals");
+    ? (textForRegistrRole.innerHTML = "Time for you and the best care for your pet")
+    : (textForRegistrRole.innerHTML = "Become a petsitter. Earn by spending time among animals");
   blockInputsAndText.append(textForRegistrRole);
-  const textRegistrLike = createHtmlElement(
-    "div",
-    "text-registration-as",
-    "",
-    "Register as:"
-  );
+  const textRegistrLike = createHtmlElement("div", "text-registration-as", "", "Register as:");
   blockInputsAndText.append(textRegistrLike);
-  const blockLinkRole = createHtmlElement(
-    "div",
-    "block-link-role-registration"
-  );
+  const blockLinkRole = createHtmlElement("div", "block-link-role-registration");
   blockInputsAndText.append(blockLinkRole);
   const linkOwner = createHtmlElement("a", "", "", "Pet owner");
   role === "owner"
     ? (linkOwner.className = "link-owner-registration active")
     : (linkOwner.className = "link-owner-registration");
   blockLinkRole.append(linkOwner);
-  const linkPetsit = createHtmlElement(
-    "a",
-    "link-petsitter-registration",
-    "",
-    "Petsitter"
-  );
+  const linkPetsit = createHtmlElement("a", "link-petsitter-registration", "", "Petsitter");
   role === "owner"
     ? (linkPetsit.className = "link-petsitter-registration")
     : (linkPetsit.className = "link-petsitter-registration active");
@@ -102,11 +68,7 @@ function renderRegistrPage(role: string) {
     inputFirstName.type = "text";
     inputFirstName.placeholder = "Firstname";
   }
-  const inputLastName = createHtmlElement(
-    "input",
-    "input-lastname input-registration",
-    "lastname"
-  ) as HTMLInputElement;
+  const inputLastName = createHtmlElement("input", "input-lastname input-registration", "lastname") as HTMLInputElement;
   blockNameInputs.append(inputLastName);
   if (inputLastName instanceof HTMLInputElement) {
     inputLastName.type = "text";
@@ -152,17 +114,10 @@ function renderRegistrPage(role: string) {
     inputSecondPassword.type = "text";
     inputSecondPassword.placeholder = "Repeat password";
   }
-  const btnRegistration = createHtmlElement(
-    "button",
-    "btn-registration",
-    "",
-    "Register as a pet owner"
-  );
+  const btnRegistration = createHtmlElement("button", "btn-registration", "", "Register as a pet owner");
   role === "owner"
-    ? ((btnRegistration.innerHTML = "Register as a pet owner"),
-      (btnRegistration.id = "registration-pet-owner"))
-    : ((btnRegistration.innerHTML = "Register as a petsitter"),
-      (btnRegistration.id = "registration-petsitter"));
+    ? ((btnRegistration.innerHTML = "Register as a pet owner"), (btnRegistration.id = "registration-pet-owner"))
+    : ((btnRegistration.innerHTML = "Register as a petsitter"), (btnRegistration.id = "registration-petsitter"));
   blockInputsAndText.append(btnRegistration);
   if (btnRegistration instanceof HTMLButtonElement) {
     btnRegistration.type = "submit";
@@ -197,12 +152,20 @@ function renderRegistrPage(role: string) {
       };
       fetch(`${link}`, fecthData)
         .then((response) => {
-          return response.json();
+          console.log(response.status);
+          if (response.status == 400) {
+            return response.json();
+          } else {
+            return;
+          }
         })
         .then((data) => {
           console.log(data);
-          localStorage.setItem("curr-user-id", `${data.id}`)
+          localStorage.setItem("curr-user-id", `${data.id}`);
           console.log(localStorage.getItem("curr-user-id"));
+          if (btnRegistration.id == "registration-petsitter") {
+            document.location.href = "/auth/register/form";
+          }
         });
     } else {
       console.log("Пароли не совпадают");

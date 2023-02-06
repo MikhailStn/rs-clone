@@ -10,36 +10,15 @@ function renderLoginPage() {
   loginLayout.append(loginBlockWrapper);
   const titleLogin = createHtmlElement("h1", "login-title", "", "Petsy");
   loginBlockWrapper.append(titleLogin);
-  const textAfterTitleLogin = createHtmlElement(
-    "div",
-    "text-after-title-login",
-    "",
-    "Welcome back!"
-  );
+  const textAfterTitleLogin = createHtmlElement("div", "text-after-title-login", "", "Welcome back!");
   loginBlockWrapper.append(textAfterTitleLogin);
-  const inputLoginEmail = createHtmlElement(
-    "input",
-    "input-login-email input-login"
-  ) as HTMLInputElement;
-  const inputLoginPassword = createHtmlElement(
-    "input",
-    "input-login-password input-login"
-  ) as HTMLInputElement;
+  const inputLoginEmail = createHtmlElement("input", "input-login-email input-login") as HTMLInputElement;
+  const inputLoginPassword = createHtmlElement("input", "input-login-password input-login") as HTMLInputElement;
   loginBlockWrapper.append(inputLoginEmail);
   loginBlockWrapper.append(inputLoginPassword);
-  const emailTextError = createHtmlElement(
-    "p",
-    "email-text-error-login",
-    "",
-    "Incorrect email format"
-  );
+  const emailTextError = createHtmlElement("p", "email-text-error-login", "", "Incorrect email format");
   inputLoginEmail.after(emailTextError);
-  const passwordTextError = createHtmlElement(
-    "p",
-    "password-text-error-login",
-    "",
-    "Enter your password"
-  );
+  const passwordTextError = createHtmlElement("p", "password-text-error-login", "", "Enter your password");
   inputLoginPassword.after(passwordTextError);
   const btnLogin = createHtmlElement("button", "btn-login", "", "Log in");
   if (btnLogin instanceof HTMLButtonElement) {
@@ -73,15 +52,9 @@ function renderLoginPage() {
     inputLoginEmail.placeholder = "E-mail";
     inputLoginEmail.setAttribute("required", "");
     btnLogin.addEventListener("click", () => {
-      if (
-        !inputLoginEmail.checkValidity() &&
-        !emailTextError.classList.contains("active")
-      ) {
+      if (!inputLoginEmail.checkValidity() && !emailTextError.classList.contains("active")) {
         emailTextError.classList.add("active");
-      } else if (
-        inputLoginEmail.checkValidity() &&
-        emailTextError.classList.contains("active")
-      ) {
+      } else if (inputLoginEmail.checkValidity() && emailTextError.classList.contains("active")) {
         emailTextError.classList.remove("active");
         inputLoginEmail.value = "";
       }
@@ -92,15 +65,9 @@ function renderLoginPage() {
     inputLoginPassword.setAttribute("required", "");
     inputLoginPassword.placeholder = "Password";
     btnLogin.addEventListener("click", () => {
-      if (
-        !inputLoginPassword.checkValidity() &&
-        !passwordTextError.classList.contains("active")
-      ) {
+      if (!inputLoginPassword.checkValidity() && !passwordTextError.classList.contains("active")) {
         passwordTextError.classList.add("active");
-      } else if (
-        inputLoginPassword.checkValidity() &&
-        passwordTextError.classList.contains("active")
-      ) {
+      } else if (inputLoginPassword.checkValidity() && passwordTextError.classList.contains("active")) {
         passwordTextError.classList.remove("active");
       }
     });
