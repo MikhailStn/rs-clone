@@ -1,7 +1,6 @@
 import { createHtmlElement } from "../../utils";
 
 const loginSection = createHtmlElement("section", "login-section");
-
 function renderLoginPage() {
   loginSection.innerHTML = "";
   const loginLayout = createHtmlElement("div", "login-layout");
@@ -47,6 +46,8 @@ function renderLoginPage() {
     "Enter your password"
   );
   inputLoginPassword.after(passwordTextError);
+
+
   const btnLogin = createHtmlElement("button", "btn-login", "", "Log in");
   if (btnLogin instanceof HTMLButtonElement) {
     btnLogin.type = "submit";
@@ -136,6 +137,9 @@ function renderLoginPage() {
 }
 
 export default function authLogin() {
+  document.body.innerHTML = "";
+  renderLoginPage();
+  return document.body.append(loginSection);
   document.body.innerHTML = "";
   renderLoginPage();
   return document.body.append(loginSection);

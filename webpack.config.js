@@ -6,12 +6,11 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ghpages = require("gh-pages");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
-const stylesHandler = isProduction
-  ? MiniCssExtractPlugin.loader
-  : "style-loader";
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : "style-loader";
 
 const config = {
   entry: "./index.ts",
@@ -21,11 +20,7 @@ const config = {
     filename: "[name].[contenthash].js",
     clean: isProduction,
     assetModuleFilename: (pathData) => {
-      const filepath = path
-        .dirname(pathData.filename)
-        .split("/")
-        .slice(1)
-        .join("/");
+      const filepath = path.dirname(pathData.filename).split("/").slice(1).join("/");
       return `${filepath}/[name][ext]`;
     },
   },

@@ -4,6 +4,7 @@ import authLogin from "./pages/login/authLogin";
 import searchShowPage from "./pages/commonPages/search";
 import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
+import authPetsitterForm from "./pages/login/authForm";
 import { mainOwner } from "./pages/commonPages/main-owner";
 
 export const router = () => {
@@ -39,6 +40,10 @@ export const router = () => {
     {
       path: "/search",
       template: searchShowPage,
+    },
+    {
+      path: "/auth/register/form",
+      template: authPetsitterForm,
     },
     {
       path: "/",
