@@ -7,6 +7,7 @@
     z-index: 2; 
     box-shadow: 0 5px 5px grey; 
 }
+
 .head{
     color: #fff;
     background-color: #CA96E1;
@@ -19,6 +20,7 @@
     align-items:center;
     padding: 0 25px;
 }
+
 .head a{
     font-size: 1.35rem;
     line-height: 1.3;
@@ -33,6 +35,7 @@
     text-align: center;
     padding-top: 8px;
 }
+
 .head button{
     padding: 12px;
     height: 45px;
@@ -43,6 +46,7 @@
     color: #ffffff;
     z-index: 2;
 }
+
 .notification{
     margin-left: auto;
     display: flex;
@@ -62,35 +66,38 @@
     padding: 0 5px;
     color:#fff;
 }
+
 .notification button{
     margin: 0;
 }
-.notification div{
-    
-    
-}
+
 .header .rectangle{
 width: auto;
 background-color: #CA96E1;
 font-weight: 700;
 }
+
 .header .rectangle:hover{
     background-color: #d2a1e7;
 }
+
 .header2{
     height: 64px;
 }
+
 .header2 .btnRight{
     margin-left: auto;
     display: flex;
     position: relative;
     padding: 0px;
 }
+
 .header2 .btnRight .btn:nth-child(even){
     background-color: #fbdd7a;
     color:black;
     transition: .5s;
 }
+
 .header2 .btnRight .btn:nth-child(even):hover{
     background-color: #f7c926;
 }

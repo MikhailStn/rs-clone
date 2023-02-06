@@ -2,9 +2,9 @@ import petsAddShowPage from "./pages/commonPages/petsAdd";
 import petsitters from "./pages/petsitters/petsitters";
 import authLogin from "./pages/login/authLogin";
 import searchShowPage from "./pages/commonPages/search";
-import mainShowPage from "./pages/commonPages/main";
 import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
+import { mainOwner } from "./pages/commonPages/main-owner";
 
 export const router = () => {
   type Rout = {
@@ -42,7 +42,7 @@ export const router = () => {
     },
     {
       path: "/",
-      template: mainShowPage,
+      template: mainOwner,
     },
   ];
 
@@ -70,7 +70,8 @@ export const router = () => {
 
   const renderUI = () => {
     const route = routes.find((route) =>
-      window.location.pathname.includes(route.path));
+      window.location.pathname.includes(route.path)
+    );
 
     if (route) {
       route.template();

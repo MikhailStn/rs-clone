@@ -3,10 +3,12 @@ footer{
     height: 100px;
     background-color: #CA96E1;
 }
+
 .footer{
     padding: 25px 150px;
     height: 100px;
 }
+
 .foot{
     display: flex;
     justify-content: space-between;
@@ -18,18 +20,22 @@ footer{
     justify-content: space-between;
     width: 170px;
 }
+
 .githubs img{
     width: 50px;
     height: 50px;
 }
+
 .logoRS{
     width: 150px;
 }
+
 .year-footer{
     color: #ffffff;
     font-weight: 700;
     font-size: 18px;
 }
+
 @media(max-width: 900px){
 
     .footer{

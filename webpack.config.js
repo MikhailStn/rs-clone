@@ -4,9 +4,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const ghpages = require("gh-pages");
-const CopyPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -17,7 +16,7 @@ const stylesHandler = isProduction
 const config = {
   entry: "./index.ts",
   output: {
-    publicPath: '/',
+    publicPath: "/",
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].[contenthash].js",
     clean: isProduction,
@@ -46,15 +45,11 @@ const config = {
       template: path.resolve("index.html"),
     }),
     new CopyPlugin({
-      patterns: [
-        { from: 'assets', to: './img' },
-      ],
+      patterns: [{ from: "assets", to: "./img" }],
     }),
     new ESLintPlugin({ extensions: [".ts"] }),
-    new CopyPlugin({ 
-      patterns: [ 
-        { from: 'assets', to: './img' }, 
-      ], 
+    new CopyPlugin({
+      patterns: [{ from: "assets", to: "./img" }],
     }),
   ],
   module: {

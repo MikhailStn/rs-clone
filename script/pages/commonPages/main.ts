@@ -1,9 +1,8 @@
 import { createHtmlElement } from "../../utils";
 
 export default function mainShowPage() {
-  document.body.innerHTML = '';
+  document.body.innerHTML = "";
 
-    const div = createHtmlElement("div", "", "", "MAIN");
-    return document.body.append(div);
-  }
-
+  const div = createHtmlElement("div", "", "", "MAIN");
+  return document.body.append(div);
+}
