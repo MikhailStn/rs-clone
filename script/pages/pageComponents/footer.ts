@@ -39,3 +39,18 @@ export function footerFun(tagParent: HTMLElement): void {
     a2.append(github2);
     a3.append(github3);
 }
+
+    tagParent.append(footer);
+    footer.append(blocks);
+    blocks.append(logoRS);
+    blocks.append(year);
+    blocks.append(githubs);
+    logoRS.append(a0);
+    a0.append(imgRS);
+    githubs.append(a1);
+    githubs.append(a2);
+    githubs.append(a3);
+    a1.append(github1);
+    a2.append(github2);
+    a3.append(github3);
+}

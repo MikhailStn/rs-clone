@@ -13,7 +13,9 @@ export function headerOwner(tagParent: HTMLElement): void {
   })
   const headerNotification = createHtmlElement("div", "notification first", "", "");
   const btnNotification = createHtmlElement("button", "btn", "notification");
+  const btnNotification = createHtmlElement("button", "btn", "notification");
   const notificationImg = new Image();
+  notificationImg.src = "img/notification.svg";
   notificationImg.src = "img/notification.svg";
   const flagNotification = createHtmlElement("span", "", "", "1");
   const promo = createHtmlElement("div", "");

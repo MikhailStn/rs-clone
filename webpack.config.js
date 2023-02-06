@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const ghpages = require("gh-pages");
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -43,6 +44,11 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve("index.html"),
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'assets', to: './img' },
+      ],
     }),
     new ESLintPlugin({ extensions: [".ts"] }),
     new CopyPlugin({ 
