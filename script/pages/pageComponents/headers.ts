@@ -1,9 +1,14 @@
 import { createHtmlElement } from "../../utils";
+import { createMenu } from "./menu";
 
 export function headerOwner(tagParent: HTMLElement): void {
   const header = createHtmlElement("header", "header");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
+  headerMenu.addEventListener('click', ()=>{
+    document.body.style.overflow = 'hidden';
+    createMenu();
+  })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "petsi");
@@ -44,9 +49,14 @@ export function headerOwner(tagParent: HTMLElement): void {
 }
 
 export function header(tagParent: HTMLElement): void {
+  //let isOpenMenu = false;
   const header = createHtmlElement("header", "header header2");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
+  headerMenu.addEventListener('click', ()=>{
+    document.body.style.overflow = 'hidden';
+    createMenu();
+  })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "petsi");
@@ -121,6 +131,10 @@ export function headerPetsitter(tagParent: HTMLElement): void {
   const header = createHtmlElement("header", "header");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
+  headerMenu.addEventListener('click', ()=>{
+    document.body.style.overflow = 'hidden';
+    createMenu();
+  })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "petsi");

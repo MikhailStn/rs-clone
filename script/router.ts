@@ -6,6 +6,7 @@ import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
 import authPetsitterForm from "./pages/login/authForm";
 import { mainOwner } from "./pages/commonPages/main-owner";
+import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
 
 export const router = () => {
   type Rout = {
@@ -28,6 +29,10 @@ export const router = () => {
     {
       path: "/auth/register/owner",
       template: authRegister,
+    },
+    {
+      path: "/petsitter/profile/basics",
+      template: petsitterProfileBasic,
     },
     {
       path: "/petsitter",

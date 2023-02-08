@@ -1,0 +1,132 @@
+.section-menu {
+  position: absolute;
+  background-color: #ffffff;
+  width: 260px;
+  height: 100%;
+  top: 0;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.btn-create-acc-menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 72px;
+  border-bottom: 2px solid #ebeaed;
+}
+
+.btn-create-acc-menu {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  outline: 0px;
+  border: none;
+  width: 228px;
+  height: 38px;
+  border-radius: 4px;
+  background-color: #fbdd7a;
+  transition: 0.5s;
+}
+
+.btn-create-acc-menu:hover {
+  background-color: #f7c926;
+}
+
+.block-menu-wrapper {
+  display: flex;
+  padding-left: 20px;
+  height: 45px;
+  flex-direction: row;
+  color: #27272e;
+  font-weight: 400;
+  font-size: 0.87rem;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.block-menu-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.block-menu-svg {
+  width: 20px;
+}
+
+.loupe-menu {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  overflow: hidden;
+}
+
+.role-block-menu-identity {
+  display: flex;
+  height: 60px;
+  background-color: #ca96e1;
+  align-items: center;
+  padding-left: 20px;
+  gap: 10px;
+}
+
+.img-menu-role-wrapper {
+  display: flex;
+  background-color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-role-menu {
+  width: 20px;
+}
+
+.role-text-wrapper-menu {
+  overflow: hidden;
+  color: #ffffff;
+  line-height: 1.7;
+}
+
+.text-name-menu-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.text-email-menu-role {
+  font-size: 0.67rem;
+}
+
+.recommend-logo-menu {
+  width: 25px;
+}
+.btn-log-out-menu {
+  position: absolute;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  outline: 0px;
+  border: none;
+  bottom: 50px;
+  left: 20px;
+  width: 86px;
+  height: 37px;
+  border-radius: 4px;
+  background-color: #ca96e1;
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+.btn-log-out-menu:hover {
+  background-color: #a278b4;
+}
