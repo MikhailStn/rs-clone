@@ -19,6 +19,7 @@ const fetchPetsitterData: PetsitterData = {
 };
 
 function renderPetsitterForm() {
+  document.body.setAttribute("style", "padding: 0");
   const formContainer = createHtmlElement("div", "petsitter-form-container");
   const progress = createHtmlElement("input", "form-progress") as HTMLInputElement;
   progress.value = "0";
