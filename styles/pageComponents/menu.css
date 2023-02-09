@@ -1,9 +1,17 @@
+.section-menu-field{
+  display: none;
+
+}
+.section-menu-field.active{
+  display: block;
+}
 .section-menu {
-  position: absolute;
+  position: fixed;
   background-color: #ffffff;
   width: 260px;
   height: 100%;
   top: 0;
+  border-right: 2px solid #ebeaed;
   z-index: 4;
   overflow: hidden;
 }

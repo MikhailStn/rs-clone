@@ -19,7 +19,7 @@ function renderCommonMenu() {
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
     overlay.addEventListener('click', () => {
-        sectionMenuField.innerHTML = '';
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
     })
     const btnCreatAccMenuWrapper = createHtmlElement('div', 'btn-create-acc-menu-wrapper');
@@ -86,10 +86,15 @@ async function renderRoleMenu() {
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
+    if(window.location.pathname === '/' || window.location.pathname === '/invite'){
+        overlay.style.display = 'block';
+    }else{
+        overlay.style.display = 'none';
+    }
     overlay.addEventListener('click', () => {
-        sectionMenuField.innerHTML = '';
-        document.body.style.display = '';
-    });
+        sectionMenuField.classList.remove('active');
+        document.body.style.overflow = '';
+    })
     const roleBlockIdentity = createHtmlElement('div', 'role-block-menu-identity');
     sectionMenu.append(roleBlockIdentity);
     const imgRoleWrapper = createHtmlElement('div', 'img-menu-role-wrapper');
@@ -195,11 +200,11 @@ export async function createMenu() {
     if (!localStorage.getItem('curr-user-id')) {
         sectionMenuField.innerHTML = '';
         renderCommonMenu();
-        return document.body.append(sectionMenuField);
+        return sectionMenuField
     } else {
         sectionMenuField.innerHTML = '';
         renderRoleMenu();
-        return document.body.append(sectionMenuField);
+        return sectionMenuField;
     }
 }
 
