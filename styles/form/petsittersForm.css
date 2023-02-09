@@ -239,6 +239,7 @@
   border: 1px solid #b4b4b4;
   padding: 10px;
   box-shadow: 0 2px 4px 1px rgb(27 28 29 / 10%);
+  resize: none;
 }
 
 .radio-wrapper {

@@ -6,7 +6,6 @@ interface PetsitterData {
   birth: string;
   gender: string;
   services: string[];
-  city: string;
   address: string;
 }
 
@@ -14,7 +13,6 @@ const fetchPetsitterData: PetsitterData = {
   birth: "",
   gender: "",
   services: [],
-  city: "",
   address: "",
 };
 
@@ -123,7 +121,7 @@ function appearSecondView() {
       );
       fetchPetsitterData.services.push("hotel");
     } else {
-      checkBoxLabelHotel.setAttribute("style", "background-image: url('../img/images/hotelService.jpg");
+      checkBoxLabelHotel.setAttribute("style", "background-image: url('../img/images/hotelService.jpg')");
       const index = fetchPetsitterData.services.indexOf("hotel");
       fetchPetsitterData.services.splice(index, 1);
     }
@@ -256,6 +254,27 @@ function appearThirdView() {
   cityTitle.textContent = "Enter your city";
   const cityInput = createHtmlElement("input", "city-input") as HTMLInputElement;
   cityInput.placeholder = "City";
+  function getCity() {
+    const fetchData = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        _id: `${localStorage.getItem("curr-user-id")}`,
+      }),
+    };
+    fetch(`http://localhost:5000/auth/user`, fetchData)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        cityInput.value = data.city;
+        cityInput.setAttribute("readonly", "true");
+      });
+  }
+  getCity();
   const btnGoNext = createHtmlElement("div", "form-btn-next");
   btnGoNext.textContent = "Next";
   btnGoNext.setAttribute("style", "margin-top: 20px");
@@ -270,7 +289,6 @@ function appearThirdView() {
     } else {
       progress.value = "51";
       icon.style.backgroundImage = `url('../img/icons/info.png')`;
-      fetchPetsitterData.city = `${cityInput.value}`;
       fetchPetsitterData.address = `${addressInput.value}`;
       appearForthView();
     }
