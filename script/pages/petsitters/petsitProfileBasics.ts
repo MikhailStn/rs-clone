@@ -8,6 +8,11 @@ const sectionPetsitProfileBasic = createHtmlElement('section', 'section-petsit-p
 async function renderPetsitProfileBasic(){
     sectionPetsitProfileBasic.innerHTML = '';
     createMenu();
+    window.addEventListener('DOMContentLoaded', ()=>{
+        const overlay = document.querySelector('.overlay') as HTMLElement;
+        console.log(overlay);
+    if(overlay) overlay.style.display = 'none';
+    })
     const overlay = document.querySelector('.overlay') as HTMLElement;
     if(overlay) overlay.style.display = 'none';
 

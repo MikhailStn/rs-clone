@@ -1,6 +1,17 @@
 import { createHtmlElement } from "../../utils";
 const sectionMenuField = createHtmlElement('div', 'section-menu-field');
 
+/*interface DataUser {
+    firstName: string,
+    lastName: string,
+    city: string,
+    email: string,
+    password: string,
+    phone: number,
+    role: string,
+    pets: object[];
+}*/
+
 function renderCommonMenu() {
     sectionMenuField.innerHTML = '';
     const sectionMenu = createHtmlElement('div', 'section-menu');
@@ -45,35 +56,39 @@ function renderCommonMenu() {
 }
 
 
+const getUser = async()=>{
+const idUser = localStorage.getItem('curr-user-id');
+const fecthData = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify({
+        _id: idUser,
+    }),
+};
+const response = await fetch(`http://localhost:5000/auth/user`, fecthData);
+return {
+           item: await response.json()
+       }
+}
+
+
 async function renderRoleMenu() {
     sectionMenuField.innerHTML = '';
-    const idUser = localStorage.getItem('curr-user-id');
-    console.log('idUser', idUser);
-    const fecthData = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-            _id: idUser,
-        }),
-    };
-    fetch(`http://localhost:5000/auth/user`, fecthData)
-        .then((response) => {
-            console.log(response.status);
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-        })
+
+    const user = await getUser();
+    const userInfo = (await user).item;
+    console.log('userInfo', userInfo);
+
     const sectionMenu = createHtmlElement('div', 'section-menu');
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
     overlay.addEventListener('click', () => {
         sectionMenuField.innerHTML = '';
-        document.body.style.overflow = '';
+        document.body.style.display = '';
     });
     const roleBlockIdentity = createHtmlElement('div', 'role-block-menu-identity');
     sectionMenu.append(roleBlockIdentity);
@@ -85,15 +100,15 @@ async function renderRoleMenu() {
     imgRoleWrapper.append(imgRoleMenu);
     const roleTextWrapMenu = createHtmlElement('div', 'role-text-wrapper-menu');
     roleBlockIdentity.append(roleTextWrapMenu);
-    const textNameMenuRole = createHtmlElement('div', 'text-name-menu-role', '', 'Name of person') //вставить правильное имя пользователя с сервера!!!
+    const textNameMenuRole = createHtmlElement('div', 'text-name-menu-role', '', `${userInfo.firstName} ${userInfo.lastName}`);
     roleTextWrapMenu.append(textNameMenuRole);
-    const emailTextMenuRole = createHtmlElement('div', 'text-email-menu-role', '', 'kiss@mail.ru') //вставить правильную почту пользователя с сервера!!!
+    const emailTextMenuRole = createHtmlElement('div', 'text-email-menu-role', '', `${userInfo.email}`);
     roleTextWrapMenu.append(emailTextMenuRole);
-    //определить роль!!!
+
     const block4 = createBlockMenu('img/order.svg', 'My orders');
     sectionMenu.append(block4);
     block4.addEventListener('click', () => {
-        //role === "owner"? history.pushState("", "", "/owner/orders"): history.pushState("", "", "/petsitter/orders");
+        userInfo.role === "OWNER"? history.pushState("", "", "/owner/orders"): history.pushState("", "", "/petsitter/orders");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
     })
@@ -105,7 +120,7 @@ async function renderRoleMenu() {
         document.body.style.overflow = '';
     })
 
-    /*if(role === 'owner'){ 
+    if(userInfo.role === 'OWNER'){ 
     const block6 = createBlockMenu('img/loupeDark2.svg', 'Find a petsitter', 'loupe-menu');
     sectionMenu.append(block6);
     block6.addEventListener('click', ()=>{
@@ -121,7 +136,7 @@ async function renderRoleMenu() {
         document.body.style.overflow = '';
     })}
 
-    if(role === 'petsitter'){
+    if(userInfo.role === 'PETSITTER'){
     const block8 = createBlockMenu('img/calendar2.svg', 'My calendar');
     sectionMenu.append(block8);
     block8.addEventListener("click", ()=>{
@@ -143,12 +158,12 @@ async function renderRoleMenu() {
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
     })
-    }*/
+    }
 
     const block11 = createBlockMenu('img/tool.svg', 'Account settings');
     sectionMenu.append(block11);
     block11.addEventListener("click", () => {
-        // role === 'owner'? history.pushState("", "", "/owner/settings/personal-data") : history.pushState("", "", "/petsitter/settings/personal-data");
+        userInfo.role === 'OWNER'? history.pushState("", "", "/owner/settings/personal-data") : history.pushState("", "", "/petsitter/settings/personal-data");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
     })
