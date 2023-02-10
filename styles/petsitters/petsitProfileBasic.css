@@ -1,42 +1,42 @@
-.section-petsit-profile-basic{
-    background-color: #ffffff;
-    color: #000000;
-    width: 100vw;
+.section-petsit-profile-basic {
+  background-color: #ffffff;
+  color: #000000;
+  width: 100vw;
 }
 
-.section-profile-basic-block{
-    margin-top: 90px;
-    max-width: 1452px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 260px;
+.section-profile-basic-block {
+  margin-top: 90px;
+  max-width: 1452px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 260px;
 }
 
-.profile-title-wrapper{
-    width: 100%;
-    border-bottom: 2px solid #ebeaed;
-    padding-left: 40px;
+.profile-title-wrapper {
+  width: 100%;
+  border-bottom: 2px solid #ebeaed;
+  padding-left: 40px;
 }
 
 .my-profile-text-title,
-.profile-about-me-title{
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.35rem;
-    margin-top: 40px;
-    margin-bottom: 0;
-    padding-bottom: 40px;
+.profile-about-me-title {
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin-top: 40px;
+  margin-bottom: 0;
+  padding-bottom: 40px;
 }
 
-.profile-select-btn-block{
-    display: flex;
-    height: 72px;
-    align-items: center;
-    border-bottom: 2px solid #ebeaed;
+.profile-select-btn-block {
+  display: flex;
+  height: 72px;
+  align-items: center;
+  border-bottom: 2px solid #ebeaed;
 }
 
-.btn-profile-select{
-    display: flex;
+.btn-profile-select {
+  display: flex;
   height: 71px;
   width: 328.4px;
   text-align: center;
@@ -47,142 +47,142 @@
   font-weight: 600;
   align-items: center;
   justify-content: center;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.btn-profile-select.active{
-    color: #ca96e1;
-    border-bottom: 2px solid #ca96e1;
+.btn-profile-select.active {
+  color: #ca96e1;
+  border-bottom: 2px solid #ca96e1;
 }
 
 .btn-profile-select:hover.active,
-.btn-profile-select:hover{
-    background-color: rgba(0, 0, 0, 0.04);
+.btn-profile-select:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
-.photo-profile-petsit-block{
-    color: #696869;
-    line-height: 1.25;
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.95px;
+.photo-profile-petsit-block {
+  color: #696869;
+  line-height: 1.25;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.95px;
 }
 
-.photo-container.profile-photo-container{
-    width: 320px;
-    height: 384px;
+.photo-container.profile-photo-container {
+  width: 320px;
+  height: 384px;
 }
 
-.title-photo-profile-block{
-    margin-top: 32px;
-    margin-bottom: 10px;
+.title-photo-profile-block {
+  margin-top: 32px;
+  margin-bottom: 10px;
 }
 
-.photo-text-profile-block{
-    display: flex;
-    width: 669px;
-    padding-bottom: 42px;
-    border-bottom: 2px solid #ebeaed;
-    gap: 10px;
+.photo-text-profile-block {
+  display: flex;
+  width: 669px;
+  padding-bottom: 42px;
+  border-bottom: 2px solid #ebeaed;
+  gap: 10px;
 }
 
-.text-photo-profile{
-    max-width: 332px;
+.text-photo-profile {
+  max-width: 332px;
 }
 
-.profile-about-me-title{
-    text-align: left;
-    font-weight: 500;
-    font-size: 1.2rem;
-    margin-top: 40px;
-    margin-bottom: 0;
-    padding-bottom: 40px;
+.profile-about-me-title {
+  text-align: left;
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin-top: 40px;
+  margin-bottom: 0;
+  padding-bottom: 40px;
 }
 
-.input-text-profile{
-    width: 668px;
-    border: 2px solid #ebeaed;
-    padding-left: 10px;
-    border-radius: 4px;
-    transition: .5s;
+.input-text-profile {
+  width: 668px;
+  border: 2px solid #ebeaed;
+  padding-left: 10px;
+  border-radius: 4px;
+  transition: 0.5s;
 }
 
 .input-text-profile:hover,
-.input-text-profile:focus{
-    outline: none !important;
-    border: 2px solid #ca96e1;
+.input-text-profile:focus {
+  outline: none !important;
+  border: 2px solid #ca96e1;
 }
 
-.input-motto-profile{
-    min-height: 53px;
-    resize: none;
+.input-motto-profile {
+  min-height: 53px;
+  resize: none;
 }
 
 .count-motto-profile,
-.motto-profile-text{
-    color: #696869;
-    line-height: 1.25;
-    font-size: 0.75rem;
-    padding-left: 15px;
-    padding-bottom: 10px;
-    width: 668px;
+.motto-profile-text {
+  color: #696869;
+  line-height: 1.25;
+  font-size: 0.75rem;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  width: 668px;
 }
-.motto-profile-text{
-    padding-left: 0px;
-    margin-bottom: 64px;
-}
-
-.input-text-block-wrapper{
-    display: flex;
-    margin-bottom: 32px;
+.motto-profile-text {
+  padding-left: 0px;
+  margin-bottom: 64px;
 }
 
-.text-3-wrapper-profile{
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
+.input-text-block-wrapper {
+  display: flex;
+  margin-bottom: 32px;
 }
 
-.text-profile-medium{
-    color: #696869;
-    line-height: 1.25;
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding-bottom: 10px;
+.text-3-wrapper-profile {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
-.text-profile{
-    color: #696869;
-    line-height: 1.25;
-    font-size: 0.75rem;
-    padding-bottom: 10px;
-    width: 668px;
+.text-profile-medium {
+  color: #696869;
+  line-height: 1.25;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding-bottom: 10px;
 }
 
-.text-block-profile-wrapper{
-    width: 459px;
-    margin-left: 64px;
-    background-color: rgb(232, 244, 253);
-    padding: 6px 16px;
+.text-profile {
+  color: #696869;
+  line-height: 1.25;
+  font-size: 0.75rem;
+  padding-bottom: 10px;
+  width: 668px;
 }
 
-.text-profile-li{
-    width: 353px;
-}
-.textarea-profile-block{
-    width: 668px;
-    height: 53px;
-    resize: none;
+.text-block-profile-wrapper {
+  width: 459px;
+  margin-left: 64px;
+  background-color: rgb(232, 244, 253);
+  padding: 6px 16px;
 }
 
-.additional-qualification-block{
-    outline: none !important;
-    padding-top: 20px;
-    border: none;
+.text-profile-li {
+  width: 353px;
+}
+.textarea-profile-block {
+  width: 668px;
+  height: 53px;
+  resize: none;
 }
 
-.btn-profile-save{
-    background-color: #ca96e1;
+.additional-qualification-block {
+  outline: none !important;
+  padding-top: 20px;
+  border: none;
+}
+
+.btn-profile-save {
+  background-color: #ca96e1;
   margin-top: 40px;
   margin-bottom: 40px;
   cursor: pointer;
@@ -198,5 +198,5 @@
   transition: 0.5s;
 }
 .btn-profile-save:hover {
-    background-color: #a278b4;
-  }
+  background-color: #a278b4;
+}

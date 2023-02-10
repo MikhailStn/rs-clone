@@ -3,6 +3,7 @@ import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
 import { infoProfileText1 } from "../../utils/arrProfileInfoText";
 import { infoProfileText2 } from "../../utils/arrProfileInfoText";
+import { createServicesBlock } from "./petsitProfileServices";
 
 const sectionPetsitProfileBasic = createHtmlElement('section', 'section-petsit-profile-basic');
 
@@ -18,8 +19,18 @@ async function renderPetsitProfileBasic(){
     sectionPetsitProfileBasicBlock.append(profileSelectButtonBlock);
     const btnCommonInfo = createHtmlElement('div', 'btn-profile-common-info btn-profile-select active','', 'Basic Information');
     profileSelectButtonBlock.append(btnCommonInfo);
+    btnCommonInfo.addEventListener('click', async()=>{
+        commonInfoBlock.innerHTML = '';
+        const blockInfo = await createBasicInfoBlock();
+        commonInfoBlock.append(blockInfo);
+    })
     const btnPrice = createHtmlElement('div', 'btn-profile-price btn-profile-select','','Services & Price List');
     profileSelectButtonBlock.append(btnPrice);
+    btnPrice.addEventListener('click',async()=>{
+        commonInfoBlock.innerHTML = '';
+        const serviceBlock = await createServicesBlock();
+        commonInfoBlock.append(serviceBlock);
+    })
     const btnPhotoGallery = createHtmlElement('div', 'btn-profile-photo-gallery btn-profile-select','','Photo Gallery');
     profileSelectButtonBlock.append(btnPhotoGallery);
     const btnMyHome = createHtmlElement('div', 'btn-profile-my-home btn-profile-select','','My Home');
@@ -40,9 +51,6 @@ async function renderPetsitProfileBasic(){
     sectionPetsitProfileBasicBlock.append(commonInfoBlock);
     const blockInfo = await createBasicInfoBlock();
     commonInfoBlock.append(blockInfo);
-
-
-
 }
 
 async function createBasicInfoBlock(){
