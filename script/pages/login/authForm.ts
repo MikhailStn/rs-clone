@@ -485,12 +485,18 @@ function appearSeventhView() {
   tempSubtitle.setAttribute("style", "text-align: center");
   const photoContainer = createHtmlElement("div", "photo-container");
   photoContainer.setAttribute("style", "background-image: url('../img/icons/photo.png')");
-  const btnAddPhoto = createHtmlElement("button", "button-add-photo");
-  btnAddPhoto.textContent = "Add photo";
-  photoContainer.append(btnAddPhoto);
+  const btnAddPhoto = createHtmlElement("input", "button-add-photo") as HTMLInputElement;
+  btnAddPhoto.type = "file"
+  btnAddPhoto.accept = ".png,.jpg,.jpeg"
+  btnAddPhoto.id = "photo"
+  const btnAddPhotoLabel = createHtmlElement("label", "label-add-photo") as HTMLLabelElement;
+  btnAddPhotoLabel.setAttribute("for", "photo");
+  btnAddPhotoLabel.textContent = "Add photo"
+  photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
   const btnSkip = createHtmlElement("button", "button-skip");
   btnSkip.textContent = "Skip";
   temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnSkip);
+  console.log(fetchPetsitterData)
 }
 
 export default function authPetsitterForm() {

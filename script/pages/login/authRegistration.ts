@@ -246,7 +246,7 @@ function renderRegistrPage(role: string) {
       fetch(`${link}`, fecthData)
         .then((response) => {
           console.log(response.status);
-          if (response.status == 200) {
+          if (response.status == 400) {
             return response.json();
           } else {
             return;
