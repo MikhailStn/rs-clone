@@ -1,14 +1,16 @@
 .section-petsit-profile-basic {
   background-color: #ffffff;
   color: #000000;
-  width: 100vw;
+  width: 100%;
+  min-height: calc(100vh - 210px);
 }
 
 .section-profile-basic-block {
-  margin-top: 90px;
+  margin-top: 60px;
   max-width: 1452px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 10px;
   padding-left: 260px;
 }
 

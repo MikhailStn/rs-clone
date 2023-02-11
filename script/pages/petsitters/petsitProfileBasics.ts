@@ -5,6 +5,7 @@ import { infoProfileText1 } from "../../utils/arrProfileInfoText";
 import { infoProfileText2 } from "../../utils/arrProfileInfoText";
 import { createServicesBlock } from "./petsitProfileServices";
 import { createMyHomeBlock } from "./petsitProfileHouse";
+import { createMyPetsBlock } from "../pageComponents/ownerPetsitPets";
 
 const sectionPetsitProfileBasic = createHtmlElement('section', 'section-petsit-profile-basic');
 
@@ -43,6 +44,11 @@ async function renderPetsitProfileBasic(){
     })
     const btnMyPets = createHtmlElement('div', 'btn-profile-my-pets btn-profile-select','','My Pets');
     profileSelectButtonBlock.append(btnMyPets);
+    btnMyPets.addEventListener('click', async()=>{
+        commonInfoBlock.innerHTML = '';
+        const myPetsBlock = await createMyPetsBlock();
+        commonInfoBlock.append(myPetsBlock);
+    })
     profileSelectButtonBlock.addEventListener('click', (event)=>{
         const target = event.target;
         if(target instanceof HTMLElement && target.classList.contains('btn-profile-select')){

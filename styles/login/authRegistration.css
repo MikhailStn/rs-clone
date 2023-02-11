@@ -1,5 +1,5 @@
 .registration-section {
-  height: 100vh;
+  height: calc(100vh - 160px);
 }
 
 .registration-block-wrapper {
@@ -233,7 +233,7 @@
 
 }
 
-@media (max-height: 950px) {
+@media (max-height: 1140px) {
 
   .registration-form {
     gap: 5px;

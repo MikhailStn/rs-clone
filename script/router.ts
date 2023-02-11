@@ -7,6 +7,7 @@ import authRegister from "./pages/login/authRegistration";
 import authPetsitterForm from "./pages/login/authForm";
 import { mainOwner } from "./pages/commonPages/main-owner";
 import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
+import ownerPets from "./pages/owners/ownerPets";
 
 export const router = () => {
   type Rout = {
@@ -29,6 +30,10 @@ export const router = () => {
     {
       path: "/auth/register/owner",
       template: authRegister,
+    },
+    {
+      path: "/owner/pets",
+      template: ownerPets,
     },
     {
       path: "/petsitter/profile/basics",
