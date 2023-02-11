@@ -1,4 +1,6 @@
 import { createHtmlElement } from "../../utils";
+import { getUser } from "../../commonFunction/getUser";
+
 const sectionMenuField = createHtmlElement('div', 'section-menu-field');
 
 /*interface DataUser {
@@ -55,31 +57,11 @@ function renderCommonMenu() {
     })
 }
 
-
-const getUser = async()=>{
-const idUser = localStorage.getItem('curr-user-id');
-const fecthData = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-    },
-    body: JSON.stringify({
-        _id: idUser,
-    }),
-};
-const response = await fetch(`http://localhost:5000/auth/user`, fecthData);
-return {
-           item: await response.json()
-       }
-}
-
-
 async function renderRoleMenu() {
     sectionMenuField.innerHTML = '';
 
     const user = await getUser();
-    const userInfo = (await user).item;
+    const userInfo = (user).item;
     console.log('userInfo', userInfo);
 
     const sectionMenu = createHtmlElement('div', 'section-menu');

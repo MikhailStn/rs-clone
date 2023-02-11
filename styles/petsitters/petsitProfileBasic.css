@@ -181,7 +181,8 @@
   border: none;
 }
 
-.btn-profile-save {
+.btn-profile-save,
+.btn-save-my-home {
   background-color: #ca96e1;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -197,6 +198,7 @@
   font-weight: bold;
   transition: 0.5s;
 }
-.btn-profile-save:hover {
+.btn-profile-save:hover,
+.btn-save-my-home:hover {
   background-color: #a278b4;
 }
