@@ -1,6 +1,5 @@
 import { createHtmlElement } from "../../utils";
 import { IPetsitters } from "../../utils/interface";
-//import { mas } from "../../../app/app";
 
 export function createSortItem(tagParent: HTMLElement, mas: IPetsitters[], hour: string): void {
   tagParent.innerHTML = '';

@@ -1,29 +1,18 @@
 import { createHtmlElement, createInputElement } from "../../utils";
 import { myPets } from "../../utils/petsitArrayFor";
-  
-export const firstVal ={
-  type:'',
-  date: '',
-  city: '',
-  pet: '',
+
+export const firstVal = {
+  type: "",
+  date: "",
+  city: "",
+  pet: "",
 };
 export function filterHow(tagParent: HTMLElement): void {
-
   const boxFilter = createHtmlElement("div", "boxFilter");
   const selectionBox = createHtmlElement("div", "selectionBox ");
-  const boxAccomodation = createHtmlElement(
-    "div",
-    "selectionBoxN ActivSelectionBox",
-    "",
-    "Accomodation"
-  );
+  const boxAccomodation = createHtmlElement("div", "selectionBoxN ActivSelectionBox", "", "Accomodation");
   const boxWalk = createHtmlElement("div", "selectionBoxN", "", "Walk");
-  const boxHomevisits = createHtmlElement(
-    "div",
-    "selectionBoxN",
-    "",
-    "Home visits"
-  );
+  const boxHomevisits = createHtmlElement("div", "selectionBoxN", "", "Home visits");
   const line = createHtmlElement("hr");
   const inputsBox = createHtmlElement("div", "inputsBox");
 
@@ -34,7 +23,7 @@ export function filterHow(tagParent: HTMLElement): void {
   setMenuPets(divMenuPets, myPets);
   const imgNamePetBox = new Image();
   imgNamePetBox.src = "img/paw.svg";
-  const inputPetBox = createInputElement("text"); ///////!!!!
+  const inputPetBox = createInputElement("text");
   const img2NamePetBox = new Image();
   img2NamePetBox.src = "img/down.svg";
 
@@ -45,12 +34,10 @@ export function filterHow(tagParent: HTMLElement): void {
   imgAddressPetBox.src = "img/geoloc.svg";
   const inputAddressBox = createInputElement("search", "search");
   inputAddressBox.setAttribute("placeholder", "city");
-  //const img2addressPetBox = new Image(); img2addressPetBox.src = "img/location.svg";
 
   const deadlineBox = createHtmlElement("div", "box1");
   const deadlinePetBox = createHtmlElement("p", "nameInputBox", "", "Deadline");
   const divDeadlineBox = createHtmlElement("div");
-  //const imgDeadlineBox = new Image(); imgDeadlineBox.src = "img/calendar.svg";
   const inputDeadlineBox = createInputElement("date");
   inputDeadlineBox.value = currentDay();
 
@@ -93,7 +80,6 @@ export function filterHow(tagParent: HTMLElement): void {
   addressBox.append(divAddressBox);
   divAddressBox.append(imgAddressPetBox);
   divAddressBox.append(inputAddressBox);
-  //divAddressBox.append(img2addressPetBox);
 
   deadlineBox.append(deadlinePetBox);
   deadlineBox.append(divDeadlineBox);
@@ -107,7 +93,6 @@ export function filterHow(tagParent: HTMLElement): void {
   divTimeBox.append(divMenuTime);
 
   btnSearch.append(btnImg);
-
 
   function setMenuTime(tagParent: HTMLElement): void {
     let choiceTime = "";
@@ -174,7 +159,7 @@ export function filterHow(tagParent: HTMLElement): void {
   divPetBox.addEventListener("click", (event) => {
     if (event.target && event.target instanceof HTMLElement) {
       const target = event.target;
-      if (target.tagName == "LI") { 
+      if (target.tagName == "LI") {
         inputPetBox.value = target.innerHTML;
       }
     }
@@ -192,25 +177,20 @@ export function filterHow(tagParent: HTMLElement): void {
   inputDeadlineBox.addEventListener("change", () => {
     divMenuTime.innerHTML = "";
     setMenuTime(divMenuTime);
-  });/*
-  inputAddressBox.addEventListener("input", () => {
-    /*  console.log("search= ", inputAddressBox.value);*/
-//});
+  });
 
   btnSearch.addEventListener("click", () => {
-    console.log("способ выгула = ", selectedBox.innerHTML); /** */
-    console.log("time= ", inputTimeBox.value); /**/
+  /*  console.log("способ выгула = ", selectedBox.innerHTML);
+    console.log("time= ", inputTimeBox.value);
     console.log("date= ", inputDeadlineBox.value);
     console.log("search= ", inputAddressBox.value);
-    console.log("pet= ", inputPetBox.value);
+    console.log("pet= ", inputPetBox.value);*/
     firstVal.type = selectedBox.innerHTML;
     firstVal.date = inputDeadlineBox.value;
     firstVal.city = inputAddressBox.value;
     firstVal.pet = inputPetBox.value;
-    //console.log("333= ", firstVal);
   });
 }
-
 
 export function setMenuPets(tagParent: HTMLElement, myPets?: string[]): void {
   if (myPets) {

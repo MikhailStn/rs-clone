@@ -190,7 +190,7 @@ export default function searchShowPage(): void {
     priceMax: rangeBoxs[1].value,
     hours: inputWalkTime.value,
   };
-  //obj.type = firstVal.type;
+
   if (firstVal.type) {
     obj.type = firstVal.type;
     const a = document.getElementById(`${firstVal.type}`);
@@ -295,8 +295,7 @@ export default function searchShowPage(): void {
   const itemsBtn = document.getElementsByClassName("btnSearchCart");
   for (let i = 0; i < itemsBtn.length; i++) {
     itemsBtn[i].addEventListener("click", () => {
-      console.log("....."); //переход на страницу петситтера писать сюда
-      console.log(".....",itemsBtn[i].id);
+      console.log(".....",itemsBtn[i].id);//переход на страницу петситтера писать сюда
     });
   }
 }
