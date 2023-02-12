@@ -6,19 +6,20 @@ interface PetsitterData {
   birth: string;
   gender: string;
   services: string[];
-  city: string;
   address: string;
+  avatarPath: string;
 }
 
 const fetchPetsitterData: PetsitterData = {
   birth: "",
   gender: "",
   services: [],
-  city: "",
   address: "",
+  avatarPath: "",
 };
 
 function renderPetsitterForm() {
+  document.body.setAttribute("style", "padding: 0");
   const formContainer = createHtmlElement("div", "petsitter-form-container");
   const progress = createHtmlElement("input", "form-progress") as HTMLInputElement;
   progress.value = "0";
@@ -122,7 +123,7 @@ function appearSecondView() {
       );
       fetchPetsitterData.services.push("hotel");
     } else {
-      checkBoxLabelHotel.setAttribute("style", "background-image: url('../img/images/hotelService.jpg");
+      checkBoxLabelHotel.setAttribute("style", "background-image: url('../img/images/hotelService.jpg')");
       const index = fetchPetsitterData.services.indexOf("hotel");
       fetchPetsitterData.services.splice(index, 1);
     }
@@ -255,6 +256,27 @@ function appearThirdView() {
   cityTitle.textContent = "Enter your city";
   const cityInput = createHtmlElement("input", "city-input") as HTMLInputElement;
   cityInput.placeholder = "City";
+  function getCity() {
+    const fetchData = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        _id: `${localStorage.getItem("curr-user-id")}`,
+      }),
+    };
+    fetch(`http://localhost:5000/auth/user`, fetchData)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        cityInput.value = data.city;
+        cityInput.setAttribute("readonly", "true");
+      });
+  }
+  getCity();
   const btnGoNext = createHtmlElement("div", "form-btn-next");
   btnGoNext.textContent = "Next";
   btnGoNext.setAttribute("style", "margin-top: 20px");
@@ -269,7 +291,6 @@ function appearThirdView() {
     } else {
       progress.value = "51";
       icon.style.backgroundImage = `url('../img/icons/info.png')`;
-      fetchPetsitterData.city = `${cityInput.value}`;
       fetchPetsitterData.address = `${addressInput.value}`;
       appearForthView();
     }
@@ -466,12 +487,43 @@ function appearSeventhView() {
   tempSubtitle.setAttribute("style", "text-align: center");
   const photoContainer = createHtmlElement("div", "photo-container");
   photoContainer.setAttribute("style", "background-image: url('../img/icons/photo.png')");
-  const btnAddPhoto = createHtmlElement("button", "button-add-photo");
-  btnAddPhoto.textContent = "Add photo";
-  photoContainer.append(btnAddPhoto);
+  const btnAddPhoto = createHtmlElement("input", "button-add-photo") as HTMLInputElement;
+  btnAddPhoto.type = "file";
+  btnAddPhoto.accept = ".png,.jpg,.jpeg";
+  btnAddPhoto.id = "photo";
+  const btnConfirm = createHtmlElement("button", "button-confirm");
+  btnConfirm.textContent = "Confirm"
+  const handleUpload = () => {
+    if (btnAddPhoto.files) {
+      const formData = new FormData();
+      formData.append("image", btnAddPhoto.files[0], btnAddPhoto.files[0].name);
+      const fetchData = {
+        method: "POST",
+        body: formData,
+      };
+      fetch(`http://localhost:5000/auth/register/add-photo`, fetchData)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          photoContainer.setAttribute(
+            "style",
+            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+          );
+          fetchPetsitterData.avatarPath = `http://localhost:5000/${data.filePath}`;
+          btnConfirm.setAttribute("style", "pointer-events:all")
+        })
+      return btnAddPhoto.files[0];
+    }
+  };
+  btnAddPhoto.onchange = handleUpload;
+  const btnAddPhotoLabel = createHtmlElement("label", "label-add-photo") as HTMLLabelElement;
+  btnAddPhotoLabel.setAttribute("for", "photo");
+  btnAddPhotoLabel.textContent = "Add photo";
+  photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
   const btnSkip = createHtmlElement("button", "button-skip");
   btnSkip.textContent = "Skip";
-  temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnSkip);
+  temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnConfirm, btnSkip);
 }
 
 export default function authPetsitterForm() {
