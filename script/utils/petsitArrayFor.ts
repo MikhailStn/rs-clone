@@ -5,4 +5,57 @@ export const petsitArrForReview = [
     {src: 'https://petsy-storage.storage.googleapis.com/users/71/poEtzAoU-ZIE_440x440.JPG', firstName:'Julia', lastName: 'Grzelak', role: 'Professional petsitter, Brest', review: 'I have no reservations at all. Great care and fantastic contact, and most of all the dog happy :) We will definitely use Julia\'s help more than once!', reviewOwner: 'Magdalena - Owner'},
     {src: 'https://storage.googleapis.com/petsy-storage/users/268/3BuWQE7K0ATb_440x440.JPG', firstName:'Dominik', lastName: 'Bylinski', role: 'Professional petsitter, Vitebsk', review: 'Dominik is highly recommendable as possible. He is responsible, has an approach to animals and what was important to me - he lives in a beautiful and peaceful area. We have established a permanent cooperation and this is probably the best recommendation.', reviewOwner: 'Kamilla - Owner'},
     {src: 'https://petsy-storage.storage.googleapis.com/users/10/nF7q1B7XWDYQ_440x440.jpeg', firstName:'Olga', lastName: 'Pietruszewska', role: 'Professional petsitter, Minsk', review: 'Thank you very much for the super care for a whole week of our unruly dog ( young golden ). In addition, Ms. Olga practiced paging which we actually notice on walks. Super! We heartily recommend.', reviewOwner: 'Aleksandra - Owner'}
-]
+];
+
+export const myPets = ["qwe", "asd", "zxc"]; // получить по запросу
+
+
+
+export const petsittersItems = [// получить по запросу
+    {
+      id: 1,
+      name: "Beehive",
+      city: "Minsk",
+      stars: 5,
+      price1: 165,
+      price2: 10,
+      price3: 30,
+      level: "Professional",
+      description: "some text",
+      animal: ["Cat", "Dog"],
+      availableDate: ["2023-02-09/2023-02-15", ],
+      photo: "https://storage.googleapis.com/petsy-storage/users/1047/GOv6bSN8tKEB_440x440.jpeg",
+      typeOfService: ["Walk", "Accomodation", 'Home visits']
+    },
+    {
+      id: 2,
+      name: "Alexander",
+      city: "Brest",
+      stars: 4,
+      price1: 160,
+      price2: 15,
+      price3: 35,
+      level: "Professional",
+      description: "some text",
+      animal: ["Dog"],
+      availableDate: ["2023-02-11/2023-02-14", "2023-02-15/2023-02-20"],
+      photo: "https://storage.googleapis.com/petsy-storage/users/434/AZS2CquCUo3K_440x440.jpg",
+      typeOfService: ["Walk", "Accomodation", 'Home visits']
+    },
+    {
+      id: 3,
+      name: "Agnes",
+      city: "Minsk",
+      stars: 5,
+      price1: 50,
+      price2: 5,
+      price3: 15,
+      level: "Professional",
+      description: "some text",
+      animal: ["Cat"],
+      availableDate: ["2023-02-10/2023-02-20", "2023-02-25/2023-03-05", "2023-03-10/2023-03-15"],
+      photo: "https://storage.googleapis.com/petsy-storage/users/2605/D1tEe8jfxY1v_440x440.jpg",
+      typeOfService: ["Walk", "Accomodation", 'Home visits']
+    }
+  ];
+  

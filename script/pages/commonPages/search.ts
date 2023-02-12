@@ -8,7 +8,7 @@ import { petsittersItems } from "../../utils/petsitArrayFor";
 import { filterItem } from "../../filterItem/sortItem";
 import { createSortItem } from "../pageComponents/sortItem";
 import { footerFun } from "../pageComponents/footer";
-//import { firstVal } from "../pageComponents/filter";
+import { firstVal } from "../pageComponents/filter";
 
 export default function searchShowPage(): void {
   document.body.innerHTML = "";
@@ -29,9 +29,9 @@ export default function searchShowPage(): void {
   const th = createHtmlElement("hr");
   const type = createHtmlElement("p", "", "", "The type of service");
   const divType = createHtmlElement("div", "divType");
-  const boxAccomodation = createHtmlElement("div", "typeBoxN ActivTypeBoxN Accomodation", "", "Accomodation");
-  const boxWalk = createHtmlElement("div", "typeBoxN Walk", "", "Walk");
-  const boxHomevisits = createHtmlElement("div", "typeBoxN HomeVisits", "", "Home visits");
+  const boxAccomodation = createHtmlElement("div", "typeBoxN ActivTypeBoxN Accomodation", "Accomodation", "Accomodation");
+  const boxWalk = createHtmlElement("div", "typeBoxN Walk", "Walk", "Walk");
+  const boxHomevisits = createHtmlElement("div", "typeBoxN HomeVisits", "Home visits", "Home visits");
 
   const petBox = createHtmlElement("div", "box1");
   const namePetBox = createHtmlElement("p", "nameInputBox", "", "Dog Cat");
@@ -191,6 +191,28 @@ export default function searchShowPage(): void {
     hours: inputWalkTime.value,
   };
   //obj.type = firstVal.type;
+  if (firstVal.type) {
+    obj.type = firstVal.type;
+    const a = document.getElementById(`${firstVal.type}`);
+    if (a) activeBox(a);
+    if (firstVal.type === 'Walk') walkTime.style.display = "block";
+  }
+  if (firstVal.date) {
+    obj.dateFrom = firstVal.date;
+    inputDeadlineBox1.value = firstVal.date;
+    inputDeadlineBox2.value = firstVal.date;
+  }
+  if (firstVal.city) {
+    obj.city = firstVal.city;
+    inputAddressBox.value = firstVal.city;
+  }
+  if (firstVal.pet) {
+    obj.animal = firstVal.pet;
+    inputPetBox.value = firstVal.pet;
+  }
+//console.log(".....", obj);
+
+
   createSortItem(blockPetsitters, filterItem(petsittersItems, obj), obj.hours);
 
   divPetBox.addEventListener("click", (event) => {

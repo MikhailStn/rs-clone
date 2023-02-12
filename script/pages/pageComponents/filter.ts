@@ -54,7 +54,7 @@ export function filterHow(tagParent: HTMLElement): void {
   const inputDeadlineBox = createInputElement("date");
   inputDeadlineBox.value = currentDay();
 
-  const timeBox = createHtmlElement("div", "box1");
+  const timeBox = createHtmlElement("div", "box1 timeBox");
   const timePetBox = createHtmlElement("p", "nameInputBox", "", "Time");
   const divTimeBox = createHtmlElement("div", "timeBox");
   const divMenuTime = createHtmlElement("ul", "menuTime");
@@ -192,10 +192,10 @@ export function filterHow(tagParent: HTMLElement): void {
   inputDeadlineBox.addEventListener("change", () => {
     divMenuTime.innerHTML = "";
     setMenuTime(divMenuTime);
-  });
+  });/*
   inputAddressBox.addEventListener("input", () => {
     /*  console.log("search= ", inputAddressBox.value);*/
-  });
+//});
 
   btnSearch.addEventListener("click", () => {
     console.log("способ выгула = ", selectedBox.innerHTML); /** */
@@ -204,11 +204,10 @@ export function filterHow(tagParent: HTMLElement): void {
     console.log("search= ", inputAddressBox.value);
     console.log("pet= ", inputPetBox.value);
     firstVal.type = selectedBox.innerHTML;
-    firstVal.date = inputDeadlineBox.value,
-    firstVal.city = inputAddressBox.value,
-    firstVal.pet = inputPetBox.value,
-    
-    console.log("333= ", firstVal);
+    firstVal.date = inputDeadlineBox.value;
+    firstVal.city = inputAddressBox.value;
+    firstVal.pet = inputPetBox.value;
+    //console.log("333= ", firstVal);
   });
 }
 
