@@ -491,6 +491,8 @@ function appearSeventhView() {
   btnAddPhoto.type = "file";
   btnAddPhoto.accept = ".png,.jpg,.jpeg";
   btnAddPhoto.id = "photo";
+  const btnConfirm = createHtmlElement("button", "button-confirm");
+  btnConfirm.textContent = "Confirm"
   const handleUpload = () => {
     if (btnAddPhoto.files) {
       const formData = new FormData();
@@ -509,26 +511,8 @@ function appearSeventhView() {
             `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
           );
           fetchPetsitterData.avatarPath = `http://localhost:5000/${data.filePath}`;
+          btnConfirm.setAttribute("style", "pointer-events:all")
         })
-        .then(() => {
-          setTimeout(() => {
-            const fetchData = {
-              method: "PATCH",
-              headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-              },
-              body: JSON.stringify(fetchPetsitterData),
-            };
-            fetch(`http://localhost:5000/auth/petsitter/add-data`, fetchData)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
-          }, 1000);
-        });
       return btnAddPhoto.files[0];
     }
   };
@@ -539,8 +523,7 @@ function appearSeventhView() {
   photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
   const btnSkip = createHtmlElement("button", "button-skip");
   btnSkip.textContent = "Skip";
-  temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnSkip);
-  console.log(fetchPetsitterData);
+  temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnConfirm, btnSkip);
 }
 
 export default function authPetsitterForm() {
