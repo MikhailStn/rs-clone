@@ -189,6 +189,9 @@ export function filterHow(tagParent: HTMLElement): void {
     firstVal.date = inputDeadlineBox.value;
     firstVal.city = inputAddressBox.value;
     firstVal.pet = inputPetBox.value;
+
+    history.pushState("", "", "/search");
+    window.dispatchEvent(new Event("popstate"));
   });
 }
 
