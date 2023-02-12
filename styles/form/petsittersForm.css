@@ -320,6 +320,23 @@
   align-items: center;
 }
 
-.button-skip:hover {
+.button-skip:hover,
+.button-confirm:hover {
   background-color: #b276cc;
+}
+
+.button-confirm {
+  width: 120px;
+  height: 30px;
+  margin: 0 auto;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: transparent;
+  border: 1px solid #ca96e1;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
 }

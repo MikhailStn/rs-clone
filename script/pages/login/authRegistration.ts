@@ -2,77 +2,41 @@ import { createHtmlElement } from "../../utils";
 import { footerFun } from "../pageComponents/footer";
 import { header } from "../pageComponents/headers";
 
-const registrationSection = createHtmlElement(
-  "section",
-  "registration-section"
-);
+const registrationSection = createHtmlElement("section", "registration-section");
 
 function renderRegistrPage(role: string) {
   registrationSection.innerHTML = "";
-  const regitrBlockWrapper = createHtmlElement(
-    "div",
-    "registration-block-wrapper"
-  );
+  const regitrBlockWrapper = createHtmlElement("div", "registration-block-wrapper");
   registrationSection.append(regitrBlockWrapper);
   const imageRegistWrap = createHtmlElement("div", "img-registration-wrapper");
   const imgRegitration = createHtmlElement("img", "img-registration");
   if (imgRegitration instanceof HTMLImageElement) {
     role === "owner"
-      ? (imgRegitration.src =
-          "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_owner.jpg&w=1920&q=75")
-      : (imgRegitration.src =
-          "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_petsitter.jpg&w=1920&q=75");
-    role === "owner"
-      ? (imgRegitration.alt = "girl with cat")
-      : (imgRegitration.alt = "white dog");
+      ? (imgRegitration.src = "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_owner.jpg&w=1920&q=75")
+      : (imgRegitration.src = "https://petsy.pl/_next/image/?url=%2Fimages%2Fregister_petsitter.jpg&w=1920&q=75");
+    role === "owner" ? (imgRegitration.alt = "girl with cat") : (imgRegitration.alt = "white dog");
   }
   regitrBlockWrapper.append(imageRegistWrap);
   imageRegistWrap.append(imgRegitration);
-  const blockInputsAndText = createHtmlElement(
-    "div",
-    "block-inputs-text-registration"
-  );
+  const blockInputsAndText = createHtmlElement("div", "block-inputs-text-registration");
   regitrBlockWrapper.append(blockInputsAndText);
-  const linkOnMain = createHtmlElement(
-    "a",
-    "link-on-main-from-registration",
-    "",
-    "Back to home page"
-  );
+  const linkOnMain = createHtmlElement("a", "link-on-main-from-registration", "", "Back to home page");
   blockInputsAndText.append(linkOnMain);
-  const textForRegistrRole = createHtmlElement(
-    "h1",
-    "text-for-registration-role"
-  );
+  const textForRegistrRole = createHtmlElement("h1", "text-for-registration-role");
   role === "owner"
-    ? (textForRegistrRole.innerHTML =
-        "Time for you and the best care for your pet")
-    : (textForRegistrRole.innerHTML =
-        "Become a petsitter. Earn by spending time among animals");
+    ? (textForRegistrRole.innerHTML = "Time for you and the best care for your pet")
+    : (textForRegistrRole.innerHTML = "Become a petsitter. Earn by spending time among animals");
   blockInputsAndText.append(textForRegistrRole);
-  const textRegistrLike = createHtmlElement(
-    "div",
-    "text-registration-as",
-    "",
-    "Register as:"
-  );
+  const textRegistrLike = createHtmlElement("div", "text-registration-as", "", "Register as:");
   blockInputsAndText.append(textRegistrLike);
-  const blockLinkRole = createHtmlElement(
-    "div",
-    "block-link-role-registration"
-  );
+  const blockLinkRole = createHtmlElement("div", "block-link-role-registration");
   blockInputsAndText.append(blockLinkRole);
   const linkOwner = createHtmlElement("a", "", "", "Pet owner");
   role === "owner"
     ? (linkOwner.className = "link-owner-registration active")
     : (linkOwner.className = "link-owner-registration");
   blockLinkRole.append(linkOwner);
-  const linkPetsit = createHtmlElement(
-    "a",
-    "link-petsitter-registration",
-    "",
-    "Petsitter"
-  );
+  const linkPetsit = createHtmlElement("a", "link-petsitter-registration", "", "Petsitter");
   role === "owner"
     ? (linkPetsit.className = "link-petsitter-registration")
     : (linkPetsit.className = "link-petsitter-registration active");
@@ -86,11 +50,7 @@ function renderRegistrPage(role: string) {
     linkPetsit.href = "/auth/register/petsitter";
     linkOwner.href = "/auth/register/owner";
   }
-  const formRegistration = createHtmlElement(
-    "form",
-    "registration-form",
-    `registation-form-${role}`
-  );
+  const formRegistration = createHtmlElement("form", "registration-form", `registation-form-${role}`);
   blockInputsAndText.append(formRegistration);
 
   const inputPlaceOfLive = createHtmlElement(
@@ -98,11 +58,7 @@ function renderRegistrPage(role: string) {
     "input-place-of-live input-registration",
     "city"
   ) as HTMLInputElement;
-  const dataListCity = createHtmlElement(
-    "datalist",
-    "",
-    "city-variable"
-  ) as HTMLDListElement;
+  const dataListCity = createHtmlElement("datalist", "", "city-variable") as HTMLDListElement;
   dataListCity.innerHTML =
     '<option value="Minsk"></option><option value="Brest"></option><option value="Vitebsk"></option><option value="Grodno"></option><option value="Gomel"></option><option value="Mogilev"></option>';
   const placeTextError = createHtmlElement(
@@ -117,8 +73,7 @@ function renderRegistrPage(role: string) {
   inputPlaceOfLive.type = "text";
   inputPlaceOfLive.name = "af2Km9q";
   inputPlaceOfLive.placeholder = "City";
-  inputPlaceOfLive.pattern =
-    "[Mm]insk|[Bb]rest|[Vv]itebsk|[Gg]rodno|[Gg]omel|[Mm]ogilev";
+  inputPlaceOfLive.pattern = "[Mm]insk|[Bb]rest|[Vv]itebsk|[Gg]rodno|[Gg]omel|[Mm]ogilev";
   inputPlaceOfLive.setAttribute("list", "city-variable");
   inputPlaceOfLive.setAttribute("autocomplete", "off");
   inputPlaceOfLive.setAttribute("required", "");
@@ -145,11 +100,7 @@ function renderRegistrPage(role: string) {
   inputFirstName.setAttribute("required", "");
 
   inputFirstName.addEventListener("input", checkValidity);
-  const inputLastName = createHtmlElement(
-    "input",
-    "input-lastname input-registration",
-    "lastname"
-  ) as HTMLInputElement;
+  const inputLastName = createHtmlElement("input", "input-lastname input-registration", "lastname") as HTMLInputElement;
   const lastNameTextError = createHtmlElement(
     "p",
     "last-name-text-error-registration text-error-registration",
@@ -273,6 +224,7 @@ function renderRegistrPage(role: string) {
       link = "http://localhost:5000/auth/register/petsitter";
       role = "PETSITTER";
     }
+    console.log(link);
     if (inputPassword.value == inputSecondPassword.value) {
       const fecthData = {
         method: "POST",
@@ -316,10 +268,8 @@ function renderRegistrPage(role: string) {
     }
   });
   role === "owner"
-    ? ((btnRegistration.innerHTML = "Register as a pet owner"),
-      (btnRegistration.id = "registration-pet-owner"))
-    : ((btnRegistration.innerHTML = "Register as a petsitter"),
-      (btnRegistration.id = "registration-petsitter"));
+    ? ((btnRegistration.innerHTML = "Register as a pet owner"), (btnRegistration.id = "registration-pet-owner"))
+    : ((btnRegistration.innerHTML = "Register as a petsitter"), (btnRegistration.id = "registration-petsitter"));
   formRegistration.append(btnRegistration);
   if (btnRegistration instanceof HTMLButtonElement) {
     btnRegistration.disabled = true;
@@ -337,11 +287,9 @@ function renderRegistrPage(role: string) {
 function checkValidity(event: Event) {
   const input = event.target;
   if (input instanceof HTMLInputElement && !input.checkValidity()) {
-    if (input.nextElementSibling)
-      input.nextElementSibling.classList.add("active");
+    if (input.nextElementSibling) input.nextElementSibling.classList.add("active");
   } else if (input instanceof HTMLInputElement) {
-    if (input.nextElementSibling)
-      input.nextElementSibling.classList.remove("active");
+    if (input.nextElementSibling) input.nextElementSibling.classList.remove("active");
   }
 }
 function checkValidityForm(event: Event, button: HTMLButtonElement) {
