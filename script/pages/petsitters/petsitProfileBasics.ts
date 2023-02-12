@@ -9,6 +9,22 @@ import { createMyPetsBlock } from "../pageComponents/ownerPetsitPets";
 
 const sectionPetsitProfileBasic = createHtmlElement('section', 'section-petsit-profile-basic');
 
+interface PetsitterData {
+    birth: string;
+    gender: string;
+    services: string[];
+    address: string;
+    avatarPath: string;
+  }
+  
+  const fetchPetsitterData: PetsitterData = {
+    birth: "",
+    gender: "",
+    services: [],
+    address: "",
+    avatarPath: "",
+  };
+
 async function renderPetsitProfileBasic(){
     sectionPetsitProfileBasic.innerHTML = '';
     const sectionPetsitProfileBasicBlock = createHtmlElement('div', 'section-profile-basic-block');
@@ -76,9 +92,57 @@ async function createBasicInfoBlock(){
     photoPetsitBlock.append(tempTitle, photoTextProfileBlock);
     const photoContainer = createHtmlElement("div", "photo-container profile-photo-container");
     photoContainer.setAttribute("style", "background-image: url('../img/icons/photo.png')");
-    const btnAddPhoto = createHtmlElement("button", "button-add-photo");
-    btnAddPhoto.textContent = "Add photo";
-    photoContainer.append(btnAddPhoto);
+    const btnAddPhoto = createHtmlElement("input", "button-add-photo") as HTMLInputElement;
+    btnAddPhoto.type = "file";
+    btnAddPhoto.accept = ".png,.jpg,.jpeg";
+    btnAddPhoto.id = "photo";
+    const handleUpload = () => {
+      if (btnAddPhoto.files) {
+        const formData = new FormData();
+        formData.append("image", btnAddPhoto.files[0], btnAddPhoto.files[0].name);
+        const fetchData = {
+          method: "POST",
+          body: formData,
+        };
+        fetch(`http://localhost:5000/auth/register/add-photo`, fetchData)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            photoContainer.setAttribute(
+              "style",
+              `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+            );
+            fetchPetsitterData.avatarPath = `http://localhost:5000/${data.filePath}`;
+          })
+          .then(() => {
+            setTimeout(() => {
+              const fetchData = {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Access-Control-Allow-Origin": "*",
+                },
+                body: JSON.stringify(fetchPetsitterData),
+              };
+              fetch(`http://localhost:5000/auth/petsitter/add-data`, fetchData)
+                .then((response) => {
+                  return response.json();
+                })
+                .then((data) => {
+                  console.log(data);
+                });
+            }, 1000);
+          });
+        return btnAddPhoto.files[0];
+      }
+    };
+    btnAddPhoto.onchange = handleUpload;
+    const btnAddPhotoLabel = createHtmlElement("label", "label-add-photo") as HTMLLabelElement;
+    btnAddPhotoLabel.setAttribute("for", "photo");
+    btnAddPhotoLabel.textContent = "Add photo";
+    photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
+
     const textPhotoProfile = createHtmlElement('div', 'text-photo-profile', '','A profile photo allows other members of the Petsi community to get to know you. It is especially important for your relationship with customers, as it will make it easier for you to get to know each other when you first meet.');
     photoTextProfileBlock.append( photoContainer, textPhotoProfile);
 

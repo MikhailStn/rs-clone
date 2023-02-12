@@ -13,6 +13,30 @@ export async function createServicesBlock(){
     basicServiceBlock.append(blockService2);
     const blockService3 =await createBlockService('https://petsy.pl/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2FDROP_IN.79191e46.jpg&w=640&q=75', 'Home visits', '30-minute visits to the owner\'s home to play with the animals, serve food, take a quick walk or clean the litter box.', 'home-visits');
     basicServiceBlock.append(blockService3);
+
+    blockService1.addEventListener('click', (event: Event)=>{
+        if(event.target && event.target instanceof HTMLButtonElement && event.target.id === 'btn-accommodation'){
+
+        history.pushState("", "", "/petsitter/profile/services/edit/accommodation");
+        window.dispatchEvent(new Event("popstate"));
+    }
+    })
+    blockService2.addEventListener('click', (event: Event)=>{
+        if(event.target && event.target instanceof HTMLButtonElement && event.target.id === 'btn-walking'){
+
+        history.pushState("", "", "/petsitter/profile/services/edit/walk");
+        window.dispatchEvent(new Event("popstate"));
+    }
+    })
+
+    blockService3.addEventListener('click', (event: Event)=>{
+        if(event.target && event.target instanceof HTMLButtonElement && event.target.id === 'btn-home-visits'){
+
+        history.pushState("", "", "/petsitter/profile/services/edit/drop-in");
+        window.dispatchEvent(new Event("popstate"));
+    }
+    })
+
     return basicServiceBlock;
 }
 
@@ -39,7 +63,7 @@ async function createBlockService(src: string, text1: string, text2: string, cla
     const inputSpanService = createHtmlElement('span', 'slider-service round-slider');
     btnServiceBlock.append(labelInputCheckboxService);
     labelInputCheckboxService.append(inputCheckboxService, inputSpanService);
-    const btnEditService = createHtmlElement('button', 'btn-edit-service','', 'Edit');
+    const btnEditService = createHtmlElement('button', 'btn-edit-service',`btn-${className}`, 'Edit');
     btnServiceBlock.append(btnEditService);
 
     return serviceItemBlock;
