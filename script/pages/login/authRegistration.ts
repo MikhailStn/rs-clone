@@ -258,6 +258,9 @@ function renderRegistrPage(role: string) {
           console.log(localStorage.getItem("curr-user-id"));
           if (btnRegistration.id == "registration-petsitter") {
             document.location.href = "/auth/register/form";
+          }else{
+          history.pushState("", "", "");
+          window.dispatchEvent(new Event("popstate"));
           }
         });
     } else {
@@ -269,9 +272,7 @@ function renderRegistrPage(role: string) {
     : ((btnRegistration.innerHTML = "Register as a petsitter"), (btnRegistration.id = "registration-petsitter"));
   formRegistration.append(btnRegistration);
   if (btnRegistration instanceof HTMLButtonElement) {
-    //btnRegistration.type = "submit";
-    //btnRegistration.disabled = true;
-    console.log(1);
+    btnRegistration.disabled = true;
   }
   formRegistration.addEventListener("input", (event) => {
     checkValidityForm(event, btnRegistration);

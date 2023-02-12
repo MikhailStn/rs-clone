@@ -3,9 +3,16 @@ import { headerOwner } from "../pageComponents/headers";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
 import { footerFun } from "../pageComponents/footer";
 import { filterHow } from "../pageComponents/filter";
+import { header } from "../pageComponents/headers";
 
 export function mainOwner(): void {
-  headerOwner(document.body);
+  document.body.innerHTML = '';
+  if(!localStorage.getItem('curr-user-id')){
+    header(document.body);
+  }else{
+    headerOwner(document.body);
+  }
+
 
   const banner = createHtmlElement("section", "wrapper");
   const bannerContent = createHtmlElement("div", "content");
@@ -20,7 +27,7 @@ export function mainOwner(): void {
     "p",
     "text",
     "",
-    "Petsy gives you the freedom to choose. Here you will find real enthusiasts who will take care of your pet the way you want."
+    "Petsi gives you the freedom to choose. Here you will find real enthusiasts who will take care of your pet the way you want."
   );
   const banimg = new Image();
   banimg.className = "flag";
@@ -138,7 +145,7 @@ export function mainOwner(): void {
   const section4 = createHtmlElement("section", "wrapper section4");
   section4.innerHTML = `    <div class="content">
   <div class="leftText">
-      <span>PETS</span>
+      <span>PETSI</span>
       <h2 class="title">Overnight with a pet sitter</h2>
       <p class="text">Are you looking for accommodation for your pet? With us you will find a guardian who will take care of him the way you want! She will be with him all day, give him full attention, and at night will hug him and let him into the bed!</p>
       <button class="btn rectangle" id="">Browse pet sitters</button>
@@ -158,7 +165,7 @@ export function mainOwner(): void {
   </div>
 </div>
   <div class="leftText">
-      <span>PETS</span>
+      <span>PETSI</span>
       <h2 class="title">Walk</h2>
       <p class="text">Coming home late from work? Do you have to leave early? Find a guardian who will walk your pet, throw him a ball, comb and scratch behind the ear! Browse profiles and choose the best candidate.</p>
       <button class="btn rectangle" id="">Browse pet sitters</button>
