@@ -42,6 +42,7 @@ hr{
 .inputsBox{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .inputsBox .box1{
@@ -74,10 +75,11 @@ hr{
 .inputsBox button:hover{
     background-color:#c07fdb;
 }
-/*
+
 .inputsBox input{
-    background-color:#eaccf7;
-}*/
+    /*background-color:#eaccf7;*/
+    width: 270px;
+}
 
 .nameInputBox{
     font-size: 13px;
