@@ -143,7 +143,4 @@ export default function authLogin() {
   document.body.innerHTML = "";
   renderLoginPage();
   return document.body.append(loginSection);
-  document.body.innerHTML = "";
-  renderLoginPage();
-  return document.body.append(loginSection);
 }

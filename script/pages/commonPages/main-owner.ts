@@ -3,7 +3,6 @@ import { headerOwner, header } from "../pageComponents/headers";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
 import { footerFun } from "../pageComponents/footer";
 import { filterHow } from "../pageComponents/filter";
-import { header } from "../pageComponents/headers";
 
 export function mainOwner(): void {
   document.body.innerHTML = '';
@@ -36,9 +35,9 @@ export function mainOwner(): void {
   banimg1.className = "banImg";
   banimg1.src ="img/images/homeService.jpg";
   banimg2.className = "banImg";
-  banimg2.src ="img/images/hotelServise.jpg";
+  banimg2.src ="img/images/hotelService.jpg";
   banimg3.className = "banImg";
-  banimg3.src ="img/images/walkServise.jpg";
+  banimg3.src ="img/images/walkService.jpg";
 
   const bannerRight = createHtmlElement("div", "rightImg");
   const bannerImg = createHtmlElement("div", "imgDiv");
