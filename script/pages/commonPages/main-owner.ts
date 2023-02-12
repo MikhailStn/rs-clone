@@ -3,6 +3,7 @@ import { headerOwner, header } from "../pageComponents/headers";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
 import { footerFun } from "../pageComponents/footer";
 import { filterHow } from "../pageComponents/filter";
+import { header } from "../pageComponents/headers";
 
 export function mainOwner(): void {
   document.body.innerHTML = '';
@@ -11,6 +12,7 @@ export function mainOwner(): void {
   } else {
       headerOwner(document.body);
   }
+
 
   const banner = createHtmlElement("section", "wrapper");
   const bannerContent = createHtmlElement("div", "content");
@@ -25,7 +27,7 @@ export function mainOwner(): void {
     "p",
     "text",
     "",
-    "Petsy gives you the freedom to choose. Here you will find real enthusiasts who will take care of your pet the way you want."
+    "Petsi gives you the freedom to choose. Here you will find real enthusiasts who will take care of your pet the way you want."
   );
   const banimgs = createHtmlElement('div', 'banImgs');
   const banimg1 = new Image();

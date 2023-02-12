@@ -1,0 +1,53 @@
+.additional-qualification-block.fieldset-my-home{
+    color: #696869;
+}
+
+.fieldset-my-home{
+    display: flex;
+    gap: 10px;
+}
+
+.legend-my-home{
+    color: #696869;
+    line-height: 1.3;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.where-live-fieldset{
+    flex-wrap: wrap;
+    width: 695px;
+}
+
+.div-input-where-live{
+    border: 1px solid #ece8ec;
+    width: 330px;
+    height: 47px;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.div-input-where-live label,
+.div-conditions-my-home label,
+.div-my-home label{
+    margin-left: 10px;
+    font-size: 0.88rem;
+}
+
+.second-block-inputs-home{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.fieldset-condition-my-home{
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fieldset-second-second-block{
+    flex-direction: column;
+    gap: 20px;
+}
+

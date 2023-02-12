@@ -1,5 +1,5 @@
 .registration-section {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 160px);
 }
 
 .registration-block-wrapper {
@@ -186,6 +186,7 @@
 }
 
 @media (max-width: 900px) {
+
   .img-registration-wrapper {
     display: none;
   }
@@ -221,10 +222,34 @@
   .password-error-registration {
     top: 367px;
   }
+
 }
 
 @media (max-width: 420px) {
+
   .block-inputs-text-registration {
     padding: 30px 0px;
   }
+
+}
+
+@media (max-height: 1140px) {
+
+  .registration-form {
+    gap: 5px;
+  }
+  .input-registration{
+    margin-top: 5px;
+    height: 40px;
+  }
+
+  section h1{
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .block-inputs-text-registration{
+    padding: 20px 80px;
+  }
+
 }

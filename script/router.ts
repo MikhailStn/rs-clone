@@ -6,6 +6,10 @@ import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
 import authPetsitterForm from "./pages/login/authForm";
 import { mainOwner } from "./pages/commonPages/main-owner";
+import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
+import ownerPets from "./pages/owners/ownerPets";
+import petsitProfileServiceEdit from "./pages/petsitters/petsitProfileServiceEdit";
+
 
 export const router = () => {
   type Rout = {
@@ -28,6 +32,26 @@ export const router = () => {
     {
       path: "/auth/register/owner",
       template: authRegister,
+    },
+    {
+      path: "/owner/pets",
+      template: ownerPets,
+    },
+    {
+      path: "/petsitter/profile/services/edit/accommodation",
+      template: petsitProfileServiceEdit,
+    },
+    {
+      path: "/petsitter/profile/services/edit/walk",
+      template: petsitProfileServiceEdit,
+    },
+    {
+      path: "/petsitter/profile/services/edit/drop-in",
+      template: petsitProfileServiceEdit,
+    },
+    {
+      path: "/petsitter/profile/basics",
+      template: petsitterProfileBasic,
     },
     {
       path: "/petsitter",

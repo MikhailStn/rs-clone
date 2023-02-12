@@ -1,9 +1,16 @@
 import { createHtmlElement } from "../../utils";
+import { createMenu } from "./menu";
 
-export function headerOwner(tagParent: HTMLElement): void {
+export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   const header = createHtmlElement("header", "header");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
+  const menu = await createMenu();
+  document.body.append(menu);
+  headerMenu.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.section-menu-field')?.classList.add('active');
+  })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -43,10 +50,17 @@ export function headerOwner(tagParent: HTMLElement): void {
   headerNotification.append(flagNotification);
 }
 
-export function header(tagParent: HTMLElement): void {
+export async function header(tagParent: HTMLElement): Promise<void> {
+  //let isOpenMenu = false;
   const header = createHtmlElement("header", "header header2");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
+  const menu = await createMenu();
+  document.body.append(menu);
+  headerMenu.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.section-menu-field')?.classList.add('active');
+  })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -117,10 +131,16 @@ export function header(tagParent: HTMLElement): void {
   btnRight.append(btnCreateAccount);
 }
 
-export function headerPetsitter(tagParent: HTMLElement): void {
+export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   const header = createHtmlElement("header", "header");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
+  const menu = await createMenu();
+  document.body.append(menu);
+  headerMenu.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.section-menu-field')?.classList.add('active');
+  })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");

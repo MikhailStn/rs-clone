@@ -4,9 +4,10 @@ footer{
     background-color: #CA96E1;
 }
 
-.footer{
+.footer.wrapper{
     padding: 25px 150px;
     height: 100px;
+    background-color: #CA96E1;
 }
 
 .foot{
