@@ -13,7 +13,7 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "petsi");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   headerLink.addEventListener("click", () => {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));
@@ -63,7 +63,7 @@ export async function header(tagParent: HTMLElement): Promise<void> {
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "petsi");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   headerLink.addEventListener("click", () => {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));
@@ -143,7 +143,7 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "petsi");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   headerLink.addEventListener("click", () => {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));

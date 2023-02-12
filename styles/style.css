@@ -1,7 +1,7 @@
 @import "./normalize.css";
 @import "./pageComponents/header";
 @import "./common-page/main-owner.css";
-
+@import "./common-page/search.css";
 @import "././petsitters/petsitters.css";
 @import "./login/login.css";
 @import "./login/authRegistration.css";
@@ -10,6 +10,7 @@
 @import "./pageComponents/footer.css";
 @import "./pageComponents/filter.css";
 @import "./form/petsittersForm.css";
+@import "./pageComponents/search-cart";
 @import "./pageComponents/menu.css";
 @import './petsitters/petsitProfileBasic.css';
 @import './petsitters/petsitProfileService.css';

@@ -15,6 +15,10 @@
     width: auto;
 }
 
+.timeBox{
+    display: none;
+}
+
 .ActivSelectionBox{ /*active paragraph*/
     color: #c07fdb;
     border-bottom-width: 3px;
@@ -46,6 +50,10 @@ hr{
     border-radius: 5px;
     padding: 3px;
     height: 40px;
+}
+
+.inputsBox .rectangle{
+    margin-left: 15px;
 }
 
 .rectangle img{
@@ -131,3 +139,11 @@ hr{
 .search{
     padding: 0 10px;
 }
+
+.menuWalkTime{
+    padding: 15px;
+  }
+
+  .box2{
+    display: none;
+  }

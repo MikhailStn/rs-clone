@@ -1,5 +1,5 @@
 import { createHtmlElement } from "../../utils";
-import { headerOwner } from "../pageComponents/headers";
+import { headerOwner, header } from "../pageComponents/headers";
 import { petsitArrForReview } from "../../utils/petsitArrayFor";
 import { footerFun } from "../pageComponents/footer";
 import { filterHow } from "../pageComponents/filter";
@@ -7,10 +7,10 @@ import { header } from "../pageComponents/headers";
 
 export function mainOwner(): void {
   document.body.innerHTML = '';
-  if(!localStorage.getItem('curr-user-id')){
-    header(document.body);
-  }else{
-    headerOwner(document.body);
+  if(!localStorage.getItem('curr-user-id')) {
+      header(document.body);
+  } else {
+      headerOwner(document.body);
   }
 
 
@@ -29,10 +29,17 @@ export function mainOwner(): void {
     "",
     "Petsi gives you the freedom to choose. Here you will find real enthusiasts who will take care of your pet the way you want."
   );
-  const banimg = new Image();
-  banimg.className = "flag";
-  banimg.src =
-    "https://petsy.pl/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Feu_logo.423d7d14.png&w=1920&q=75";
+  const banimgs = createHtmlElement('div', 'banImgs');
+  const banimg1 = new Image();
+  const banimg2 = new Image();
+  const banimg3 = new Image();
+  banimg1.className = "banImg";
+  banimg1.src ="img/images/homeService.jpg";
+  banimg2.className = "banImg";
+  banimg2.src ="img/images/hotelServise.jpg";
+  banimg3.className = "banImg";
+  banimg3.src ="img/images/walkServise.jpg";
+
   const bannerRight = createHtmlElement("div", "rightImg");
   const bannerImg = createHtmlElement("div", "imgDiv");
   const img1 = new Image();
@@ -41,7 +48,7 @@ export function mainOwner(): void {
 
   const section1 = createHtmlElement("section", "wrapper section1");
   const section1Content = createHtmlElement("div", "content");
-  //const filter = createHtmlElement("div", "wrapper filter");
+  
   filterHow(section1Content);
 
   const section2 = createHtmlElement("section", "wrapper section2");
@@ -179,11 +186,8 @@ export function mainOwner(): void {
 
   //const section7 = createHtmlElement("section", "wrapper");
 
-  //document.body.append(header1);
   document.body.append(banner);
   document.body.append(section1);
-  //document.body.append(filter);
-  //filterHow(document.body);/** */
   document.body.append(section2);
   document.body.append(section3);
   document.body.append(section4);
@@ -196,7 +200,10 @@ export function mainOwner(): void {
   bannerContent.append(bannerRight);
   bannerLeft.append(bannerTitle);
   bannerLeft.append(bannerText);
-  bannerLeft.append(banimg);
+  bannerLeft.append(banimgs);
+  banimgs.append(banimg1);
+  banimgs.append(banimg2);
+  banimgs.append(banimg3);
 
   bannerRight.append(bannerImg);
   bannerImg.append(img1);
@@ -213,8 +220,6 @@ export function mainOwner(): void {
   section3Content.append(section3Right);
 
   footerFun(document.body);
-
-  //  section6.append(sliderBlock);
 
   const buttons = document.getElementsByTagName("button");
   console.log(buttons); /** */
