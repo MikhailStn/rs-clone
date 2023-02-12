@@ -6,7 +6,7 @@ export function headerOwner(tagParent: HTMLElement): void {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "petsi");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   headerLink.addEventListener("click", () => {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));
@@ -49,7 +49,7 @@ export function header(tagParent: HTMLElement): void {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "petsi");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   headerLink.addEventListener("click", () => {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));
@@ -123,7 +123,7 @@ export function headerPetsitter(tagParent: HTMLElement): void {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
-  const headerLink = createHtmlElement("a", "first", "pets", "petsi");
+  const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
   headerLink.addEventListener("click", () => {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));

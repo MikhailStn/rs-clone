@@ -1,0 +1,172 @@
+main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.blockFilter{
+    width: 300px;
+    background-color: #fff;
+    height: auto;
+    padding: 32px 24px;
+    /*box-shadow:0 0 10px #84818a;*/
+    /*height: 100%;
+    /*display: none;*/
+}
+
+.blockPetsitters{
+    width: 600px;/*660*/
+    background-color:rgb(245, 238, 238);
+    height: auto;
+    box-shadow:0 0 0px #84818a;
+    /*display: none;*/
+}
+
+.blockMap{
+    width: 100%; /*calc(100vw - 960px);*/
+    height: 100%;
+}
+
+/*------blockFilter----*/
+
+.blockFilter h3{
+    padding-bottom: 15px;
+}
+
+.divType{
+    display: flex;
+    flex-direction: row;
+}
+
+.blockFilter p{
+    margin: 10px 0;
+}
+
+.typeBoxN{
+    border: solid 1px #84818a;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.typeBoxN:hover{
+    background-color: rgb(247, 233, 187); 
+}
+
+.ActivTypeBoxN{
+    background-color: rgb(251, 221, 122); 
+}
+
+.blockFilter .box1{
+    margin-top: 15px;
+    border: 1px solid #84818a;
+    border-radius: 5px;
+    padding: 3px;
+    height: 40px;
+    width: 100%;
+}
+.blockFilter .nameInputBox{
+    color: black;
+    top:-23px;
+    background-color:#fff;
+}
+.box1 div img{
+    margin: 0 3px;
+}
+
+.blockFilter .box1 div{
+    position: relative;
+    top: -33px;
+}
+
+.blockFilter img{
+    width: 15px;
+    position: relative;
+}
+
+.blockFilter input{
+    width: 90%;
+}
+.blockFilter .petBox:hover .menuPets{
+    display: block;
+    z-index: 1;
+    width: 218px;
+    position: relative;
+    left: 0px;
+}
+
+.blockFilter .petBox li:hover{
+    background-color:rgb(247, 233, 187); 
+}
+
+.FromTo{
+    display: flex;
+    justify-content: space-between
+}
+
+.deadlineBoxFromTo input{
+width: 100%;
+}
+
+.deadlineBoxFromTo .box1{
+    margin-top: 15px;
+    border: 1px solid #84818a;
+    border-radius: 5px;
+    padding: 3px;
+    height: 40px;
+    width: 49%;
+}
+
+/*------------------------range-----*/
+.range-box{
+    position: relative;
+    width: 100%;
+    height: 25px;
+    opacity: 0.7;
+  }
+  .range-box:hover{
+    opacity: 1;
+  }
+  input[type="range"] {
+    pointer-events: none;
+    position: absolute;
+    border: none;
+    -webkit-appearance: none;
+    border-radius: 4px;
+    background: rgb(251, 221, 122); 
+    left: 0;
+    width: 100%;
+    outline: none;
+    height: 5px;
+    margin: 5px ;
+    
+  }
+      
+  input[type="range"]::-webkit-slider-thumb {
+        pointer-events: all;
+        position: relative;
+        z-index: 10;
+        outline: 0;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: none;
+        border-radius: 14px;
+        background-color: rgb(251, 221, 122); 
+  }
+
+.blockFilter .clear{
+    background-color: rgb(247, 233, 187); 
+    border: 0;
+    padding: 15px 20px;
+    width: 100px;
+    border-radius: 8px;
+    transition: 0.5s;
+  }
+
+  
+  .blockFilter .clear:hover {
+    background-color: rgb(251, 221, 122); 
+  }

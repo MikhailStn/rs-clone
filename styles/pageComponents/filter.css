@@ -131,3 +131,11 @@ hr{
 .search{
     padding: 0 10px;
 }
+
+.menuWalkTime{
+    padding: 15px;
+  }
+
+  .box2{
+    display: none;
+  }

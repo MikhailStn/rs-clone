@@ -1,6 +1,14 @@
 import { createHtmlElement, createInputElement } from "../../utils";
-
+import { myPets } from "../../utils/petsitArrayFor";
+  
+export const firstVal ={
+  type:'',
+  date: '',
+  city: '',
+  pet: '',
+};
 export function filterHow(tagParent: HTMLElement): void {
+
   const boxFilter = createHtmlElement("div", "boxFilter");
   const selectionBox = createHtmlElement("div", "selectionBox ");
   const boxAccomodation = createHtmlElement(
@@ -23,7 +31,7 @@ export function filterHow(tagParent: HTMLElement): void {
   const namePetBox = createHtmlElement("p", "nameInputBox", "", "Dog Cat");
   const divPetBox = createHtmlElement("div", "petBox");
   const divMenuPets = createHtmlElement("ul", "menuPets");
-  setMenuPets(divMenuPets, ["qwe", "asd", "zxc"]); ///////!!!!
+  setMenuPets(divMenuPets, myPets);
   const imgNamePetBox = new Image();
   imgNamePetBox.src = "img/paw.svg";
   const inputPetBox = createInputElement("text"); ///////!!!!
@@ -100,55 +108,6 @@ export function filterHow(tagParent: HTMLElement): void {
 
   btnSearch.append(btnImg);
 
-  function setMenuPets(tagParent: HTMLElement, myPets?: string[]): void {
-    if (myPets) {
-      const myPet = createHtmlElement("p", "titlePetsChoise", "", "My Pets");
-      tagParent.append(myPet);
-      for (let i = 0; i < myPets.length; i++) {
-        const pet = createHtmlElement("li", "", "", `${myPets[i]}`);
-        tagParent.append(pet);
-      }
-    }
-    const cat = createHtmlElement("p", "titlePetsChoise", "", "Cat");
-    const cat1 = createHtmlElement("li", "", "", "Small(<6 kg)");
-    const cat2 = createHtmlElement("li", "", "", `Large(<6 kg)`);
-    const dog = createHtmlElement("p", "titlePetsChoise", "", "Dog");
-    const dog1 = createHtmlElement("li", "", "", "Micro(<5 kg)");
-    const dog2 = createHtmlElement("li", "", "", "Small(6 - 15 kg)");
-    const dog3 = createHtmlElement("li", "", "", "Medium(16 - 25 kg)");
-    const dog4 = createHtmlElement("li", "", "", "Large(26 - 35 kg)");
-    const dog5 = createHtmlElement("li", "", "", "Giant(>36 kg)");
-
-    tagParent.append(cat);
-    tagParent.append(cat1);
-    tagParent.append(cat2);
-    tagParent.append(dog);
-    tagParent.append(dog1);
-    tagParent.append(dog2);
-    tagParent.append(dog3);
-    tagParent.append(dog4);
-    tagParent.append(dog5);
-  }
-
-  function currentDay() {
-    const getCurrentDay = new Date();
-    const year = getCurrentDay.getFullYear();
-    const month1 = getCurrentDay.getMonth() + 1;
-    const day1 = getCurrentDay.getDate();
-    let month = "";
-    let day = "";
-    month = month1 < 10 ? "0" + month1 : String(month1);
-    day = day1 < 10 ? "0" + day1 : String(day1);
-    const value = year + "-" + month + "-" + day;
-    return value;
-  }
-  function currentTime() {
-    const getCurrentDay = new Date();
-    const hours = getCurrentDay.getHours();
-    const min = getCurrentDay.getMinutes();
-    const timeNow = hours + "-" + min;
-    return timeNow;
-  }
 
   function setMenuTime(tagParent: HTMLElement): void {
     let choiceTime = "";
@@ -161,6 +120,10 @@ export function filterHow(tagParent: HTMLElement): void {
     let getHours = Number(gettime[0]);
     let getMin = Number(gettime[1]);
 
+    if (getHours < 5) {
+      getHours = 5;
+      getMin = 0;
+    }
     if (getMin == 0 || getMin == 30) {
       getHours += 1;
     }
@@ -211,7 +174,7 @@ export function filterHow(tagParent: HTMLElement): void {
   divPetBox.addEventListener("click", (event) => {
     if (event.target && event.target instanceof HTMLElement) {
       const target = event.target;
-      if (target.tagName == "LI") {
+      if (target.tagName == "LI") { 
         inputPetBox.value = target.innerHTML;
       }
     }
@@ -240,5 +203,64 @@ export function filterHow(tagParent: HTMLElement): void {
     console.log("date= ", inputDeadlineBox.value);
     console.log("search= ", inputAddressBox.value);
     console.log("pet= ", inputPetBox.value);
+    firstVal.type = selectedBox.innerHTML;
+    firstVal.date = inputDeadlineBox.value,
+    firstVal.city = inputAddressBox.value,
+    firstVal.pet = inputPetBox.value,
+    
+    console.log("333= ", firstVal);
   });
+}
+
+
+export function setMenuPets(tagParent: HTMLElement, myPets?: string[]): void {
+  if (myPets) {
+    const myPet = createHtmlElement("p", "titlePetsChoise ", "", "My Pets");
+    tagParent.append(myPet);
+    for (let i = 0; i < myPets.length; i++) {
+      const pet = createHtmlElement("li", "", "", `${myPets[i]}`);
+      tagParent.append(pet);
+    }
+  }
+  const cat = createHtmlElement("p", "titlePetsChoise", "", "Cat");
+  const cat1 = createHtmlElement("li", "Cat", "", `Small(up to 6 kg)`);
+
+  const cat2 = createHtmlElement("li", "Cat", "", `Large(over 6 kg)`);
+  const dog = createHtmlElement("p", "titlePetsChoise", "", "Dog");
+  const dog1 = createHtmlElement("li", "Dog", "", "Micro(up to 5 kg)");
+  const dog2 = createHtmlElement("li", "Dog", "", "Small(6 - 15 kg)");
+  const dog3 = createHtmlElement("li", "Dog", "", "Medium(16 - 25 kg)");
+  const dog4 = createHtmlElement("li", "Dog", "", "Large(26 - 35 kg)");
+  const dog5 = createHtmlElement("li", "Dog", "", "Giant(over 36 kg)");
+
+  tagParent.append(cat);
+  tagParent.append(cat1);
+  tagParent.append(cat2);
+  tagParent.append(dog);
+  tagParent.append(dog1);
+  tagParent.append(dog2);
+  tagParent.append(dog3);
+  tagParent.append(dog4);
+  tagParent.append(dog5);
+}
+
+export function currentDay() {
+  const getCurrentDay = new Date();
+  const year = getCurrentDay.getFullYear();
+  const month1 = getCurrentDay.getMonth() + 1;
+  const day1 = getCurrentDay.getDate();
+  let month = "";
+  let day = "";
+  month = month1 < 10 ? "0" + month1 : String(month1);
+  day = day1 < 10 ? "0" + day1 : String(day1);
+  const value = year + "-" + month + "-" + day;
+  return value;
+}
+
+export function currentTime() {
+  const getCurrentDay = new Date();
+  const hours = getCurrentDay.getHours();
+  const min = getCurrentDay.getMinutes();
+  const timeNow = hours + "-" + min;
+  return timeNow;
 }
