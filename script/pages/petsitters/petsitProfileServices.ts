@@ -1,6 +1,10 @@
 import { createHtmlElement } from "../../utils";
+import { getUser } from "../../commonFunction/getUser";
 
 export async function createServicesBlock(){
+    const user = await getUser();
+    const userInfo = (user).item;
+    console.log('userInfo', userInfo);
     const basicServiceBlock = createHtmlElement('div', 'basic-info-block');
     const serviceBlockTitle = createHtmlElement('h3', 'title-photo-profile-block', '','Manage the services you provide');
     basicServiceBlock.append(serviceBlockTitle);

@@ -5,7 +5,7 @@ export async function createMyPetsBlock() {
     const user = await getUser();
     const userInfo = (user).item;
     const basicPetsBlock = createHtmlElement('div', 'basic-info-block my-pets');
-    const myPetsTitle = createHtmlElement('h3', 'title-photo-profile-block my-pets-title', '', 'My pets');
+    const myPetsTitle = createHtmlElement('h1', 'title-photo-profile-block my-pets-title', '', 'My pets');
     basicPetsBlock.append(myPetsTitle);
     const textBtnMyPetWrapper = createHtmlElement('div', 'my-pet-text-btn-wrapper');
     basicPetsBlock.append(textBtnMyPetWrapper);

@@ -82,7 +82,15 @@ async function renderRoleMenu() {
     const imgRoleWrapper = createHtmlElement('div', 'img-menu-role-wrapper');
     roleBlockIdentity.append(imgRoleWrapper);
     const imgRoleMenu = new Image();
-    imgRoleMenu.src = 'img/personLogo.svg'; //вставить фото пользователя с сервера!!
+    if(userInfo.petsitterData.avatarPath === '' || userInfo.petsitterData.avatarPath === undefined){
+    imgRoleMenu.src = 'img/personLogo.svg';
+    }else{
+        imgRoleMenu.src = userInfo.petsitterData.avatarPath;
+        imgRoleMenu.style.width = '100%';
+        imgRoleMenu.style.height = '100%';
+        imgRoleMenu.style.objectFit = "cover";
+        imgRoleMenu.style.borderRadius = '50%';
+    } 
     imgRoleMenu.className = 'img-role-menu';
     imgRoleWrapper.append(imgRoleMenu);
     const roleTextWrapMenu = createHtmlElement('div', 'role-text-wrapper-menu');
