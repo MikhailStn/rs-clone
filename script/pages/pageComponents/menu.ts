@@ -82,7 +82,15 @@ async function renderRoleMenu() {
     const imgRoleWrapper = createHtmlElement('div', 'img-menu-role-wrapper');
     roleBlockIdentity.append(imgRoleWrapper);
     const imgRoleMenu = new Image();
-    imgRoleMenu.src = 'img/personLogo.svg'; //вставить фото пользователя с сервера!!
+    if(userInfo.petsitterData.avatarPath === '' || userInfo.petsitterData.avatarPath === undefined){
+    imgRoleMenu.src = 'img/personLogo.svg';
+    }else{
+        imgRoleMenu.src = userInfo.petsitterData.avatarPath;
+        imgRoleMenu.style.width = '100%';
+        imgRoleMenu.style.height = '100%';
+        imgRoleMenu.style.objectFit = "cover";
+        imgRoleMenu.style.borderRadius = '50%';
+    } 
     imgRoleMenu.className = 'img-role-menu';
     imgRoleWrapper.append(imgRoleMenu);
     const roleTextWrapMenu = createHtmlElement('div', 'role-text-wrapper-menu');
@@ -99,13 +107,13 @@ async function renderRoleMenu() {
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
     })
-    const block5 = createBlockMenu('img/giftRecommend.svg', 'Recommend and get 10 BYN', 'recommend-logo-menu');
+    /*const block5 = createBlockMenu('img/giftRecommend.svg', 'Recommend and get 10 BYN', 'recommend-logo-menu');
     sectionMenu.append(block5);
     block5.addEventListener('click', () => {
         history.pushState("", "", "/invite");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
-    })
+    })*/
 
     if(userInfo.role === 'OWNER'){ 
     const block6 = createBlockMenu('img/loupeDark2.svg', 'Find a petsitter', 'loupe-menu');

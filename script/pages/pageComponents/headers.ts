@@ -2,7 +2,7 @@ import { createHtmlElement } from "../../utils";
 import { createMenu } from "./menu";
 
 export async function headerOwner(tagParent: HTMLElement): Promise<void> {
-  const header = createHtmlElement("header", "header");
+  const header = createHtmlElement("header", "header header2");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
@@ -29,17 +29,17 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   notificationImg.src = "img/notification.svg";
   notificationImg.src = "img/notification.svg";
   const flagNotification = createHtmlElement("span", "", "", "1");
-  const promo = createHtmlElement("div", "");
-  const promoText = createHtmlElement(
+  //const promo = createHtmlElement("div", "");
+  /*const promoText = createHtmlElement(
     "span",
     "promo",
     "",
     "PROMOTION -10% FOR THE FIRST SERVICE"
-  );
+  );*/
 
   tagParent.append(header);
-  header.append(promo);
-  promo.append(promoText);
+  //header.append(promo);
+ // promo.append(promoText);
   header.append(head);
   head.append(headerMenu);
   head.append(headerLink);
@@ -132,7 +132,7 @@ export async function header(tagParent: HTMLElement): Promise<void> {
 }
 
 export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
-  const header = createHtmlElement("header", "header");
+  const header = createHtmlElement("header", "header header2");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
@@ -159,17 +159,17 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   notificationImg.src = "img/notification.svg";
   const flagNotification = createHtmlElement("span", "", "", "1");
   flagNotification.style.display = "none";
-  const promo = createHtmlElement("div", "");
+  /*const promo = createHtmlElement("div", "");
   const promoText = createHtmlElement(
     "span",
     "promo",
     "",
     "SEND A FRIEND PLN 20 TO USE ON PETSI!"
-  );
+  );*/
 
   tagParent.append(header);
-  header.append(promo);
-  promo.append(promoText);
+  //header.append(promo);
+  //promo.append(promoText);
   header.append(head);
   head.append(headerMenu);
   head.append(headerLink);

@@ -9,6 +9,7 @@ import { mainOwner } from "./pages/commonPages/main-owner";
 import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
 import ownerPets from "./pages/owners/ownerPets";
 import petsitProfileServiceEdit from "./pages/petsitters/petsitProfileServiceEdit";
+import { createOrdersPage } from "./pages/commonPages/orderPage";
 
 
 export const router = () => {
@@ -36,6 +37,14 @@ export const router = () => {
     {
       path: "/owner/pets",
       template: ownerPets,
+    },
+    {
+      path: "/owner/orders",
+      template: createOrdersPage,
+    },
+    {
+      path: "/petsitter/orders",
+      template: createOrdersPage,
     },
     {
       path: "/petsitter/profile/services/edit/accommodation",

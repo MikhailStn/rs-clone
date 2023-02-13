@@ -23,7 +23,10 @@
 
 .service-text-title-wrapper,
 .area-of-service-wrapper,
-.view-of-dog-section-wrapper{
+.view-of-dog-section-wrapper,
+.section-kind-of-pet-service,
+.price-section-service,
+.btn-save-price-wrapper{
     max-width: 552px;
     margin-left: auto;
     margin-right: auto;
@@ -35,11 +38,13 @@
 }
 
 .area-of-service-wrapper,
-.view-of-dog-section-wrapper{
+.view-of-dog-section-wrapper,
+.section-kind-of-pet-service,
+.price-section-service{
     background-color: #ffffff;
     border: 2px solid #ece8ec;
     border-radius: 8px;
-    padding: 20px;
+    padding: 10px 20px 30px 20px;
     margin-bottom: 16px;
 }
 
@@ -55,7 +60,10 @@
     margin-bottom: 40px;
 }
 .area-of-service-common-text,
-.dog-size-title{
+.dog-size-title,
+.dog-age-title,
+.dog-gender-title,
+.common-price-text{
     color: #696869;
     line-height: 1.25;
     font-size: 0.95rem;
@@ -64,20 +72,30 @@
     margin-bottom: 30px;
 }
 
-.dog-size-title{
+.dog-size-title,
+.dog-age-title,
+.dog-gender-title{
     margin-bottom: 0px;
 }
 
 .input-area-service{  
     outline: none !important;
-    border: 2px solid #ca96e1;
+    border: 1px solid #ece8ec;
     border-radius: 8px;
+    padding: 10px;
     resize: none;
     width: 450px;
     overflow:hidden;
+    transition: .3s;
 }
 
-.area-btn-dog-size{
+.input-area-service:hover,
+.input-area-service:focus{
+    border: 1px solid #ca96e1;
+}
+
+.area-btn-dog-size,
+.area-btn-dog-age{
     display: flex;
     margin-top: 5px;
     border: 1px solid #ece8ec;
@@ -117,10 +135,106 @@
     gap: 5px;
 }
 
-.span-btn-size{
+.span-btn-size,
+.span-currency-price{
     line-height: 1.25;
     font-size: 0.95rem;
+    font-family: "Lato", sans-serif;
     text-transform: lowercase;
     color: #696869;
     pointer-events: none;
+}
+
+.little-service-text{
+    line-height: 1.25;
+    font-size: 0.75rem;
+    color: #696869;
+    margin-bottom: 30px;
+}
+
+.btn-dog-size.age-btn{
+    width: 128px;
+}
+
+.gender-inputs-block{
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-gender-inputs{
+    display: flex;
+    width: 246px;
+    height: 47px;
+    padding: 12px 16px;
+    border: 1px solid #ece8ec;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.div-gender-inputs label{
+    margin-left: 10px;
+}
+
+.check-pet-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pets-item-wrapper-service{
+    width: 246px;
+    height: 183px;
+    padding: 12px 16px;
+    border: 1px solid #ece8ec;
+    border-radius: 8px;
+}
+
+.pets-img-wrapper-service{
+    width: 212px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.img-pets-item-service{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.div-input-pets-service label{
+    margin-left: 15px;
+    line-height: 1.25;
+    font-size: 1.2rem;
+    color: #696869;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.input-number-price{
+    width: 255px;
+    height: 53px;
+    border: 1px solid #ece8ec;
+    border-radius: 8px;
+    transition: .5s;
+}
+
+.input-number-price:hover,
+.input-number-price:focus{
+    border: 1px solid #ca96e1;
+}
+
+.span-currency-price{
+    font-size: 1.0rem;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.input-text-service-wrapper-price{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-save-price-wrapper{
+    display: flex;
+    justify-content: center;
 }

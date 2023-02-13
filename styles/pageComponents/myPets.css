@@ -7,6 +7,11 @@
 
 .title-photo-profile-block.my-pets-title{
     color: #000000;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin-top: 40px;
+    margin-bottom: 0;
 }
 
 .basic-info-block.my-pets
