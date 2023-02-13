@@ -99,13 +99,13 @@ async function renderRoleMenu() {
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
     })
-    const block5 = createBlockMenu('img/giftRecommend.svg', 'Recommend and get 10 BYN', 'recommend-logo-menu');
+    /*const block5 = createBlockMenu('img/giftRecommend.svg', 'Recommend and get 10 BYN', 'recommend-logo-menu');
     sectionMenu.append(block5);
     block5.addEventListener('click', () => {
         history.pushState("", "", "/invite");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
-    })
+    })*/
 
     if(userInfo.role === 'OWNER'){ 
     const block6 = createBlockMenu('img/loupeDark2.svg', 'Find a petsitter', 'loupe-menu');

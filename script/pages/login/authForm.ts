@@ -511,7 +511,11 @@ function appearSeventhView() {
             `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
           );
           fetchPetsitterData.avatarPath = `http://localhost:5000/${data.filePath}`;
-          btnConfirm.setAttribute("style", "pointer-events:all")
+          btnConfirm.setAttribute("style", "pointer-events:all");
+          btnConfirm.addEventListener('click', ()=>{
+                history.pushState("", "", "");
+                window.dispatchEvent(new Event("popstate"));
+          })
         })
       return btnAddPhoto.files[0];
     }
@@ -523,6 +527,10 @@ function appearSeventhView() {
   photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
   const btnSkip = createHtmlElement("button", "button-skip");
   btnSkip.textContent = "Skip";
+  btnSkip.addEventListener('click', ()=>{
+        history.pushState("", "", "");
+        window.dispatchEvent(new Event("popstate"));
+  })
   temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnConfirm, btnSkip);
 }
 
