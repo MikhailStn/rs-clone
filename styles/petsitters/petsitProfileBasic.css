@@ -184,7 +184,8 @@
 }
 
 .btn-profile-save,
-.btn-save-my-home {
+.btn-save-my-home,
+.btn-save-service-edit {
   background-color: #ca96e1;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -201,6 +202,7 @@
   transition: 0.5s;
 }
 .btn-profile-save:hover,
-.btn-save-my-home:hover {
+.btn-save-my-home:hover,
+.btn-save-service-edit:hover {
   background-color: #a278b4;
 }
