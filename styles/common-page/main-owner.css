@@ -30,15 +30,30 @@ span {
 .leftText {
   margin-left: 36px;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.leftText h2 {
+  max-width: 400px;
 }
 
 .banImgs {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  column-gap: 20px;
 }
 .banImg {
   height: 120px;
+  box-shadow: 0 5px 5px grey;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.banImg:hover {
+  transform: scale(1.1);
 }
 .rightImg {
   min-height: 300px;
@@ -99,11 +114,14 @@ embed {
 .line {
   display: flex;
   padding-bottom: 20px;
+  align-items: center;
 }
 .line p,
 span {
   color: #71717a;
 }
+
+
 .section1 {
   position: relative;
   padding-top: 0;
@@ -119,6 +137,7 @@ span {
 .center {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .center .line {
   justify-content: center;

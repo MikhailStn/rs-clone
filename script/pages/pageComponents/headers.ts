@@ -8,8 +8,9 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   const menu = await createMenu();
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.section-menu-field')?.classList.add('active');
+    //document.querySelector('.section-menu-field')?.classList.add('active');
+    document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
+    document.querySelector(".overlay")?.setAttribute("style", "display: block")
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
@@ -58,8 +59,8 @@ export async function header(tagParent: HTMLElement): Promise<void> {
   const menu = await createMenu();
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.section-menu-field')?.classList.add('active');
+    document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
+    document.querySelector(".overlay")?.setAttribute("style", "display: block")
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
@@ -138,8 +139,10 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   const menu = await createMenu();
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.section-menu-field')?.classList.add('active');
+    //document.body.style.overflow = 'hidden';
+    // document.querySelector('.section-menu-field')?.classList.add('active');
+    document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
+    document.querySelector(".overlay")?.setAttribute("style", "display: block")
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
