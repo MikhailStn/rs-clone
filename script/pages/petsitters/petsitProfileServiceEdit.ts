@@ -167,8 +167,8 @@ function createBlockDogView(){
     viewOfDogSectionWrapper.append(genderDogTitle);
     const genderInputsBlock = createHtmlElement('div', 'gender-inputs-block');
     viewOfDogSectionWrapper.append(genderInputsBlock);
-    const inputDiv1 = createDivInputs('checkbox', 'male', 'Male', 'Male', 'div-gender-inputs');
-    const inputDiv2 = createDivInputs('checkbox', 'female', 'Female', 'Female', 'div-gender-inputs');
+    const inputDiv1 = createDivInputs('radio', 'male', 'gender-pet', 'Male', 'div-gender-inputs');
+    const inputDiv2 = createDivInputs('radio', 'female', 'gender-pet', 'Female', 'div-gender-inputs');
     genderInputsBlock.append(inputDiv1, inputDiv2);
 
 }
@@ -188,13 +188,13 @@ function createBlockKindsOfPet(text: string, service:string){
     checkPetsBox.append(blockPet1,blockPet2);
 }
 
-function createDogSizeBtn(dogSizeOrAge: string, weightOrYearsDog:string, className?:string){
+export function createDogSizeBtn(dogSizeOrAge: string, weightOrYearsDog:string, className?:string){
     const btnSize = createHtmlElement('div', `btn-dog-size ${className}`, dogSizeOrAge);
     btnSize.innerHTML = `<div class="div-btn-size ${className}">${dogSizeOrAge}<span class = "span-btn-size">${weightOrYearsDog}</span></div>`;
     return btnSize;
 }
 
-function createPetsItem(src: string, pet: string){
+export function createPetsItem(src: string, pet: string){
     const petsItemWrapper = createHtmlElement('div', 'pets-item-wrapper-service');
     const petsItemImgWrapper = createHtmlElement('div', 'pets-img-wrapper-service');
     petsItemWrapper.append(petsItemImgWrapper);
@@ -212,7 +212,6 @@ export default async function petsitProfileServiceEdit() {
     document.body.innerHTML = "";
     const path = window.location.pathname;
     const service = path.split("/")[5];
-    console.log(service);
     renderPetsitProfileServiceEdit(service);
     document.body.append(sectionEditAccomodation);
     return document.body;

@@ -210,11 +210,11 @@
 }
 
 .input-number-price{
-    width: 255px;
+   width: 255px;
     height: 53px;
     border: 1px solid #ece8ec;
     border-radius: 8px;
-    transition: .5s;
+    transition: .5s; 
 }
 
 .input-number-price:hover,
