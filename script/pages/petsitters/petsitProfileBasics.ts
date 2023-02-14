@@ -322,7 +322,7 @@ async function createBasicInfoBlock() {
         qualificationsArr.splice(index, 1);
       }
     });
-  }, 1000);
+  }, 100);
 
   const btnSave = createHtmlElement(
     "button",

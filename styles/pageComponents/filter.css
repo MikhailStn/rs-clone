@@ -93,6 +93,8 @@ hr{
     padding: 0 6px;
     display: inline-block;
     border-radius: 15px;
+    box-shadow: 0px 1px 1.5px grey;
+    margin-bottom: 5px;
 }
 
 .inputsBox img{

@@ -77,11 +77,12 @@
 
 .role-block-menu-identity {
   display: flex;
-  height: 60px;
+  height: 65px;
   background-color: #ca96e1;
   align-items: center;
   padding-left: 20px;
   gap: 10px;
+  box-shadow: 0 5px 5px grey;
 }
 
 .img-menu-role-wrapper {
@@ -105,12 +106,11 @@
 }
 
 .text-name-menu-role {
-  font-size: 0.8rem;
   font-weight: 600;
 }
 
 .text-email-menu-role {
-  font-size: 0.67rem;
+  font-size: 0.9rem;
 }
 
 .recommend-logo-menu {
