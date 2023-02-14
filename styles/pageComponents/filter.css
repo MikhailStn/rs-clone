@@ -47,7 +47,7 @@ hr{
 
 .inputsBox .box1{
     margin: 10px;
-    border: 1px solid #84818a;
+    border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 5px;
     padding: 3px;
     height: 40px;

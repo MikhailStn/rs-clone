@@ -68,7 +68,7 @@ async function renderRoleMenu() {
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
-    if(window.location.pathname === '/' || window.location.pathname === '/invite'){
+    if(window.location.pathname === '/' || window.location.pathname === '/search'){
         overlay.style.display = 'block';
     }else{
         overlay.style.display = 'none';
@@ -82,10 +82,10 @@ async function renderRoleMenu() {
     const imgRoleWrapper = createHtmlElement('div', 'img-menu-role-wrapper');
     roleBlockIdentity.append(imgRoleWrapper);
     const imgRoleMenu = new Image();
-    if(userInfo.petsitterData.avatarPath === '' || userInfo.petsitterData.avatarPath === undefined){
+    if(userInfo.avatarPath === '' || userInfo.avatarPath === undefined){
     imgRoleMenu.src = 'img/personLogo.svg';
     }else{
-        imgRoleMenu.src = userInfo.petsitterData.avatarPath;
+        imgRoleMenu.src = userInfo.avatarPath;
         imgRoleMenu.style.width = '100%';
         imgRoleMenu.style.height = '100%';
         imgRoleMenu.style.objectFit = "cover";
