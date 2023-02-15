@@ -45,7 +45,7 @@ main{
 }
 
 .typeBoxN{
-    border: solid 1px #84818a;
+    border:  1px solid rgba(0, 0, 0, 0.12);;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
@@ -62,7 +62,7 @@ main{
 
 .blockFilter .box1{
     margin-top: 15px;
-    border: 1px solid #84818a;
+    border:  1px solid rgba(0, 0, 0, 0.12);
     border-radius: 5px;
     padding: 3px;
     height: 40px;
@@ -113,7 +113,7 @@ width: 100%;
 
 .deadlineBoxFromTo .box1{
     margin-top: 15px;
-    border: 1px solid #84818a;
+    border:  1px solid rgba(0, 0, 0, 0.12);
     border-radius: 5px;
     padding: 3px;
     height: 40px;

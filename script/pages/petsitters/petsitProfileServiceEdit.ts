@@ -566,11 +566,11 @@ export const updateValues = () => {
 setTimeout(updateValues, 100);
 
 export default async function petsitProfileServiceEdit() {
-  document.body.innerHTML = "";
-  const path = window.location.pathname;
-  const service = path.split("/")[5];
-  console.log(service);
-  renderPetsitProfileServiceEdit(service);
-  document.body.append(sectionEditAccomodation);
-  return document.body;
+    document.body.innerHTML = "";
+    const path = window.location.pathname;
+    const service = path.split("/")[5];
+    renderPetsitProfileServiceEdit(service);
+    document.body.append(sectionEditAccomodation);
+    return document.body;
 }
+

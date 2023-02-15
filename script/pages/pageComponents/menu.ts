@@ -70,7 +70,9 @@ async function renderRoleMenu() {
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
-    if( /* window.location.pathname === '/' || */ window.location.pathname === '/invite'){
+
+    if(window.location.pathname === '/' || window.location.pathname === '/search'){
+
         overlay.style.display = 'block';
     }else{
         overlay.style.display = 'none';
