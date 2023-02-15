@@ -259,7 +259,6 @@ function appearSecondView() {
       );
       fetchPetsitterData.services.walking.active = "true";
       fetchPetsitterData.services.servicesArr.push("walking");
-      console.log(fetchPetsitterData.services.servicesArr)
     } else {
       checkBoxLabelWalk.setAttribute(
         "style",
@@ -268,7 +267,6 @@ function appearSecondView() {
       fetchPetsitterData.services.walking.active = "false";
       const i = fetchPetsitterData.services.servicesArr.indexOf("walking");
       fetchPetsitterData.services.servicesArr.splice(i, 1);
-      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
   const checkBoxLabelWalk = createHtmlElement(
@@ -295,7 +293,6 @@ function appearSecondView() {
       );
       fetchPetsitterData.services.homevisits.active = "true";
       fetchPetsitterData.services.servicesArr.push("homevisits");
-      console.log(fetchPetsitterData.services.servicesArr)
     } else {
       checkBoxLabelHome.setAttribute(
         "style",
@@ -304,7 +301,6 @@ function appearSecondView() {
       fetchPetsitterData.services.homevisits.active = "false";
       const i = fetchPetsitterData.services.servicesArr.indexOf("homevisits");
       fetchPetsitterData.services.servicesArr.splice(i, 1);
-      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
   const checkBoxLabelHome = createHtmlElement(
@@ -822,7 +818,7 @@ function appearSeventhView() {
         servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
-    fetch(`http://localhost:5000/auth/petsitter/add-data`, fetchData)
+    fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
       .then((response) => {
         return response.json();
       })

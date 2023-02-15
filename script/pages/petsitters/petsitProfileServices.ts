@@ -2,12 +2,19 @@ import { createHtmlElement } from "../../utils";
 import { getUser } from "../../commonFunction/getUser";
 import { updateValues } from "./petsitProfileServiceEdit";
 
+const servicesArr: string[] = [];
+
 export async function createServicesBlock() {
   const user = await getUser();
   const userInfo = user.item;
   console.log("userInfo", userInfo);
   const basicServiceBlock = createHtmlElement("div", "basic-info-block");
-  const serviceBlockTitle = createHtmlElement("h3", "title-photo-profile-block", "", "Manage the services you provide");
+  const serviceBlockTitle = createHtmlElement(
+    "h3",
+    "title-photo-profile-block",
+    "",
+    "Manage the services you provide"
+  );
   basicServiceBlock.append(serviceBlockTitle);
   const text1Service = createHtmlElement(
     "div",
@@ -63,9 +70,12 @@ export async function createServicesBlock() {
       .then((data) => {
         if (data.petsitterData.services.hotel.active == "true") {
           inputs[0].firstElementChild?.setAttribute("checked", "true");
+          servicesArr.push("hotel");
         }
         inputs[0].firstElementChild?.addEventListener("click", () => {
           if (inputs[0].firstElementChild?.getAttribute("checked")) {
+            const i = servicesArr.indexOf("hotel");
+            servicesArr.splice(i, 1);
             inputs[0].firstElementChild?.removeAttribute("checked");
             const fetchData1 = {
               method: "PATCH",
@@ -76,6 +86,7 @@ export async function createServicesBlock() {
               body: JSON.stringify({
                 _id: localStorage.getItem("curr-user-id"),
                 active_hotel: "false",
+                servicesArr: servicesArr,
               }),
             };
             fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
@@ -86,6 +97,7 @@ export async function createServicesBlock() {
                 console.log(data);
               });
           } else if (!inputs[0].firstElementChild?.getAttribute("checked")) {
+            servicesArr.push("hotel");
             inputs[0].firstElementChild?.setAttribute("checked", "true");
             const fetchData2 = {
               method: "PATCH",
@@ -96,6 +108,7 @@ export async function createServicesBlock() {
               body: JSON.stringify({
                 _id: localStorage.getItem("curr-user-id"),
                 active_hotel: "true",
+                servicesArr: servicesArr,
               }),
             };
             fetch(`http://localhost:5000/petsitter/add-data`, fetchData2)
@@ -109,9 +122,12 @@ export async function createServicesBlock() {
         });
         if (data.petsitterData.services.walking.active == "true") {
           inputs[1].firstElementChild?.setAttribute("checked", "true");
+          servicesArr.push("walking");
         }
         inputs[1].firstElementChild?.addEventListener("click", () => {
           if (inputs[1].firstElementChild?.getAttribute("checked")) {
+            const i = servicesArr.indexOf("walking");
+            servicesArr.splice(i, 1);
             inputs[1].firstElementChild?.removeAttribute("checked");
             const fetchData1 = {
               method: "PATCH",
@@ -122,6 +138,7 @@ export async function createServicesBlock() {
               body: JSON.stringify({
                 _id: localStorage.getItem("curr-user-id"),
                 active_walking: "false",
+                servicesArr: servicesArr,
               }),
             };
             fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
@@ -132,6 +149,7 @@ export async function createServicesBlock() {
                 console.log(data);
               });
           } else if (!inputs[1].firstElementChild?.getAttribute("checked")) {
+            servicesArr.push("walking");
             inputs[1].firstElementChild?.setAttribute("checked", "true");
             const fetchData2 = {
               method: "PATCH",
@@ -142,6 +160,7 @@ export async function createServicesBlock() {
               body: JSON.stringify({
                 _id: localStorage.getItem("curr-user-id"),
                 active_walking: "true",
+                servicesArr: servicesArr,
               }),
             };
             fetch(`http://localhost:5000/petsitter/add-data`, fetchData2)
@@ -155,9 +174,14 @@ export async function createServicesBlock() {
         });
         if (data.petsitterData.services.homevisits.active == "true") {
           inputs[2].firstElementChild?.setAttribute("checked", "true");
+          servicesArr.push("homevisits");
+          console.log(servicesArr)
         }
         inputs[2].firstElementChild?.addEventListener("click", () => {
           if (inputs[2].firstElementChild?.getAttribute("checked")) {
+            const i = servicesArr.indexOf("homevisits");
+            servicesArr.splice(i, 1);
+            console.log(servicesArr)
             inputs[2].firstElementChild?.removeAttribute("checked");
             const fetchData1 = {
               method: "PATCH",
@@ -168,6 +192,7 @@ export async function createServicesBlock() {
               body: JSON.stringify({
                 _id: localStorage.getItem("curr-user-id"),
                 active_homevisits: "false",
+                servicesArr: servicesArr,
               }),
             };
             fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
@@ -178,6 +203,7 @@ export async function createServicesBlock() {
                 console.log(data);
               });
           } else if (!inputs[2].firstElementChild?.getAttribute("checked")) {
+            servicesArr.push("homevisits");
             inputs[2].firstElementChild?.setAttribute("checked", "true");
             const fetchData2 = {
               method: "PATCH",
@@ -188,6 +214,7 @@ export async function createServicesBlock() {
               body: JSON.stringify({
                 _id: localStorage.getItem("curr-user-id"),
                 active_homevisits: "true",
+                servicesArr: servicesArr,
               }),
             };
             fetch(`http://localhost:5000/petsitter/add-data`, fetchData2)
@@ -203,14 +230,26 @@ export async function createServicesBlock() {
   }, 100);
 
   blockService1.addEventListener("click", (event: Event) => {
-    if (event.target && event.target instanceof HTMLButtonElement && event.target.id === "btn-accommodation") {
-      history.pushState("", "", "/petsitter/profile/services/edit/accommodation");
+    if (
+      event.target &&
+      event.target instanceof HTMLButtonElement &&
+      event.target.id === "btn-accommodation"
+    ) {
+      history.pushState(
+        "",
+        "",
+        "/petsitter/profile/services/edit/accommodation"
+      );
       window.dispatchEvent(new Event("popstate"));
       updateValues();
     }
   });
   blockService2.addEventListener("click", (event: Event) => {
-    if (event.target && event.target instanceof HTMLButtonElement && event.target.id === "btn-walking") {
+    if (
+      event.target &&
+      event.target instanceof HTMLButtonElement &&
+      event.target.id === "btn-walking"
+    ) {
       history.pushState("", "", "/petsitter/profile/services/edit/walk");
       window.dispatchEvent(new Event("popstate"));
       updateValues();
@@ -218,7 +257,11 @@ export async function createServicesBlock() {
   });
 
   blockService3.addEventListener("click", (event: Event) => {
-    if (event.target && event.target instanceof HTMLButtonElement && event.target.id === "btn-home-visits") {
+    if (
+      event.target &&
+      event.target instanceof HTMLButtonElement &&
+      event.target.id === "btn-home-visits"
+    ) {
       history.pushState("", "", "/petsitter/profile/services/edit/drop-in");
       window.dispatchEvent(new Event("popstate"));
       updateValues();
@@ -228,30 +271,60 @@ export async function createServicesBlock() {
   return basicServiceBlock;
 }
 
-async function createBlockService(src: string, text1: string, text2: string, className: string) {
-  const serviceItemBlock = createHtmlElement("div", `service-item-block-profile ${className}-service`);
+async function createBlockService(
+  src: string,
+  text1: string,
+  text2: string,
+  className: string
+) {
+  const serviceItemBlock = createHtmlElement(
+    "div",
+    `service-item-block-profile ${className}-service`
+  );
   const imgServiceBlock = createHtmlElement("div", "img-service-block");
   serviceItemBlock.append(imgServiceBlock);
-  const imgItemService = createHtmlElement("img", "img-service-item") as HTMLImageElement;
+  const imgItemService = createHtmlElement(
+    "img",
+    "img-service-item"
+  ) as HTMLImageElement;
   imgServiceBlock.append(imgItemService);
   imgItemService.src = src;
   imgItemService.alt = "Pets";
-  const textItemServiceBlock = createHtmlElement("div", `text-item-service-block ${className}-service`);
+  const textItemServiceBlock = createHtmlElement(
+    "div",
+    `text-item-service-block ${className}-service`
+  );
   serviceItemBlock.append(textItemServiceBlock);
-  const text1Div = createHtmlElement("h3", "title-photo-profile-block", "", text1);
+  const text1Div = createHtmlElement(
+    "h3",
+    "title-photo-profile-block",
+    "",
+    text1
+  );
   textItemServiceBlock.append(text1Div);
   const text2Div = createHtmlElement("div", "text-service", "", text2);
   textItemServiceBlock.append(text2Div);
   const btnServiceBlock = createHtmlElement("div", "btn-service-block");
   serviceItemBlock.append(btnServiceBlock);
-  const labelInputCheckboxService = createHtmlElement("label", "switch-service");
+  const labelInputCheckboxService = createHtmlElement(
+    "label",
+    "switch-service"
+  );
   const inputCheckboxService = createHtmlElement("input") as HTMLInputElement;
   inputCheckboxService.type = "checkbox";
   inputCheckboxService.name = className;
-  const inputSpanService = createHtmlElement("span", "slider-service round-slider");
+  const inputSpanService = createHtmlElement(
+    "span",
+    "slider-service round-slider"
+  );
   btnServiceBlock.append(labelInputCheckboxService);
   labelInputCheckboxService.append(inputCheckboxService, inputSpanService);
-  const btnEditService = createHtmlElement("button", "btn-edit-service", `btn-${className}`, "Edit");
+  const btnEditService = createHtmlElement(
+    "button",
+    "btn-edit-service",
+    `btn-${className}`,
+    "Edit"
+  );
   btnServiceBlock.append(btnEditService);
 
   return serviceItemBlock;

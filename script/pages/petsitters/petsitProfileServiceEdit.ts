@@ -202,12 +202,10 @@ function createBlockDogView() {
   areaBtnDogSize.append(btnSize1, btnSize2, btnSize3, btnSize4, btnSize5);
   areaBtnDogSize.addEventListener("click", (event) => {
     const target = event.target;
-    console.log("click");
     if (
       target instanceof HTMLElement &&
       target.classList.contains("btn-dog-size")
     ) {
-      console.log("click2");
       if (target.classList.contains("active")) {
         target.classList.remove("active");
       } else {
@@ -239,9 +237,7 @@ function createBlockDogView() {
   areaBtnDogAge.append(btnAge1, btnAge2, btnAge3, btnAge4);
   areaBtnDogAge.addEventListener("click", (event) => {
     const target = event.target;
-    console.log("click");
     if (target instanceof HTMLElement && target.classList.contains("age-btn")) {
-      console.log("click2");
       if (target.classList.contains("active")) {
         target.classList.remove("active");
       } else {
@@ -360,11 +356,9 @@ export const updateValues = () => {
     dogItem.addEventListener("click", () => {
       if (dogItem.checked) {
         accomodatePetsArr.push("dog");
-        console.log(accomodatePetsArr);
       } else {
         const index = accomodatePetsArr.indexOf("dog");
         accomodatePetsArr.splice(index, 1);
-        console.log(accomodatePetsArr);
       }
     });
   }
@@ -372,11 +366,9 @@ export const updateValues = () => {
     catItem.addEventListener("click", () => {
       if (catItem.checked) {
         accomodatePetsArr.push("cat");
-        console.log(accomodatePetsArr);
       } else {
         const index = accomodatePetsArr.indexOf("cat");
         accomodatePetsArr.splice(index, 1);
-        console.log(accomodatePetsArr);
       }
     });
   }
@@ -439,7 +431,7 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          return data;
         });
     });
   } else if (currService == "walk") {
@@ -597,7 +589,6 @@ export const updateValues = () => {
           } else {
             genderOfDog.push("male");
           }
-          console.log(sizeOfDog, ageOfDog, genderOfDog);
         });
         female?.addEventListener("click", () => {
           if (!female.checked) {
@@ -630,7 +621,7 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          return data;
         });
     });
   } else if (currService == "drop-in") {
@@ -700,7 +691,6 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
           const div = document.querySelector(".btn-save-price-wrapper");
           const p = createHtmlElement("p", "comment-saved-settings");
           p.textContent = "Settings saved";
@@ -709,6 +699,7 @@ export const updateValues = () => {
           setTimeout(() => {
             div?.removeChild(p);
           }, 2000);
+          return data;
         });
     });
   }
