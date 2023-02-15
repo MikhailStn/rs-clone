@@ -51,10 +51,13 @@ hr{
     border-radius: 5px;
     padding: 3px;
     height: 40px;
+    background-color: #fff;
 }
 
 .inputsBox .rectangle{
     margin-left: 15px;
+    height: 40px;
+    font-size: 18px;
 }
 
 .rectangle img{
@@ -82,13 +85,16 @@ hr{
 }
 
 .nameInputBox{
-    font-size: 13px;
+    font-size: 12px;
     color: #84818a;
     position: relative;
-    top:-15px;
-    background-color:#eaccf7;
-    padding: 0 2px;
+    top: -16px;
+    background-color: #eaccf7;
+    padding: 0 6px;
     display: inline-block;
+    border-radius: 15px;
+    box-shadow: 0px 1px 1.5px grey;
+    margin-bottom: 5px;
 }
 
 .inputsBox img{
@@ -114,20 +120,38 @@ hr{
     background-color:#fff;
     overflow: auto;
     color: black;
-    padding: 0 10px;
+    padding: 15px;
     box-shadow:0 0 10px #84818a;
+    flex-direction: column;
+    row-gap: 10px;
 }
 
 .menuPets p{
     font-weight: 900;
+    border-bottom: 1px solid #c4c4c4;
 }
 
 .timeBox:hover .menuTime, .petBox:hover .menuPets{
-    display: block;
+    display: flex;
+}
+
+.menuPets::-webkit-scrollbar {
+    width: 2px;
+}
+
+.menuPets::-webkit-scrollbar-thumb {
+    background-color: #c07fdb;
+}
+
+.menuPets li {
+    padding: 5px;
+    transition: 0.2s;
+    border-radius: 10px;
 }
 
 .menuTime li:hover, .menuPets li:hover{
     background-color:#eaccf7;
+    box-shadow: 0 0 10px #84818a;
 }
 
 .itTime{

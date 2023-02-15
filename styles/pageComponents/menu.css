@@ -1,10 +1,4 @@
-.section-menu-field{
-  display: none;
 
-}
-.section-menu-field.active{
-  display: block;
-}
 .section-menu {
   position: fixed;
   background-color: #ffffff;
@@ -14,6 +8,8 @@
   border-right: 2px solid #ebeaed;
   z-index: 4;
   overflow: hidden;
+  left: -260px;
+  transition: 0.3s;
 }
 
 .btn-create-acc-menu-wrapper {
@@ -71,20 +67,22 @@
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
-  position: absolute;
+  position: fixed;
   width: 100%;
   z-index: 3;
   top: 0;
   overflow: hidden;
+  display: none;
 }
 
 .role-block-menu-identity {
   display: flex;
-  height: 60px;
+  height: 65px;
   background-color: #ca96e1;
   align-items: center;
   padding-left: 20px;
   gap: 10px;
+  box-shadow: 0 5px 5px grey;
 }
 
 .img-menu-role-wrapper {
@@ -108,12 +106,11 @@
 }
 
 .text-name-menu-role {
-  font-size: 0.8rem;
   font-weight: 600;
 }
 
 .text-email-menu-role {
-  font-size: 0.67rem;
+  font-size: 0.9rem;
 }
 
 .recommend-logo-menu {

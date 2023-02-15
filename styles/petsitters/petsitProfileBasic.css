@@ -205,3 +205,11 @@
 .btn-save-service-edit:hover {
   background-color: #a278b4;
 }
+
+.comment-saved-settings {
+  color: #328f0da4;
+  font-size: 24px;
+  position: absolute;
+  margin-top: -40px;
+  transition: 0.2s;
+}
