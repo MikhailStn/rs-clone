@@ -428,7 +428,8 @@ function createTextInputInfoBlock(
 export default async function petsitterProfileBasic() {
   document.body.innerHTML = "";
   await headerPetsitter(document.body);
-  document.querySelector(".section-menu-field")?.classList.add("active");
+  const menu: HTMLElement|null = document.querySelector('.section-menu-field');
+  if(menu) menu.style.left = "0px";
   renderPetsitProfileBasic();
   document.body.append(sectionPetsitProfileBasic);
   footerFun(document.body);

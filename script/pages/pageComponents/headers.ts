@@ -9,6 +9,8 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
     //document.querySelector('.section-menu-field')?.classList.add('active');
+    const overlay = createHtmlElement('div', 'overlay');
+    //docu
     document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
     document.querySelector(".overlay")?.setAttribute("style", "display: block")
   })

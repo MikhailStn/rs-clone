@@ -19,7 +19,7 @@ function renderCommonMenu() {
     const sectionMenu = createHtmlElement('div', 'section-menu');
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
-    sectionMenuField.append(overlay);
+    //sectionMenuField.append(overlay);
     overlay.addEventListener('click', () => {
         //sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
@@ -71,7 +71,7 @@ async function renderRoleMenu() {
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
 
-    if(window.location.pathname === '/' || window.location.pathname === '/search'){
+    if(window.location.pathname === '/' && sectionMenuField.style.left === '0' || window.location.pathname === '/search' && sectionMenuField.style.left === '0'){
 
         overlay.style.display = 'block';
     }else{
@@ -127,6 +127,8 @@ async function renderRoleMenu() {
     block6.addEventListener('click', ()=>{
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
+        const menu: HTMLElement|null = document.querySelector('.section-menu-field');
+        if(menu) menu.style.left = "-260px";
         document.body.style.overflow = '';
     })
     const block7 = createBlockMenu('img/paw.svg', 'My pets');
@@ -174,6 +176,7 @@ async function renderRoleMenu() {
     btnLogOut.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.clear();
+        document.querySelector(".section-menu-field")?.removeAttribute("style");
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
     })

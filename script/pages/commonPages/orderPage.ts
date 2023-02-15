@@ -89,7 +89,8 @@ async function createItemOrderBlock(object: OrderPreview) {
 export async function createOrdersPage(){
     document.body.innerHTML = "";
     await headerPetsitter(document.body);
-    document.querySelector('.section-menu-field')?.classList.add('active');
+    const menu: HTMLElement|null = document.querySelector('.section-menu-field');
+    if(menu) menu.style.left = "0px";
     await renderOrdersPage();
     document.body.append(sectionOrder);
     footerFun(document.body);
