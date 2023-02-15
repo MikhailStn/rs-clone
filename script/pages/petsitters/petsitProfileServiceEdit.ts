@@ -212,7 +212,7 @@ function createBlockKindsOfPet(text: string, service: string) {
   checkPetsBox.append(blockPet1, blockPet2);
 }
 
-function createDogSizeBtn(dogSizeOrAge: string, weightOrYearsDog: string, className?: string) {
+export function createDogSizeBtn(dogSizeOrAge: string, weightOrYearsDog: string, className?: string) {
   const btnSize = createHtmlElement("div", `btn-dog-size ${className}`, dogSizeOrAge);
   btnSize.innerHTML = `<div class="div-btn-size ${className}">${dogSizeOrAge}<span class = "span-btn-size">${weightOrYearsDog}</span></div>`;
   return btnSize;

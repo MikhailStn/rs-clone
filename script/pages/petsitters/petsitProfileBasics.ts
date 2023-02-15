@@ -271,7 +271,8 @@ async function createBasicInfoBlock() {
 
   const checkboxQualify3 = createHtmlElement("div", "checkbox-div");
   checkboxQualify3.innerHTML =
-    '<input type="checkbox" id="veterinary-technician" name="veterinary-technician"<label for="veterinary-technician">Veterinary technician</label>';
+    '<input type="checkbox" id="veterinary-technician" name="veterinary-technician">
+    <label for="veterinary-technician">Veterinary technician</label>';
   qualificationBlock.append(checkboxQualify3);
 
   const checkboxQualify4 = createHtmlElement("div", "checkbox-div");
@@ -352,66 +353,6 @@ async function createBasicInfoBlock() {
         qualifications: qualificationsArr,
       }),
     };
-
-    btnAddPhoto.onchange = handleUpload;
-    const btnAddPhotoLabel = createHtmlElement("label", "label-add-photo") as HTMLLabelElement;
-    btnAddPhotoLabel.setAttribute("for", "photo");
-    btnAddPhotoLabel.textContent = "Add photo";
-    photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
-
-    const textPhotoProfile = createHtmlElement('div', 'text-photo-profile', '','A profile photo allows other members of the Petsi community to get to know you. It is especially important for your relationship with customers, as it will make it easier for you to get to know each other when you first meet.');
-    photoTextProfileBlock.append( photoContainer, textPhotoProfile);
-
-    const aboutMeBlock = createHtmlElement('div', 'profile-about-me-block');
-    basicInfoBlock.append(aboutMeBlock);
-    const aboutMeTitle = createHtmlElement('h2', 'profile-about-me-title', '', 'About me');
-    aboutMeBlock.append(aboutMeTitle);
-    const mottoInput = createHtmlElement('textarea', 'input-motto-profile input-text-profile', 'input-motto-profile') as HTMLTextAreaElement;
-    mottoInput.placeholder = 'Motto';
-    mottoInput.maxLength = 100;
-    mottoInput.wrap = 'soft';
-    aboutMeBlock.append(mottoInput);
-
-    const countMotto = createHtmlElement('div','count-motto-profile','',`0/100`);
-    aboutMeBlock.append(countMotto);
-    mottoInput.addEventListener('input', ()=>{
-        countMotto.innerHTML='';
-        countMotto.innerHTML = `${mottoInput.value.length}/100`;
-    })
-    
-    const mottoText = createHtmlElement('div', 'motto-profile-text','','A motto is a brief description of what is most important to you.  We\'ll display it in the search results so that in addition to your picture it can draw the client\'s attention to your services');
-    aboutMeBlock.append(mottoText);
-
-    const blockText1 = createTextInputInfoBlock('Make yourself known to carers', 'In min. 300 characters introduce yourself', 'Write a few sentences about yourself that will make caregivers choose you. Below are our hints:', infoProfileText1, 'petsit-about-text');
-    aboutMeBlock.append(blockText1);
-
-    const blockText2 = createTextInputInfoBlock('What sets me apart?', 'Enter your special skills or experience here. If you can, boast about your training or courses, present your experience with difficult dogs, e.g. shelter dogs, tell about additional animal-related activities.', 'Make yourself even better known:', infoProfileText2, 'petsit-advantages');
-    aboutMeBlock.append(blockText2);
-
-    const qualificationBlock = createHtmlElement('fieldset', 'additional-qualification-block text-profile-medium');
-    qualificationBlock.innerHTML = '<legend>Choose your additional qualification:</legend>';
-    aboutMeBlock.append(qualificationBlock);
-
-    const checkboxQualify1 = createHtmlElement('div', 'checkbox-div');
-    checkboxQualify1.innerHTML='<input type="checkbox" id="behaviorist" name="behaviorist"><label for="behaviorist">Behaviorist</label>';
-    qualificationBlock.append(checkboxQualify1);
- 
-    const checkboxQualify2 = createHtmlElement('div', 'checkbox-div');
-    checkboxQualify2.innerHTML='<input type="checkbox" id="petsit-course" name="petsit-course"><label for="petsit-course">Completed petsitter course</label>';
-    qualificationBlock.append(checkboxQualify2);
-
-    const checkboxQualify3 = createHtmlElement('div', 'checkbox-div');
-    checkboxQualify3.innerHTML='<input type="checkbox" id="veterinary-technician" name="veterinary-technician"><label for="veterinary-technician">Veterinary technician</label>';
-    qualificationBlock.append(checkboxQualify3);
-
-    const checkboxQualify4 = createHtmlElement('div','checkbox-div');
-    checkboxQualify4.innerHTML='<input type="checkbox" id="first-aid-course" name="first-aid-course"><label for="first-aid-course">Completed first aid course</label>';
-    qualificationBlock.append(checkboxQualify4);
-
-    const btnSave = createHtmlElement('button', 'btn-profile-save', 'btn-save-basic-info', 'Save');
-    aboutMeBlock.append(btnSave);
-    return basicInfoBlock;
-
     fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
       .then((response) => {
         return response.json();
@@ -427,7 +368,6 @@ async function createBasicInfoBlock() {
   });
   aboutMeBlock.append(btnSave);
   return basicInfoBlock;
-
 }
 
 function createTextInputInfoBlock(
