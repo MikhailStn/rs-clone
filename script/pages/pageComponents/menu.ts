@@ -18,14 +18,6 @@ function renderCommonMenu() {
     sectionMenuField.innerHTML = '';
     const sectionMenu = createHtmlElement('div', 'section-menu');
     sectionMenuField.append(sectionMenu);
-    const overlay = createHtmlElement('div', 'overlay');
-    //sectionMenuField.append(overlay);
-    overlay.addEventListener('click', () => {
-        //sectionMenuField.classList.remove('active');
-        document.body.style.overflow = '';
-        document.querySelector(".section-menu")?.removeAttribute("style");
-        document.querySelector(".overlay")?.removeAttribute("style")
-    })
     const btnCreatAccMenuWrapper = createHtmlElement('div', 'btn-create-acc-menu-wrapper');
     const btnCreatAccMenu = createHtmlElement('button', 'btn-create-acc-menu', '', 'Create account');
     sectionMenu.append(btnCreatAccMenuWrapper);
@@ -68,21 +60,6 @@ async function renderRoleMenu() {
 
     const sectionMenu = createHtmlElement('div', 'section-menu');
     sectionMenuField.append(sectionMenu);
-    const overlay = createHtmlElement('div', 'overlay');
-    sectionMenuField.append(overlay);
-
-    if(window.location.pathname === '/' && sectionMenuField.style.left === '0' || window.location.pathname === '/search' && sectionMenuField.style.left === '0'){
-
-        overlay.style.display = 'block';
-    }else{
-        overlay.style.display = 'none';
-    }
-    overlay.addEventListener('click', () => {
-        sectionMenuField.classList.remove('active');
-        document.body.style.overflow = '';
-        document.querySelector(".section-menu")?.removeAttribute("style");
-        document.querySelector(".overlay")?.removeAttribute("style")
-    })
     const roleBlockIdentity = createHtmlElement('div', 'role-block-menu-identity');
     sectionMenu.append(roleBlockIdentity);
     const imgRoleWrapper = createHtmlElement('div', 'img-menu-role-wrapper');
@@ -127,8 +104,7 @@ async function renderRoleMenu() {
     block6.addEventListener('click', ()=>{
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
-        const menu: HTMLElement|null = document.querySelector('.section-menu-field');
-        if(menu) menu.style.left = "-260px";
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
     })
     const block7 = createBlockMenu('img/paw.svg', 'My pets');
@@ -176,7 +152,7 @@ async function renderRoleMenu() {
     btnLogOut.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.clear();
-        document.querySelector(".section-menu-field")?.removeAttribute("style");
+        document.querySelector(".section-menu-field")?.classList.remove("active");
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
     })

@@ -6,14 +6,18 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
-  document.body.append(menu);
+  const overlay = createHtmlElement('div', 'overlay');
+  document.body.append(menu, overlay);
   headerMenu.addEventListener('click', () => {
-    //document.querySelector('.section-menu-field')?.classList.add('active');
-    const overlay = createHtmlElement('div', 'overlay');
-    //docu
-    document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
-    document.querySelector(".overlay")?.setAttribute("style", "display: block")
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.section-menu-field')?.classList.add('active');
+    overlay.classList.add('active');
   })
+  overlay.addEventListener('click', () => {
+    document.querySelector('.section-menu-field')?.classList.remove('active');
+    document.body.style.overflow = '';
+    overlay.classList.remove('active');
+})
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -59,11 +63,18 @@ export async function header(tagParent: HTMLElement): Promise<void> {
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
-  document.body.append(menu);
+  const overlay = createHtmlElement('div', 'overlay');
+  document.body.append(menu, overlay);
   headerMenu.addEventListener('click', () => {
-    document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
-    document.querySelector(".overlay")?.setAttribute("style", "display: block")
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.section-menu-field')?.classList.add('active');
+    overlay.classList.add('active');
   })
+  overlay.addEventListener('click', () => {
+    document.querySelector('.section-menu-field')?.classList.remove('active');
+    document.body.style.overflow = '';
+    overlay.classList.remove('active');
+})
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -139,12 +150,17 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
-  document.body.append(menu);
+  const overlay = createHtmlElement('div', 'overlay');
+  document.body.append(menu, overlay);
   headerMenu.addEventListener('click', () => {
-    //document.body.style.overflow = 'hidden';
-    // document.querySelector('.section-menu-field')?.classList.add('active');
-    document.querySelector(".section-menu")?.setAttribute("style", "left: 0");
-    document.querySelector(".overlay")?.setAttribute("style", "display: block")
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.section-menu-field')?.classList.add('active');
+    overlay.classList.add('active');
+  })
+  overlay.addEventListener('click', () => {
+    document.querySelector('.section-menu-field')?.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";

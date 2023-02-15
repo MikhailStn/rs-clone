@@ -2,7 +2,13 @@
 .section-menu-field{
   position: relative;
   left: -260px;
+  transition: 0.3s;
 }
+
+.section-menu-field.active{
+  left: 0px;;
+}
+
 .section-menu {
   position: fixed;
   background-color: #ffffff;
@@ -73,11 +79,14 @@
   height: 100%;
   position: fixed;
   width: 100%;
-  margin-left: 260px;
   z-index: 3;
   top: 0;
   overflow: hidden;
   display: none;
+}
+
+.overlay.active{
+  display: block;
 }
 
 .role-block-menu-identity {

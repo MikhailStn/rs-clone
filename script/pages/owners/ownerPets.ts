@@ -16,8 +16,7 @@ async function renderOwnerPets(){
 export default async function ownerPets() {
     document.body.innerHTML = "";
     await headerOwner(document.body);
-    const menu: HTMLElement|null = document.querySelector('.section-menu-field');
-    if(menu) menu.style.left = "0px";
+    document.querySelector('.section-menu-field')?.classList.add('active');
     renderOwnerPets();
     document.body.append(sectionOwnerPets);
     footerFun(document.body);
