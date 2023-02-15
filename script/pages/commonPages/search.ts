@@ -22,10 +22,7 @@ export default function searchShowPage(): void {
   const blockFilter = createHtmlElement("div", "blockFilter", "", "");
   const blockPetsitters = createHtmlElement("div", "blockPetsitters");
   const blockMap = createHtmlElement("div", "blockMap", "map");
-  //blockMap.innerHTML =
-/*  `<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A27aab5a93ae3bff04008f763dafae3da8d7aa314c8eb2831d2cf5f92a02f3839&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>`;
-    '<iframe class="blockMap" id="q" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2054615.3072366586!2d28.564712881387745!3d53.269885769389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1675913603488!5m2!1sru!2sby" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-*/
+  blockMap.innerHTML = `<iframe id="ifr" src="https://www.google.com/maps/d/embed?mid=1J_67mzYKVayzRdUrsUQfRGItQFGZoN0&ehbc=2E312F"></iframe>`;
   const title = createHtmlElement("h3", "", "", "What service do you need?");
   const th = createHtmlElement("hr");
   const type = createHtmlElement("p", "", "", "The type of service");
