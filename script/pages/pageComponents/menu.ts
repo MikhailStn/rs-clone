@@ -21,10 +21,8 @@ function renderCommonMenu() {
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
     overlay.addEventListener('click', () => {
-        //sectionMenuField.classList.remove('active');
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
-        document.querySelector(".section-menu")?.removeAttribute("style");
-        document.querySelector(".overlay")?.removeAttribute("style")
     })
     const btnCreatAccMenuWrapper = createHtmlElement('div', 'btn-create-acc-menu-wrapper');
     const btnCreatAccMenu = createHtmlElement('button', 'btn-create-acc-menu', '', 'Create account');
@@ -70,9 +68,7 @@ async function renderRoleMenu() {
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
     sectionMenuField.append(overlay);
-
     if(window.location.pathname === '/' || window.location.pathname === '/search'){
-
         overlay.style.display = 'block';
     }else{
         overlay.style.display = 'none';
@@ -80,8 +76,6 @@ async function renderRoleMenu() {
     overlay.addEventListener('click', () => {
         sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
-        document.querySelector(".section-menu")?.removeAttribute("style");
-        document.querySelector(".overlay")?.removeAttribute("style")
     })
     const roleBlockIdentity = createHtmlElement('div', 'role-block-menu-identity');
     sectionMenu.append(roleBlockIdentity);

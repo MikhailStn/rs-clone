@@ -74,6 +74,7 @@ function renderLoginPage() {
         console.log(data);
         localStorage.setItem("curr-user-id", `${data.id}`);
         console.log(localStorage.getItem("curr-user-id"));
+        document.querySelector('.section-menu-field')?.classList.remove('active');
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
       });

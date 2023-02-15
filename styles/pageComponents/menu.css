@@ -1,3 +1,11 @@
+.section-menu-field{
+  display: none;
+
+}
+
+.section-menu-field.active{
+  display: block;
+}
 
 .section-menu {
   position: fixed;
@@ -8,7 +16,7 @@
   border-right: 2px solid #ebeaed;
   z-index: 4;
   overflow: hidden;
-  left: -260px;
+  /*left: -260px;*/
   transition: 0.3s;
 }
 
@@ -67,12 +75,15 @@
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 3;
   top: 0;
   overflow: hidden;
-  display: none;
+}
+
+.overlay.active{
+  display: block;
 }
 
 .role-block-menu-identity {

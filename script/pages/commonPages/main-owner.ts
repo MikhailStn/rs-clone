@@ -6,6 +6,7 @@ import { filterHow } from "../pageComponents/filter";
 
 export function mainOwner(): void {
   document.body.innerHTML = '';
+
   if(!localStorage.getItem('curr-user-id')) {
       header(document.body);
   } else {

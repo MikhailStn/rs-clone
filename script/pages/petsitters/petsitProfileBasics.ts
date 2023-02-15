@@ -428,9 +428,13 @@ function createTextInputInfoBlock(
 export default async function petsitterProfileBasic() {
   document.body.innerHTML = "";
   await headerPetsitter(document.body);
-  document.querySelector(".section-menu-field")?.classList.add("active");
+  const header = document.querySelector('.head') as HTMLElement;
+  header.style.marginLeft = '200px';
+  document.querySelector('.section-menu-field')?.classList.add('active');
   renderPetsitProfileBasic();
   document.body.append(sectionPetsitProfileBasic);
   footerFun(document.body);
+  const footer = document.querySelector('.foot') as HTMLElement;
+  footer.style.justifyContent = 'space-around';
   return document.body;
 }

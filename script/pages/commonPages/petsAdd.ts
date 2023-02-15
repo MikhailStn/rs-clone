@@ -84,7 +84,7 @@ async function renderPetsAddPage(){
     const mandatoryText4 = createHtmlElement('div','mandatory-text-pet','','* Required field');
     sectionKindOfPet.append(inputBreedOfAnimal, mandatoryText4);
 
-    const dogSizeTitle = createHtmlElement('div', 'dog-size-title dog-size-pet', '', 'Size of the dog');
+    const dogSizeTitle = createHtmlElement('div', 'dog-size-title dog-size-pet', '', 'Size of the pet');
     sectionKindOfPet.append(dogSizeTitle);
     const areaBtnDogSize = createHtmlElement('div', 'area-btn-dog-size');
     sectionKindOfPet.append(areaBtnDogSize);
@@ -105,7 +105,7 @@ async function renderPetsAddPage(){
             }
     })
 
-    const dogAgeTitle = createHtmlElement('div', 'dog-age-title pet-age-title', '', 'Age of the dog');
+    const dogAgeTitle = createHtmlElement('div', 'dog-age-title pet-age-title', '', 'Age of the pet');
     sectionKindOfPet.append(dogAgeTitle);
     const areaBtnDogAge = createHtmlElement('div', 'area-btn-dog-age');
     sectionKindOfPet.append(areaBtnDogAge);
