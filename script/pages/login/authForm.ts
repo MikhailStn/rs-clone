@@ -6,13 +6,14 @@ interface PetsitterData {
   birth: string;
   gender: string;
   services: {
+    servicesArr: string[];
     hotel: {
-      active: boolean;
+      active: string;
       animals: string[];
       price: string;
     };
     walking: {
-      active: boolean;
+      active: string;
       serviceArea: string;
       kindOfDogs: string[];
       ageOfDogs: string[];
@@ -20,13 +21,13 @@ interface PetsitterData {
       price: string;
     };
     homevisits: {
-      active: boolean;
+      active: string;
       serviceArea: string;
       animals: string[];
       price: string;
     };
     training: {
-      active: boolean;
+      active: string;
       price: string;
     };
   };
@@ -38,13 +39,14 @@ const fetchPetsitterData: PetsitterData = {
   birth: "",
   gender: "",
   services: {
+    servicesArr: [],
     hotel: {
-      active: false,
+      active: "false",
       animals: ["dog", "cat"],
       price: "30",
     },
     walking: {
-      active: false,
+      active: "false",
       serviceArea: "",
       kindOfDogs: ["micro", "small", "medium", "large", "giant"],
       ageOfDogs: ["puppy", "youngster", "adult", "senior"],
@@ -52,13 +54,13 @@ const fetchPetsitterData: PetsitterData = {
       price: "30",
     },
     homevisits: {
-      active: false,
+      active: "false",
       serviceArea: "",
       animals: ["dog", "cat"],
       price: "30",
     },
     training: {
-      active: false,
+      active: "false",
       price: "30",
     },
   },
@@ -69,7 +71,10 @@ const fetchPetsitterData: PetsitterData = {
 function renderPetsitterForm() {
   document.body.setAttribute("style", "padding: 0");
   const formContainer = createHtmlElement("div", "petsitter-form-container");
-  const progress = createHtmlElement("input", "form-progress") as HTMLInputElement;
+  const progress = createHtmlElement(
+    "input",
+    "form-progress"
+  ) as HTMLInputElement;
   progress.value = "0";
   progress.type = "range";
   const subtitle = createHtmlElement("p", "petsitter-form-subtitle");
@@ -78,29 +83,47 @@ function renderPetsitterForm() {
   formTitle.textContent = "Petsi";
   const icon = createHtmlElement("div", "petsitter-form-icon");
   icon.style.backgroundImage = `url('../img/icons/home.png')`;
-  const temporaryContainer = createHtmlElement("form", "petsitter-form-temporary");
+  const temporaryContainer = createHtmlElement(
+    "form",
+    "petsitter-form-temporary"
+  );
   const tempTitle = createHtmlElement("h4", "temp-title");
   tempTitle.textContent = "Tell us about yourself";
   const dateOfBirthTitle = createHtmlElement("h4", "date-of-birth-input-title");
   dateOfBirthTitle.textContent = "Enter you date of birth";
-  const dateOfBirthInput = createHtmlElement("input", "date-of-birth-input petsitter-form-input") as HTMLInputElement;
+  const dateOfBirthInput = createHtmlElement(
+    "input",
+    "date-of-birth-input petsitter-form-input"
+  ) as HTMLInputElement;
   dateOfBirthInput.type = "date";
   const genderContainer = createHtmlElement("div", "gender-container");
   const maleContainer = createHtmlElement("div", "male-gender-container");
-  const maleGenderRadio = createHtmlElement("input", "gender-input male-input") as HTMLInputElement;
+  const maleGenderRadio = createHtmlElement(
+    "input",
+    "gender-input male-input"
+  ) as HTMLInputElement;
   maleGenderRadio.type = "radio";
   maleGenderRadio.name = "gender";
   maleGenderRadio.id = "Male";
-  const maleLabel = createHtmlElement("label", "gender-input-label") as HTMLLabelElement;
+  const maleLabel = createHtmlElement(
+    "label",
+    "gender-input-label"
+  ) as HTMLLabelElement;
   maleLabel.setAttribute("for", "Male");
   maleLabel.textContent = "Male";
   maleContainer.append(maleGenderRadio, maleLabel);
   const femaleContainer = createHtmlElement("div", "female-gender-container");
-  const femaleGenderRadio = createHtmlElement("input", "gender-input female-input") as HTMLInputElement;
+  const femaleGenderRadio = createHtmlElement(
+    "input",
+    "gender-input female-input"
+  ) as HTMLInputElement;
   femaleGenderRadio.type = "radio";
   femaleGenderRadio.name = "gender";
   femaleGenderRadio.id = "Female";
-  const femaleLabel = createHtmlElement("label", "gender-input-label") as HTMLLabelElement;
+  const femaleLabel = createHtmlElement(
+    "label",
+    "gender-input-label"
+  ) as HTMLLabelElement;
   femaleLabel.setAttribute("for", "Female");
   femaleLabel.textContent = "Female";
   femaleContainer.append(femaleGenderRadio, femaleLabel);
@@ -108,22 +131,46 @@ function renderPetsitterForm() {
   const btnNext = createHtmlElement("div", "form-btn-next");
   btnNext.textContent = "Next";
   btnNext.addEventListener("click", renderSecondForm);
-  temporaryContainer.append(tempTitle, dateOfBirthTitle, dateOfBirthInput, genderContainer, btnNext);
-  const linkBackHome = createHtmlElement("a", "go-main-page-link") as HTMLAnchorElement;
+  temporaryContainer.append(
+    tempTitle,
+    dateOfBirthTitle,
+    dateOfBirthInput,
+    genderContainer,
+    btnNext
+  );
+  const linkBackHome = createHtmlElement(
+    "a",
+    "go-main-page-link"
+  ) as HTMLAnchorElement;
   linkBackHome.textContent = "Back to main page";
   linkBackHome.href = "/";
 
-  formContainer.append(progress, subtitle, formTitle, icon, temporaryContainer, linkBackHome);
+  formContainer.append(
+    progress,
+    subtitle,
+    formTitle,
+    icon,
+    temporaryContainer,
+    linkBackHome
+  );
 
   formSection.append(formContainer);
   return formSection;
 }
 
 function renderSecondForm() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
-  const dateOfBirthInput = document.querySelector(".date-of-birth-input") as HTMLInputElement;
-  const maleGenderRadio = document.querySelector(".male-input") as HTMLInputElement;
-  const femaleGenderRadio = document.querySelector(".female-input") as HTMLInputElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
+  const dateOfBirthInput = document.querySelector(
+    ".date-of-birth-input"
+  ) as HTMLInputElement;
+  const maleGenderRadio = document.querySelector(
+    ".male-input"
+  ) as HTMLInputElement;
+  const femaleGenderRadio = document.querySelector(
+    ".female-input"
+  ) as HTMLInputElement;
   const progress = document.querySelector(".form-progress") as HTMLInputElement;
   const icon = document.querySelector(".petsitter-form-icon") as HTMLDivElement;
   if (dateOfBirthInput.value && maleGenderRadio.checked) {
@@ -151,7 +198,9 @@ function renderSecondForm() {
 }
 
 function appearSecondView() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
   const tempTitle = createHtmlElement("h4", "temp-title");
   tempTitle.textContent = "Choose services you want to provide";
   const services = createHtmlElement("div", "sevices-wrapper");
@@ -159,7 +208,10 @@ function appearSecondView() {
   const icon = document.querySelector(".petsitter-form-icon") as HTMLDivElement;
 
   const checkBoxServiceHotel = createHtmlElement("div", "check-box-service");
-  const checkBoxInputHotel = createHtmlElement("input", "check-box-input-service") as HTMLInputElement;
+  const checkBoxInputHotel = createHtmlElement(
+    "input",
+    "check-box-input-service"
+  ) as HTMLInputElement;
   checkBoxInputHotel.type = "checkbox";
   checkBoxInputHotel.name = "service";
   checkBoxInputHotel.id = "hotel";
@@ -169,19 +221,33 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/hotelService.jpg')"
       );
-      fetchPetsitterData.services.hotel.active = true;
+      fetchPetsitterData.services.hotel.active = "true";
+      fetchPetsitterData.services.servicesArr.push("hotel");
+      console.log(fetchPetsitterData.services.servicesArr)
     } else {
-      checkBoxLabelHotel.setAttribute("style", "background-image: url('../img/images/hotelService.jpg')");
-      fetchPetsitterData.services.hotel.active = false;
+      checkBoxLabelHotel.setAttribute(
+        "style",
+        "background-image: url('../img/images/hotelService.jpg')"
+      );
+      fetchPetsitterData.services.hotel.active = "false";
+      const i = fetchPetsitterData.services.servicesArr.indexOf("hotel");
+      fetchPetsitterData.services.servicesArr.splice(i, 1);
+      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
-  const checkBoxLabelHotel = createHtmlElement("label", "check-box-label-service");
+  const checkBoxLabelHotel = createHtmlElement(
+    "label",
+    "check-box-label-service"
+  );
   checkBoxLabelHotel.setAttribute("for", "hotel");
   checkBoxLabelHotel.textContent = "Home hotel for pets";
   checkBoxLabelHotel.style.backgroundImage = `url('../img/images/hotelService.jpg')`;
 
   const checkBoxServiceWalk = createHtmlElement("div", "check-box-service");
-  const checkBoxInputWalk = createHtmlElement("input", "check-box-input-service") as HTMLInputElement;
+  const checkBoxInputWalk = createHtmlElement(
+    "input",
+    "check-box-input-service"
+  ) as HTMLInputElement;
   checkBoxInputWalk.type = "checkbox";
   checkBoxInputWalk.name = "service";
   checkBoxInputWalk.id = "walk";
@@ -191,19 +257,33 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/walkService.jpg')"
       );
-      fetchPetsitterData.services.walking.active = true;
+      fetchPetsitterData.services.walking.active = "true";
+      fetchPetsitterData.services.servicesArr.push("walking");
+      console.log(fetchPetsitterData.services.servicesArr)
     } else {
-      checkBoxLabelWalk.setAttribute("style", "background-image: url('../img/images/walkService.jpg')");
-      fetchPetsitterData.services.walking.active = false;
+      checkBoxLabelWalk.setAttribute(
+        "style",
+        "background-image: url('../img/images/walkService.jpg')"
+      );
+      fetchPetsitterData.services.walking.active = "false";
+      const i = fetchPetsitterData.services.servicesArr.indexOf("walking");
+      fetchPetsitterData.services.servicesArr.splice(i, 1);
+      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
-  const checkBoxLabelWalk = createHtmlElement("label", "check-box-label-service");
+  const checkBoxLabelWalk = createHtmlElement(
+    "label",
+    "check-box-label-service"
+  );
   checkBoxLabelWalk.setAttribute("for", "walk");
   checkBoxLabelWalk.textContent = "Walks";
   checkBoxLabelWalk.style.backgroundImage = `url('../img/images/walkService.jpg')`;
 
   const checkBoxServiceHome = createHtmlElement("div", "check-box-service");
-  const checkBoxInputHome = createHtmlElement("input", "check-box-input-service") as HTMLInputElement;
+  const checkBoxInputHome = createHtmlElement(
+    "input",
+    "check-box-input-service"
+  ) as HTMLInputElement;
   checkBoxInputHome.type = "checkbox";
   checkBoxInputHome.name = "service";
   checkBoxInputHome.id = "home";
@@ -213,19 +293,33 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/homeService.jpg"
       );
-      fetchPetsitterData.services.homevisits.active = true;
+      fetchPetsitterData.services.homevisits.active = "true";
+      fetchPetsitterData.services.servicesArr.push("homevisits");
+      console.log(fetchPetsitterData.services.servicesArr)
     } else {
-      checkBoxLabelHome.setAttribute("style", "background-image: url('../img/images/homeService.jpg')");
-      fetchPetsitterData.services.homevisits.active = false;
+      checkBoxLabelHome.setAttribute(
+        "style",
+        "background-image: url('../img/images/homeService.jpg')"
+      );
+      fetchPetsitterData.services.homevisits.active = "false";
+      const i = fetchPetsitterData.services.servicesArr.indexOf("homevisits");
+      fetchPetsitterData.services.servicesArr.splice(i, 1);
+      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
-  const checkBoxLabelHome = createHtmlElement("label", "check-box-label-service");
+  const checkBoxLabelHome = createHtmlElement(
+    "label",
+    "check-box-label-service"
+  );
   checkBoxLabelHome.setAttribute("for", "home");
   checkBoxLabelHome.textContent = "Home visits";
   checkBoxLabelHome.style.backgroundImage = `url('../img/images/homeService.jpg')`;
 
   const checkBoxServiceTraining = createHtmlElement("div", "check-box-service");
-  const checkBoxInputTraining = createHtmlElement("input", "check-box-input-service") as HTMLInputElement;
+  const checkBoxInputTraining = createHtmlElement(
+    "input",
+    "check-box-input-service"
+  ) as HTMLInputElement;
   checkBoxInputTraining.type = "checkbox";
   checkBoxInputTraining.name = "service";
   checkBoxInputTraining.id = "training";
@@ -235,13 +329,19 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/dreesingService.jpg')"
       );
-      fetchPetsitterData.services.training.active = true;
+      fetchPetsitterData.services.training.active = "true";
     } else {
-      checkBoxLabelTraining.setAttribute("style", "background-image: url('../img/images/dreesingService.jpg')");
-      fetchPetsitterData.services.training.active = false;
+      checkBoxLabelTraining.setAttribute(
+        "style",
+        "background-image: url('../img/images/dreesingService.jpg')"
+      );
+      fetchPetsitterData.services.training.active = "false";
     }
   });
-  const checkBoxLabelTraining = createHtmlElement("label", "check-box-label-service");
+  const checkBoxLabelTraining = createHtmlElement(
+    "label",
+    "check-box-label-service"
+  );
   checkBoxLabelTraining.setAttribute("for", "training");
   checkBoxLabelTraining.textContent = "Training";
   checkBoxLabelTraining.style.backgroundImage = `url('../img/images/dreesingService.jpg')`;
@@ -251,7 +351,12 @@ function appearSecondView() {
   checkBoxServiceHome.append(checkBoxInputHome, checkBoxLabelHome);
   checkBoxServiceTraining.append(checkBoxInputTraining, checkBoxLabelTraining);
 
-  services.append(checkBoxServiceHotel, checkBoxServiceWalk, checkBoxServiceHome, checkBoxServiceTraining);
+  services.append(
+    checkBoxServiceHotel,
+    checkBoxServiceWalk,
+    checkBoxServiceHome,
+    checkBoxServiceTraining
+  );
 
   const btnGoNext = createHtmlElement("div", "form-btn-next");
   btnGoNext.textContent = "Next";
@@ -279,7 +384,9 @@ function appearSecondView() {
 }
 
 function appearThirdView() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
   const progress = document.querySelector(".form-progress") as HTMLInputElement;
   const icon = document.querySelector(".petsitter-form-icon") as HTMLDivElement;
   temporaryContainer.innerHTML = "";
@@ -288,17 +395,24 @@ function appearThirdView() {
   tempTitle.textContent = "What is you location?";
 
   const tempSubtitle = createHtmlElement("p", "temp-title temp-sub");
-  tempSubtitle.textContent = "This data is needed to create an account, it will not be visible on the portal";
+  tempSubtitle.textContent =
+    "This data is needed to create an account, it will not be visible on the portal";
 
   const inputsContainer = createHtmlElement("form", "petsitter-form-temporary");
   inputsContainer.setAttribute("style", "width: 100%");
   const addressTitle = createHtmlElement("h4", "address-subtitle");
   addressTitle.textContent = "Enter your address";
-  const addressInput = createHtmlElement("input", "address-input") as HTMLInputElement;
+  const addressInput = createHtmlElement(
+    "input",
+    "address-input"
+  ) as HTMLInputElement;
   addressInput.placeholder = "Street, number of house";
   const cityTitle = createHtmlElement("h4", "city-subtitle");
   cityTitle.textContent = "Enter your city";
-  const cityInput = createHtmlElement("input", "city-input") as HTMLInputElement;
+  const cityInput = createHtmlElement(
+    "input",
+    "city-input"
+  ) as HTMLInputElement;
   cityInput.placeholder = "City";
   function getCity() {
     const fetchData = {
@@ -340,11 +454,18 @@ function appearThirdView() {
     }
   });
   inputsContainer.append(addressTitle, addressInput, cityTitle, cityInput);
-  temporaryContainer.append(tempTitle, tempSubtitle, inputsContainer, btnGoNext);
+  temporaryContainer.append(
+    tempTitle,
+    tempSubtitle,
+    inputsContainer,
+    btnGoNext
+  );
 }
 
 function appearForthView() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
   const progress = document.querySelector(".form-progress") as HTMLInputElement;
   const icon = document.querySelector(".petsitter-form-icon") as HTMLDivElement;
   temporaryContainer.innerHTML = "";
@@ -353,16 +474,23 @@ function appearForthView() {
   tempTitle.textContent = "Job Opportunity Statement";
 
   const statementWrapper1 = createHtmlElement("div", "statement-wrapper");
-  const inputStatement1 = createHtmlElement("input", "input-statement") as HTMLInputElement;
+  const inputStatement1 = createHtmlElement(
+    "input",
+    "input-statement"
+  ) as HTMLInputElement;
   inputStatement1.id = "statement-one";
   inputStatement1.type = "checkbox";
   const labelForStatement1 = createHtmlElement("label", "label-statement");
   labelForStatement1.setAttribute("for", "statement-one");
-  labelForStatement1.textContent = "I have never been punished for the crime of intentionally mistreating animals.";
+  labelForStatement1.textContent =
+    "I have never been punished for the crime of intentionally mistreating animals.";
   statementWrapper1.append(inputStatement1, labelForStatement1);
 
   const statementWrapper2 = createHtmlElement("div", "statement-wrapper");
-  const inputStatement2 = createHtmlElement("input", "input-statement") as HTMLInputElement;
+  const inputStatement2 = createHtmlElement(
+    "input",
+    "input-statement"
+  ) as HTMLInputElement;
   inputStatement2.id = "statement-two";
   inputStatement2.type = "checkbox";
   const labelForStatement2 = createHtmlElement("label", "label-statement");
@@ -387,11 +515,18 @@ function appearForthView() {
     }
   });
 
-  temporaryContainer.append(tempTitle, statementWrapper1, statementWrapper2, btnNext);
+  temporaryContainer.append(
+    tempTitle,
+    statementWrapper1,
+    statementWrapper2,
+    btnNext
+  );
 }
 
 function appearFifthView() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
   const progress = document.querySelector(".form-progress") as HTMLInputElement;
   const icon = document.querySelector(".petsitter-form-icon") as HTMLDivElement;
   icon.style.backgroundImage = `url('../img/icons/cat.png')`;
@@ -399,8 +534,12 @@ function appearFifthView() {
   const tempTitle = createHtmlElement("h4", "temp-title");
   tempTitle.textContent = "Why do you wish to become a petsitter?";
   const tempSubtitle = createHtmlElement("p", "temp-subtitle");
-  tempSubtitle.textContent = "This information will not appear on your profile.";
-  const inputText = createHtmlElement("textarea", "petsitter-description") as HTMLTextAreaElement;
+  tempSubtitle.textContent =
+    "This information will not appear on your profile.";
+  const inputText = createHtmlElement(
+    "textarea",
+    "petsitter-description"
+  ) as HTMLTextAreaElement;
   inputText.maxLength = 200;
   inputText.minLength = 20;
   const btnGoNext = createHtmlElement("div", "form-btn-next");
@@ -423,7 +562,9 @@ function appearFifthView() {
 }
 
 function appearSixthView() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
   const progress = document.querySelector(".form-progress") as HTMLInputElement;
   const icon = document.querySelector(".petsitter-form-icon") as HTMLDivElement;
   icon.style.backgroundImage = `url('../img/icons/cat.png')`;
@@ -434,7 +575,10 @@ function appearSixthView() {
   tempTitle.textContent = "How did you know about Petsi?";
 
   const div_1 = createHtmlElement("div", "radio-wrapper");
-  const radio_1 = createHtmlElement("input", "how-you-know-radio") as HTMLInputElement;
+  const radio_1 = createHtmlElement(
+    "input",
+    "how-you-know-radio"
+  ) as HTMLInputElement;
   radio_1.type = "radio";
   radio_1.name = "how-you-know";
   radio_1.id = "radio-1";
@@ -444,7 +588,10 @@ function appearSixthView() {
   div_1.append(radio_1, label_1);
 
   const div_2 = createHtmlElement("div", "radio-wrapper");
-  const radio_2 = createHtmlElement("input", "how-you-know-radio") as HTMLInputElement;
+  const radio_2 = createHtmlElement(
+    "input",
+    "how-you-know-radio"
+  ) as HTMLInputElement;
   radio_2.type = "radio";
   radio_2.name = "how-you-know";
   radio_2.id = "radio-2";
@@ -454,7 +601,10 @@ function appearSixthView() {
   div_2.append(radio_2, label_2);
 
   const div_3 = createHtmlElement("div", "radio-wrapper");
-  const radio_3 = createHtmlElement("input", "how-you-know-radio") as HTMLInputElement;
+  const radio_3 = createHtmlElement(
+    "input",
+    "how-you-know-radio"
+  ) as HTMLInputElement;
   radio_3.type = "radio";
   radio_3.name = "how-you-know";
   radio_3.id = "radio-3";
@@ -464,7 +614,10 @@ function appearSixthView() {
   div_3.append(radio_3, label_3);
 
   const div_4 = createHtmlElement("div", "radio-wrapper");
-  const radio_4 = createHtmlElement("input", "how-you-know-radio") as HTMLInputElement;
+  const radio_4 = createHtmlElement(
+    "input",
+    "how-you-know-radio"
+  ) as HTMLInputElement;
   radio_4.type = "radio";
   radio_4.name = "how-you-know";
   radio_4.id = "radio-4";
@@ -474,7 +627,10 @@ function appearSixthView() {
   div_4.append(radio_4, label_4);
 
   const div_5 = createHtmlElement("div", "radio-wrapper");
-  const radio_5 = createHtmlElement("input", "how-you-know-radio") as HTMLInputElement;
+  const radio_5 = createHtmlElement(
+    "input",
+    "how-you-know-radio"
+  ) as HTMLInputElement;
   radio_5.type = "radio";
   radio_5.name = "how-you-know";
   radio_5.id = "radio-5";
@@ -484,7 +640,10 @@ function appearSixthView() {
   div_5.append(radio_5, label_5);
 
   const div_6 = createHtmlElement("div", "radio-wrapper");
-  const radio_6 = createHtmlElement("input", "how-you-know-radio") as HTMLInputElement;
+  const radio_6 = createHtmlElement(
+    "input",
+    "how-you-know-radio"
+  ) as HTMLInputElement;
   radio_6.type = "radio";
   radio_6.name = "how-you-know";
   radio_6.id = "radio-6";
@@ -516,22 +675,40 @@ function appearSixthView() {
       appearSeventhView();
     }
   });
-  temporaryContainer.append(tempTitle, div_1, div_2, div_3, div_4, div_5, div_6, btnGoNext);
+  temporaryContainer.append(
+    tempTitle,
+    div_1,
+    div_2,
+    div_3,
+    div_4,
+    div_5,
+    div_6,
+    btnGoNext
+  );
 }
 
 function appearSeventhView() {
-  const temporaryContainer = document.querySelector(".petsitter-form-temporary") as HTMLDivElement;
+  const temporaryContainer = document.querySelector(
+    ".petsitter-form-temporary"
+  ) as HTMLDivElement;
   temporaryContainer.innerHTML = "";
 
   const tempTitle = createHtmlElement("h4", "temp-title");
   tempTitle.textContent = "Adding a photo";
   tempTitle.setAttribute("style", "margin-bottom: 0");
   const tempSubtitle = createHtmlElement("p", "temp-subtitle");
-  tempSubtitle.textContent = "Add a profile photo to make it easier for owners to recognize you.";
+  tempSubtitle.textContent =
+    "Add a profile photo to make it easier for owners to recognize you.";
   tempSubtitle.setAttribute("style", "text-align: center");
   const photoContainer = createHtmlElement("div", "photo-container");
-  photoContainer.setAttribute("style", "background-image: url('../img/icons/photo.png')");
-  const btnAddPhoto = createHtmlElement("input", "button-add-photo") as HTMLInputElement;
+  photoContainer.setAttribute(
+    "style",
+    "background-image: url('../img/icons/photo.png')"
+  );
+  const btnAddPhoto = createHtmlElement(
+    "input",
+    "button-add-photo"
+  ) as HTMLInputElement;
   btnAddPhoto.type = "file";
   btnAddPhoto.accept = ".png,.jpg,.jpeg";
   btnAddPhoto.id = "photo";
@@ -549,10 +726,24 @@ function appearSeventhView() {
         _id: localStorage.getItem("curr-user-id"),
         gender: fetchPetsitterData.gender,
         birth: fetchPetsitterData.birth,
-        services: fetchPetsitterData.services,
         address: fetchPetsitterData.address,
         avatarPath: fetchPetsitterData.avatarPath,
         level: "Professional",
+        active_hotel: fetchPetsitterData.services.hotel.active,
+        active_walking: fetchPetsitterData.services.walking.active,
+        active_homevisits: fetchPetsitterData.services.homevisits.active,
+        animals_hotel: fetchPetsitterData.services.hotel.animals,
+        animals_homevisits: fetchPetsitterData.services.homevisits.animals,
+        price_hotel: fetchPetsitterData.services.hotel.price,
+        price_walking: fetchPetsitterData.services.walking.price,
+        price_homevisits: fetchPetsitterData.services.homevisits.price,
+        serviceArea_walking: fetchPetsitterData.services.walking.serviceArea,
+        serviceArea_homevisits:
+          fetchPetsitterData.services.homevisits.serviceArea,
+        kindOfDogs: fetchPetsitterData.services.walking.kindOfDogs,
+        ageOfDogs: fetchPetsitterData.services.walking.ageOfDogs,
+        genderOfDogs: fetchPetsitterData.services.walking.genderOfDogs,
+        servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
     fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
@@ -589,7 +780,10 @@ function appearSeventhView() {
     }
   };
   btnAddPhoto.onchange = handleUpload;
-  const btnAddPhotoLabel = createHtmlElement("label", "label-add-photo") as HTMLLabelElement;
+  const btnAddPhotoLabel = createHtmlElement(
+    "label",
+    "label-add-photo"
+  ) as HTMLLabelElement;
   btnAddPhotoLabel.setAttribute("for", "photo");
   btnAddPhotoLabel.textContent = "Add photo";
   photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
@@ -611,6 +805,21 @@ function appearSeventhView() {
         address: fetchPetsitterData.address,
         avatarPath: "../img/icons/user-icon.png",
         level: "Professional",
+        active_hotel: fetchPetsitterData.services.hotel.active,
+        active_walking: fetchPetsitterData.services.walking.active,
+        active_homevisits: fetchPetsitterData.services.homevisits.active,
+        animals_hotel: fetchPetsitterData.services.hotel.animals,
+        animals_homevisits: fetchPetsitterData.services.homevisits.animals,
+        price_hotel: fetchPetsitterData.services.hotel.price,
+        price_walking: fetchPetsitterData.services.walking.price,
+        price_homevisits: fetchPetsitterData.services.homevisits.price,
+        serviceArea_walking: fetchPetsitterData.services.walking.serviceArea,
+        serviceArea_homevisits:
+          fetchPetsitterData.services.homevisits.serviceArea,
+        kindOfDogs: fetchPetsitterData.services.walking.kindOfDogs,
+        ageOfDogs: fetchPetsitterData.services.walking.ageOfDogs,
+        genderOfDogs: fetchPetsitterData.services.walking.genderOfDogs,
+        servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
     fetch(`http://localhost:5000/auth/petsitter/add-data`, fetchData)
@@ -624,7 +833,13 @@ function appearSeventhView() {
     history.pushState("", "", "");
     window.dispatchEvent(new Event("popstate"));
   });
-  temporaryContainer.append(tempTitle, tempSubtitle, photoContainer, btnConfirm, btnSkip);
+  temporaryContainer.append(
+    tempTitle,
+    tempSubtitle,
+    photoContainer,
+    btnConfirm,
+    btnSkip
+  );
 }
 
 export default function authPetsitterForm() {
