@@ -311,7 +311,7 @@ function createContactPetsitSection() {
   emailContactInput.after(emailTextError);
   if (emailContactInput instanceof HTMLInputElement) {
     emailContactInput.type = "email";
-    emailContactInput.placeholder = "e-mail";
+    emailContactInput.placeholder = "E-mail";
     emailContactInput.setAttribute("required", "");
     btnSignUp.addEventListener("click", () => {
       if (
