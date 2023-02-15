@@ -10,6 +10,7 @@ import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
 import ownerPets from "./pages/owners/ownerPets";
 import petsitProfileServiceEdit from "./pages/petsitters/petsitProfileServiceEdit";
 import { createOrdersPage } from "./pages/commonPages/orderPage";
+import { petsittersCalendar } from "./pages/petsitters/petsittersCalendar";
 
 
 export const router = () => {
@@ -61,6 +62,10 @@ export const router = () => {
     {
       path: "/petsitter/profile/basics",
       template: petsitterProfileBasic,
+    },
+    {
+      path: "/petsitter/calendar",
+      template: petsittersCalendar,/******* */
     },
     {
       path: "/petsitter",
