@@ -185,7 +185,7 @@ async function createBasicInfoBlock(){
     qualificationBlock.append(checkboxQualify2);
 
     const checkboxQualify3 = createHtmlElement('div', 'checkbox-div');
-    checkboxQualify3.innerHTML='<input type="checkbox" id="veterinary-technician" name="veterinary-technician"<label for="veterinary-technician">Veterinary technician</label>';
+    checkboxQualify3.innerHTML='<input type="checkbox" id="veterinary-technician" name="veterinary-technician"><label for="veterinary-technician">Veterinary technician</label>';
     qualificationBlock.append(checkboxQualify3);
 
     const checkboxQualify4 = createHtmlElement('div','checkbox-div');
