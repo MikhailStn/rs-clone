@@ -70,7 +70,7 @@
 
 .photo-container.profile-photo-container {
   width: 320px;
-  height: 384px;
+  height: 250px;
 }
 
 .title-photo-profile-block {
@@ -83,7 +83,7 @@
   width: 669px;
   padding-bottom: 42px;
   border-bottom: 2px solid #ebeaed;
-  gap: 10px;
+  gap: 40px;
 }
 
 .text-photo-profile {
@@ -114,8 +114,9 @@
 }
 
 .input-motto-profile {
-  min-height: 53px;
+  min-height: 40px;
   resize: none;
+  padding: 10px;
 }
 
 .count-motto-profile,
@@ -173,12 +174,21 @@
   width: 668px;
   height: 53px;
   resize: none;
+  padding: 10px;
 }
 
 .additional-qualification-block {
   outline: none !important;
   padding-top: 20px;
   border: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.checkbox-div {
+  display: flex;
+  column-gap: 5px;
 }
 
 .btn-profile-save,
