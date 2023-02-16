@@ -1,40 +1,55 @@
 import { createHtmlElement } from "../../utils";
-import { IPetsitters } from "../../utils/interface";
+import { IPetsitters1 } from "../../utils/interface";
 
-export function createSortItem(tagParent: HTMLElement, mas: IPetsitters[], hour: string): void {
-  tagParent.innerHTML = '';
+export async function createSortItem(tagParent: HTMLElement, mas: IPetsitters1[], hour: string) {
+  //: void {
+  tagParent.innerHTML = "";
   let x = 1;
-  const hours = String(hour.match(/\d/g)?.join(''));
-  switch(hours){
-    case '30': x = 1;break;
-    case '1': x = 2;break;
-    case '15': x = 3;break;
-    case '2': x = 4;break;
+  const hours = String(hour.match(/\d/g)?.join(""));
+  switch (hours) {
+    case "30":
+      x = 1;
+      break;
+    case "1":
+      x = 2;
+      break;
+    case "15":
+      x = 3;
+      break;
+    case "2":
+      x = 4;
+      break;
   }
 
   for (let i = 0; i < mas.length; i++) {
-    const container = createHtmlElement("div", "containerSearchCart");//id тут
+    const container = createHtmlElement("div", "containerSearchCart");
     const fotoBox = createHtmlElement("div", "fotoSearchCart");
     const foto = new Image();
-    foto.src = `${mas[i].photo}`;
+    foto.src = `${mas[i].avatarPath}`;
     const descriptionBlock = createHtmlElement("div", "descriptionSearchCart");
     const priceBlock = createHtmlElement("div", "priceSearchCart");
 
-    const name = createHtmlElement("p", "", "", `${i + 1}. ${mas[i].name}`);
+    const name = createHtmlElement("p", "", "", `${i + 1}. ${mas[i].firstName}`);
     const city = createHtmlElement("p", "", "", `${mas[i].city}`);
     const stars = createHtmlElement("p", "starsSearchCart");
-    stars.innerHTML = "★".repeat(mas[i].stars);
-    const level = createHtmlElement("p", "", "", `${mas[i].level}`);
-    const price1 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].price1} p.`);
-    const price2 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].price2*x} p.`);//
-    const price3 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].price3} p.`);//
+    if (mas[i].petsitterData.rate){
+    stars.innerHTML = "★".repeat(+mas[i].petsitterData.rate);
+  } else {stars.innerHTML = "no ratings";}
+    const level = createHtmlElement("p", "", "", `${mas[i].petsitterData.level}`);
+    const price1 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].petsitterData.services.hotel.price} p.`);
+    const price2 = createHtmlElement("p", "priceSearchCart", "", `${+mas[i].petsitterData.services.walking.price * x} p.`); //
+    const price3 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].petsitterData.services.homevisits.price} p.`); //
     const type = createHtmlElement("div", "typeSearchCart");
-    for (let j = 0; j < mas[i].typeOfService.length; j++) {
-      const typeN = createHtmlElement("p", "typeOfService", "", `${mas[i].typeOfService[j]}`);
+    for (let j = 0; j < mas[i].petsitterData.services.servicesArr.length; j++) {
+      const typeN = createHtmlElement("p", "typeOfService", "", `${mas[i].petsitterData.services.servicesArr[j]}`);
       type.append(typeN);
     }
-    const description = createHtmlElement("p", "", "", `${mas[i].description}`);
-    const btn = createHtmlElement("button", "btnSearchCart rectangle", `${mas[i].id}`, `meet me`); //кнопка ссылка на ситтера
+    let description = createHtmlElement("p", "");
+    if (mas[i].petsitterData.aboutMe) {
+      description.innerHTML = `${mas[i].petsitterData.aboutMe}`;
+    } else description = createHtmlElement("p", "", "", "");
+
+    const btn = createHtmlElement("button", "btnSearchCart rectangle"); //, `${mas[i].id}`, `meet me`);
 
     tagParent.append(container);
     container.append(fotoBox);
@@ -52,4 +67,5 @@ export function createSortItem(tagParent: HTMLElement, mas: IPetsitters[], hour:
     priceBlock.append(price3);
     priceBlock.append(btn);
   }
+  return tagParent;
 }

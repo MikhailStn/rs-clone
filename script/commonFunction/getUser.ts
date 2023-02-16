@@ -15,3 +15,19 @@ export const getUser = async()=>{
                item: await response.json()
            }
     }
+
+
+
+    export const getPetsitters = async () => {
+        const fetchData = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        };
+        const response = await fetch(`http://localhost:5000/users/petsitters`, fetchData);
+        return {
+          item: await response.json(),
+        };
+      };

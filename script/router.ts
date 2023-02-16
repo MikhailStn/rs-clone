@@ -1,7 +1,7 @@
 import petsAddShowPage from "./pages/commonPages/petsAdd";
 import petsitters from "./pages/petsitters/petsitters";
 import authLogin from "./pages/login/authLogin";
-import searchShowPage from "./pages/commonPages/search";
+//import searchShowPage from "./pages/commonPages/search";
 import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
 import authPetsitterForm from "./pages/login/authForm";
@@ -11,6 +11,7 @@ import ownerPets from "./pages/owners/ownerPets";
 import petsitProfileServiceEdit from "./pages/petsitters/petsitProfileServiceEdit";
 import { createOrdersPage } from "./pages/commonPages/orderPage";
 import { petsittersCalendar } from "./pages/petsitters/petsittersCalendar";
+import { searchShowPage } from "./pages/commonPages/search";
 
 
 export const router = () => {
