@@ -9,7 +9,8 @@ import { mainOwner } from "./pages/commonPages/main-owner";
 import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
 import ownerPets from "./pages/owners/ownerPets";
 import petsitProfileServiceEdit from "./pages/petsitters/petsitProfileServiceEdit";
-import { createOrdersPage } from "./pages/commonPages/orderPage";
+import { createOrdersPage } from "./pages/commonPages/ordersPage";
+import { createOrderItemPage } from "./pages/commonPages/orderItemPage";
 
 
 export const router = () => {
@@ -39,8 +40,16 @@ export const router = () => {
       template: ownerPets,
     },
     {
+      path: "/owner/orders/n",
+      template: createOrderItemPage,
+    },
+    {
       path: "/owner/orders",
       template: createOrdersPage,
+    },
+    {
+      path: "/petsitter/orders/n",
+      template: createOrderItemPage,
     },
     {
       path: "/petsitter/orders",

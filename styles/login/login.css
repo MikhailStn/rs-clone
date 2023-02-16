@@ -143,6 +143,15 @@
   text-decoration: underline;
 }
 
+.error-text-login{
+  position: absolute;
+  color: #f37059;
+  top: 40px;
+  font-size: 1.5rem;
+  left: 38%;
+
+}
+
 @media (max-width: 900px) {
   .login-block-wrapper {
     padding: 10px;

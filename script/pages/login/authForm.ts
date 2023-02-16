@@ -799,7 +799,7 @@ function appearSeventhView() {
         birth: fetchPetsitterData.birth,
         services: fetchPetsitterData.services,
         address: fetchPetsitterData.address,
-        avatarPath: "../img/icons/user-icon.png",
+        avatarPath: "",
         level: "Professional",
         active_hotel: fetchPetsitterData.services.hotel.active,
         active_walking: fetchPetsitterData.services.walking.active,

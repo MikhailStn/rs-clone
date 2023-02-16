@@ -431,6 +431,14 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
+          const div = document.querySelector(".btn-save-price-wrapper");
+          const p = createHtmlElement("p", "comment-saved-settings");
+          p.textContent = "Settings saved";
+          p.setAttribute("style", "margin-top: 5px")
+          div?.append(p);
+          setTimeout(() => {
+            div?.removeChild(p);
+          }, 2000);
           return data;
         });
     });
@@ -621,6 +629,14 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
+          const div = document.querySelector(".btn-save-price-wrapper");
+          const p = createHtmlElement("p", "comment-saved-settings");
+          p.textContent = "Settings saved";
+          p.setAttribute("style", "margin-top: 5px")
+          div?.append(p);
+          setTimeout(() => {
+            div?.removeChild(p);
+          }, 2000);
           return data;
         });
     });

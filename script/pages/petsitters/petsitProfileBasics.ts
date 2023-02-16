@@ -75,13 +75,13 @@ async function renderPetsitProfileBasic() {
     const serviceBlock = await createServicesBlock();
     commonInfoBlock.append(serviceBlock);
   });
-  const btnPhotoGallery = createHtmlElement(
+  /*const btnPhotoGallery = createHtmlElement(
     "div",
     "btn-profile-photo-gallery btn-profile-select",
     "",
     "Photo Gallery"
   );
-  profileSelectButtonBlock.append(btnPhotoGallery);
+  profileSelectButtonBlock.append(btnPhotoGallery);*/
   const btnMyHome = createHtmlElement(
     "div",
     "btn-profile-my-home btn-profile-select",
@@ -256,7 +256,7 @@ async function createBasicInfoBlock() {
     "additional-qualification-block text-profile-medium"
   );
   qualificationBlock.innerHTML =
-    "<legend>Choose your additional qualification:</legend>";
+    "<legend class = 'text-profile-medium'>Choose your additional qualification:</legend>";
   aboutMeBlock.append(qualificationBlock);
 
   const checkboxQualify1 = createHtmlElement("div", "checkbox-div");
@@ -428,13 +428,8 @@ function createTextInputInfoBlock(
 export default async function petsitterProfileBasic() {
   document.body.innerHTML = "";
   await headerPetsitter(document.body);
-  const header = document.querySelector('.head') as HTMLElement;
-  header.style.marginLeft = '200px';
-  document.querySelector('.section-menu-field')?.classList.add('active');
   renderPetsitProfileBasic();
   document.body.append(sectionPetsitProfileBasic);
   footerFun(document.body);
-  const footer = document.querySelector('.foot') as HTMLElement;
-  footer.style.justifyContent = 'space-around';
   return document.body;
 }
