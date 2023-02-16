@@ -1,7 +1,7 @@
 import petsAddShowPage from "./pages/commonPages/petsAdd";
 import petsitters from "./pages/petsitters/petsitters";
 import authLogin from "./pages/login/authLogin";
-import searchShowPage from "./pages/commonPages/search";
+//import searchShowPage from "./pages/commonPages/search";
 import errorShowPage from "./pages/404Page/errorPage";
 import authRegister from "./pages/login/authRegistration";
 import authPetsitterForm from "./pages/login/authForm";
@@ -9,8 +9,11 @@ import { mainOwner } from "./pages/commonPages/main-owner";
 import petsitterProfileBasic from "./pages/petsitters/petsitProfileBasics";
 import ownerPets from "./pages/owners/ownerPets";
 import petsitProfileServiceEdit from "./pages/petsitters/petsitProfileServiceEdit";
+import { petsittersCalendar } from "./pages/petsitters/petsittersCalendar";
+import { searchShowPage } from "./pages/commonPages/search";
 import { createOrdersPage } from "./pages/commonPages/ordersPage";
 import { createOrderItemPage } from "./pages/commonPages/orderItemPage";
+
 
 
 export const router = () => {
@@ -70,6 +73,10 @@ export const router = () => {
     {
       path: "/petsitter/profile/basics",
       template: petsitterProfileBasic,
+    },
+    {
+      path: "/petsitter/calendar",
+      template: petsittersCalendar,/******* */
     },
     {
       path: "/petsitter",

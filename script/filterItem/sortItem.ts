@@ -1,25 +1,32 @@
-import { IPetsitters, IFilter } from "../utils/interface";
+import { IPetsitters1, IFilter } from "../utils/interface";
 
-export function filterItem(mas: IPetsitters[], filter: IFilter): IPetsitters[] { //что сорт и как
-  let result: IPetsitters[] = mas;
-  const hours = filter.hours.match(/\d/g)?.join('');
-  console.log(hours);
-  result = result.filter((elem) => elem.typeOfService.includes(filter.type));
+export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
+  //let result: IPetsitters1[] = mas;
+  const result: IPetsitters1[] = mas; console.log(filter);
 
-  if (filter.animal.length !== 0) {
-    result = result.filter((elem) => elem.animal.includes(filter.animal));
-  }
+/*  result = result.filter((elem) => elem.petsitterData.services.servicesArr.includes(filter.type)); //.toLowerCase()));
+
   if (filter.city.length !== 0) {
-    result = result.filter((elem) => elem.city.includes(filter.city[0].toUpperCase() + filter.city.slice(1).toLowerCase()));
+    result = result.filter((elem) => elem.city.type.toLowerCase().includes(filter.city.toLowerCase()));
   }
+
+/*
+  if (filter.animal.length !== 0) {
+    result = result.filter((elem) => elem.pets.includes(filter.animal));
+  }
+*/
+/*
   switch (filter.type) {
     case "Accomodation":
       {
         if (filter.priceMax) {
-          result = result.filter((elem) => elem.price1 <= Number(filter.priceMax));
+          result = result.filter((elem) => +elem.petsitterData.services.hotel.price <= Number(filter.priceMax));
         }
         if (filter.priceMin) {
-          result = result.filter((elem) => elem.price1 >= Number(filter.priceMin));
+          result = result.filter((elem) => +elem.petsitterData.services.hotel.price >= Number(filter.priceMin));
+        }
+        if (filter.animal.length) {
+          result = result.filter((elem) => elem.petsitterData.services.hotel.animals.includes(filter.animal));
         }
       }
       break;
@@ -27,31 +34,39 @@ export function filterItem(mas: IPetsitters[], filter: IFilter): IPetsitters[] {
     case "Walk":
       {
         if (filter.priceMax) {
-          result = result.filter((elem) => elem.price2 <= Number(filter.priceMax));
+          result = result.filter((elem) => +elem.petsitterData.services.walking.price <= Number(filter.priceMax));
         }
         if (filter.priceMin) {
-          result = result.filter((elem) => elem.price2 >= Number(filter.priceMin));
+          result = result.filter((elem) => +elem.petsitterData.services.walking.price >= Number(filter.priceMin));
+        }
+        if (!filter.animal.includes('dog')) {
+          result = [];//------
         }
       }
       break;
     case "Home visits":
       {
         if (filter.priceMax) {
-          result = result.filter((elem) => elem.price3 <= Number(filter.priceMax));
+          result = result.filter((elem) => +elem.petsitterData.services.homevisits.price <= Number(filter.priceMax));
         }
         if (filter.priceMin) {
-          result = result.filter((elem) => elem.price3 >= Number(filter.priceMin));
+          result = result.filter((elem) => +elem.petsitterData.services.homevisits.price >= Number(filter.priceMin));
+        }
+        if (filter.animal.length) {
+          result = result.filter((elem) => elem.petsitterData.services.homevisits.animals.includes(filter.animal));
         }
       }
       break;
-  }
-
+  }*/
+/*
   if (filter.dateFrom.length !== 0) {
     result = result.filter((elem) => {
-      for (let i = 0; i < elem.availableDate.length; i++) {
-        if (new Date(elem.availableDate[i].slice(0, 10)) <= new Date(filter.dateFrom) && new Date(elem.availableDate[i].slice(11)) >= new Date(filter.dateTo)) return elem;
+      if (elem.petsitterData.availableDates) {
+        for (let i = 0; i < elem.petsitterData.availableDates.length; i++) {
+          if (new Date(elem.petsitterData.availableDates[i].slice(0, 10)) <= new Date(filter.dateFrom) && new Date(elem.petsitterData.availableDates[i].slice(11)) >= new Date(filter.dateTo)) return elem;
+        }
       }
     });
-  }
+  }*/
   return result;
 }

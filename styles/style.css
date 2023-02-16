@@ -19,6 +19,7 @@
 @import './owner/ownerPets.css';
 @import './petsitters/petsitProfileEdit.css';
 @import './common-page/ordersPage.css';
+@import './petsitters/petsitCalendar';
 @import './common-page/petsAdd.css';
 @import './common-page/orderItemPage.css';
 
@@ -31,7 +32,7 @@ body:nth-child(2){
     background-color: #fbfafc;
 }*/
 
-.btn {
+.btn, td {
   cursor: pointer;
 }
 
@@ -82,4 +83,3 @@ a {
 
 .rectangle:hover {
   background-color: #a15fbd;
-}

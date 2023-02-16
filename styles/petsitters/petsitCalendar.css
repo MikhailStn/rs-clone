@@ -1,0 +1,120 @@
+.block-calendars {
+  /*background-color: rgb(245, 221, 221);*/
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  max-width: 1452px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  margin-top: 10px; /**/
+  padding-left: 260px; /*так себе*/
+}
+
+.block-calendar {
+  width: 550px;
+}
+
+.block-calendar .my-profile-text-title {
+  margin: 10px;
+  padding: 10px;
+}
+
+.block-calendar-top {
+  display: flex;
+  align-items: center;
+}
+
+.block-Month, .block-Year{
+    display: flex;
+    align-items: center;
+    width: 135px;
+    justify-content: space-between;
+}
+
+.block-Month span, .block-Year span{
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.block-Month span:hover, .block-Year span:hover{
+    background-color: rgb(251, 221, 122);
+    border-radius: 50px;
+}
+
+.tooltip {
+    color: #fff;
+    background-color: rgb(251, 221, 122);
+    position: relative;
+    padding: 0 10px;
+    border-radius: 50px;
+    top: -10px;
+    left: -20px;
+  }
+  
+  .tooltip .tooltiptext {
+    color: #fff;
+    background-color:#555;
+    font-size: 14px;
+    visibility: hidden;
+    min-width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    left: 30px;
+    top: -10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-transform: none;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+
+
+
+/*calendar*/
+
+.block-calendar table {
+  border-collapse: collapse;
+  background-color: rgb(247, 233, 187);
+  /*    width: 100%;
+    height: 100%;*/
+}
+
+.block-calendar td,
+.block-calendar th {
+  /*border: 1px solid black;*/
+  padding: 3px;
+  text-align: center;
+  width: 70px;
+  height: 70px;
+}
+
+.block-calendar td:hover{
+    background-color: red;
+}
+
+.block-calendar th {
+  font-weight: bold;
+  background-color: rgb(251, 221, 122);
+  width: 100px;
+  height: 50px;
+}
+
+.noActive {
+    background-color: red;
+}
+
+.block-calendar .rectangle{
+    margin-top: 15px;
+    background-color: rgb(247, 233, 187);
+}
+.block-calendar .rectangle:hover{
+    background-color: rgb(251, 221, 122);
+}
