@@ -52,7 +52,7 @@ export function filterHow(tagParent: HTMLElement): void {
   const img2TimeBox = new Image();
   img2TimeBox.src = "img/down.svg";
 
-  const btnSearch = createHtmlElement("button", "btn rectangle", "", "search");
+  const btnSearch = createHtmlElement("button", "btn rectangle", "", "Search");
   const btnImg = new Image();
   btnImg.src = "img/loupe.svg";
 

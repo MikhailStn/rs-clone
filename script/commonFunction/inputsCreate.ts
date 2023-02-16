@@ -1,7 +1,7 @@
 import { createHtmlElement } from "../utils";
-export function createDivInputs(type: string, id: string, name: string, text: string, className?: string) {
-    const divInput = createHtmlElement('div', className);
-    const input = createHtmlElement('input', '', id) as HTMLInputElement;
+export function createDivInputs(type: string, id: string, name: string, text: string, classNameDiv?: string, classNameInput?: string) {
+    const divInput = createHtmlElement('div', classNameDiv);
+    const input = createHtmlElement('input', classNameInput, id) as HTMLInputElement;
     input.type = type;
     input.name = name;
     const label = createHtmlElement('label', '', '', text);

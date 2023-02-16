@@ -5,7 +5,32 @@ const formSection = createHtmlElement("section", "petsitter-form-section");
 interface PetsitterData {
   birth: string;
   gender: string;
-  services: string[];
+  services: {
+    servicesArr: string[];
+    hotel: {
+      active: string;
+      animals: string[];
+      price: string;
+    };
+    walking: {
+      active: string;
+      serviceArea: string;
+      kindOfDogs: string[];
+      ageOfDogs: string[];
+      genderOfDogs: string[];
+      price: string;
+    };
+    homevisits: {
+      active: string;
+      serviceArea: string;
+      animals: string[];
+      price: string;
+    };
+    training: {
+      active: string;
+      price: string;
+    };
+  };
   address: string;
   avatarPath: string;
 }
@@ -13,7 +38,32 @@ interface PetsitterData {
 const fetchPetsitterData: PetsitterData = {
   birth: "",
   gender: "",
-  services: [],
+  services: {
+    servicesArr: [],
+    hotel: {
+      active: "false",
+      animals: ["dog", "cat"],
+      price: "30",
+    },
+    walking: {
+      active: "false",
+      serviceArea: "",
+      kindOfDogs: ["micro", "small", "medium", "large", "giant"],
+      ageOfDogs: ["puppy", "youngster", "adult", "senior"],
+      genderOfDogs: ["male", "female"],
+      price: "30",
+    },
+    homevisits: {
+      active: "false",
+      serviceArea: "",
+      animals: ["dog", "cat"],
+      price: "30",
+    },
+    training: {
+      active: "false",
+      price: "30",
+    },
+  },
   address: "",
   avatarPath: "",
 };
@@ -171,14 +221,18 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/hotelService.jpg')"
       );
-      fetchPetsitterData.services.push("hotel");
+      fetchPetsitterData.services.hotel.active = "true";
+      fetchPetsitterData.services.servicesArr.push("hotel");
+      console.log(fetchPetsitterData.services.servicesArr)
     } else {
       checkBoxLabelHotel.setAttribute(
         "style",
         "background-image: url('../img/images/hotelService.jpg')"
       );
-      const index = fetchPetsitterData.services.indexOf("hotel");
-      fetchPetsitterData.services.splice(index, 1);
+      fetchPetsitterData.services.hotel.active = "false";
+      const i = fetchPetsitterData.services.servicesArr.indexOf("hotel");
+      fetchPetsitterData.services.servicesArr.splice(i, 1);
+      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
   const checkBoxLabelHotel = createHtmlElement(
@@ -203,14 +257,16 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/walkService.jpg')"
       );
-      fetchPetsitterData.services.push("walk");
+      fetchPetsitterData.services.walking.active = "true";
+      fetchPetsitterData.services.servicesArr.push("walking");
     } else {
       checkBoxLabelWalk.setAttribute(
         "style",
         "background-image: url('../img/images/walkService.jpg')"
       );
-      const index = fetchPetsitterData.services.indexOf("walk");
-      fetchPetsitterData.services.splice(index, 1);
+      fetchPetsitterData.services.walking.active = "false";
+      const i = fetchPetsitterData.services.servicesArr.indexOf("walking");
+      fetchPetsitterData.services.servicesArr.splice(i, 1);
     }
   });
   const checkBoxLabelWalk = createHtmlElement(
@@ -235,14 +291,16 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/homeService.jpg"
       );
-      fetchPetsitterData.services.push("home");
+      fetchPetsitterData.services.homevisits.active = "true";
+      fetchPetsitterData.services.servicesArr.push("homevisits");
     } else {
       checkBoxLabelHome.setAttribute(
         "style",
         "background-image: url('../img/images/homeService.jpg')"
       );
-      const index = fetchPetsitterData.services.indexOf("home");
-      fetchPetsitterData.services.splice(index, 1);
+      fetchPetsitterData.services.homevisits.active = "false";
+      const i = fetchPetsitterData.services.servicesArr.indexOf("homevisits");
+      fetchPetsitterData.services.servicesArr.splice(i, 1);
     }
   });
   const checkBoxLabelHome = createHtmlElement(
@@ -267,14 +325,13 @@ function appearSecondView() {
         "style",
         "filter: opacity(1); box-shadow: 0 2px 4px 1px rgb(27 28 29 / 90%); background-image: url('../img/images/dreesingService.jpg')"
       );
-      fetchPetsitterData.services.push("training");
+      fetchPetsitterData.services.training.active = "true";
     } else {
       checkBoxLabelTraining.setAttribute(
         "style",
         "background-image: url('../img/images/dreesingService.jpg')"
       );
-      const index = fetchPetsitterData.services.indexOf("training");
-      fetchPetsitterData.services.splice(index, 1);
+      fetchPetsitterData.services.training.active = "false";
     }
   });
   const checkBoxLabelTraining = createHtmlElement(
@@ -665,10 +722,24 @@ function appearSeventhView() {
         _id: localStorage.getItem("curr-user-id"),
         gender: fetchPetsitterData.gender,
         birth: fetchPetsitterData.birth,
-        services: fetchPetsitterData.services,
         address: fetchPetsitterData.address,
         avatarPath: fetchPetsitterData.avatarPath,
-        level: "Professional"
+        level: "Professional",
+        active_hotel: fetchPetsitterData.services.hotel.active,
+        active_walking: fetchPetsitterData.services.walking.active,
+        active_homevisits: fetchPetsitterData.services.homevisits.active,
+        animals_hotel: fetchPetsitterData.services.hotel.animals,
+        animals_homevisits: fetchPetsitterData.services.homevisits.animals,
+        price_hotel: fetchPetsitterData.services.hotel.price,
+        price_walking: fetchPetsitterData.services.walking.price,
+        price_homevisits: fetchPetsitterData.services.homevisits.price,
+        serviceArea_walking: fetchPetsitterData.services.walking.serviceArea,
+        serviceArea_homevisits:
+          fetchPetsitterData.services.homevisits.serviceArea,
+        kindOfDogs: fetchPetsitterData.services.walking.kindOfDogs,
+        ageOfDogs: fetchPetsitterData.services.walking.ageOfDogs,
+        genderOfDogs: fetchPetsitterData.services.walking.genderOfDogs,
+        servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
     fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
@@ -678,8 +749,8 @@ function appearSeventhView() {
       .then((data) => {
         console.log(data);
       });
-      history.pushState("", "", "");
-      window.dispatchEvent(new Event("popstate"));
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
   });
   const handleUpload = () => {
     if (btnAddPhoto.files) {
@@ -728,11 +799,26 @@ function appearSeventhView() {
         birth: fetchPetsitterData.birth,
         services: fetchPetsitterData.services,
         address: fetchPetsitterData.address,
-        avatarPath: '../img/icons/user-icon.png',
-        level: "Professional"
+        avatarPath: "",
+        level: "Professional",
+        active_hotel: fetchPetsitterData.services.hotel.active,
+        active_walking: fetchPetsitterData.services.walking.active,
+        active_homevisits: fetchPetsitterData.services.homevisits.active,
+        animals_hotel: fetchPetsitterData.services.hotel.animals,
+        animals_homevisits: fetchPetsitterData.services.homevisits.animals,
+        price_hotel: fetchPetsitterData.services.hotel.price,
+        price_walking: fetchPetsitterData.services.walking.price,
+        price_homevisits: fetchPetsitterData.services.homevisits.price,
+        serviceArea_walking: fetchPetsitterData.services.walking.serviceArea,
+        serviceArea_homevisits:
+          fetchPetsitterData.services.homevisits.serviceArea,
+        kindOfDogs: fetchPetsitterData.services.walking.kindOfDogs,
+        ageOfDogs: fetchPetsitterData.services.walking.ageOfDogs,
+        genderOfDogs: fetchPetsitterData.services.walking.genderOfDogs,
+        servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
-    fetch(`http://localhost:5000/auth/petsitter/add-data`, fetchData)
+    fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
       .then((response) => {
         return response.json();
       })
@@ -740,8 +826,8 @@ function appearSeventhView() {
         console.log(data);
       });
 
-      history.pushState("", "", "");
-      window.dispatchEvent(new Event("popstate"));
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
   });
   temporaryContainer.append(
     tempTitle,

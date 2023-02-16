@@ -49,6 +49,7 @@ main {
   padding: 10px;
   text-align: center;
   cursor: pointer;
+
 }
 
 .typeBoxN:hover {
@@ -59,13 +60,14 @@ main {
   background-color: rgb(251, 221, 122);
 }
 
-.blockFilter .box1 {
-  margin-top: 15px;
-  border: 1px solid #84818a;
-  border-radius: 5px;
-  padding: 3px;
-  height: 40px;
-  width: 100%;
+
+.blockFilter .box1{
+    margin-top: 15px;
+    border:  1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    padding: 3px;
+    height: 40px;
+    width: 100%;
 }
 .blockFilter .nameInputBox {
   color: black;
@@ -110,13 +112,14 @@ main {
   width: 100%;
 }
 
-.deadlineBoxFromTo .box1 {
-  margin-top: 15px;
-  border: 1px solid #84818a;
-  border-radius: 5px;
-  padding: 3px;
-  height: 40px;
-  width: 49%;
+
+.deadlineBoxFromTo .box1{
+    margin-top: 15px;
+    border:  1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    padding: 3px;
+    height: 40px;
+    width: 49%;
 }
 
 /*------------------------range-----*/

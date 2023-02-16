@@ -68,12 +68,23 @@ function renderLoginPage() {
     };
     fetch(`http://localhost:5000/auth/login`, fetchData)
       .then((response) => {
-        return response.json();
+          console.log(response.status);
+          if (response.status == 200) {
+            return response.json();
+          } else {
+            const errorText = createHtmlElement('div', 'error-text-login', '', 'Something went wrong, try again');
+            document.body.append(errorText);
+            setTimeout(() => {
+              document.body.removeChild(errorText);
+            }, 2000);
+            return;
+          }
       })
       .then((data) => {
         console.log(data);
         localStorage.setItem("curr-user-id", `${data.id}`);
         console.log(localStorage.getItem("curr-user-id"));
+        document.querySelector('.section-menu-field')?.classList.remove('active');
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
       });

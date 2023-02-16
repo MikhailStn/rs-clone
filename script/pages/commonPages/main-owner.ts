@@ -6,6 +6,7 @@ import { filterHow } from "../pageComponents/filter";
 
 export function mainOwner(): void {
   document.body.innerHTML = '';
+
   if(!localStorage.getItem('curr-user-id')) {
       header(document.body);
   } else {
@@ -82,7 +83,7 @@ export function mainOwner(): void {
   <embed type="image/svg+xml" src="img/user_house.svg" />
   </div>
   <div class="text">
-      <h3>home visits</h3>
+      <h3>Home visits</h3>
       <p>A petsitter comes to your house to keep your pets company, give food, take a break for a walk or clean up the litter box.</p>
   </div>
 </div>`;
@@ -143,7 +144,7 @@ export function mainOwner(): void {
     <svg></svg>
 </div>
 <div class="text">
-    <h3>home visits</h3>
+    <h3>Home visits</h3>
     <p>A petsitter comes to your house to keep your pets company, give food, take a break for a walk or clean up the litter box.</p>
 </div>
 </div>`;
@@ -280,13 +281,15 @@ function createSliderReview() {
   sliderPetsitContainer.append(sliderPetsitWrapper);
   const sliderItemWraper = createHtmlElement("div", "slider-item-wrapper");
   sliderPetsitWrapper.append(sliderItemWraper);
+  const sliderItem = createSliderPetsitItem(index);
+  sliderItemWraper.append(sliderItem);
   setInterval(function () {
     if (index > petsitArrForReview.length - 1) index = 0;
     sliderItemWraper.innerHTML = "";
     const sliderItem = createSliderPetsitItem(index);
     sliderItemWraper.append(sliderItem);
     index += 1;
-  }, 5000);
+  }, 4000);
   const paginationBtnPetsitContainer = createHtmlElement(
     "div",
     "pagination-petsit-slider-container"
