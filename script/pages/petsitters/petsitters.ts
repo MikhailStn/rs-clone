@@ -154,6 +154,8 @@ function createSliderReview() {
   sliderPetsitContainer.append(sliderPetsitWrapper);
   const sliderItemWraper = createHtmlElement("div", "slider-item-wrapper");
   sliderPetsitWrapper.append(sliderItemWraper);
+  const sliderItem = createSliderPetsitItem(index);
+  sliderItemWraper.append(sliderItem);
   setInterval(function () {
     if (index > petsitArrForReview.length - 1) index = 0;
     sliderItemWraper.innerHTML = "";

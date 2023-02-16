@@ -68,7 +68,17 @@ function renderLoginPage() {
     };
     fetch(`http://localhost:5000/auth/login`, fetchData)
       .then((response) => {
-        return response.json();
+          console.log(response.status);
+          if (response.status == 200) {
+            return response.json();
+          } else {
+            const errorText = createHtmlElement('div', 'error-text-login', '', 'Something went wrong, try again');
+            document.body.append(errorText);
+            setTimeout(() => {
+              document.body.removeChild(errorText);
+            }, 2000);
+            return;
+          }
       })
       .then((data) => {
         console.log(data);

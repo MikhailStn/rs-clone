@@ -10,6 +10,7 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   headerMenu.addEventListener('click', () => {
     document.body.style.overflow = 'hidden';
     document.querySelector('.section-menu-field')?.classList.add('active');
+    document.querySelector('.overlay')?.classList.add('active');
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
@@ -60,6 +61,7 @@ export async function header(tagParent: HTMLElement): Promise<void> {
   headerMenu.addEventListener('click', () => {
     document.body.style.overflow = 'hidden';
     document.querySelector('.section-menu-field')?.classList.add('active');
+    document.querySelector('.overlay')?.classList.add('active');
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
@@ -140,6 +142,7 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   headerMenu.addEventListener('click', () => {
     document.body.style.overflow = 'hidden';
     document.querySelector('.section-menu-field')?.classList.add('active');
+    document.querySelector('.overlay')?.classList.add('active');
   })
   const menuImg = new Image();
   menuImg.src = "img/line.svg";

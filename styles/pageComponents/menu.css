@@ -1,10 +1,11 @@
 .section-menu-field{
-  display: none;
-
+  position: relative;
+  left: -260px;
+  transition: 0.3s;
 }
 
 .section-menu-field.active{
-  display: block;
+  left: 0px;
 }
 
 .section-menu {
@@ -72,6 +73,7 @@
 }
 
 .overlay {
+  display: none;
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   position: fixed;

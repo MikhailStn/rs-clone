@@ -2,15 +2,14 @@
   background-color: #ffffff;
   color: #000000;
   width: 100%;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 160px);
 }
 
 .section-profile-basic-block {
-  max-width: 1452px;
+  max-width: 1192px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 10px;
-  padding-left: 260px;
 }
 
 .profile-title-wrapper {
@@ -69,8 +68,9 @@
 }
 
 .photo-container.profile-photo-container {
+  background-position: 50% 40%;
   width: 320px;
-  height: 250px;
+  height: 320px;
 }
 
 .title-photo-profile-block {
@@ -103,6 +103,7 @@
   width: 668px;
   border: 2px solid #ebeaed;
   padding-left: 10px;
+  padding: 10px;
   border-radius: 4px;
   transition: 0.5s;
 }
@@ -114,6 +115,7 @@
 }
 
 .input-motto-profile {
+  padding: 10px;
   min-height: 40px;
   resize: none;
   padding: 10px;
@@ -146,15 +148,15 @@
 
 .text-profile-medium {
   color: #696869;
-  line-height: 1.25;
-  font-size: 0.85rem;
-  font-weight: 500;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  font-weight: 700;
   padding-bottom: 10px;
 }
 
 .text-profile {
   color: #696869;
-  line-height: 1.25;
+  line-height: 1.15;
   font-size: 0.75rem;
   padding-bottom: 10px;
   width: 668px;
@@ -178,17 +180,33 @@
 }
 
 .additional-qualification-block {
+  display: flex;
   outline: none !important;
   padding-top: 20px;
   border: none;
-  display: flex;
+
   flex-direction: column;
-  row-gap: 10px;
+  gap: 10px;
 }
 
-.checkbox-div {
+.checkbox-div label{
+  margin-left: 10px;
+  color: #7c787c;
+  line-height: 1.15;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding-bottom: 10px;
+  width: 668px;
+
+  /*display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}*/
+
+/*.checkbox-div {
   display: flex;
   column-gap: 5px;
+*/
 }
 
 .btn-profile-save,

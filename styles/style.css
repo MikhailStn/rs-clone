@@ -20,6 +20,7 @@
 @import './petsitters/petsitProfileEdit.css';
 @import './common-page/ordersPage.css';
 @import './common-page/petsAdd.css';
+@import './common-page/orderItemPage.css';
 
 body:nth-child(2) {
   padding-top: 64px;

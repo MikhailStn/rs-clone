@@ -19,10 +19,11 @@ function renderCommonMenu() {
     const sectionMenu = createHtmlElement('div', 'section-menu');
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
-    sectionMenuField.append(overlay);
+    document.body.append(overlay);
     overlay.addEventListener('click', () => {
         sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
+        overlay.classList.remove('active');
     })
     const btnCreatAccMenuWrapper = createHtmlElement('div', 'btn-create-acc-menu-wrapper');
     const btnCreatAccMenu = createHtmlElement('button', 'btn-create-acc-menu', '', 'Create account');
@@ -32,6 +33,7 @@ function renderCommonMenu() {
         event.preventDefault();
         history.pushState("", "", "/auth/register/owner");
         window.dispatchEvent(new Event("popstate"));
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
     })
     const block1 = createBlockMenu('img/loupeDark2.svg', 'Find a petsitter', 'loupe-menu');
@@ -39,6 +41,7 @@ function renderCommonMenu() {
     block1.addEventListener('click', () => {
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
     })
     const block2 = createBlockMenu('img/paw.svg', 'Become a petsitter', '');
@@ -46,6 +49,7 @@ function renderCommonMenu() {
     block2.addEventListener("click", () => {
         history.pushState("", "", "/petsitter");
         window.dispatchEvent(new Event("popstate"));
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
     })
     const block3 = createBlockMenu('img/exitLogIn.svg', 'Log in', '');
@@ -53,29 +57,29 @@ function renderCommonMenu() {
     block3.addEventListener('click', () => {
         history.pushState("", "", "/auth/login");
         window.dispatchEvent(new Event("popstate"));
+        sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
     })
 }
 
 async function renderRoleMenu() {
     sectionMenuField.innerHTML = '';
-
     const user = await getUser();
     const userInfo = (user).item;
     console.log('userInfo', userInfo);
-
     const sectionMenu = createHtmlElement('div', 'section-menu');
     sectionMenuField.append(sectionMenu);
     const overlay = createHtmlElement('div', 'overlay');
-    sectionMenuField.append(overlay);
-    if(window.location.pathname === '/' || window.location.pathname === '/search'){
+    document.body.append(overlay);
+    /*if(window.location.pathname === '/' || window.location.pathname === '/search'){
         overlay.style.display = 'block';
     }else{
         overlay.style.display = 'none';
-    }
+    }*/
     overlay.addEventListener('click', () => {
         sectionMenuField.classList.remove('active');
         document.body.style.overflow = '';
+        overlay.classList.remove('active');
     })
     const roleBlockIdentity = createHtmlElement('div', 'role-block-menu-identity');
     sectionMenu.append(roleBlockIdentity);
@@ -106,6 +110,7 @@ async function renderRoleMenu() {
         userInfo.role === "OWNER"? history.pushState("", "", "/owner/orders"): history.pushState("", "", "/petsitter/orders");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })
     /*const block5 = createBlockMenu('img/giftRecommend.svg', 'Recommend and get 10 BYN', 'recommend-logo-menu');
     sectionMenu.append(block5);
@@ -122,6 +127,7 @@ async function renderRoleMenu() {
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })
     const block7 = createBlockMenu('img/paw.svg', 'My pets');
     sectionMenu.append(block7);
@@ -129,6 +135,7 @@ async function renderRoleMenu() {
         history.pushState("", "", "/owner/pets");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })}
 
     if(userInfo.role === 'PETSITTER'){
@@ -138,6 +145,7 @@ async function renderRoleMenu() {
         history.pushState("", "", "/petsitter/calendar");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })
     const block9 = createBlockMenu('img/profileLogo2.svg', 'My Profile');
     sectionMenu.append(block9);
@@ -145,6 +153,7 @@ async function renderRoleMenu() {
         history.pushState("", "", "/petsitter/profile/basics");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })
     const block10 = createBlockMenu('img/star.svg', 'My reviews');
     sectionMenu.append(block10);
@@ -152,6 +161,7 @@ async function renderRoleMenu() {
         history.pushState("", "", "/petsitter/reviews/");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })
     }
 
@@ -161,6 +171,7 @@ async function renderRoleMenu() {
         userInfo.role === 'OWNER'? history.pushState("", "", "/owner/settings/personal-data") : history.pushState("", "", "/petsitter/settings/personal-data");
         window.dispatchEvent(new Event("popstate"));
         document.body.style.overflow = '';
+        sectionMenuField.classList.remove('active');
     })
 
     const btnLogOut = createHtmlElement('button', 'btn-log-out-menu', 'btn-log-out-menu', 'Log Out');
@@ -168,6 +179,8 @@ async function renderRoleMenu() {
     btnLogOut.addEventListener('click', (event) => {
         event.preventDefault();
         localStorage.clear();
+        sectionMenuField.classList.remove('active');
+        document.body.style.overflow = '';
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
     })

@@ -1,0 +1,133 @@
+.section-order-item{
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    min-height: calc(100vh - 160px);
+}
+
+.section-item-orders-block {
+    max-width: 1192px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 16px;
+}
+
+.come-back-order-div{
+    height: 48px;
+    cursor: pointer;
+}
+
+.come-back-order-div span{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.come-back-order-div span:hover{
+    border-radius: 50%;
+    background-color: #8867960a;
+}
+
+.order-item-info-block{
+    display: grid;
+    grid-template-areas:
+    'info chat'
+    'price chat'
+    'user chat';
+    grid-template-columns: 386px 787px;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.block-common-info-order,
+.block-price-order,
+.user-info-block-order,
+.chat-block-order{
+    border: 1px solid #ebeaed;
+    border-radius: 8px;
+}
+
+
+.block-common-info-order{
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    width: 386px;
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #27272e;
+    gap: 15px;
+}
+
+.block-price-order{
+    grid-area: price;
+    width: 386px;
+    height: 215px;
+    padding: 20px;
+}
+
+.user-info-block-order{
+    grid-area: user;
+    width: 386px;
+    height: 145px;
+    padding: 20px;
+}
+
+.chat-block-order{
+    grid-area: chat;
+    width: 787px;
+    height: 551px;
+}
+
+.block-info-order-wrapper{
+    display: flex;
+    gap: 20px;
+}
+
+.block-info-order-svg{
+    width: 20px;
+}
+
+.block-img-svg-pet-order-item{
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.svg-pet-order-info{
+    width: 40px;
+}
+
+.pet-text-order{
+    font-size: 1.2rem;
+    line-height: 1.7;
+    font-weight: 600;
+    color: #27272e;
+}
+
+.more-info-pet-block{
+    border: 1px solid #ebeaed;
+    border-radius: 8px;
+}
+
+.name-btn-pet-block{
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    color: #27272e;
+    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.name-pet-more-info{
+    font-size: 1.25rem;
+    line-height: 1.625;
+    letter-spacing: 0.013rem;
+    font-weight: 600;
+}
+
+.btn-toggle-info{
+    font-size: 35px;
+    margin-top: -30px;
+}

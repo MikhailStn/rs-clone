@@ -6,6 +6,7 @@ const sectionOrder = createHtmlElement('section', 'section-orders');
 
 interface OrderPreview{
     numberOrders: number;
+    city: string;
     status: string;
     service: string;
     period: string;
@@ -13,7 +14,7 @@ interface OrderPreview{
     pet: string[];
     ownerOrPetsitterId: string;
 }
-const orders = [{numberOrders: 123456, status: 'rejected', service: 'accomodation', period: '1 day', dates: '20 febr - 21 febr', pet: ['cat', 'Masia'], ownerOrPetsitterId: '63eb4b2a8759fea28d255766'}];
+const orders = [{numberOrders: 123456, city:"Minsk", status: 'rejected', service: 'accomodation', period: '1 day', dates: '20 febr - 21 febr', pet: ['cat', 'Masia'], ownerOrPetsitterId: '63eb4b2a8759fea28d255766'}];
 
 async function renderOrdersPage(){
     sectionOrder.innerHTML = '';
@@ -83,13 +84,21 @@ async function createItemOrderBlock(object: OrderPreview) {
     commonInfoOrderWrapper.append(linkViewProfile);
     const btnOrderInfoAndChat = createHtmlElement('div', 'btn-order-info-chat', 'btn-order-info', 'Order info and chat');
     itemOrderBlock.append(btnOrderInfoAndChat);
+    btnOrderInfoAndChat.addEventListener('click', ()=>{
+        if(userInfo.role === 'PETSITTER'){
+            history.pushState('','','/owner/orders/n');  //тут нужно задавать правильный id заказа!!!
+            window.dispatchEvent(new Event("popstate"));
+        }else{
+            history.pushState('','','/petsitter/orders/n');  //тут нужно задавать правильный id заказа!!!
+            window.dispatchEvent(new Event("popstate"));
+        }
+    })
     return itemOrderBlock;
 }
 
 export async function createOrdersPage(){
     document.body.innerHTML = "";
     await headerPetsitter(document.body);
-    document.querySelector('.section-menu-field')?.classList.add('active');
     await renderOrdersPage();
     document.body.append(sectionOrder);
     footerFun(document.body);
