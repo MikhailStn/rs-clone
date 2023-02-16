@@ -12,6 +12,10 @@
   color: #27272e;
 }
 
+.text-for-registration-role {
+  text-align: center;
+  max-width: 450px;
+}
 
 .img-registration-wrapper {
   max-width: 620px;
@@ -21,6 +25,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: relative;
+  z-index: -1;
+  max-width: 540px;
 }
 
 .block-inputs-text-registration {
@@ -185,6 +192,10 @@
   color: #a278b4;
 }
 
+.block-link-role-registration {
+  margin: 20px 0;
+}
+
 @media (max-width: 900px) {
 
   .img-registration-wrapper {
@@ -197,6 +208,7 @@
     display: flex;
     justify-content: center;
     width: 330px;
+    margin: 0;
   }
   .link-owner-registration,
   .link-petsitter-registration {

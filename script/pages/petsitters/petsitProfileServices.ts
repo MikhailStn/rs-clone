@@ -2,9 +2,8 @@ import { createHtmlElement } from "../../utils";
 import { getUser } from "../../commonFunction/getUser";
 import { updateValues } from "./petsitProfileServiceEdit";
 
-const servicesArr: string[] = [];
-
 export async function createServicesBlock() {
+  const servicesArr: string[] = [];
   const user = await getUser();
   const userInfo = user.item;
   console.log("userInfo", userInfo);
