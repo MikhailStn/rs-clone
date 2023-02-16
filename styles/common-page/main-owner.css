@@ -3,6 +3,9 @@
   min-height: 20px; /**/
   padding: 50px 24px;
 }
+.wrapper-main-owner {
+  padding: 90px 24px;;
+}
 span {
   font-family: HalenoirExpanded;
   line-height: 1.25;

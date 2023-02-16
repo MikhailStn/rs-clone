@@ -6,10 +6,13 @@ main {
 }
 
 .blockFilter {
-  width: 300px;
+  width: 350px;
   background-color: #fff;
   height: auto;
   padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 }
 
 .blockPetsitters {
@@ -37,6 +40,7 @@ main {
 .divType {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .blockFilter p {
@@ -44,12 +48,12 @@ main {
 }
 
 .typeBoxN {
-  border: solid 1px #84818a;
+  border: solid 1px #a8a8a8;
   border-radius: 5px;
   padding: 10px;
   text-align: center;
   cursor: pointer;
-
+  font-size: 14px;
 }
 
 .typeBoxN:hover {
@@ -60,19 +64,19 @@ main {
   background-color: rgb(251, 221, 122);
 }
 
-
-.blockFilter .box1{
-    margin-top: 15px;
-    border:  1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
-    padding: 3px;
-    height: 40px;
-    width: 100%;
+.blockFilter .box1 {
+  margin-top: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  padding: 3px;
+  height: 40px;
+  width: 100%;
 }
 .blockFilter .nameInputBox {
   color: black;
   top: -23px;
   background-color: #fff;
+  box-shadow: none;
 }
 .box1 div img {
   margin: 0 3px;
@@ -112,14 +116,13 @@ main {
   width: 100%;
 }
 
-
-.deadlineBoxFromTo .box1{
-    margin-top: 15px;
-    border:  1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
-    padding: 3px;
-    height: 40px;
-    width: 49%;
+.deadlineBoxFromTo .box1 {
+  margin-top: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  padding: 3px;
+  height: 40px;
+  width: 49%;
 }
 
 /*------------------------range-----*/
@@ -160,6 +163,7 @@ main {
   background-color: rgb(251, 221, 122);
 }
 
+
 .blockFilter .clear {
   background-color: rgb(247, 233, 187);
   border: 0;
@@ -178,7 +182,10 @@ main {
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 20px;
+  top: -100px;
   bottom: 100px;
   overflow: hidden;
+  margin-top: -20px;
+  position: relative;
+  height: 150%;
 }

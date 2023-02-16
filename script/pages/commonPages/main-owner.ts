@@ -14,7 +14,7 @@ export function mainOwner(): void {
   }
 
 
-  const banner = createHtmlElement("section", "wrapper");
+  const banner = createHtmlElement("section", "wrapper wrapper-main-owner");
   const bannerContent = createHtmlElement("div", "content");
   const bannerLeft = createHtmlElement("div", "leftText");
   const bannerTitle = createHtmlElement(
