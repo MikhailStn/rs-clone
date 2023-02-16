@@ -322,8 +322,6 @@ export function createDogSizeBtn(
   return btnSize;
 }
 
-const accomodatePetsArr: string[] = [];
-
 function createPetsItem(src: string, pet: string) {
   const petsItemWrapper = createHtmlElement("div", "pets-item-wrapper-service");
   const petsItemImgWrapper = createHtmlElement(
@@ -350,29 +348,30 @@ function createPetsItem(src: string, pet: string) {
 }
 
 export const updateValues = () => {
-  const dogItem = document.getElementById("dog") as HTMLInputElement;
-  const catItem = document.getElementById("cat") as HTMLInputElement;
-  if (dogItem) {
-    dogItem.addEventListener("click", () => {
-      if (dogItem.checked) {
-        accomodatePetsArr.push("dog");
-      } else {
-        const index = accomodatePetsArr.indexOf("dog");
-        accomodatePetsArr.splice(index, 1);
-      }
-    });
-  }
-  if (catItem) {
-    catItem.addEventListener("click", () => {
-      if (catItem.checked) {
-        accomodatePetsArr.push("cat");
-      } else {
-        const index = accomodatePetsArr.indexOf("cat");
-        accomodatePetsArr.splice(index, 1);
-      }
-    });
-  }
   if (currService == "accommodation") {
+    const accomodatePetsArr: string[] = [];
+    const dogItem = document.getElementById("dog") as HTMLInputElement;
+    const catItem = document.getElementById("cat") as HTMLInputElement;
+    if (dogItem) {
+      dogItem.addEventListener("click", () => {
+        if (dogItem.checked) {
+          accomodatePetsArr.push("dog");
+        } else {
+          const index = accomodatePetsArr.indexOf("dog");
+          accomodatePetsArr.splice(index, 1);
+        }
+      });
+    }
+    if (catItem) {
+      catItem.addEventListener("click", () => {
+        if (catItem.checked) {
+          accomodatePetsArr.push("cat");
+        } else {
+          const index = accomodatePetsArr.indexOf("cat");
+          accomodatePetsArr.splice(index, 1);
+        }
+      });
+    }
     const fetchData = {
       method: "POST",
       headers: {
@@ -431,6 +430,14 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
+          const div = document.querySelector(".btn-save-price-wrapper");
+          const p = createHtmlElement("p", "comment-saved-settings");
+          p.textContent = "Settings saved";
+          p.setAttribute("style", "margin-top: 5px");
+          div?.append(p);
+          setTimeout(() => {
+            div?.removeChild(p);
+          }, 2000);
           return data;
         });
     });
@@ -621,10 +628,42 @@ export const updateValues = () => {
           return response.json();
         })
         .then((data) => {
+          const div = document.querySelector(".btn-save-price-wrapper");
+          const p = createHtmlElement("p", "comment-saved-settings");
+          p.textContent = "Settings saved";
+          p.setAttribute("style", "margin-top: 5px");
+          div?.append(p);
+          setTimeout(() => {
+            div?.removeChild(p);
+          }, 2000);
           return data;
         });
     });
   } else if (currService == "drop-in") {
+    const accomodatePetsArr1: string[] = [];
+    const dogItem = document.getElementById("dog") as HTMLInputElement;
+    const catItem = document.getElementById("cat") as HTMLInputElement;
+    if (dogItem) {
+      dogItem.addEventListener("click", () => {
+        if (dogItem.checked) {
+          accomodatePetsArr1.push("dog");
+        } else {
+          const index = accomodatePetsArr1.indexOf("dog");
+          accomodatePetsArr1.splice(index, 1);
+        }
+      });
+    }
+    if (catItem) {
+      catItem.addEventListener("click", () => {
+        if (catItem.checked) {
+          accomodatePetsArr1.push("cat");
+        } else {
+          const index = accomodatePetsArr1.indexOf("cat");
+          accomodatePetsArr1.splice(index, 1);
+        }
+      });
+    }
+
     const serviceArea = document.querySelector(
       ".input-area-service"
     ) as HTMLTextAreaElement;
@@ -648,14 +687,14 @@ export const updateValues = () => {
           data.petsitterData.services.homevisits.animals[1] == "dog"
         ) {
           dogItem.setAttribute("checked", "true");
-          accomodatePetsArr.push("dog");
+          accomodatePetsArr1.push("dog");
         }
         if (
           data.petsitterData.services.homevisits.animals[0] == "cat" ||
           data.petsitterData.services.homevisits.animals[1] == "cat"
         ) {
           catItem.setAttribute("checked", "true");
-          accomodatePetsArr.push("cat");
+          accomodatePetsArr1.push("cat");
         }
         const amountInput = document.querySelector(
           ".input-number-price"
@@ -681,7 +720,7 @@ export const updateValues = () => {
         },
         body: JSON.stringify({
           _id: localStorage.getItem("curr-user-id"),
-          animals_homevisits: accomodatePetsArr,
+          animals_homevisits: accomodatePetsArr1,
           price_homevisits: amountInput.value,
           serviceArea_homevisits: serviceArea.value,
         }),
@@ -694,7 +733,7 @@ export const updateValues = () => {
           const div = document.querySelector(".btn-save-price-wrapper");
           const p = createHtmlElement("p", "comment-saved-settings");
           p.textContent = "Settings saved";
-          p.setAttribute("style", "margin-top: 5px")
+          p.setAttribute("style", "margin-top: 5px");
           div?.append(p);
           setTimeout(() => {
             div?.removeChild(p);
