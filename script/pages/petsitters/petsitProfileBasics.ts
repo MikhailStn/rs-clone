@@ -170,9 +170,9 @@ async function createBasicInfoBlock() {
         .then((data) => {
           photoContainer.setAttribute(
             "style",
-            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+            `background-image: url('https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}'); background-blend-mode:normal`
           );
-          fetchPetsitterData.avatarPath = `http://localhost:5000/${data.filePath}`;
+          fetchPetsitterData.avatarPath = `https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}`;
         });
       return btnAddPhoto.files[0];
     }
