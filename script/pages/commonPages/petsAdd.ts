@@ -581,9 +581,9 @@ async function renderPetsAddPage() {
         .then((data) => {
           photoContainer.setAttribute(
             "style",
-            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+            `background-image: url('https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}'); background-blend-mode:normal`
           );
-          petsObj.avatarPath = `http://localhost:5000/${data.filePath}`;
+          petsObj.avatarPath = `https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}`;
           btnConfirm.setAttribute("style", "pointer-events:all");
         });
       return btnAddPhoto.files[0];
