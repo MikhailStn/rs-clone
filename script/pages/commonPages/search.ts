@@ -42,7 +42,7 @@ export async function searchShowPage() {
   const addressBox = createHtmlElement("div", "box1");
   const addressPetBox = createHtmlElement("p", "nameInputBox", "", "Address");
   const divAddressBox = createHtmlElement("div");
-  const inputAddressBox = createInputElement("search", "search");
+  const inputAddressBox = createInputElement("text", "search");//----------'v-model="text"'---------------
   inputAddressBox.setAttribute("placeholder", "city");
   const imgAddressPetBox = new Image();
   imgAddressPetBox.src = "img/geoloc.svg";
@@ -68,6 +68,7 @@ export async function searchShowPage() {
   const li3 = createHtmlElement("li", "menuWalkTime", "", "1.5 hours");
   const li4 = createHtmlElement("li", "menuWalkTime", "", "2 hours");
   const inputWalkTime = createInputElement("text", "petBoxInput");
+  inputWalkTime.setAttribute("placeholder", "30 minutes");
   const imgWalkTime = new Image();
   img2NamePetBox.src = "img/down.svg";
 
@@ -178,7 +179,7 @@ export async function searchShowPage() {
   }
 
   const obj = {
-    type: selectedBox.innerHTML,
+    type: selectedBox.id,
     animal: inputPetBox.value,
     city: inputAddressBox.value,
     dateFrom: inputDeadlineBox1.value,
@@ -186,34 +187,22 @@ export async function searchShowPage() {
     priceMin: rangeBoxs[0].value,
     priceMax: rangeBoxs[1].value,
     hours: inputWalkTime.value,
-  };
-  console.log("obj=", obj); //+++++
-  console.log("firstVal=", firstVal); //+++++
-  /*    switch(selectedBox.innerHTML) {
-      case "Accomodation": firstVal.type = 'hotel'; break;
-      case "Walk": firstVal.type = 'walking'; break;
-      case "Home visits": firstVal.type = 'homevisits'; break;
-    }*/
+    //days: ((new Date (inputDeadlineBox2.value)) - new Date (inputDeadlineBox1.value));
+  };//console.log('///////',inputDeadlineBox2.value, typeof(inputDeadlineBox2.value));
 
   if (firstVal.type) {
     switch (firstVal.type) {
       case "Accomodation":
         obj.type = "hotel";
-        console.log("obj.type=", obj.type);
         break;
-      case "Walk": {
+      case "Walk": 
         obj.type = "walking";
-        console.log("obj.type=", obj.type);
         walkTime.style.display = "block";
         break;
-      }
       case "Home visits":
         obj.type = "homevisits";
-        console.log("obj.type=", obj.type);
         break;
     }
-    //obj.type = firstVal.type;
-    console.log("obj.type=", obj.type);
     const a = document.getElementById(`${obj.type}`);
     if (a) activeBox(a);
     //if (firstVal.type === 'walking') walkTime.style.display = "block";
@@ -231,13 +220,9 @@ export async function searchShowPage() {
     obj.animal = firstVal.pet;
     inputPetBox.value = firstVal.pet;
   }
-  //console.log(".....", obj);
 
   const petsittersItems = await getPetsitters();
-  //console.log("******", petsittersItems);
   const petsit = petsittersItems.item;
-  //console.log("userInfo******", userInfo);
-
   createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
 
   divPetBox.addEventListener("click", async (event) => {
@@ -245,8 +230,8 @@ export async function searchShowPage() {
       const target = event.target;
       if (target.tagName == "LI") {
         inputPetBox.value = target.innerHTML;
-        inputPetBox.setAttribute("animal", target.className); //***
-        obj.animal = target.className;
+        //inputPetBox.setAttribute("animal", target.className);
+        obj.animal = target.innerHTML;//target.className;
       }
     }
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
@@ -281,7 +266,7 @@ export async function searchShowPage() {
       }
       if (tag.classList.contains("ActivTypeBoxN")) return;
       activeBox(tag);
-      obj.type = selectedBox.innerHTML;
+      obj.type = selectedBox.id;
     }
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
   });
@@ -297,7 +282,7 @@ export async function searchShowPage() {
     pMin.innerHTML = String(0);
     pMax.innerHTML = String(200);
 
-    obj.type = selectedBox.innerHTML;
+    obj.type = selectedBox.id;
     obj.animal = "";
     obj.city = inputAddressBox.value;
     obj.dateFrom = inputDeadlineBox1.value;
@@ -308,8 +293,8 @@ export async function searchShowPage() {
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
   });
 
-  blockFilter.addEventListener("change", async () => {
-    obj.city = inputAddressBox.value;
+  blockFilter.addEventListener("change", async () => {  //на любое изменение в инпут
+    obj.city = inputAddressBox.value; 
     obj.dateFrom = inputDeadlineBox1.value;
     obj.dateTo = inputDeadlineBox2.value;
     obj.priceMin = rangeBoxs[0].value;
@@ -319,7 +304,7 @@ export async function searchShowPage() {
 
   const itemsBtn = document.getElementsByClassName("btnSearchCart");
   for (let i = 0; i < itemsBtn.length; i++) {
-    itemsBtn[i].addEventListener("click", () => {
+    itemsBtn[i].addEventListener("click", () => {  console.log("obj=", obj);
       console.log(".....", itemsBtn[i].id); //переход на страницу петситтера
 
       //  history.pushState("", "", "/petsitter/id");

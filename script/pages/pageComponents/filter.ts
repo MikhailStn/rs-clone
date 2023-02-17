@@ -1,5 +1,4 @@
 import { createHtmlElement, createInputElement } from "../../utils";
-//import { myPets } from "../../utils/petsitArrayFor";
 
 export const firstVal = {
   type: "",
@@ -20,7 +19,7 @@ export function filterHow(tagParent: HTMLElement): void {
   const namePetBox = createHtmlElement("p", "nameInputBox", "", "Dog Cat");
   const divPetBox = createHtmlElement("div", "petBox");
   const divMenuPets = createHtmlElement("ul", "menuPets");
-  setMenuPets(divMenuPets);//, myPets);
+  setMenuPets(divMenuPets); //, myPets);
   const imgNamePetBox = new Image();
   imgNamePetBox.src = "img/paw.svg";
   const inputPetBox = createInputElement("text");
@@ -180,12 +179,11 @@ export function filterHow(tagParent: HTMLElement): void {
   });
 
   btnSearch.addEventListener("click", () => {
-  /*  console.log("способ выгула = ", selectedBox.innerHTML);
+    /*  console.log("способ выгула = ", selectedBox.innerHTML);
     console.log("time= ", inputTimeBox.value);
     console.log("date= ", inputDeadlineBox.value);
     console.log("search= ", inputAddressBox.value);
     console.log("pet= ", inputPetBox.value);*/
-
     firstVal.type = selectedBox.innerHTML;
     firstVal.date = inputDeadlineBox.value;
     firstVal.city = inputAddressBox.value;
@@ -207,7 +205,6 @@ export function setMenuPets(tagParent: HTMLElement, myPets?: string[]): void {
   }
   const cat = createHtmlElement("p", "titlePetsChoise", "", "Cat");
   const cat1 = createHtmlElement("li", "Cat", "", `Small(up to 6 kg)`);
-
   const cat2 = createHtmlElement("li", "Cat", "", `Large(over 6 kg)`);
   const dog = createHtmlElement("p", "titlePetsChoise", "", "Dog");
   const dog1 = createHtmlElement("li", "Dog", "", "Micro(up to 5 kg)");

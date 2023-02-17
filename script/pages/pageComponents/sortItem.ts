@@ -2,7 +2,6 @@ import { createHtmlElement } from "../../utils";
 import { IPetsitters1 } from "../../utils/interface";
 
 export async function createSortItem(tagParent: HTMLElement, mas: IPetsitters1[], hour: string) {
-  //: void {
   tagParent.innerHTML = "";
   let x = 1;
   const hours = String(hour.match(/\d/g)?.join(""));
@@ -25,20 +24,39 @@ export async function createSortItem(tagParent: HTMLElement, mas: IPetsitters1[]
     const container = createHtmlElement("div", "containerSearchCart");
     const fotoBox = createHtmlElement("div", "fotoSearchCart");
     const foto = new Image();
-    foto.src = `${mas[i].avatarPath}`;
+    if (mas[i].avatarPath) {
+      foto.src = `${mas[i].avatarPath}`;
+    } else {
+      foto.src = `./img/icons/photo.png`;
+      foto.setAttribute("class", "noPhoto");
+    }
     const descriptionBlock = createHtmlElement("div", "descriptionSearchCart");
     const priceBlock = createHtmlElement("div", "priceSearchCart");
 
     const name = createHtmlElement("p", "", "", `${i + 1}. ${mas[i].firstName}`);
     const city = createHtmlElement("p", "", "", `${mas[i].city}`);
     const stars = createHtmlElement("p", "starsSearchCart");
-    if (mas[i].petsitterData.rate){
-    stars.innerHTML = "★".repeat(+mas[i].petsitterData.rate);
-  } else {stars.innerHTML = "no ratings";}
+    if (mas[i].petsitterData.rate) {
+      stars.innerHTML = "★".repeat(+mas[i].petsitterData.rate);
+    } else {
+      stars.innerHTML = "no ratings";
+    }
+
     const level = createHtmlElement("p", "", "", `${mas[i].petsitterData.level}`);
     const price1 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].petsitterData.services.hotel.price} p.`);
-    const price2 = createHtmlElement("p", "priceSearchCart", "", `${+mas[i].petsitterData.services.walking.price * x} p.`); //
-    const price3 = createHtmlElement("p", "priceSearchCart", "", `${mas[i].petsitterData.services.homevisits.price} p.`); //
+    if (mas[i].petsitterData.services.hotel.price) {
+      price1.innerHTML = `${mas[i].petsitterData.services.hotel.price} p.`;
+    } else {
+      price1.innerHTML = "-";
+    }
+    const price2 = createHtmlElement("p", "priceSearchCart");
+    if (mas[i].petsitterData.services.walking.price) {
+      price2.innerHTML = `${+mas[i].petsitterData.services.walking.price * x} p.`;
+    } else price2.innerHTML = "-";
+    const price3 = createHtmlElement("p", "priceSearchCart"); //
+    if (mas[i].petsitterData.services.homevisits.price) {
+      price3.innerHTML = `${mas[i].petsitterData.services.homevisits.price} p.`;
+    } else price3.innerHTML = "-";
     const type = createHtmlElement("div", "typeSearchCart");
     for (let j = 0; j < mas[i].petsitterData.services.servicesArr.length; j++) {
       const typeN = createHtmlElement("p", "typeOfService", "", `${mas[i].petsitterData.services.servicesArr[j]}`);
@@ -49,7 +67,7 @@ export async function createSortItem(tagParent: HTMLElement, mas: IPetsitters1[]
       description.innerHTML = `${mas[i].petsitterData.aboutMe}`;
     } else description = createHtmlElement("p", "", "", "");
 
-    const btn = createHtmlElement("button", "btnSearchCart rectangle"); //, `${mas[i].id}`, `meet me`);
+    const btn = createHtmlElement("button", "btnSearchCart rectangle", `${mas[i]._id}`, `meet me`);
 
     tagParent.append(container);
     container.append(fotoBox);
