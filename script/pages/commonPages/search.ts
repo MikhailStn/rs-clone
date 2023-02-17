@@ -307,8 +307,8 @@ export async function searchShowPage() {
     itemsBtn[i].addEventListener("click", () => {  console.log("obj=", obj);
       console.log(".....", itemsBtn[i].id); //переход на страницу петситтера
 
-      //  history.pushState("", "", "/petsitter/id");
-      //  window.dispatchEvent(new Event("popstate"));
+      history.pushState("", "", `/petsitter/p/${itemsBtn[i].id}`);
+      window.dispatchEvent(new Event("popstate"));
     });
   }
   return document.body;

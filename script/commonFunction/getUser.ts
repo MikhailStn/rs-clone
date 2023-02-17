@@ -16,6 +16,22 @@ export const getUser = async()=>{
            }
     }
 
+export const getUserFromId = async(id:string)=>{
+  const fecthData = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+          _id: id,
+      }),
+  };
+  const response = await fetch(`http://localhost:5000/auth/user`, fecthData);
+  return {
+             item: await response.json()
+         }
+  }
 
 
     export const getPetsitters = async () => {

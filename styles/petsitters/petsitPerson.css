@@ -1,0 +1,90 @@
+.section-petsit-person{
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    min-height: calc(100vh - 160px);
+}
+
+.petsit-person-block,
+.img-name-petsit-person-block{
+    position: relative;
+    max-width: 1192px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+.img-wall-wrapper{
+    max-width: 1392px;
+    height: 338px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-walpaper-person{
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.img-name-petsit-person-block{
+    display: flex;
+    margin-top: -64px;
+    margin-bottom: 48px;
+    gap: 50px;
+}
+
+.img-person-wrapper{
+    display: flex;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+.img-person-petsit{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    text-align: center;
+    border: 12px solid #ffffff;
+}
+
+.petsit-name-qwalific-block{
+    margin-top: 130px;
+}
+
+.name-petsit-person{
+    font-size: 2.2rem;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #27272e;
+}
+
+.qualific-city-person-text{
+    font-size: 1.35rem;
+    line-height: 1.33;
+    letter-spacing: 0.013rem;
+    font-weight: 400;
+    color: #27272e;
+}
+
+.petsit-person-block{
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+}
+
+.common-info-person-block{
+    width: 787px;
+}
+
+.rezerve-order-block{
+    position: sticky;
+    width: 378px;
+    border: 1px solid #ebeaed;
+
+}
