@@ -26,7 +26,7 @@ export interface IFilter {
 }
 
 export interface IPetsitters1 {
-  //id: string,
+  _id: string,
     firstName: { type: string, required: true },
     lastName: { type: string, required: true },
     city: { type: string, required: true },
