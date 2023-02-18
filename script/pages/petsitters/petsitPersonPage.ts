@@ -376,6 +376,8 @@ async function renderPetsitPerson(id: string) {
            if(elem instanceof HTMLElement) elem.style.flexBasis = '50%';
         })
     }
+    let currentService = ''
+    let currentPrice = ''
     areaBtnServices.addEventListener("click", (event) => {
         const target = event.target;
         if (target instanceof HTMLElement && target.classList.contains("person-service-reserve")) {
@@ -384,6 +386,16 @@ async function renderPetsitPerson(id: string) {
             allButtonSelect[i].classList.remove("active");
           }
           target.classList.add("active");
+          if (target.id == "Home visit") {
+            currentService = "Home visit";
+            currentPrice = `${userInfo.petsitterData.services.homevisits.price}`
+          } else if (target.id == "Walk") {
+            currentService = "Walk";
+            currentPrice = `${userInfo.petsitterData.services.walking.price}`
+          } else if (target.id == "Accomodation") {
+            currentService = "Accomodation";
+            currentPrice = `${userInfo.petsitterData.services.hotel.price}`
+          }
         }
       });
       ///выбор животного
@@ -427,6 +439,62 @@ async function renderPetsitPerson(id: string) {
           rezervOrderBlock.append(inputOwnerPet, dataListPet);
       }
       const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order');
+      btnOrder.addEventListener("click", () => {
+        function randomInteger(min: number, max: number) {
+          let res = ''
+          for (let i = 0; i < 6; i++) {
+            const rand = min + Math.random() * (max + 1 - min);
+            res = res + Math.floor(rand)
+          }
+          return res;
+        }
+        const orderNum = randomInteger(0, 9)
+        const order = {
+          numberOfOrder: orderNum,
+          status: "New",
+          petsitterId: userInfoOwner._id,
+          ownerId: userInfo._id,
+          pet: "Name of Pet",
+          nameOfOwner: `${userInfoOwner.firstName} ${userInfoOwner.lastName}`,
+          nameOfPetsitter: `${userInfo.firstName} ${userInfo.lastName}`,
+          dates: "dates",
+          service: currentService,
+          pricePerDay: currentPrice,
+          messages: [],
+        };
+        const fetchData = {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: userInfoOwner._id,
+            order: order,
+          }),
+        };
+        fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => console.log(data));
+        const fetchData1 = {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: userInfo._id,
+            order: order,
+          }),
+        };
+        fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => console.log(data));
+      });
       rezervOrderBlock.append(btnOrder);
 
 
