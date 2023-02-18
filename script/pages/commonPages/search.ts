@@ -302,14 +302,14 @@ export async function searchShowPage() {
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
   });
 
-  const itemsBtn = document.getElementsByClassName("btnSearchCart");
+  /*const itemsBtn = document.getElementsByClassName("btnSearchCart"); // обработчик перенесен в SortItem!
   for (let i = 0; i < itemsBtn.length; i++) {
     itemsBtn[i].addEventListener("click", () => {  console.log("obj=", obj);
       console.log(".....", itemsBtn[i].id); //переход на страницу петситтера
 
-      history.pushState("", "", `/petsitter/p/${itemsBtn[i].id}`);
+      history.pushState("", "", `/petsitter/n/${itemsBtn[i].id}`);
       window.dispatchEvent(new Event("popstate"));
     });
-  }
+  }*/
   return document.body;
 }

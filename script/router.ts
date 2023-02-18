@@ -60,7 +60,7 @@ export const router = () => {
       template: createOrdersPage,
     },
     {
-      path: "/petsitter/p",
+      path: "/petsitter/n",
       template: petsitterPerson,
     },
     {
