@@ -325,7 +325,6 @@ async function renderPetsAddPage() {
   areaBtnDogAge.append(btnAge1, btnAge2, btnAge3, btnAge4);
   areaBtnDogAge.addEventListener("click", (event) => {
     const target = event.target;
-    console.log("click");
     if (target instanceof HTMLElement && target.classList.contains("age-btn")) {
       const allButtonSelect = document.querySelectorAll(".age-btn");
       for (let i = 0; i < allButtonSelect.length; i++) {
@@ -581,9 +580,9 @@ async function renderPetsAddPage() {
         .then((data) => {
           photoContainer.setAttribute(
             "style",
-            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+            `background-image: url('https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}'); background-blend-mode:normal`
           );
-          petsObj.avatarPath = `http://localhost:5000/${data.filePath}`;
+          petsObj.avatarPath = `https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}`;
           btnConfirm.setAttribute("style", "pointer-events:all");
         });
       return btnAddPhoto.files[0];

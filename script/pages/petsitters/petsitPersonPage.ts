@@ -5,8 +5,33 @@ import { getUserFromId } from "../../commonFunction/getUser";
 import { createDogSizeBtn } from "./petsitProfileServiceEdit";
 import { createDivInputs } from "../../commonFunction/inputsCreate";
 import { createBlockMenu } from "../pageComponents/menu";
+import { getUser } from "../../commonFunction/getUser";
 
-
+interface Pets{
+    petId:  string,
+      name: string,
+      type: string,
+      gender: string,
+      breed:string,
+      size:string,
+      age: string,
+      avatarPath: string,
+      about: string,
+      other: {
+        neutered: string,
+        isAlone: string,
+        isMotionSickness:string,
+        takesMedication:string,
+        isAgressive: string,
+        isExcitable: string,
+        isTimid: string,
+        tendsToRunAway: string,
+        hasVaccinationBoolket: string,
+        withYellowRibbon: string,
+        inMidstOfHeat: string,
+        isDefecatesAtHome: string
+    }
+}
 const sectionPetsitPerson = createHtmlElement(
   "section",
   "section-petsit-person"
@@ -274,14 +299,22 @@ async function renderPetsitPerson(id: string) {
 //home condition
     const homeBlockTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'What conditions are in my house?');
     const homeCondItemBlock = createHtmlElement('div', 'home-condition-item-block');
+    if(userInfo.petsitterData.typeOfHome !== undefined){
     const typeOfHome = createBlockMenu('img/home.svg', userInfo.petsitterData.typeOfHome.toLowerCase(), 'home-item-condition');
-    homeCondItemBlock.append(typeOfHome);
+    homeCondItemBlock.append(typeOfHome);    
+    }
     const otherCondition = userInfo.petsitterData.homeConditions;
+    if(otherCondition && otherCondition.length !== 0){
     otherCondition.forEach((elem: string)=>{
         const str = elem.split('-').join(' ');
         const homeCondItem = createBlockMenu('img/home.svg', str, 'home-item-condition');
         homeCondItemBlock.append(homeCondItem);
-    })
+    })}
+    if(otherCondition.length == 0 && userInfo.petsitterData.typeOfHome == undefined){
+        //const homeCondItem = createHtmlElement('div', 'service-area-text', '','No information');
+        homeCondItemBlock.style.display = 'none';
+        homeBlockTitle.style.display = 'none';
+    }
 //lives in my house
     const whoLiveTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'Who lives in my house?');
     const whoLiveItemBlock = createHtmlElement('div', 'home-condition-item-block');
@@ -301,6 +334,11 @@ async function renderPetsitPerson(id: string) {
             whoLiveItemBlock.append(liveItem);
         })
     }
+    if(otherAnimals.length == 0 && liveInMyHome.length == 0){
+        //const liveItem = createHtmlElement('div', 'service-area-text', '','No information');
+        whoLiveItemBlock.style.display = 'none';
+        whoLiveTitle.style.display = 'none';
+    }
 //Добавить еще сюда моих животных и календарь!!!!
 
      commonInfoPersonBlock.append(textAboutMeTitle, textAboutMe, textSkillTitle, textSkill, qualificationPersonTitle, qualificationPersonBlock, myServiceTitle,accommodationPersonBlock,
@@ -308,6 +346,90 @@ async function renderPetsitPerson(id: string) {
         
         //поле оформления заказа
     const rezervOrderBlock = createHtmlElement('div', 'rezerve-order-block');
+    const reserveTitle = createHtmlElement('h2', 'reserve-title', '','Book today');
+       ///выбор услуги при заказе
+    const serviceKindTitle = createHtmlElement(
+        "div",
+        "dog-size-title",
+        "",
+        "Type of service"
+      );
+    const areaBtnServices = createHtmlElement("div", "area-btn-service");
+    const btnService1 = createDogSizeBtn("Accomodation", "", 'person-service-reserve');
+    if(userInfo.petsitterData.services.hotel.active === 'true'){
+        areaBtnServices.append(btnService1);
+    }
+    const btnService2 = createDogSizeBtn("Walk", "", 'person-service-reserve');
+    if(userInfo.petsitterData.services.walking.active === 'true'){
+        areaBtnServices.append(btnService2);
+    }
+    const btnService3 = createDogSizeBtn("Home visit", "", 'person-service-reserve');
+    if(userInfo.petsitterData.services.homevisits.active === 'true'){
+        areaBtnServices.append(btnService3);
+    }
+    const allButtonService = areaBtnServices.querySelectorAll('.btn-dog-size.person-service-reserve');
+    if(allButtonService.length === 1){
+        const btnService = areaBtnServices.querySelector('.btn-dog-size.person-service-reserve') as HTMLElement;
+        if(btnService) btnService.style.flexBasis = '100%';
+    }else if(allButtonService.length === 2){
+        allButtonService.forEach((elem)=>{
+           if(elem instanceof HTMLElement) elem.style.flexBasis = '50%';
+        })
+    }
+    areaBtnServices.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof HTMLElement && target.classList.contains("person-service-reserve")) {
+          const allButtonSelect = document.querySelectorAll(".person-service-reserve");
+          for (let i = 0; i < allButtonSelect.length; i++) {
+            allButtonSelect[i].classList.remove("active");
+          }
+          target.classList.add("active");
+        }
+      });
+      ///выбор животного
+      const kindOfPetTitle = createHtmlElement("div","dog-size-title","", "Choose your pet");
+      rezervOrderBlock.append(reserveTitle, serviceKindTitle, areaBtnServices, kindOfPetTitle);
+      const userOwner = await getUser();
+      const userInfoOwner = (userOwner).item;
+      console.log('userInfo', userInfo);
+      if(userInfoOwner.pets.length === 0){
+        const noPetsText = createHtmlElement('div', 'no-pet-text');
+        noPetsText.innerHTML = 'You don\'t have any animals added. <span>Please add your pet</span> and continue with your order';
+        rezervOrderBlock.append(noPetsText);
+      }else{
+        const inputOwnerPet = createHtmlElement(
+            "input",
+            "owner-pet",
+            "owner-pet"
+          ) as HTMLInputElement;
+          const dataListPet = createHtmlElement("datalist", "", "pets-owner-variable") as HTMLDListElement;
+         /* dataListPet.innerHTML =
+            '<option value="Minsk"></option><option value="Brest"></option><option value="Vitebsk"></option><option value="Grodno"></option><option value="Gomel"></option><option value="Mogilev"></option>';*/
+            userInfoOwner.pets.forEach((el: Pets) =>{
+                const optionPet = createHtmlElement('option', 'option-pet','', el.name);
+                dataListPet.append(optionPet);
+            })
+            const placeTextError = createHtmlElement(
+            "p",
+            "city-text-error-registration text-error-registration",
+            "city-error",
+            "Enter your pet from list"
+          );
+
+          inputOwnerPet.after(placeTextError);
+          inputOwnerPet.type = "text";
+          inputOwnerPet.name = "af2Km9q";
+          inputOwnerPet.placeholder = "My pet";
+          //inputOwnerPet.pattern = "[Mm]insk|[Bb]rest|[Vv]itebsk|[Gg]rodno|[Gg]omel|[Mm]ogilev";
+          inputOwnerPet.setAttribute("list", "pets-owner-variable");
+          inputOwnerPet.setAttribute("autocomplete", "off");
+          inputOwnerPet.setAttribute("required", "");
+          rezervOrderBlock.append(inputOwnerPet, dataListPet);
+      }
+      const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order');
+      rezervOrderBlock.append(btnOrder);
+
+
     petsitPersonBlock.append(commonInfoPersonBlock, rezervOrderBlock);
 
     sectionPetsitPerson.append(imgNamePetsitPersonBlock, petsitPersonBlock);

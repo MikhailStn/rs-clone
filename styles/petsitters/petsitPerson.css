@@ -88,11 +88,15 @@
 
 .rezerve-order-block{
     position: sticky;
+    display: flex;
+    flex-direction: column;
     width: 378px;
-    height: auto;
+    height: fit-content;
     border: 1px solid #ebeaed;
     border-radius: 8px;
+    padding: 24px 16px 16px 16px;
     top: 80px;
+    gap: 20px;
 }
 
 .title-person,
@@ -243,4 +247,37 @@ input:disabled{
 .home-condition-item-block{
     display: flex;
     flex-wrap: wrap;
+}
+
+.reserve-title{
+    font-size: 1.35rem;
+    line-height: 1.33;
+    letter-spacing: 0.013rem;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.area-btn-service{
+    display: flex;
+    margin-top: 20px;
+    border: 1px solid #ebeaed;
+    border-radius: 8px;
+}
+
+.btn-dog-size.person-service-reserve{
+    flex-basis: 33.35%;
+}
+
+.no-pet-text{
+    color: #696869;
+}
+
+.no-pet-text span{
+    color: #ca96e1;
+    cursor: pointer;
+    line-height: 1.25;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.95px;
+    text-transform: none;
 }

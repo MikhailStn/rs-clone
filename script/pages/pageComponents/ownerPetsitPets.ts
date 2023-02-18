@@ -37,3 +37,4 @@ export async function createMyPetsBlock() {
 
     return basicPetsBlock;
 }
+
