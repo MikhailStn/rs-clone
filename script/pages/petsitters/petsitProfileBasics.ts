@@ -292,7 +292,7 @@ async function createBasicInfoBlock() {
     ) as HTMLInputElement;
     behaviorist.addEventListener("input", () => {
       if (behaviorist.checked) {
-        qualificationsArr.push("behaviorist");
+        qualificationsArr.push("Behaviorist");
       } else {
         const index = qualificationsArr.indexOf("behaviorist");
         qualificationsArr.splice(index, 1);
@@ -300,7 +300,7 @@ async function createBasicInfoBlock() {
     });
     course.addEventListener("input", () => {
       if (course.checked) {
-        qualificationsArr.push("petsit-course");
+        qualificationsArr.push("Petsit-course");
       } else {
         const index = qualificationsArr.indexOf("petsit-course");
         qualificationsArr.splice(index, 1);
@@ -308,7 +308,7 @@ async function createBasicInfoBlock() {
     });
     veterinary.addEventListener("input", () => {
       if (veterinary.checked) {
-        qualificationsArr.push("veterinary-technician");
+        qualificationsArr.push("Veterinary-technician");
       } else {
         const index = qualificationsArr.indexOf("veterinary-technician");
         qualificationsArr.splice(index, 1);
@@ -316,7 +316,7 @@ async function createBasicInfoBlock() {
     });
     firstAidCource.addEventListener("input", () => {
       if (firstAidCource.checked) {
-        qualificationsArr.push("first-aid-course");
+        qualificationsArr.push("First-aid-course");
       } else {
         const index = qualificationsArr.indexOf("first-aid-course");
         qualificationsArr.splice(index, 1);

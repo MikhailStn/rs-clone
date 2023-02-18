@@ -325,7 +325,6 @@ async function renderPetsAddPage() {
   areaBtnDogAge.append(btnAge1, btnAge2, btnAge3, btnAge4);
   areaBtnDogAge.addEventListener("click", (event) => {
     const target = event.target;
-    console.log("click");
     if (target instanceof HTMLElement && target.classList.contains("age-btn")) {
       const allButtonSelect = document.querySelectorAll(".age-btn");
       for (let i = 0; i < allButtonSelect.length; i++) {

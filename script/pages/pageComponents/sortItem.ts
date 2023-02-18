@@ -68,6 +68,11 @@ export async function createSortItem(tagParent: HTMLElement, mas: IPetsitters1[]
     } else description = createHtmlElement("p", "", "", "");
 
     const btn = createHtmlElement("button", "btnSearchCart rectangle", `${mas[i]._id}`, `meet me`);
+    btn.addEventListener('click', ()=>{
+      const id = btn.id;
+      history.pushState("", "", `/petsitter/n/${id}`);
+      window.dispatchEvent(new Event("popstate"));
+    })
 
     tagParent.append(container);
     container.append(fotoBox);
