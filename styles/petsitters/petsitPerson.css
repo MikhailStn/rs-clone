@@ -1,283 +1,387 @@
-.section-petsit-person{
-    background-color: #ffffff;
-    color: #000000;
-    width: 100%;
-    min-height: calc(100vh - 160px);
+.section-petsit-person {
+  background-color: #ffffff;
+  color: #000000;
+  width: 100%;
+  min-height: calc(100vh - 160px);
 }
 
 .petsit-person-block,
-.img-name-petsit-person-block{
-    position: relative;
-    max-width: 1192px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
+.img-name-petsit-person-block {
+  position: relative;
+  max-width: 1192px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
 }
 
-.img-wall-wrapper{
-    max-width: 1392px;
-    height: 338px;
-    margin-left: auto;
-    margin-right: auto;
+.img-wall-wrapper {
+  max-width: 1392px;
+  height: 338px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.img-walpaper-person{
-    width: 100%;
-    max-height: 100%;
-    object-fit: cover;
+.img-walpaper-person {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
-.img-name-petsit-person-block{
-    display: flex;
-    margin-top: -64px;
-    margin-bottom: 48px;
-    gap: 50px;
+.img-name-petsit-person-block {
+  display: flex;
+  margin-top: -64px;
+  margin-bottom: 48px;
+  gap: 50px;
 }
 
-.img-person-wrapper{
-    display: flex;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background-color: #ffffff;
+.img-person-wrapper {
+  display: flex;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: #ffffff;
 }
 
-.img-person-petsit{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    text-align: center;
-    border: 12px solid #ffffff;
+.img-person-petsit {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  text-align: center;
+  border: 12px solid #ffffff;
 }
 
-.petsit-name-qwalific-block{
-    margin-top: 130px;
+.petsit-name-qwalific-block {
+  margin-top: 130px;
 }
 
-.name-petsit-person{
-    font-size: 2.2rem;
-    line-height: 1.25;
-    letter-spacing: -0.04em;
-    font-weight: 400;
-    margin-bottom: 8px;
-    color: #27272e;
+.name-petsit-person {
+  font-size: 2.2rem;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: #27272e;
 }
 
-.qualific-city-person-text{
-    font-size: 1.35rem;
-    line-height: 1.33;
-    letter-spacing: 0.013rem;
-    font-weight: 400;
-    color: #27272e;
+.qualific-city-person-text {
+  font-size: 1.35rem;
+  line-height: 1.33;
+  letter-spacing: 0.013rem;
+  font-weight: 400;
+  color: #27272e;
 }
 
-.petsit-person-block{
-    padding: 24px;
-    display: flex;
-    gap: 24px;
+.petsit-person-block {
+  padding: 24px;
+  display: flex;
+  gap: 24px;
 }
 
-.common-info-person-block{
-    display: flex;
-    flex-direction: column;
-    width: 787px;
-    color: #27272e;
-    gap: 20px;
+.common-info-person-block {
+  display: flex;
+  flex-direction: column;
+  width: 787px;
+  color: #27272e;
+  gap: 20px;
 }
 
-.rezerve-order-block{
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    width: 378px;
-    height: fit-content;
-    border: 1px solid #ebeaed;
-    border-radius: 8px;
-    padding: 24px 16px 16px 16px;
-    top: 80px;
-    gap: 20px;
+.rezerve-order-block {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  width: 378px;
+  height: fit-content;
+  border: 1px solid #ebeaed;
+  border-radius: 8px;
+  padding: 24px 16px 16px 16px;
+  top: 80px;
+  gap: 20px;
 }
 
 .title-person,
-.my-service-title{
-    margin-bottom: 8px;
-   font-size: 1.35rem;
-   line-height: 1.33;
-   letter-spacing: 0.013rem;
-   font-weight: 600;
+.my-service-title {
+  margin-bottom: 8px;
+  font-size: 1.35rem;
+  line-height: 1.33;
+  letter-spacing: 0.013rem;
+  font-weight: 600;
 }
 
-.person-text-common{
-    font-size: 0.9rem;
-    line-height: 1.5;
-    font-weight: 400;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+.person-text-common {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 400;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
-.qualific-person-block{
-    display: flex;
-    gap: 20px;
+.qualific-person-block {
+  display: flex;
+  gap: 20px;
 }
 
 .qualification-item,
-.pet-item-hotel-person{
-    display: flex;
-    height: 32px;
-    padding: 0px 12px;
-    background-color: rgba(0, 0, 0, 0.08);
-    border-radius: 16px;
-    justify-content: center;
-    align-items: center;
+.pet-item-hotel-person {
+  display: flex;
+  height: 32px;
+  padding: 0px 12px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
 }
 
-.my-service-title{
-    margin-top: 44px;
-    margin-bottom: 10px;
-    text-align: left;
+.my-service-title {
+  margin-top: 44px;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
-.title-price-service-block{
-    display: flex;
-    justify-content: space-between;
-    height: 69px;
-    padding: 24px 16px;
-    border-bottom: 1px solid #ebeaed;
+.title-price-service-block {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 69px;
+  padding: 24px 16px;
+  border-bottom: 1px solid #ebeaed;
 }
 
-.title-accom-kind-of-pet-person{
-    height: 49px;
-    padding: 8px 8px 8px 16px;
-    font-size: 0.9rem;
-    line-height: 1.75;
-    font-weight: 400;
-    font-family: "Lato", sans-serif;
+.title-accom-kind-of-pet-person {
+  height: 49px;
+  padding: 8px 8px 8px 16px;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
 }
 
 .pet-accom-block,
-.service-area-text{
-    display: flex;
-    padding-left: 18px;
-    padding-bottom: 8px;
-    gap: 20px;
+.service-area-text {
+  display: flex;
+  padding-left: 18px;
+  padding-bottom: 8px;
+  gap: 20px;
 }
 
-.title-btn-walk-block-person{
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    border-bottom: 1px solid #ebeaed;
-    cursor: pointer;
+.title-btn-walk-block-person {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border-bottom: 1px solid #ebeaed;
+  cursor: pointer;
 }
 
-.arrow-down-person{
-    width: 20px;
+.arrow-down-person {
+  width: 20px;
 }
 
-.title-accom-kind-of-pet-person.what-dog-walk-text{
-    padding-top: 10px;
+.title-accom-kind-of-pet-person.what-dog-walk-text {
+  padding-top: 10px;
 }
 
-.view-of-pet-block-wrapper.active{
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    gap: 20px;
-    background-color: #fbfafc;
-    min-height: 0px;
-    height: auto;
-    transition-duration: 300ms;
-    overflow: visible;
-    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) .3ms;
-    border-bottom: 1px solid #ebeaed;
-    visibility: inherit;
+.view-of-pet-block-wrapper.active {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 20px;
+  background-color: #fbfafc;
+  min-height: 0px;
+  height: auto;
+  transition-duration: 300ms;
+  overflow: visible;
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0.3ms;
+  border-bottom: 1px solid #ebeaed;
+  visibility: inherit;
 }
 
-.view-of-pet-block-wrapper{
-    min-height: 0px;
-    height: 0px;
-    transition-duration: 300ms;
-    overflow: hidden;
-    visibility: hidden;
+.view-of-pet-block-wrapper {
+  min-height: 0px;
+  height: 0px;
+  transition-duration: 300ms;
+  overflow: hidden;
+  visibility: hidden;
 }
 
-.btn-dog-size.age-btn.age-btn-petsit-person{
-    flex-basis: 25%;
-    color: rgba(0, 0, 0, 0.26);
-    background-color: #f2eefa;
+.btn-dog-size.age-btn.age-btn-petsit-person {
+  flex-basis: 25%;
+  color: rgba(0, 0, 0, 0.26);
+  background-color: #f2eefa;
 }
 
-.btn-dog-size.person-dog-size{
-    flex-basis: 20%;
-    color: rgba(0, 0, 0, 0.26);
-    background-color: #f2eefa;
+.btn-dog-size.person-dog-size {
+  flex-basis: 20%;
+  color: rgba(0, 0, 0, 0.26);
+  background-color: #f2eefa;
 }
 
-.btn-dog-size.age-btn.age-btn-petsit-person:hover{
-    cursor: pointer;
-    background-color: #f2eefa;
+.btn-dog-size.age-btn.age-btn-petsit-person:hover {
+  cursor: pointer;
+  background-color: #f2eefa;
 }
 
 .btn-dog-size.age-btn.age-btn-petsit-person.active,
-.btn-dog-size.person-dog-size.active{
-    background-color: #fbdd7a;
-    color: #27272e;
+.btn-dog-size.person-dog-size.active {
+  background-color: #fbdd7a;
+  color: #27272e;
 }
 
-input:disabled{
-    color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
-    border-color: rgba(118, 118, 118, 0.3);
+input:disabled {
+  color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+  border-color: rgba(118, 118, 118, 0.3);
 }
 
-.gender-inputs-block.person-pet-gender{
-    justify-content: flex-start;
-    gap: 20px;
-    padding-bottom: 24px;
+.gender-inputs-block.person-pet-gender {
+  justify-content: flex-start;
+  gap: 20px;
+  padding-bottom: 24px;
 }
 
-.service-area-text{
-    color: #696869;
-    line-height: 1.25;
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.95px;
+.service-area-text {
+  color: #696869;
+  line-height: 1.25;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.95px;
 }
 
-.home-condition-item-block{
-    display: flex;
-    flex-wrap: wrap;
+.home-condition-item-block {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.reserve-title{
-    font-size: 1.35rem;
-    line-height: 1.33;
-    letter-spacing: 0.013rem;
-    margin-bottom: 24px;
-    font-weight: 600;
+.reserve-title {
+  font-size: 1.35rem;
+  line-height: 1.33;
+  letter-spacing: 0.013rem;
+  margin-bottom: 24px;
+  font-weight: 600;
 }
 
-.area-btn-service{
-    display: flex;
-    margin-top: 20px;
-    border: 1px solid #ebeaed;
-    border-radius: 8px;
+.area-btn-service {
+  display: flex;
+  margin-top: 20px;
+  border: 1px solid #ebeaed;
+  border-radius: 8px;
 }
 
-.btn-dog-size.person-service-reserve{
-    flex-basis: 33.35%;
+.btn-dog-size.person-service-reserve {
+  flex-basis: 33.35%;
+  height: 53px;
 }
 
-.no-pet-text{
-    color: #696869;
+.no-pet-text {
+  color: #696869;
 }
 
-.no-pet-text span{
+.no-pet-text span {
+  color: #ca96e1;
+  cursor: pointer;
+  line-height: 1.25;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.95px;
+  text-transform: none;
+}
+
+.input-owner-pet,
+.input-date-order {
+  height: 53px;
+  border: 1px solid #ece8ec;
+  border-radius: 8px;
+  padding: 16px 14px;
+  transition: 0.5s;
+}
+
+.input-owner-pet:invalid,
+.input-date-order:invalid {
+  border: 2px solid #f37059;
+}
+
+.input-owner-pet:placeholder-shown,
+.input-date-order:placeholder-shown {
+  border: 1px solid #ebeaed;
+}
+
+.input-owner-pet:hover,
+.input-owner-pet:valid,
+.input-owner-pet:focus,
+.input-date-order:hover,
+.input-date-order:valid,
+.input-date-order:focus {
+  border: 1px solid #ca96e1;
+}
+
+.date-inputs-block {
+  display: flex;
+  position: relative;
+}
+
+.under-input-text{
+    position: absolute;
+    z-index: 2;
+    background-color: #ffffff;
     color: #ca96e1;
+    padding: 3px;
+}
+
+.from-text,
+.walk-date-text{
+    top:-15px;
+    left: 20px;
+}
+
+.to-text{
+    top:-15px;
+    left: 180px;
+}
+
+.tooltip-text{
+    background-color: #fbfafc;
+    position: absolute;
+    z-index: 2;
+    padding: 8px;
+    border-radius: 15px;
+    transition: .5s;
+    display: none;
+}
+
+.tooltip-text.active{
+    display: block;
+}
+
+.accom-tooltip,
+.walk-tooltip{
+    top: -35px;
+    left: calc(100% - 180px);
+}
+
+.tooltip-svg{
+    position: absolute;
+    width: 20px;
     cursor: pointer;
-    line-height: 1.25;
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.95px;
-    text-transform: none;
+}
+
+.accomodation-tooltip-svg,
+.walk-tooltip-svg{
+    top: 5px;
+    left: calc(100% - 20px);
+}
+
+.btn-profile-save.btn-create-order{
+    margin-left: 25%;
+}
+
+.btn-profile-save.btn-create-order:disabled{
+    background-color: #ebeaed;
+}
+
+.error-order-text{
+    color: #f37059;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.come-registration-text a{
+   color: #ca96e1;
 }
