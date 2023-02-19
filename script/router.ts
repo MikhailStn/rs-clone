@@ -13,6 +13,7 @@ import { petsittersCalendar } from "./pages/petsitters/petsittersCalendar";
 import { searchShowPage } from "./pages/commonPages/search";
 import { createOrdersPage } from "./pages/commonPages/ordersPage";
 import { createOrderItemPage } from "./pages/commonPages/orderItemPage";
+import petsitterPerson from "./pages/petsitters/petsitPersonPage";
 
 
 
@@ -57,6 +58,10 @@ export const router = () => {
     {
       path: "/petsitter/orders",
       template: createOrdersPage,
+    },
+    {
+      path: "/petsitter/n",
+      template: petsitterPerson,
     },
     {
       path: "/petsitter/profile/services/edit/accommodation",

@@ -48,7 +48,7 @@ main {
 }
 
 .typeBoxN {
-  border: solid 1px #a8a8a8;
+  border: solid 1px  rgba(0, 0, 0, 0.12);
   border-radius: 5px;
   padding: 10px;
   text-align: center;

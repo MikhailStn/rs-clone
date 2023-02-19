@@ -188,7 +188,7 @@ async function renderRoleMenu() {
     return sectionMenu;
 }
 
-function createBlockMenu(src: string, text: string, className?: string) {
+export function createBlockMenu(src: string, text: string, className?: string) {
     const blockMenuWrapper = createHtmlElement('div', 'block-menu-wrapper');
     const blockSvg = new Image();
     blockSvg.src = src;

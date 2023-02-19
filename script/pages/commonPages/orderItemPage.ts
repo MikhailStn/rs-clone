@@ -1,6 +1,7 @@
 import { createHtmlElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
+import { createChat } from "./createChat";
 
 const orders = [{numberOrders: 123456, city:'Minsk', status: 'rejected', service: 'accomodation', period: '1 day', dates: '20 febr - 21 febr', pet: ['cat', 'Masia'], ownerOrPetsitterId: '63eb4b2a8759fea28d255766'}];
 
@@ -26,6 +27,7 @@ async function renderOrderItemPage(/*id: number*/) {
     const blockPriceOrder = createHtmlElement('div', 'block-price-order');
     const userBlock = createHtmlElement('div', 'user-info-block-order');
     const chatBlock = createHtmlElement('div', 'chat-block-order');
+    chatBlock.append(createChat())
     orderItemInfoBlock.append(blockCommonInfo, blockPriceOrder, userBlock, chatBlock);
 
 
