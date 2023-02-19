@@ -3,6 +3,33 @@ import { createDivInputs } from "../../commonFunction/inputsCreate";
 import { createDogSizeBtn } from "../petsitters/petsitProfileServiceEdit";
 import { getUser } from "../../commonFunction/getUser";
 
+interface IPetsObj {
+  petId: string;
+  name: string;
+  type: string;
+  gender: string;
+  breed: string;
+  size: string;
+  age: string;
+  avatarPath: string;
+  about: string;
+  other: {
+    neutered: string;
+    canBeInHerd: string;
+    hasMotionSickness: string;
+    takesMedication: string;
+    isAgressive: string;
+    isExcitable: string;
+    isTimid: string;
+    tendsToRunAway: string;
+    hasVaccinationBoolket: string;
+    withYellowRibbon: string;
+    inMidstOfHeat: string;
+    defecatesAtHome: string;
+    arr: string[];
+  };
+}
+
 const sectionPetsAdd = createHtmlElement("div", "section-pets-add");
 
 const generatePetsId = () => {
@@ -21,7 +48,7 @@ const generatePetsId = () => {
 };
 
 async function renderPetsAddPage() {
-  const petsObj = {
+  const petsObj: IPetsObj = {
     petId: "",
     name: "",
     type: "",
@@ -44,6 +71,7 @@ async function renderPetsAddPage() {
       withYellowRibbon: "false",
       inMidstOfHeat: "false",
       defecatesAtHome: "false",
+      arr: [],
     },
   };
   petsObj.petId = `${localStorage.getItem(
@@ -356,8 +384,11 @@ async function renderPetsAddPage() {
   inputInfo1.addEventListener("input", () => {
     if (petsObj.other.neutered == "true") {
       petsObj.other.neutered = "false";
+      const ind = petsObj.other.arr.indexOf("Neutered/castrated");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.neutered = "true";
+      petsObj.other.arr.push("Neutered/castrated");
     }
   });
   const inputInfo2 = createDivInputs(
@@ -370,8 +401,13 @@ async function renderPetsAddPage() {
   inputInfo2.addEventListener("input", () => {
     if (petsObj.other.canBeInHerd == "true") {
       petsObj.other.canBeInHerd = "false";
+      const ind = petsObj.other.arr.indexOf(
+        "The only one/cannot be in the herd"
+      );
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.canBeInHerd = "true";
+      petsObj.other.arr.push("The only one/cannot be in the herd");
     }
   });
   const inputInfo3 = createDivInputs(
@@ -384,8 +420,11 @@ async function renderPetsAddPage() {
   inputInfo3.addEventListener("input", () => {
     if (petsObj.other.hasMotionSickness == "true") {
       petsObj.other.hasMotionSickness = "false";
+      const ind = petsObj.other.arr.indexOf("Has motion sickness");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.hasMotionSickness = "true";
+      petsObj.other.arr.push("Has motion sickness");
     }
   });
   const inputInfo4 = createDivInputs(
@@ -398,8 +437,11 @@ async function renderPetsAddPage() {
   inputInfo4.addEventListener("input", () => {
     if (petsObj.other.takesMedication == "true") {
       petsObj.other.takesMedication = "false";
+      const ind = petsObj.other.arr.indexOf("Takes medication");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.takesMedication = "true";
+      petsObj.other.arr.push("Takes medication");
     }
   });
   const inputInfo5 = createDivInputs(
@@ -412,8 +454,11 @@ async function renderPetsAddPage() {
   inputInfo5.addEventListener("input", () => {
     if (petsObj.other.isAgressive == "true") {
       petsObj.other.isAgressive = "false";
+      const ind = petsObj.other.arr.indexOf("It is aggressive");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.isAgressive = "true";
+      petsObj.other.arr.push("It is aggressive");
     }
   });
   const inputInfo6 = createDivInputs(
@@ -426,8 +471,11 @@ async function renderPetsAddPage() {
   inputInfo6.addEventListener("input", () => {
     if (petsObj.other.isExcitable == "true") {
       petsObj.other.isExcitable = "false";
+      const ind = petsObj.other.arr.indexOf("Excessively excitable");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.isExcitable = "true";
+      petsObj.other.arr.push("Excessively excitable");
     }
   });
   const inputInfo7 = createDivInputs(
@@ -440,8 +488,11 @@ async function renderPetsAddPage() {
   inputInfo7.addEventListener("input", () => {
     if (petsObj.other.isTimid == "true") {
       petsObj.other.isTimid = "false";
+      const ind = petsObj.other.arr.indexOf("He is timid");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.isTimid = "true";
+      petsObj.other.arr.push("He is timid");
     }
   });
   const inputInfo8 = createDivInputs(
@@ -454,8 +505,11 @@ async function renderPetsAddPage() {
   inputInfo8.addEventListener("input", () => {
     if (petsObj.other.tendsToRunAway == "true") {
       petsObj.other.tendsToRunAway = "false";
+      const ind = petsObj.other.arr.indexOf("Tends to run away");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.tendsToRunAway = "true";
+      petsObj.other.arr.push("Tends to run away");
     }
   });
   const inputInfo9 = createDivInputs(
@@ -468,8 +522,11 @@ async function renderPetsAddPage() {
   inputInfo9.addEventListener("input", () => {
     if (petsObj.other.hasVaccinationBoolket == "true") {
       petsObj.other.hasVaccinationBoolket = "false";
+      const ind = petsObj.other.arr.indexOf("Has a vaccination booklet");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.hasVaccinationBoolket = "true";
+      petsObj.other.arr.push("Has a vaccination booklet");
     }
   });
   const inputInfo10 = createDivInputs(
@@ -482,8 +539,11 @@ async function renderPetsAddPage() {
   inputInfo10.addEventListener("input", () => {
     if (petsObj.other.withYellowRibbon == "true") {
       petsObj.other.withYellowRibbon = "false";
+      const ind = petsObj.other.arr.indexOf("Dog with a yellow ribbon");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.withYellowRibbon = "true";
+      petsObj.other.arr.push("Dog with a yellow ribbon");
     }
   });
   const inputInfo11 = createDivInputs(
@@ -496,8 +556,11 @@ async function renderPetsAddPage() {
   inputInfo11.addEventListener("input", () => {
     if (petsObj.other.inMidstOfHeat == "true") {
       petsObj.other.inMidstOfHeat = "false";
+      const ind = petsObj.other.arr.indexOf("In the midst of heat");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.inMidstOfHeat = "true";
+      petsObj.other.arr.push("In the midst of heat");
     }
   });
   const inputInfo12 = createDivInputs(
@@ -510,8 +573,11 @@ async function renderPetsAddPage() {
   inputInfo12.addEventListener("input", () => {
     if (petsObj.other.defecatesAtHome == "true") {
       petsObj.other.defecatesAtHome = "false";
+      const ind = petsObj.other.arr.indexOf("Defecates at home");
+      petsObj.other.arr.splice(ind, 1);
     } else {
       petsObj.other.defecatesAtHome = "true";
+      petsObj.other.arr.push("Defecates at home");
     }
   });
   fieldsetOtherInfo.append(
@@ -580,9 +646,9 @@ async function renderPetsAddPage() {
         .then((data) => {
           photoContainer.setAttribute(
             "style",
-            `background-image: url('https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}'); background-blend-mode:normal`
+            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
           );
-          petsObj.avatarPath = `https://raw.githubusercontent.com/MikhailStn/rs-clone-api/main/${data.filePath}`;
+          petsObj.avatarPath = `http://localhost:5000/${data.filePath}`;
           btnConfirm.setAttribute("style", "pointer-events:all");
         });
       return btnAddPhoto.files[0];

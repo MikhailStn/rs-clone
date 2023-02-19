@@ -6,32 +6,11 @@ import { createDogSizeBtn } from "./petsitProfileServiceEdit";
 import { createDivInputs } from "../../commonFunction/inputsCreate";
 import { createBlockMenu } from "../pageComponents/menu";
 import { getUser } from "../../commonFunction/getUser";
+import { Pets } from "../pageComponents/ownerPetsitPets";
+import { petsittersCalendar } from "../pageComponents/calendar";
+import { createItemPetsCard } from "../pageComponents/ownerPetsitPets";
 
-interface Pets{
-    petId:  string,
-      name: string,
-      type: string,
-      gender: string,
-      breed:string,
-      size:string,
-      age: string,
-      avatarPath: string,
-      about: string,
-      other: {
-        neutered: string,
-        isAlone: string,
-        isMotionSickness:string,
-        takesMedication:string,
-        isAgressive: string,
-        isExcitable: string,
-        isTimid: string,
-        tendsToRunAway: string,
-        hasVaccinationBoolket: string,
-        withYellowRibbon: string,
-        inMidstOfHeat: string,
-        isDefecatesAtHome: string
-    }
-}
+
 const sectionPetsitPerson = createHtmlElement(
   "section",
   "section-petsit-person"
@@ -322,7 +301,13 @@ async function renderPetsitPerson(id: string) {
         visitPersonBlock.style.display = 'none';
     }
     visitPersonBlock.append(titleVisitPriceBlock,titlBtnVisitBlock,serviceVisitBlockWrapper, titlBtnVisitBlock2, serviceAreaBlockWrapper2);
-//home condition
+    commonInfoPersonBlock.append(textAboutMeTitle, textAboutMe, textSkillTitle, textSkill, qualificationPersonTitle, qualificationPersonBlock, myServiceTitle,accommodationPersonBlock,
+        walkPersonBlock, visitPersonBlock);
+    //calendar
+    const calendarBlock = createHtmlElement('div');
+      petsittersCalendar(calendarBlock, id);
+      commonInfoPersonBlock.append(calendarBlock);
+    //home condition
     const homeBlockTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'What conditions are in my house?');
     const homeCondItemBlock = createHtmlElement('div', 'home-condition-item-block');
     if(userInfo.petsitterData.typeOfHome !== undefined){
@@ -340,6 +325,8 @@ async function renderPetsitPerson(id: string) {
         homeCondItemBlock.style.display = 'none';
         homeBlockTitle.style.display = 'none';
     }
+
+    
 //lives in my house
     const whoLiveTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'Who lives in my house?');
     const whoLiveItemBlock = createHtmlElement('div', 'home-condition-item-block');
@@ -363,12 +350,18 @@ async function renderPetsitPerson(id: string) {
         whoLiveItemBlock.style.display = 'none';
         whoLiveTitle.style.display = 'none';
     }
-//Добавить еще сюда моих животных и календарь!!!!
+    //petsitter Pets
+    const petsitterPetsTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'My pets');
+    const petsitterPets = createHtmlElement('div' , 'petsit-pets-wrapper');
+    userInfo.pets.forEach(async(elem: Pets)=>{
+          const petsPetsiterItem = await createItemPetsCard(elem);
+          petsitterPets.append(petsPetsiterItem);
+    })
 
-     commonInfoPersonBlock.append(textAboutMeTitle, textAboutMe, textSkillTitle, textSkill, qualificationPersonTitle, qualificationPersonBlock, myServiceTitle,accommodationPersonBlock,
-        walkPersonBlock, visitPersonBlock, homeBlockTitle, homeCondItemBlock, whoLiveTitle, whoLiveItemBlock);
+    commonInfoPersonBlock.append(homeBlockTitle, homeCondItemBlock, whoLiveTitle, whoLiveItemBlock,petsitterPetsTitle, petsitterPets);
         petsitPersonBlock.append(commonInfoPersonBlock);
         
+       
         //поле оформления заказа
 
         //если пользователь не зарегистрирован
