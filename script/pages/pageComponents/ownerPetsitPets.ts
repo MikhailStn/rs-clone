@@ -1,6 +1,33 @@
 import { createHtmlElement } from "../../utils";
 import { getUser } from "../../commonFunction/getUser";
 
+export interface Pets{
+    petId: string,
+      name:string,
+      type:string,
+      gender:string,
+      breed:string,
+      size:string,
+      age: string,
+      avatarPath: string,
+      about: string,
+      other: {
+        neutered: string,
+        canBeInHerd: string,
+        hasMotionSickness:string,
+        takesMedication:string,
+        isAgressive:string,
+        isExcitable:string,
+        isTimid: string,
+        tendsToRunAway:string,
+        hasVaccinationBoolket: string,
+        withYellowRibbon:string,
+        inMidstOfHeat: string,
+        defecatesAtHome: string,
+        arr: [],
+    }
+}
+
 export async function createMyPetsBlock() {
     const user = await getUser();
     const userInfo = (user).item;
@@ -21,20 +48,65 @@ export async function createMyPetsBlock() {
     })
     const petsItemCountBlock = createHtmlElement('div', 'pets-item-count-block');
     basicPetsBlock.append(petsItemCountBlock);
-    const petsUser: string[] = userInfo.pets;
+    const petsUser: Pets[] = userInfo.pets;
     console.log('petsUser', petsUser);
     if(petsUser.length === 0){
         petsItemCountBlock.innerHTML = '';
         const noPetsText = createHtmlElement('div', 'no-pets-text', '', 'No pets added');
         petsItemCountBlock.append(noPetsText);
     }else{
+        petsItemCountBlock.innerHTML = '';
         petsUser.forEach(elem =>{
-            console.log(elem); //ВСТАВИТЬ Ф-ЦИЮ ДЛЯ ОТРИСОВКИ КАРТОЧКИ ПИТОМЦА!!!!!
+            console.log(elem); 
+            const itemPets = createItemPetsCard(elem);
+            petsItemCountBlock.append(itemPets);
         })
     }
-
-
-
     return basicPetsBlock;
 }
 
+export function createItemPetsCard(petsObject: Pets){
+    const itemPetBlock = createHtmlElement('div', 'item-pet-block');
+    const namePetItem = createHtmlElement('h4', 'name-pet-item','', petsObject.name);
+    const breedPetItem = createHtmlElement('div', 'breed-pet-item', '', petsObject.breed);
+    itemPetBlock.append(namePetItem, breedPetItem);
+    if(petsObject.avatarPath !== ''){
+        const divImgPet = createHtmlElement('div','div-img-pet');
+    const imgItemPet = createHtmlElement('img', 'img-pet-item') as HTMLImageElement;
+    divImgPet.append(imgItemPet);
+    imgItemPet.src = petsObject.avatarPath;
+    itemPetBlock.append(divImgPet);
+    }
+    const divCommonInfoPet = createHtmlElement('div', 'div-common-info-pet');
+    const kindOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.type);
+    const genderOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.gender);
+    const sizeOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.size);
+    const ageOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.age);
+    divCommonInfoPet.append(kindOfPet, genderOfPet, sizeOfPet, ageOfPet);
+    const descrTitle = createHtmlElement('h4','description-title-item', '', "Description");
+    const descrTex = createHtmlElement('p', 'description-text-item-pet','', petsObject.about);
+    itemPetBlock.append(divCommonInfoPet, descrTitle, descrTex);
+    const values = Object.values(petsObject.other);
+    if(values.includes('true')){
+    const otherInfoPetTitle = createHtmlElement('ul','other-info-pet-item-title','','Other important information');
+    itemPetBlock.append(otherInfoPetTitle);
+    petsObject.other.arr.forEach((elem: string)=>{
+        const otherPetItem = createHtmlElement('li', 'other-pet-item','', elem);
+        itemPetBlock.append(otherPetItem);
+    })
+    }
+    if((window.location.pathname === '/owner/pets') || (window.location.pathname === '/petsitter/profile/basics')){
+        const imgSvgMore = createHtmlElement('img', 'svg-btn-edit-delete') as HTMLImageElement;
+        imgSvgMore.src = 'img/svg/threeDots.svg';
+        const deleteEditWrapper = createHtmlElement('div', 'delete-edit-wrapper');
+        itemPetBlock.append(imgSvgMore, deleteEditWrapper);
+        const btnDeletePet = createHtmlElement('button', 'btn-delete-pet', `btn-delete-pet-${petsObject.petId}`, 'Delete');
+        const btnEditePet = createHtmlElement('button', 'btn-edit-pet', `btn-edit-pet-${petsObject.petId}`, 'Edit');
+        imgSvgMore.addEventListener('click', ()=>{
+            deleteEditWrapper.classList.toggle('active');
+        })
+        deleteEditWrapper.append(btnDeletePet, btnEditePet);
+    }
+    
+    return itemPetBlock;
+}

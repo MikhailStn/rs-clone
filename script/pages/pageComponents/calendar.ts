@@ -11,7 +11,8 @@ export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
   let m = new Date().getMonth();
   let y = new Date().getFullYear();
 
-  const leftCalendarBlock = createHtmlElement("div", "block-calendar ");
+
+  const leftCalendarBlock = createHtmlElement("div", "block-calendar calendar-petsit-item-page");
   const leftCalendarBlockTop = createHtmlElement("div", "block-calendar-top ");
   const titleLeft = createHtmlElement("h2", "my-profile-text-title ", "", "Work days");
   const divMonth = createHtmlElement("div", "block-Month");
@@ -38,22 +39,27 @@ export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
   divYear.append(nextYear);
   leftCalendarBlock.append(leftCalendar);
 
-  leftCalendarBlock.addEventListener("click", (e) => {
+
+  /*function noActiveBox(tag: HTMLElement) {
+    if (tag.classList.contains("noActive")) {
+      tag.classList.remove("noActive");
+      tag.classList.add("activeDay");
+    } else if (tag.classList.contains("activeDay")) {
+      tag.classList.add("noActive");
+      tag.classList.remove("activeDay");
+    }
+  }*/
+
+  /*leftCalendarBlock.addEventListener("click", (e) => {
+
     if (e.target && e.target instanceof HTMLElement) {
       const target = e.target;
       if (target.tagName != "TD") return;
       noActiveBox(target);
     }
-    function noActiveBox(tag: HTMLElement) {
-      if (tag.classList.contains("noActive")) {
-        tag.classList.remove("noActive");
-        tag.classList.add("activeDay");
-      } else if (tag.classList.contains("activeDay")) {
-        tag.classList.add("noActive");
-        tag.classList.remove("activeDay");
-      }
-    }
-  });
+  
+  });*/
+
 
   preMonth.addEventListener("click", () => {
     m--;

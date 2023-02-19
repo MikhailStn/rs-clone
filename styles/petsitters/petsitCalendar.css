@@ -96,8 +96,22 @@
   height: 70px;
 }
 
+.block-calendar.calendar-petsit-item-page td,
+.block-calendar.calendar-petsit-item-page th {
+  /*border: 1px solid black;*/
+  padding: 3px;
+  text-align: center;
+  width: 70px;
+  height: 70px;
+}
+
+
 .block-calendar td:hover{
     background-color: red;
+}
+
+.block-calendar.calendar-petsit-item-page td:hover{
+  background-color: rgb(247, 233, 187);
 }
 
 .block-calendar th {
