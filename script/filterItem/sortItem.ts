@@ -4,7 +4,7 @@ export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
   let result: IPetsitters1[] = mas;
 
   console.log("filter-------    ", filter);
-  /*
+  
   if (filter.animal) {
     switch (filter.animal) {
       case "Small(up to 6 kg)": filter.animal = "cat"; break;
@@ -74,13 +74,10 @@ export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
 */
 
   const diapazonDate: string[] = [`${filter.dateFrom}`];
-  //console.log(`result---diapazonDate---`, diapazonDate);
-
   const nDay1: Date = new Date(`${filter.dateFrom.slice(0, 4)}, ${+filter.dateFrom.slice(5, 7)}, ${+filter.dateFrom.slice(8)}`);
   const nDay2: Date = new Date(`${filter.dateTo.slice(0, 4)}, ${+filter.dateTo.slice(5, 7)}, ${+filter.dateTo.slice(8)}`);
   const b = +(nDay2.getTime() - nDay1.getTime()) / 60 / 60 / 24 / 1000;
 
-  //if (b == 0) diapazonDate = [filter.dateFrom[0]];
   if (b > 0) {
     let q: Date = new Date(nDay1);
 
@@ -101,15 +98,7 @@ export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
       return false;
     })
   );
-/*
-result = result.filter((elem) =>
-elem.petsitterData.availableDates.filter((el) => {//не отрабатывает
-  //console.log("elem", elem, "el", el, `diapazonDate`, diapazonDate);
-  //console.log("+++++++++++++++++++++++++");
-  return !(diapazonDate.includes(el));
-})
-);
-*/
+
   console.log(`result------`, result);
   return result;
 }
