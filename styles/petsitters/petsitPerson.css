@@ -385,3 +385,9 @@ input:disabled {
 .come-registration-text a{
    color: #ca96e1;
 }
+
+.petsit-pets-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  width: 787px;
+}

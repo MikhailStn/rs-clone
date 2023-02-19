@@ -80,9 +80,15 @@ export function createItemPetsCard(petsObject: Pets){
     const divCommonInfoPet = createHtmlElement('div', 'div-common-info-pet');
     const kindOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.type);
     const genderOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.gender);
-    const sizeOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.size);
-    const ageOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.age);
-    divCommonInfoPet.append(kindOfPet, genderOfPet, sizeOfPet, ageOfPet);
+    divCommonInfoPet.append(kindOfPet, genderOfPet);
+    if(petsObject.size !== ''){
+        const sizeOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.size);
+        divCommonInfoPet.append(sizeOfPet);
+    }
+    if(petsObject.age !==""){
+        const ageOfPet = createHtmlElement('div', 'common-info-pet-item-text','', petsObject.age);
+        divCommonInfoPet.append(ageOfPet);
+    }
     const descrTitle = createHtmlElement('h4','description-title-item', '', "Description");
     const descrTex = createHtmlElement('p', 'description-text-item-pet','', petsObject.about);
     itemPetBlock.append(divCommonInfoPet, descrTitle, descrTex);
