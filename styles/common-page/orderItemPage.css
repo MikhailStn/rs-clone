@@ -6,10 +6,11 @@
 }
 
 .section-item-orders-block {
-    max-width: 1192px;
+    max-width: 1270px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 16px;
+    width: 100%;
 }
 
 .come-back-order-div{
@@ -26,6 +27,16 @@
 .come-back-order-div span:hover{
     border-radius: 50%;
     background-color: #8867960a;
+}
+
+.orders-container {
+    width: 100%;
+    max-width: 1270px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 20px;
 }
 
 .order-item-info-block{
