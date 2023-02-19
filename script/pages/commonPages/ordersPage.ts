@@ -13,6 +13,8 @@ interface OrderPreview{
       },
       nameOfOwner: string,
       nameOfPetsitter: string,
+      avatarOwner: string,
+      avatarPetsitter: string
       dates: string,
       service: string,
       pricePerDay: string,
@@ -25,7 +27,7 @@ interface OrderPreview{
         }
       ]
 }
-let orders: object[] = [];
+let orders: OrderPreview[] = [];
 
 async function renderOrdersPage(){
     sectionOrder.innerHTML = '';
@@ -54,8 +56,45 @@ async function renderOrdersPage(){
             const orderBlock = await createItemOrderBlock(elem);
             sectionOrdersBlock.append(orderBlock);
         }) */
+        const block = document.querySelector(".section-orders")
         for (let i = 0; i < orders.length; i++) {
             const itemOrderBlock = createHtmlElement('div', 'item-order-block');
+            const commonInfoOrderWrapper = createHtmlElement('div', 'common-info-order-item-wrapper');
+            itemOrderBlock.append(commonInfoOrderWrapper);
+            const statusText = createHtmlElement('div', 'status-order-text','', `${orders[i].status}`);
+            const serviceText = createHtmlElement('div', 'service-order-text', '',`${orders[i].service}`);
+            const dateOrder = createHtmlElement('div', 'date-order-text', '', orders[i].dates);
+            const petInfoOrderBlock = createHtmlElement('div', 'pet-info-order-block');
+            const ownerOrPetsitterBlock = createHtmlElement('div', 'owner-or-petsitter-block');
+            const ratePetsitter = createHtmlElement('div', 'rate-petsitter-order');
+            commonInfoOrderWrapper.append(statusText, serviceText, dateOrder, petInfoOrderBlock, ownerOrPetsitterBlock);
+            block?.append(itemOrderBlock)
+            let name = '';
+            //let avatar = ''
+            const userPhoto = createHtmlElement('img', 'user-order-photo') as HTMLImageElement;
+            if (data.role == "PETSITTER") {
+                commonInfoOrderWrapper.append(ratePetsitter)
+                name = orders[i].nameOfOwner;
+                if (data.avatarOwner === '' || data.avatarOwner === undefined) {
+                    userPhoto.src = 'img/personLogo.svg';
+                } else {
+                    userPhoto.src = orders[i].avatarOwner;
+                }
+            } else if (data.role == "OWNER") {
+                name = orders[i].nameOfPetsitter;
+                if (orders[i].avatarPetsitter === '' || orders[i].avatarPetsitter === undefined) {
+                    userPhoto.src = 'img/personLogo.svg';
+                } else {
+                    userPhoto.src = orders[i].avatarPetsitter;
+                }
+            }
+            const userName = createHtmlElement('div','user-name-order', '', `${name}`);
+            ownerOrPetsitterBlock.append(userPhoto, userName);
+            const imgPet = new Image();
+            imgPet.className = 'svg-pet-order';
+            const namePet = createHtmlElement('div', 'pet-name-order','', 'pet name');
+            petInfoOrderBlock.append(imgPet, namePet);
+            imgPet.src = 'img/cat.svg';
         }
     })
 }
