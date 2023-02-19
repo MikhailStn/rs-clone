@@ -16,6 +16,7 @@ export const getUser = async()=>{
            }
     }
 
+
 export const getUserFromId = async(id:string)=>{
   const fecthData = {
       method: "POST",
@@ -33,6 +34,7 @@ export const getUserFromId = async(id:string)=>{
          }
   }
 
+      
 
     export const getPetsitters = async () => {
         const fetchData = {
