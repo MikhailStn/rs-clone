@@ -350,7 +350,9 @@ async function renderPetsitPerson(id: string) {
         whoLiveItemBlock.style.display = 'none';
         whoLiveTitle.style.display = 'none';
     }
+    commonInfoPersonBlock.append(homeBlockTitle, homeCondItemBlock, whoLiveTitle, whoLiveItemBlock);
     //petsitter Pets
+    if(userInfo.pets.length !==0){
     const petsitterPetsTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'My pets');
     const petsitterPets = createHtmlElement('div' , 'petsit-pets-wrapper');
     userInfo.pets.forEach(async(elem: Pets)=>{
@@ -358,7 +360,8 @@ async function renderPetsitPerson(id: string) {
           petsitterPets.append(petsPetsiterItem);
     })
 
-    commonInfoPersonBlock.append(homeBlockTitle, homeCondItemBlock, whoLiveTitle, whoLiveItemBlock,petsitterPetsTitle, petsitterPets);
+    commonInfoPersonBlock.append(petsitterPetsTitle, petsitterPets);
+    }
         petsitPersonBlock.append(commonInfoPersonBlock);
         
        
