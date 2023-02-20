@@ -44,7 +44,7 @@ export const router = () => {
       template: ownerPets,
     },
     {
-      path: "/owner/orders/n",
+      path: `/owner/orders/`,
       template: createOrderItemPage,
     },
     {
@@ -52,7 +52,7 @@ export const router = () => {
       template: createOrdersPage,
     },
     {
-      path: "/petsitter/orders/n",
+      path: `/petsitter/orders/`,
       template: createOrderItemPage,
     },
     {
