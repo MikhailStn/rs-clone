@@ -7,30 +7,43 @@ const orders = [{numberOrders: 123456, city:'Minsk', status: 'rejected', service
 
 const sectionOrderItem = createHtmlElement('section', 'section-order-item');
 
-async function renderOrderItemPage(/*id: number*/) { 
+async function renderOrderItemPage(id: string) { 
+    console.log(id)
     sectionOrderItem.innerHTML = '';
     const sectionItemOrdersBlock = createHtmlElement('div', 'section-item-orders-block');
     sectionOrderItem.append(sectionItemOrdersBlock);
-    //написать функцию получения данных заказа по id
-    const comeBackDiv = createHtmlElement('div', 'come-back-order-div');
-    comeBackDiv.innerHTML = '<span>←</span> Return to orders';
-    sectionItemOrdersBlock.append(comeBackDiv);
-    comeBackDiv.addEventListener('click', ()=>{
+    // Функция поиска заказа по номеру заказа
+    fetch(`http://localhost:5000/order/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        numberOfOrder: id,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then(async(data) => {
+        console.log(data); // ЗАКАЗ
+        const comeBackDiv = createHtmlElement('div', 'come-back-order-div');
+        comeBackDiv.innerHTML = '<span>←</span> Return to orders';
+        sectionItemOrdersBlock.append(comeBackDiv);
+        comeBackDiv.addEventListener('click', ()=>{
         history.pushState('','','/owner/orders'); // поменять ссылку в зависимости от роли
         window.dispatchEvent(new Event("popstate"));
     });
-
-    const orderItemInfoBlock = createHtmlElement('div', 'order-item-info-block');
-    sectionItemOrdersBlock.append(orderItemInfoBlock);
-
-    const blockCommonInfo = await createBlockCommoninfo();
-    const blockPriceOrder = createHtmlElement('div', 'block-price-order');
-    const userBlock = createHtmlElement('div', 'user-info-block-order');
-    const chatBlock = createHtmlElement('div', 'chat-block-order');
-    chatBlock.append(createChat())
-    orderItemInfoBlock.append(blockCommonInfo, blockPriceOrder, userBlock, chatBlock);
-
-
+        const orderItemInfoBlock = createHtmlElement('div', 'order-item-info-block');
+        sectionItemOrdersBlock.append(orderItemInfoBlock);
+        const blockCommonInfo = await createBlockCommoninfo();
+        const blockPriceOrder = createHtmlElement('div', 'block-price-order');
+        const userBlock = createHtmlElement('div', 'user-info-block-order');
+        const chatBlock = createHtmlElement('div', 'chat-block-order');
+        chatBlock.append(createChat(data))
+        orderItemInfoBlock.append(blockCommonInfo, blockPriceOrder, userBlock, chatBlock);
+    });
 }
 
 async function createBlockCommoninfo() {
@@ -73,9 +86,10 @@ async function createBlockItemInfoOrder(src: string, text: string, className?: s
 
 
 export async function createOrderItemPage(){ //добавить формулу разбора и получения id заказа!!!!!!!!!
+    const numberOfOrder = window.location.href.substring(window.location.href.length - 6) // ПОЛУЧЕНИЕ ID ЗАКАЗА
     document.body.innerHTML = "";
     await headerPetsitter(document.body);
-    await renderOrderItemPage(/*id*/); //сюда мы должны добавлять айди заказа
+    await renderOrderItemPage(numberOfOrder); //сюда мы должны добавлять айди заказа
     document.body.append(sectionOrderItem);
     footerFun(document.body);
     return document.body;

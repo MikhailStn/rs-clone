@@ -397,6 +397,8 @@ async function renderPetsitPerson(id: string) {
             currentPrice = `${userInfo.petsitterData.services.hotel.price}`
           }
         }
+        const btn = document.querySelector(".btn-profile-save") as HTMLButtonElement;
+        btn.style.pointerEvents = "all"
       });
       ///выбор животного
       const kindOfPetTitle = createHtmlElement("div","dog-size-title","", "Choose your pet");
@@ -439,6 +441,7 @@ async function renderPetsitPerson(id: string) {
           rezervOrderBlock.append(inputOwnerPet, dataListPet);
       }
       const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order');
+      btnOrder.style.pointerEvents = "none"
       btnOrder.addEventListener("click", () => {
         function randomInteger(min: number, max: number) {
           let res = ''
@@ -493,15 +496,18 @@ async function renderPetsitPerson(id: string) {
           .then((response) => {
             return response.json();
           })
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .then(() => {
+            history.pushState("", "", "");
+            window.dispatchEvent(new Event("popstate"));
+          })
       });
-      rezervOrderBlock.append(btnOrder);
-
-
+    rezervOrderBlock.append(btnOrder);
     petsitPersonBlock.append(commonInfoPersonBlock, rezervOrderBlock);
-
     sectionPetsitPerson.append(imgNamePetsitPersonBlock, petsitPersonBlock);
 }
+
+
 
 export default async function petsitterPerson() {
     document.body.innerHTML = "";

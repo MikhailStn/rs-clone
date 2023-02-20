@@ -1,6 +1,7 @@
 import { createHtmlElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
+//import { numberOfOrder } from "../petsitters/petsitPersonPage";
 
 const sectionOrder = createHtmlElement("section", "section-orders");
 
@@ -28,6 +29,8 @@ interface OrderPreview {
   ];
 }
 let orders: OrderPreview[] = [];
+
+export let numberOfOrder1 = ''
 
 async function renderOrdersPage() {
   sectionOrder.innerHTML = "";
@@ -163,10 +166,11 @@ async function renderOrdersPage() {
         itemOrderBlock.append(btnOrderInfoAndChat);
         btnOrderInfoAndChat.addEventListener("click", () => {
           if (data.role === "PETSITTER") {
-            history.pushState("", "", "/owner/orders/n"); //тут нужно задавать правильный id заказа!!!
+            numberOfOrder1 = orders[i].numberOfOrder
+            history.pushState("", "", `/petsitter/orders/${orders[i].numberOfOrder}`); //тут нужно задавать правильный id заказа!!!
             window.dispatchEvent(new Event("popstate"));
           } else {
-            history.pushState("", "", "/petsitter/orders/n"); //тут нужно задавать правильный id заказа!!!
+            history.pushState("", "", `/owner/orders/${orders[i].numberOfOrder}`); //тут нужно задавать правильный id заказа!!!
             window.dispatchEvent(new Event("popstate"));
           }
         });
@@ -174,6 +178,7 @@ async function renderOrdersPage() {
       }
     });
 }
+
 
 /* async function createItemOrderBlock(object: OrderPreview) {
     const itemOrderBlock = createHtmlElement('div', 'item-order-block');
@@ -243,6 +248,7 @@ async function renderOrdersPage() {
 
 export async function createOrdersPage() {
   document.body.innerHTML = "";
+  console.log(numberOfOrder1)
   await headerPetsitter(document.body);
   await renderOrdersPage();
   document.body.append(sectionOrder);
