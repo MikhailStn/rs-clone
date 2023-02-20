@@ -71,7 +71,7 @@ export const createChat = (order: OrderPreview) => {
           ".chat-messages-container"
         ) as HTMLDivElement;
         chatBlock.innerHTML = "";
-        renderMessages(data.orders[0]); //тут надо получить правильный объект заказа
+        renderMessages(data); //тут надо получить правильный объект заказа
         messageArea.value = "";
       });
   }
