@@ -6,32 +6,11 @@ import { createDogSizeBtn } from "./petsitProfileServiceEdit";
 import { createDivInputs } from "../../commonFunction/inputsCreate";
 import { createBlockMenu } from "../pageComponents/menu";
 import { getUser } from "../../commonFunction/getUser";
+import { Pets } from "../pageComponents/ownerPetsitPets";
+import { petsittersCalendar } from "../pageComponents/calendar";
+import { createItemPetsCard } from "../pageComponents/ownerPetsitPets";
 
-interface Pets{
-    petId:  string,
-      name: string,
-      type: string,
-      gender: string,
-      breed:string,
-      size:string,
-      age: string,
-      avatarPath: string,
-      about: string,
-      other: {
-        neutered: string,
-        isAlone: string,
-        isMotionSickness:string,
-        takesMedication:string,
-        isAgressive: string,
-        isExcitable: string,
-        isTimid: string,
-        tendsToRunAway: string,
-        hasVaccinationBoolket: string,
-        withYellowRibbon: string,
-        inMidstOfHeat: string,
-        isDefecatesAtHome: string
-    }
-}
+
 const sectionPetsitPerson = createHtmlElement(
   "section",
   "section-petsit-person"
@@ -103,8 +82,16 @@ async function renderPetsitPerson(id: string) {
     const titleAccomodationPriceBlock = createHtmlElement('div', 'title-price-service-block', '', '');
     const titleAccomodation= createHtmlElement('h3', 'titlle-services-person', '', 'Overnight stay with a petsitter');
     const priceAccomodation = createHtmlElement('h3','titlle-services-person', '', `${userInfo.petsitterData.services.hotel.price} byn`);
-    titleAccomodationPriceBlock.append(titleAccomodation, priceAccomodation);
-
+    const tooltip = createHtmlElement('p','tooltip-text accom-tooltip', '', 'Price per day per week');
+    const tooltipSvg = createHtmlElement('img', 'tooltip-svg accomodation-tooltip-svg') as HTMLImageElement;
+    tooltipSvg.src = 'img/iCharacterGrey.svg';
+    tooltipSvg.addEventListener('mouseover',()=>{
+        tooltip.classList.add('active');
+    })
+    tooltipSvg.addEventListener('mouseout',()=>{
+        tooltip.classList.remove('active');
+    })
+    titleAccomodationPriceBlock.append(titleAccomodation, priceAccomodation, tooltipSvg ,tooltip);
     const titlBtnAccomBlock = createHtmlElement('div', 'title-btn-walk-block-person');
     const titleAccomBlock = createHtmlElement('div', 'title-accom-kind-of-pet-person what-dog-walk-text','', 'Which pets will stay with me overnight');
     const arrowDownSvg6 = createHtmlElement('img','arrow-down-person') as HTMLImageElement;
@@ -135,7 +122,16 @@ async function renderPetsitPerson(id: string) {
     const titleWalkPriceBlock = createHtmlElement('div', 'title-price-service-block', '', '');
     const titleWalk= createHtmlElement('h3', 'titlle-services-person', '', 'A walk in your neighborhood');
     const priceWalk = createHtmlElement('h3','titlle-services-person', '', `${userInfo.petsitterData.services.walking.price} byn`);
-    titleWalkPriceBlock.append(titleWalk, priceWalk);
+    const tooltip2 = createHtmlElement('p','tooltip-text walk-tooltip', '', 'Standard walk (30 min)');
+    const tooltipSvg2 = createHtmlElement('img', 'tooltip-svg walk-tooltip-svg') as HTMLImageElement;
+    tooltipSvg2.src = 'img/iCharacterGrey.svg';
+    titleWalkPriceBlock.append(titleWalk, priceWalk, tooltipSvg2, tooltip2);
+    tooltipSvg2.addEventListener('mouseover',()=>{
+        tooltip2.classList.add('active');
+    })
+    tooltipSvg2.addEventListener('mouseout',()=>{
+        tooltip2.classList.remove('active');
+    })
     const titlBtnWalkBlock = createHtmlElement('div', 'title-btn-walk-block-person');
     const titleWhatDog = createHtmlElement('div', 'title-accom-kind-of-pet-person what-dog-walk-text','', 'See what dogs I walk');
     const arrowDownSvg = createHtmlElement('img','arrow-down-person') as HTMLImageElement;
@@ -253,7 +249,16 @@ async function renderPetsitPerson(id: string) {
     const titleVisitPriceBlock = createHtmlElement('div', 'title-price-service-block', '', '');
     const titleVisit= createHtmlElement('h3', 'titlle-services-person', '', 'Home visits');
     const priceVisit = createHtmlElement('h3','titlle-services-person', '', `${userInfo.petsitterData.services.homevisits.price} byn`);
-    titleVisitPriceBlock.append(titleVisit, priceVisit);
+    const tooltip3 = createHtmlElement('p','tooltip-text walk-tooltip', '', 'Standard visit (30 min)');
+    const tooltipSvg3 = createHtmlElement('img', 'tooltip-svg walk-tooltip-svg') as HTMLImageElement;
+    tooltipSvg3.src = 'img/iCharacterGrey.svg';
+    titleVisitPriceBlock.append(titleVisit, priceVisit, tooltipSvg3, tooltip3);
+    tooltipSvg3.addEventListener('mouseover',()=>{
+        tooltip3.classList.add('active');
+    })
+    tooltipSvg3.addEventListener('mouseout',()=>{
+        tooltip3.classList.remove('active');
+    })
     const titlBtnVisitBlock = createHtmlElement('div', 'title-btn-walk-block-person');
     const titleVisitBlock = createHtmlElement('div', 'title-accom-kind-of-pet-person what-dog-walk-text','', 'Which pets I will be able to visit');
     const arrowDownSvg3 = createHtmlElement('img','arrow-down-person') as HTMLImageElement;
@@ -296,7 +301,13 @@ async function renderPetsitPerson(id: string) {
         visitPersonBlock.style.display = 'none';
     }
     visitPersonBlock.append(titleVisitPriceBlock,titlBtnVisitBlock,serviceVisitBlockWrapper, titlBtnVisitBlock2, serviceAreaBlockWrapper2);
-//home condition
+    commonInfoPersonBlock.append(textAboutMeTitle, textAboutMe, textSkillTitle, textSkill, qualificationPersonTitle, qualificationPersonBlock, myServiceTitle,accommodationPersonBlock,
+        walkPersonBlock, visitPersonBlock);
+    //calendar
+    const calendarBlock = createHtmlElement('div');
+      petsittersCalendar(calendarBlock, id);
+      commonInfoPersonBlock.append(calendarBlock);
+    //home condition
     const homeBlockTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'What conditions are in my house?');
     const homeCondItemBlock = createHtmlElement('div', 'home-condition-item-block');
     if(userInfo.petsitterData.typeOfHome !== undefined){
@@ -311,10 +322,11 @@ async function renderPetsitPerson(id: string) {
         homeCondItemBlock.append(homeCondItem);
     })}
     if(otherCondition.length == 0 && userInfo.petsitterData.typeOfHome == undefined){
-        //const homeCondItem = createHtmlElement('div', 'service-area-text', '','No information');
         homeCondItemBlock.style.display = 'none';
         homeBlockTitle.style.display = 'none';
     }
+
+    
 //lives in my house
     const whoLiveTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'Who lives in my house?');
     const whoLiveItemBlock = createHtmlElement('div', 'home-condition-item-block');
@@ -335,16 +347,40 @@ async function renderPetsitPerson(id: string) {
         })
     }
     if(otherAnimals.length == 0 && liveInMyHome.length == 0){
-        //const liveItem = createHtmlElement('div', 'service-area-text', '','No information');
         whoLiveItemBlock.style.display = 'none';
         whoLiveTitle.style.display = 'none';
     }
-//Добавить еще сюда моих животных и календарь!!!!
+    commonInfoPersonBlock.append(homeBlockTitle, homeCondItemBlock, whoLiveTitle, whoLiveItemBlock);
+    //petsitter Pets
+    if(userInfo.pets.length !==0){
+    const petsitterPetsTitle = createHtmlElement('div', 'my-service-title home-condition-block', '', 'My pets');
+    const petsitterPets = createHtmlElement('div' , 'petsit-pets-wrapper');
+    userInfo.pets.forEach(async(elem: Pets)=>{
+          const petsPetsiterItem = await createItemPetsCard(elem);
+          petsitterPets.append(petsPetsiterItem);
+    })
 
-     commonInfoPersonBlock.append(textAboutMeTitle, textAboutMe, textSkillTitle, textSkill, qualificationPersonTitle, qualificationPersonBlock, myServiceTitle,accommodationPersonBlock,
-        walkPersonBlock, visitPersonBlock, homeBlockTitle, homeCondItemBlock, whoLiveTitle, whoLiveItemBlock);
+    commonInfoPersonBlock.append(petsitterPetsTitle, petsitterPets);
+    }
+        petsitPersonBlock.append(commonInfoPersonBlock);
         
+       
         //поле оформления заказа
+
+        //если пользователь не зарегистрирован
+        if (!localStorage.getItem('curr-user-id')) {
+            const rezervOrderBlock = createHtmlElement('div', 'rezerve-order-block');
+            const reserveTitle = createHtmlElement('h2', 'reserve-title', '','Book today');
+            const registerText = createHtmlElement('div', 'come-registration-text');
+            registerText.innerHTML ='To place your order, please <a href="/auth/register/owner"> register</a> or <a href = "/auth/login">login</a>';
+            rezervOrderBlock.append(reserveTitle, registerText);
+            petsitPersonBlock.append(rezervOrderBlock);
+        }
+
+    
+    //если пользователь зарегестрирован
+    if (localStorage.getItem('curr-user-id')) {
+        
     const rezervOrderBlock = createHtmlElement('div', 'rezerve-order-block');
     const reserveTitle = createHtmlElement('h2', 'reserve-title', '','Book today');
        ///выбор услуги при заказе
@@ -405,21 +441,23 @@ async function renderPetsitPerson(id: string) {
       rezervOrderBlock.append(reserveTitle, serviceKindTitle, areaBtnServices, kindOfPetTitle);
       const userOwner = await getUser();
       const userInfoOwner = (userOwner).item;
-      console.log('userInfo', userInfo);
+      console.log('userInfoOwner', userInfoOwner);
       if(userInfoOwner.pets.length === 0){
         const noPetsText = createHtmlElement('div', 'no-pet-text');
         noPetsText.innerHTML = 'You don\'t have any animals added. <span>Please add your pet</span> and continue with your order';
         rezervOrderBlock.append(noPetsText);
+        noPetsText.addEventListener('click',()=>{
+            history.pushState("", "", "/pets/add");
+            window.dispatchEvent(new Event("popstate"));
+        })
       }else{
         const inputOwnerPet = createHtmlElement(
             "input",
-            "owner-pet",
+            "input-owner-pet order-input",
             "owner-pet"
           ) as HTMLInputElement;
           const dataListPet = createHtmlElement("datalist", "", "pets-owner-variable") as HTMLDListElement;
-         /* dataListPet.innerHTML =
-            '<option value="Minsk"></option><option value="Brest"></option><option value="Vitebsk"></option><option value="Grodno"></option><option value="Gomel"></option><option value="Mogilev"></option>';*/
-            userInfoOwner.pets.forEach((el: Pets) =>{
+                userInfoOwner.pets.forEach((el: Pets) =>{
                 const optionPet = createHtmlElement('option', 'option-pet','', el.name);
                 dataListPet.append(optionPet);
             })
@@ -434,7 +472,6 @@ async function renderPetsitPerson(id: string) {
           inputOwnerPet.type = "text";
           inputOwnerPet.name = "af2Km9q";
           inputOwnerPet.placeholder = "My pet";
-          //inputOwnerPet.pattern = "[Mm]insk|[Bb]rest|[Vv]itebsk|[Gg]rodno|[Gg]omel|[Mm]ogilev";
           inputOwnerPet.setAttribute("list", "pets-owner-variable");
           inputOwnerPet.setAttribute("autocomplete", "off");
           inputOwnerPet.setAttribute("required", "");
@@ -504,10 +541,116 @@ async function renderPetsitPerson(id: string) {
       });
     rezervOrderBlock.append(btnOrder);
     petsitPersonBlock.append(commonInfoPersonBlock, rezervOrderBlock);
+     //выбор даты в зависимости от услуги
+     const dateTitle = createHtmlElement("div","dog-size-title","", "Select the date you need");
+     const dateInputsBlock = createHtmlElement('div', 'date-inputs-block');
+     const dateToday = new Date().toISOString().slice(0, -14);
+     const errorText = createHtmlElement('p', 'error-order-text','', '');
+     const inputFrom = createHtmlElement('input', 'input-date-order order-input', 'date-from-order') as HTMLInputElement;
+            inputFrom.placeholder = 'From';
+            inputFrom.type = "date";
+            inputFrom.name = "date";
+            inputFrom.value = dateToday;
+            inputFrom.setAttribute("required", "");
+    const fromText = createHtmlElement('p', 'under-input-text from-text','','From');
+    const inputTo = createHtmlElement('input', 'input-date-order order-input', 'date-to-order') as HTMLInputElement;
+            inputTo.placeholder = 'To';
+            inputTo.type = "date";
+            inputTo.name = "date";
+            inputTo.value = dateToday;
+            inputTo.setAttribute("required", "");
+    const toText = createHtmlElement('p', 'under-input-text to-text','','To');
+    const inputDateWalk = createHtmlElement('input', 'input-date-order order-input', 'date-walk') as HTMLInputElement;
+            inputDateWalk.placeholder = 'Date for walk';
+            inputDateWalk.type = "date";
+            inputDateWalk.name = "date";
+            inputDateWalk.value = dateToday;
+            inputDateWalk.setAttribute("required", "");
+    const dateWalkText = createHtmlElement('p', 'under-input-text walk-date-text','','Walk dates');
+    dateInputsBlock.append(inputFrom, fromText, inputTo, toText);
+    dateInputsBlock.addEventListener('change', (event : Event)=>{
+        if(event.target && event.target instanceof HTMLInputElement && event.target.classList.contains('input-date-order')){
+            errorText.innerHTML = '';
+        if(event.target.value < dateToday){
+            errorText.innerHTML = 'Incorrect date';
+            event.target.style.border = '1px solid #f37059';
+        }else{
+            errorText.innerHTML = '';
+            event.target.style.border = '1px solid #ca96e1';
+        }
+        }
+    })
+    areaBtnServices.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof HTMLElement && target.classList.contains("person-service-reserve")) {
+          const allButtonSelect = document.querySelectorAll(".person-service-reserve");
+          for (let i = 0; i < allButtonSelect.length; i++) {
+            allButtonSelect[i].classList.remove("active");
+          }
+          target.classList.add("active");
+          const activeService = target.id;
+          if(activeService === 'Accomodation' || activeService === 'Home visit'){
+            dateInputsBlock.innerHTML = '';
+            dateInputsBlock.append(inputFrom, fromText, inputTo, toText);
+          }else{
+            dateInputsBlock.innerHTML = '';
+            dateInputsBlock.append(inputDateWalk, dateWalkText);
+          }
+        }
+      });
+    rezervOrderBlock.append(dateTitle, dateInputsBlock, errorText);
+    // кнопка оформления заказа
+    const btnOrder = createHtmlElement('button', 'btn-profile-save btn-create-order', 'btn-order', 'Create an order') as HTMLButtonElement;
+    if(userInfoOwner.pets.length === 0){
+        btnOrder.disabled = true;
+    }
+    const inputs = rezervOrderBlock.querySelectorAll('.order-input');
+    const dateInputs = rezervOrderBlock.querySelectorAll('.input-date-order');
+    btnOrder.addEventListener('click',()=>{
+        let numberOfInvalidInput = 0;
+        let numberActivBtn = 0;
+        let numberDateInvalid = 0;
+    inputs.forEach((el) => {
+      if (el instanceof HTMLInputElement) {
+        if (!el.checkValidity()) {
+            numberOfInvalidInput += 1;
+        } else {
+            numberOfInvalidInput = numberOfInvalidInput + 0;
+        }
+      }
+    });
+    allButtonService.forEach((elem)=>{
+        if(elem.classList.contains('active')){
+            numberActivBtn += 1;
+        }else{
+            numberActivBtn = numberActivBtn + 0;
+        }
+    });
+    dateInputs.forEach(elem =>{
+        if (elem instanceof HTMLInputElement) {
+            if(elem.value < dateToday){
+                numberDateInvalid += 1;
+            }else{
+                numberDateInvalid = numberDateInvalid + 0;
+            }
+        }
+    })
+    if(numberOfInvalidInput === 0 && numberActivBtn === 1 && numberDateInvalid === 0){
+        errorText.innerHTML = '';
+        history.pushState("", "", "/owner/orders");
+        window.dispatchEvent(new Event("popstate"));
+    }else{
+        errorText.innerHTML = '';
+        errorText.innerHTML = 'Select and fill in all fields';
+        console.log('numberActivBtn', numberActivBtn);
+        console.log('numberOfInvalidInput',numberOfInvalidInput);
+    }
+    })
+    rezervOrderBlock.append(btnOrder);
+    petsitPersonBlock.append(rezervOrderBlock);
+    }
     sectionPetsitPerson.append(imgNamePetsitPersonBlock, petsitPersonBlock);
 }
-
-
 
 export default async function petsitterPerson() {
     document.body.innerHTML = "";
