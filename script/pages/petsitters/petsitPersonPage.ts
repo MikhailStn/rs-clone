@@ -477,7 +477,7 @@ async function renderPetsitPerson(id: string) {
           inputOwnerPet.setAttribute("required", "");
           rezervOrderBlock.append(inputOwnerPet, dataListPet);
       }
-      const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order');
+      const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order') as HTMLButtonElement;
       btnOrder.style.pointerEvents = "none"
       btnOrder.addEventListener("click", () => {
         function randomInteger(min: number, max: number) {
@@ -600,7 +600,6 @@ async function renderPetsitPerson(id: string) {
       });
     rezervOrderBlock.append(dateTitle, dateInputsBlock, errorText);
     // кнопка оформления заказа
-    const btnOrder = createHtmlElement('button', 'btn-profile-save btn-create-order', 'btn-order', 'Create an order') as HTMLButtonElement;
     if(userInfoOwner.pets.length === 0){
         btnOrder.disabled = true;
     }
