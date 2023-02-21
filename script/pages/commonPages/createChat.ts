@@ -35,6 +35,7 @@ export const createChat = (order: OrderPreview) => {
   messageArea.minLength = 10;
   messageArea.maxLength = 170;
   const sendMessage = createHtmlElement("button", "chat-send-message-btn");
+  const emojiBtn = createHtmlElement("button", "chat-open-emoji-btn")
   function sendMess() {
     if (messageArea.value == "") {
       return;
@@ -79,6 +80,9 @@ export const createChat = (order: OrderPreview) => {
     }
   });
   sendMessage.addEventListener("click", sendMess);
+  sendMessage.addEventListener("click", () => {
+    emojiContainer.classList.remove("visible")
+  })
   const chatMessagesContainer = createHtmlElement("div", "chat-messages-container");
   //
   function renderMessages(data: OrderPreview) {
@@ -105,11 +109,32 @@ export const createChat = (order: OrderPreview) => {
         nameAndMessageWrapper.setAttribute("style", "flex-direction:row-reverse");
       }
     }
+    if (data.messages.length < 1) {
+      const p = createHtmlElement("p", "no-message");
+      p.textContent = "No messages yet"
+      chatMessagesContainer.append(p)
+    }
     chatMessagesContainer.scrollTo(0, chatMessagesContainer.scrollHeight);
   }
   //
-  currentMessageArea.append(messageArea, sendMessage);
+  const emojiContainer = createHtmlElement("div", "emoji-container");
+  emojiBtn.addEventListener("mousemove", () => {
+    emojiContainer.classList.add("visible") 
+  })
+  currentMessageArea.addEventListener("mouseleave", () => {
+    emojiContainer.classList.remove("visible")
+  })
+  const emojies = ['😀','😁','😊','🙂','😚','😘','😎','😏','🙄','😠','😔','🙁','😭','🤢','😨','😺','😸','😻','😼','👍','👀','❤','🌝','🌈','👆',]
+  currentMessageArea.append(messageArea, emojiBtn, emojiContainer, sendMessage);
   chatContainer.append(titleContainer, chatMessagesContainer, currentMessageArea);
+  for (let i = 0; i < emojies.length; i++) {
+    const p = createHtmlElement("p", "emoji-item");
+    p.textContent = emojies[i];
+    emojiContainer.append(p)
+    p.addEventListener("click", () => {
+      messageArea.value = `${messageArea.value + p.textContent}`
+    })
+  }
   //
   function renderMessages1(data: OrderPreview) {
     for (let i = 0; i < data.messages.length; i++) {
@@ -134,6 +159,11 @@ export const createChat = (order: OrderPreview) => {
         messageBlock.setAttribute("style", "align-items:flex-end");
         nameAndMessageWrapper.setAttribute("style", "flex-direction:row-reverse");
       }
+    }
+    if (data.messages.length < 1) {
+      const p = createHtmlElement("p", "no-message");
+      p.textContent = "No messages yet"
+      chatMessagesContainer.append(p)
     }
   }
 
