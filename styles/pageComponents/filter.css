@@ -179,3 +179,56 @@ hr{
     display: none;
   }
 
+/*
+
+  @media(max-width: 1200px){
+  
+    .inputsBox input{
+        width: 190px;
+    }
+  }
+
+  @media(max-width: 992px){
+  
+    .inputsBox input{
+        width: 190px;
+    }
+  }
+*/
+  @media(max-width: 768px){
+  
+    .inputsBox input{
+        width: 190px;
+    }
+
+  .inputsBox{
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+    .inputsBox .box1, .inputsBox .rectangle, .inputsBox input[type='date']{
+        min-width: 220px;
+    }
+    .inputsBox .rectangle{
+        margin-right: 10px;
+    }
+}
+
+  @media(max-width: 480px){
+    .inputsBox{
+        flex-direction: column;
+        align-items:flex-start;
+    }
+
+    .inputsBox .box1{
+        width: 95%;
+    }
+  
+    .inputsBox input{
+        width: 300px;
+    }
+
+    .inputsBox input[type='date']{
+        width: 95%;
+    }
+  }
