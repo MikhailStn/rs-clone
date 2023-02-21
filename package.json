@@ -51,6 +51,7 @@
     "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "rm-emoji-picker": "^1.0.0"
   }
 }
