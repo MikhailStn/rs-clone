@@ -14,6 +14,7 @@ import { searchShowPage } from "./pages/commonPages/search";
 import { createOrdersPage } from "./pages/commonPages/ordersPage";
 import { createOrderItemPage } from "./pages/commonPages/orderItemPage";
 import petsitterPerson from "./pages/petsitters/petsitPersonPage";
+import ownerPerson from "./pages/owners/ownerPage";
 
 
 
@@ -40,11 +41,15 @@ export const router = () => {
       template: authRegister,
     },
     {
+      path: "/owner/n",
+      template: ownerPerson,
+    },
+    {
       path: "/owner/pets",
       template: ownerPets,
     },
     {
-      path: `/owner/orders/`,
+      path: `/owner/orders/n`,
       template: createOrderItemPage,
     },
     {
@@ -52,7 +57,7 @@ export const router = () => {
       template: createOrdersPage,
     },
     {
-      path: `/petsitter/orders/`,
+      path: `/petsitter/orders/n`,
       template: createOrderItemPage,
     },
     {

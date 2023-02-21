@@ -1,22 +1,21 @@
 import { createHtmlElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
+import { getUser } from "../../commonFunction/getUser";
 //import { numberOfOrder } from "../petsitters/petsitPersonPage";
 
 const sectionOrder = createHtmlElement("section", "section-orders");
 
-interface OrderPreview {
+export interface OrderPreview {
   numberOfOrder: string;
   petsitterId: string;
   ownerId: string;
-  pet: {
-    name: string;
-  };
+  pet:  string;
   nameOfOwner: string;
   nameOfPetsitter: string;
   avatarOwner: string;
   avatarPetsitter: string;
-  dates: string;
+  dates: string[];
   service: string;
   pricePerDay: string;
   status: string;
@@ -27,6 +26,7 @@ interface OrderPreview {
       message: string;
     }
   ];
+  city: string;
 }
 let orders: OrderPreview[] = [];
 
@@ -34,6 +34,8 @@ export let numberOfOrder1 = ''
 
 async function renderOrdersPage() {
   sectionOrder.innerHTML = "";
+  const user = await getUser();
+  const currentUserInfo = (user).item;
   const sectionOrdersBlock = createHtmlElement("div", "section-orders-block");
   sectionOrder.append(sectionOrdersBlock);
   const sectionOrdersTitle = createHtmlElement(
@@ -88,10 +90,14 @@ async function renderOrdersPage() {
         );
         const dateOrder = createHtmlElement(
           "div",
-          "date-order-text",
-          "",
-          orders[i].dates
+          "date-order-text"
         );
+        if(orders[i].dates.length === 1){
+          dateOrder.textContent = orders[i].dates[0];
+        }else{
+          dateOrder.textContent = `${orders[i].dates[0]} - ${orders[i].dates[1]}`;
+        }
+        
         const petInfoOrderBlock = createHtmlElement(
           "div",
           "pet-info-order-block"
@@ -146,16 +152,27 @@ async function renderOrdersPage() {
           "div",
           "pet-name-order",
           "",
-          "pet name"
+          `${orders[i].pet}`
         );
         petInfoOrderBlock.append(imgPet, namePet);
-        imgPet.src = "img/cat.svg";
+        imgPet.src = "img/paw.svg";
         const linkViewProfile = createHtmlElement(
           "div",
           "link-view-profile-order",
           "",
           "View profile"
         );
+
+        
+        linkViewProfile.addEventListener('click', ()=>{
+          if(currentUserInfo.role === 'OWNER'){
+          history.pushState('','',`/petsitter/n/${orders[i].petsitterId}`); 
+          window.dispatchEvent(new Event("popstate"));
+        }else{
+          history.pushState('','',`/owner/n/${orders[i].ownerId}`); 
+          window.dispatchEvent(new Event("popstate"));
+        }
+        })
         commonInfoOrderWrapper.append(linkViewProfile);
         const btnOrderInfoAndChat = createHtmlElement(
           "div",
@@ -167,10 +184,10 @@ async function renderOrdersPage() {
         btnOrderInfoAndChat.addEventListener("click", () => {
           if (data.role === "PETSITTER") {
             numberOfOrder1 = orders[i].numberOfOrder
-            history.pushState("", "", `/petsitter/orders/${orders[i].numberOfOrder}`); //тут нужно задавать правильный id заказа!!!
+            history.pushState("", "", `/petsitter/orders/n/${orders[i].numberOfOrder}`); //тут нужно задавать правильный id заказа!!!
             window.dispatchEvent(new Event("popstate"));
           } else {
-            history.pushState("", "", `/owner/orders/${orders[i].numberOfOrder}`); //тут нужно задавать правильный id заказа!!!
+            history.pushState("", "", `/owner/orders/n/${orders[i].numberOfOrder}`); //тут нужно задавать правильный id заказа!!!
             window.dispatchEvent(new Event("popstate"));
           }
         });
@@ -214,7 +231,6 @@ async function renderOrdersPage() {
                    item: await response.json()
                }
         }
-
     const user = await getUser();
     const userInfo = (user).item;
     const userPhoto = createHtmlElement('img', 'user-order-photo') as HTMLImageElement;
