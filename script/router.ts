@@ -14,8 +14,7 @@ import { searchShowPage } from "./pages/commonPages/search";
 import { createOrdersPage } from "./pages/commonPages/ordersPage";
 import { createOrderItemPage } from "./pages/commonPages/orderItemPage";
 import petsitterPerson from "./pages/petsitters/petsitPersonPage";
-
-
+import { settingsPerson } from "./pages/commonPages/settings";
 
 export const router = () => {
   type Rout = {
@@ -46,6 +45,14 @@ export const router = () => {
     {
       path: "/owner/orders/n",
       template: createOrderItemPage,
+    },
+    {
+      path: "/petsitter/settings/personal-data",
+      template: settingsPerson,
+    },
+    {
+      path: "/owner/settings/personal-data",
+      template: settingsPerson,
     },
     {
       path: "/owner/orders",
@@ -81,7 +88,7 @@ export const router = () => {
     },
     {
       path: "/petsitter/calendar",
-      template: petsittersCalendar,/******* */
+      template: petsittersCalendar /******* */,
     },
     {
       path: "/petsitter",
@@ -128,9 +135,7 @@ export const router = () => {
   });
 
   const renderUI = () => {
-    const route = routes.find((route) =>
-      window.location.pathname.includes(route.path)
-    );
+    const route = routes.find((route) => window.location.pathname.includes(route.path));
 
     if (route) {
       route.template();
