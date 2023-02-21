@@ -146,7 +146,7 @@ async function renderOrdersPage() {
           "div",
           "pet-name-order",
           "",
-          "pet name"
+          `${orders[i].pet}`
         );
         petInfoOrderBlock.append(imgPet, namePet);
         imgPet.src = "img/cat.svg";
