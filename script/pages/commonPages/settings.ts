@@ -3,6 +3,21 @@ import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
 import { getUser } from "../../commonFunction/getUser";
 
+interface PetsitterData {
+  birth: string;
+  gender: string;
+  services: string[];
+  address: string;
+  avatarPath: string;
+}
+const fetchPetsitterData: PetsitterData = {
+  birth: "",
+  gender: "",
+  services: [],
+  address: "",
+  avatarPath: "",
+};
+
 export async function settingsPerson() {
   const User = await getUser();
   const userInfo = User.item;
@@ -275,7 +290,7 @@ export async function settingsPerson() {
   const titleOldNumber = createHtmlElement("p", "", "", "Phone number");
   const divInputNumber = createHtmlElement("div", "div-input-text");
   const inputNumber = createInputElement("text", "");
-  inputNumber.value = `${objData.phone ? objData.phone : ""}`; //-----------------
+  inputNumber.value = `+ ${objData.phone ? objData.phone : ""}`; //-----------------
   divLeftSettings.append(divOldNumber);
   divOldNumber.append(divInfo6);
   divInfo6.append(titleOldNumber);
@@ -306,6 +321,69 @@ export async function settingsPerson() {
   divInfo8.append(divInputCity);
   divInputCity.append(inputCity);
 
+/*-------------------------------------------------------------*/
+  const tempTitle = createHtmlElement("p", "title-photo-profile-block", '', "Photo");
+  //tempTitle.textContent = "Photo";
+  const photoTextProfileBlock = createHtmlElement(
+    "div",
+    "photo-text-profile-block"
+  );
+  divLeftSettings.append(tempTitle, photoTextProfileBlock);
+  const photoContainer = createHtmlElement(
+    "div",
+    "photo-container profile-photo-container"
+  );
+  photoContainer.setAttribute(
+    "style",
+    "background-image: url('../img/icons/photo.png')"
+  );
+  const btnAddPhoto = createHtmlElement(
+    "input",
+    "button-add-photo"
+  ) as HTMLInputElement;
+  btnAddPhoto.type = "file";
+  btnAddPhoto.accept = ".png,.jpg,.jpeg";
+  btnAddPhoto.id = "photo";
+  const handleUpload = () => {
+    if (btnAddPhoto.files) {
+      const formData = new FormData();
+      formData.append("image", btnAddPhoto.files[0], btnAddPhoto.files[0].name);
+      const fetchData = {
+        method: "POST",/*** */
+        body: formData,
+      };
+      fetch(`http://localhost:5000/auth/register/add-photo`, fetchData)/*** */
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          photoContainer.setAttribute(
+            "style",
+            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+          );
+          fetchPetsitterData.avatarPath = `http://localhost:5000/${data.filePath}`;
+        });
+      return btnAddPhoto.files[0];
+    }
+  };
+  btnAddPhoto.onchange = handleUpload;
+  const btnAddPhotoLabel = createHtmlElement(
+    "label",
+    "label-add-photo"
+  ) as HTMLLabelElement;
+  btnAddPhotoLabel.setAttribute("for", "photo");
+  btnAddPhotoLabel.textContent = "Add photo";
+  photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
+/*
+  const textPhotoProfile = createHtmlElement(
+    "div",
+    "text-photo-profile",
+    "",
+    "A profile photo allows other members of the Petsi community to get to know you. It is especially important for your relationship with customers, as it will make it easier for you to get to know each other when you first meet."
+  );*/
+  photoTextProfileBlock.append(photoContainer/*, textPhotoProfile*/);
+/*-------------------------------------------------------------*/
+
   const btnSave = createHtmlElement("button", "rectangle", "", "Save");
   divLeftSettings.append(btnSave);
 
@@ -333,7 +411,7 @@ export async function settingsPerson() {
   btnSave.addEventListener("click", () => {
     objData.firstName = inputName.value.replace(/ +/g, " ").trim().split(" ")[0];
     objData.lastName = inputName.value.replace(/ +/g, " ").trim().split(" ")[1];
-    objData.phone = +inputNumber.value;
+    objData.phone = (inputNumber.value.match(/\d/g)?.join(''));
 
     if (objData.role == "PETSITTER") {
       //PETSITTER
@@ -347,14 +425,14 @@ export async function settingsPerson() {
           _id: localStorage.getItem("curr-user-id"),
           address: inputAdress.value,
           city: inputCity.value,
-          phone: objData.phone,
+          phone:objData.phone,
           //email:
           //password:
           firstName: objData.firstName,
           lastName: objData.lastName,
           birth: objData.birth,
           gender: objData.gender,
-          //photo
+          //avatarPath:
         }),
       };
       fetch(`http://localhost:5000/petsitter/add-data`, fetchData).then((response) => {
@@ -379,9 +457,7 @@ export async function settingsPerson() {
           //password:
           firstName: objData.firstName,
           lastName: objData.lastName,
-          //birth: objData.birth,
-          //gender: objData.gender,
-          //photo
+          //avatarPath:
         }),
       };
       fetch(`http://localhost:5000/petsitter/add-data`, fetchData).then((response) => {
