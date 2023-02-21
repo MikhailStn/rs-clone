@@ -10,6 +10,7 @@
     margin-left: auto;
     margin-right: auto;
     padding-top: 16px;
+    padding-bottom: 16px;
     width: 100%;
 }
 
@@ -46,7 +47,7 @@
     'price chat'
     'user chat';
     grid-template-columns: 386px 787px;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 201px 176px 1fr;
     gap: 16px;
 }
 
@@ -63,6 +64,7 @@
 .block-common-info-order{
     grid-area: info;
     display: flex;
+    height: fit-content;
     flex-direction: column;
     width: 386px;
     padding: 20px;
@@ -75,14 +77,14 @@
 .block-price-order{
     grid-area: price;
     width: 386px;
-    height: 215px;
+    height: fit-content;
     padding: 20px;
 }
 
 .user-info-block-order{
     grid-area: user;
     width: 386px;
-    height: 145px;
+    height: fit-content;
     padding: 20px;
 }
 
@@ -108,7 +110,7 @@
 }
 
 .svg-pet-order-info{
-    width: 40px;
+    width: 30px;
 }
 
 .pet-text-order{
@@ -143,3 +145,119 @@
     font-size: 35px;
     margin-top: -30px;
 }
+
+.price-order-block-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #504f54;
+}
+
+.price-order-title{
+    font-size: 1.1rem;
+    padding-bottom: 20px;
+}
+
+.block-cost-module{
+    display: flex;
+    border-bottom: 1px solid #ebeaed;
+    padding-bottom: 15px;
+    justify-content: space-between;
+}
+
+.total-price-order-item-block{
+    display: flex;
+    justify-content: space-between;
+}
+
+.number-of-total-price{
+    color: #ca96e1;
+}
+
+.total-price-order-item-title{
+    font-weight: 600;
+}
+
+.user-block-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.img-petsit-order-info-item{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name-user-order-info-block{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.rating-star {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: #dabd18b2;
+    transition: filter linear .3s;
+ }
+ 
+ .rating-star:hover {
+    filter: drop-shadow(1px 1px 4px gold);
+ }
+
+.send-review-and-rating,
+.rating-order-title{
+    font-size: 0.72rem;
+}
+
+ .rating-block{
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+ }
+
+ .input-petsitter-review {
+    outline: none;
+    height: 150px;
+    border: 1px solid #ece8ec;
+    border-radius: 8px;
+    padding: 16px 14px;
+    resize: none;
+    transition: 0.5s;
+  }
+
+.input-petsitter-review:hover,
+.input-petsitter-review:focus{
+    border: 1px solid #ca96e1;
+}
+
+  .btn-save-rate-review {
+    background-color: #ca96e1;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-left: 10%;
+    width: 80%;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    transition: 0.5s;
+  }
+
+  .btn-save-rate-review:hover {
+    background-color: #a278b4;
+  }
+
+  .stars-rate-block{
+    display: flex;
+    gap: 20px;
+  }

@@ -24,7 +24,9 @@
 @import './common-page/orderItemPage.css';
 @import './chat/chat.css';
 @import './petsitters/petsitPerson.css';
+@import './owner/ownerPage.css';
 @import './common-page/settings.css';
+
 
 body:nth-child(2) {
   padding-top: 64px;

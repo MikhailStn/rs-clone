@@ -378,9 +378,18 @@ async function renderPetsitPerson(id: string) {
         }
 
     
-    //если пользователь зарегестрирован
+    //если пользователь зарегистрирован
     if (localStorage.getItem('curr-user-id')) {
-        
+      const userOwner = await getUser();
+      const userInfoOwner = (userOwner).item;
+      if(userInfoOwner.role !== "OWNER"){
+        const rezervOrderBlock = createHtmlElement('div', 'rezerve-order-block');
+            const reserveTitle = createHtmlElement('h2', 'reserve-title', '','Book today');
+            const registerText = createHtmlElement('div', 'come-registration-text');
+            registerText.innerHTML ='You are currently registered as a petsitter. To place your order, please <a href="/auth/register/owner"> register as a pet owner </a> or <a href = "/auth/login">login as a pet owner.</a>';
+            rezervOrderBlock.append(reserveTitle, registerText);
+            petsitPersonBlock.append(rezervOrderBlock);
+      }else{
     const rezervOrderBlock = createHtmlElement('div', 'rezerve-order-block');
     const reserveTitle = createHtmlElement('h2', 'reserve-title', '','Book today');
        ///выбор услуги при заказе
@@ -439,8 +448,7 @@ async function renderPetsitPerson(id: string) {
       ///выбор животного
       const kindOfPetTitle = createHtmlElement("div","dog-size-title","", "Choose your pet");
       rezervOrderBlock.append(reserveTitle, serviceKindTitle, areaBtnServices, kindOfPetTitle);
-      const userOwner = await getUser();
-      const userInfoOwner = (userOwner).item;
+      
       console.log('userInfoOwner', userInfoOwner);
       if(userInfoOwner.pets.length === 0){
         const noPetsText = createHtmlElement('div', 'no-pet-text');
@@ -478,8 +486,10 @@ async function renderPetsitPerson(id: string) {
           rezervOrderBlock.append(inputOwnerPet, dataListPet);
       }
       const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order') as HTMLButtonElement;
-      btnOrder.style.pointerEvents = "none";
-      btnOrder.addEventListener("click", () => {
+
+      //btnOrder.style.pointerEvents = "none"
+      /*btnOrder.addEventListener("click", () => {
+
         function randomInteger(min: number, max: number) {
           let res = ''
           for (let i = 0; i < 6; i++) {
@@ -545,7 +555,7 @@ async function renderPetsitPerson(id: string) {
             history.pushState("", "", "");
             window.dispatchEvent(new Event("popstate"));
           })
-      });
+      });*/
     rezervOrderBlock.append(btnOrder);
     petsitPersonBlock.append(commonInfoPersonBlock, rezervOrderBlock);
      //выбор даты в зависимости от услуги
@@ -567,6 +577,7 @@ async function renderPetsitPerson(id: string) {
             inputTo.value = dateToday;
             inputTo.setAttribute("required", "");
     const toText = createHtmlElement('p', 'under-input-text to-text','','To');
+    
     const inputDateWalk = createHtmlElement('input', 'input-date-order order-input', 'date-walk') as HTMLInputElement;
             inputDateWalk.placeholder = 'Date for walk';
             inputDateWalk.type = "date";
@@ -643,8 +654,63 @@ async function renderPetsitPerson(id: string) {
     })
     if(numberOfInvalidInput === 0 && numberActivBtn === 1 && numberDateInvalid === 0){
         errorText.innerHTML = '';
-        history.pushState("", "", "/owner/orders");
-        window.dispatchEvent(new Event("popstate"));
+        const orderNum = randomInteger(0, 9);
+        const inputsDate = document.querySelectorAll(".input-date-order") as NodeListOf<HTMLInputElement>
+        const resDates: string[] = [];
+        for(let i = 0; i < inputsDate.length; i++) {
+          resDates.push(inputsDate[i].value);
+        }
+        const petName = document.querySelector(".input-owner-pet") as HTMLInputElement;
+        const order = {
+          numberOfOrder: orderNum,
+          status: "New",
+          petsitterId: userInfo._id,
+          ownerId: userInfoOwner._id,
+          pet: petName.value,
+          nameOfOwner: `${userInfoOwner.firstName} ${userInfoOwner.lastName}`,
+          nameOfPetsitter: `${userInfo.firstName} ${userInfo.lastName}`,
+          dates: resDates,
+          service: currentService,
+          pricePerDay: currentPrice,
+          messages: [],
+          city: `${userInfo.city}`,
+        };
+        const fetchData = {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: userInfoOwner._id,
+            order: order,
+          }),
+        };
+        fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => console.log(data));
+        const fetchData1 = {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: userInfo._id,
+            order: order,
+          }),
+        };
+        fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => console.log(data))
+          .then(() => {
+            history.pushState("", "", "/owner/orders");
+            window.dispatchEvent(new Event("popstate"));
+          })
     }else{
         errorText.innerHTML = '';
         errorText.innerHTML = 'Select and fill in all fields';
@@ -655,7 +721,17 @@ async function renderPetsitPerson(id: string) {
     rezervOrderBlock.append(btnOrder);
     petsitPersonBlock.append(rezervOrderBlock);
     }
+  }
     sectionPetsitPerson.append(imgNamePetsitPersonBlock, petsitPersonBlock);
+}
+
+function randomInteger(min: number, max: number) {
+  let res = ''
+  for (let i = 0; i < 6; i++) {
+    const rand = min + Math.random() * (max + 1 - min);
+    res = res + Math.floor(rand)
+  }
+  return res;
 }
 
 export default async function petsitterPerson() {
