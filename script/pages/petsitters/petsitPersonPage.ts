@@ -489,13 +489,9 @@ async function renderPetsitPerson(id: string) {
           return res;
         }
         const inputsDate = document.querySelectorAll(".input-date-order") as NodeListOf<HTMLInputElement>
-        let resDates = ''
+        const resDates: string[] = []
         for(let i = 0; i < inputsDate.length; i++) {
-          if (resDates != '') {
-            resDates = resDates + ' — ' + inputsDate[i].value
-          } else {
-            resDates = resDates + inputsDate[i].value
-          }
+          resDates.push(inputsDate[i].value)
         }
         const orderNum = randomInteger(0, 9)
         const petName = document.querySelector(".input-owner-pet") as HTMLInputElement;
@@ -511,6 +507,7 @@ async function renderPetsitPerson(id: string) {
           service: currentService,
           pricePerDay: currentPrice,
           messages: [],
+          city: `${userInfo.city}`
         };
         const fetchData = {
           method: "PATCH",
