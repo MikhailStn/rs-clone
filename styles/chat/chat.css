@@ -64,6 +64,7 @@
     flex-direction: column;
     row-gap: 10px;
     overflow: auto;
+    background: linear-gradient(90deg, #f6f7f8,#e1e8f2,#d9e1ee);
 }
 
 .chat-messages-container::-webkit-scrollbar {
@@ -76,7 +77,6 @@
 
 .message {
     display: flex;;
-    background-color: #f3f3f361;
     align-items: center;
     column-gap: 20px;
     padding: 20px;
@@ -85,11 +85,14 @@
 
 .message-and-name {
     display: flex;
-    flex-direction: column;
     max-width: 80%;
+    align-items: center;
+    column-gap: 10px;
 }
 
 .message-avatar {
+    min-width: 40px;
+    min-height: 40px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -104,10 +107,21 @@
     overflow-wrap: anywhere;
 }
 
+.chat-time {
+    font-size: 12px;
+    font-family: 'Lato';
+}
+
 .chat-username {
     text-transform: capitalize;
     text-align: start;
     font-size: 16px;
     font-weight: bold;
     font-family: 'Lato';
+}
+
+.message-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }

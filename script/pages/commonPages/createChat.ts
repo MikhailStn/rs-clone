@@ -20,6 +20,7 @@ interface OrderPreview {
       avatarPath: string;
       name: string;
       text: string;
+      date: string;
     }
   ];
 }
@@ -28,14 +29,8 @@ export const createChat = (order: OrderPreview) => {
   const chatContainer = createHtmlElement("div", "chat-container");
   const titleContainer = createHtmlElement("div", "chat-title");
   titleContainer.textContent = "Chat";
-  const currentMessageArea = createHtmlElement(
-    "div",
-    "chat-current-message-container"
-  );
-  const messageArea = createHtmlElement(
-    "textarea",
-    "chat-current-message"
-  ) as HTMLTextAreaElement;
+  const currentMessageArea = createHtmlElement("div", "chat-current-message-container");
+  const messageArea = createHtmlElement("textarea", "chat-current-message") as HTMLTextAreaElement;
   messageArea.placeholder = "Text here";
   messageArea.minLength = 10;
   messageArea.maxLength = 170;
@@ -44,8 +39,10 @@ export const createChat = (order: OrderPreview) => {
     if (messageArea.value == "") {
       return;
     }
-    const imgSrc = document.querySelector('.img-role-menu') as HTMLImageElement
-    const name = document.querySelector(".text-name-menu-role")
+    const imgSrc = document.querySelector(".img-role-menu") as HTMLImageElement;
+    const name = document.querySelector(".text-name-menu-role");
+    const date = new Date();
+    const now = date.toLocaleTimeString("en-US");
     const fetchData = {
       method: "POST",
       headers: {
@@ -57,6 +54,7 @@ export const createChat = (order: OrderPreview) => {
           avatarPath: imgSrc.src,
           name: name?.textContent,
           text: `${messageArea.value}`,
+          date: now,
         },
         orderNum: order.numberOfOrder,
       }),
@@ -67,11 +65,9 @@ export const createChat = (order: OrderPreview) => {
       })
       .then((data) => {
         console.log(data);
-        const chatBlock = document.querySelector(
-          ".chat-messages-container"
-        ) as HTMLDivElement;
+        const chatBlock = document.querySelector(".chat-messages-container") as HTMLDivElement;
         chatBlock.innerHTML = "";
-        renderMessages(data); //тут надо получить правильный объект заказа
+        renderMessages(data);
         messageArea.value = "";
       });
   }
@@ -83,37 +79,63 @@ export const createChat = (order: OrderPreview) => {
     }
   });
   sendMessage.addEventListener("click", sendMess);
-  const chatMessagesContainer = createHtmlElement(
-    "div",
-    "chat-messages-container"
-  );
+  const chatMessagesContainer = createHtmlElement("div", "chat-messages-container");
   //
   function renderMessages(data: OrderPreview) {
     for (let i = 0; i < data.messages.length; i++) {
       const message = createHtmlElement("div", "message");
       const avatar = createHtmlElement("img", "message-avatar") as HTMLImageElement;
       avatar.src = data.messages[i].avatarPath;
-      const nameAndMessageWrapper = createHtmlElement(
-        "div",
-        "message-and-name"
-      );
+      const messageBlock = createHtmlElement("div", "message-block");
+      const nameAndMessageWrapper = createHtmlElement("div", "message-and-name");
       const name = createHtmlElement("span", "chat-username");
       const textOfMessage = createHtmlElement("span", "chat-user-text");
+      const time = createHtmlElement("span", "chat-time");
+      time.textContent = `${data.messages[i].date}`;
       name.textContent = `${data.messages[i].name}`;
       textOfMessage.textContent = `${data.messages[i].text}`;
-      nameAndMessageWrapper.append(name, textOfMessage);
-      message.append(avatar, nameAndMessageWrapper);
+      nameAndMessageWrapper.append(name, time);
+      messageBlock.append(nameAndMessageWrapper, textOfMessage);
+      message.append(avatar, messageBlock);
       chatMessagesContainer.append(message);
+      const checkName = document.querySelector(".text-name-menu-role")?.textContent;
+      if (data.messages[i].name == checkName) {
+        message.setAttribute("style", "flex-direction:row-reverse");
+        messageBlock.setAttribute("style", "align-items:flex-end");
+        nameAndMessageWrapper.setAttribute("style", "flex-direction:row-reverse");
+      }
     }
     chatMessagesContainer.scrollTo(0, chatMessagesContainer.scrollHeight);
   }
   //
   currentMessageArea.append(messageArea, sendMessage);
-  chatContainer.append(
-    titleContainer,
-    chatMessagesContainer,
-    currentMessageArea
-  );
+  chatContainer.append(titleContainer, chatMessagesContainer, currentMessageArea);
+  //
+  function renderMessages1(data: OrderPreview) {
+    for (let i = 0; i < data.messages.length; i++) {
+      const message = createHtmlElement("div", "message");
+      const avatar = createHtmlElement("img", "message-avatar") as HTMLImageElement;
+      avatar.src = data.messages[i].avatarPath;
+      const messageBlock = createHtmlElement("div", "message-block");
+      const nameAndMessageWrapper = createHtmlElement("div", "message-and-name");
+      const name = createHtmlElement("span", "chat-username");
+      const textOfMessage = createHtmlElement("span", "chat-user-text");
+      const time = createHtmlElement("span", "chat-time");
+      time.textContent = `${data.messages[i].date}`;
+      name.textContent = `${data.messages[i].name}`;
+      textOfMessage.textContent = `${data.messages[i].text}`;
+      nameAndMessageWrapper.append(name, time);
+      messageBlock.append(nameAndMessageWrapper, textOfMessage);
+      message.append(avatar, messageBlock);
+      chatMessagesContainer.append(message);
+      const checkName = document.querySelector(".text-name-menu-role")?.textContent;
+      if (data.messages[i].name == checkName) {
+        message.setAttribute("style", "flex-direction:row-reverse");
+        messageBlock.setAttribute("style", "align-items:flex-end");
+        nameAndMessageWrapper.setAttribute("style", "flex-direction:row-reverse");
+      }
+    }
+  }
 
   fetch(`http://localhost:5000/auth/user`, {
     method: "POST",
@@ -132,5 +154,29 @@ export const createChat = (order: OrderPreview) => {
       console.log(data);
       renderMessages(order);
     });
+
+  const interval = setInterval(() => {
+    fetch(`http://localhost:5000/order/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        numberOfOrder: order.numberOfOrder,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        chatMessagesContainer.innerHTML = "";
+        renderMessages1(data);
+      });
+  }, 5000);
+  window.addEventListener("popstate", () => {
+    clearInterval(interval);
+  });
   return chatContainer;
 };
