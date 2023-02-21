@@ -1,0 +1,150 @@
+.left-right-settings {
+  display: flex;
+  /*width: 100%;*/
+}
+
+.left-settings {
+  width: 60%;
+}
+
+.active-container-set{
+    display: block;
+}
+
+.no-active-container-set{
+    display: none;
+}
+
+.right-settings {
+  width: 40%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.container{/*.old-date-settings {*/
+  border-bottom: dotted 1px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 5px;
+}
+/*
+.container{
+    display: flex;
+}
+*/
+.old-date-settings {
+  margin-bottom: 20px;
+}
+
+.old-date-settings p {
+  padding: 5px;
+  color: #71717a;
+}
+/*
+.old-date-settings .btnSetChange {
+  border: none;
+  background: transparent;
+  padding: 7px;
+}
+*/
+.old-date-settings .btnSetChange:hover {
+  background-color: rgb(238, 236, 226);
+}
+
+.old-date-settings .btnSetChange {
+    margin: 5px;
+    color: #fff;
+    background-color: #ca96e1;
+    border: 0;
+    padding: 5px 10px;
+    width: 100px;
+    border-radius: 8px;
+    display: block;
+    font-family: "Lato", sans-serif;
+    transition: 0.5s;
+  }
+
+.block-sex {
+  padding-bottom: 10px;
+}
+.block-sex div {
+  width: 100%;
+}
+
+.old-date-settings .form-sex-settings {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.old-date-settings .div-input-radio {
+  border: solid 1px #71717a;
+  border-radius: 5px;
+  width: 45%;
+  padding: 10px;
+}
+
+.div-input-radio label {
+  padding-left: 10px;
+}
+
+.div-input-date,
+.div-input-text {
+  width: 100%;
+  padding: 10px;
+}
+
+.div-input-date input,
+.div-input-text input {
+  width: 100%;
+  
+}
+
+.left-right-settings input[type='text'], .left-right-settings input[type='password']{ /*pasword не отрабатывает*/
+    background-color:#fff;
+    margin-left: 5px;
+}
+
+.btns-settings{
+    display: flex;
+}
+
+.left-right-settings .title-main{
+    color:black;
+    font-weight: 800;
+    color: red;
+}
+
+.title-child-settings {
+  margin: 20px 5px;
+}
+
+.left-settings .rectangle {
+  margin: 20px 5px 70px;
+}
+
+.first-child{
+    width: 100%;
+}
+
+
+
+
+
+@media (max-width: 1200px) {
+  .left-right-settings {
+    flex-direction: column;
+  }
+
+  .left-settings {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .right-settings {
+    margin-top: 0px;
+    width: 100%;
+  }
+}
+

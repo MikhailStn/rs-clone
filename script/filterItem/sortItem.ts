@@ -94,8 +94,9 @@ export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
   result = result.filter((elem) =>
     elem.petsitterData.availableDates.filter((el) => {//не отрабатывает
       //console.log("elem", elem, "el", el, `diapazonDate`, diapazonDate);
-      if (diapazonDate.includes(el)) //console.log("+++++++++++++++++++++++++");
-      return false;
+      if (!diapazonDate.includes(el)) {console.log("+++++++++++++++++++++++++", );
+      return true;}
+      //return false;
     })
   );
 

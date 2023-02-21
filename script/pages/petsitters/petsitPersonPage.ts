@@ -486,8 +486,10 @@ async function renderPetsitPerson(id: string) {
           rezervOrderBlock.append(inputOwnerPet, dataListPet);
       }
       const btnOrder = createHtmlElement('button', 'btn-profile-save', 'btn-order', 'Create an order') as HTMLButtonElement;
+
       //btnOrder.style.pointerEvents = "none"
       /*btnOrder.addEventListener("click", () => {
+
         function randomInteger(min: number, max: number) {
           let res = ''
           for (let i = 0; i < 6; i++) {
@@ -496,19 +498,26 @@ async function renderPetsitPerson(id: string) {
           }
           return res;
         }
+        const inputsDate = document.querySelectorAll(".input-date-order") as NodeListOf<HTMLInputElement>
+        const resDates: string[] = []
+        for(let i = 0; i < inputsDate.length; i++) {
+          resDates.push(inputsDate[i].value)
+        }
         const orderNum = randomInteger(0, 9)
+        const petName = document.querySelector(".input-owner-pet") as HTMLInputElement;
         const order = {
           numberOfOrder: orderNum,
           status: "New",
           petsitterId: userInfoOwner._id,
           ownerId: userInfo._id,
-          pet: "Name of Pet",
+          pet: petName.value,
           nameOfOwner: `${userInfoOwner.firstName} ${userInfoOwner.lastName}`,
           nameOfPetsitter: `${userInfo.firstName} ${userInfo.lastName}`,
-          dates: "dates",
+          dates: resDates,
           service: currentService,
           pricePerDay: currentPrice,
           messages: [],
+          city: `${userInfo.city}`
         };
         const fetchData = {
           method: "PATCH",

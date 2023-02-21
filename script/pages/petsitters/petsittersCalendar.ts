@@ -42,18 +42,18 @@ export async function petsittersCalendar() {
   const leftCalendar = createHtmlElement("div");
   createCalendar(leftCalendar, y, m);
   const btnLeftCalendar = createHtmlElement("button", "rectangle", "", "SAVE");
-
+/*
   const rightCalendarBlock = createHtmlElement("div", "block-calendar");
   const rightCalendarBlockTop = createHtmlElement("div", "block-calendar-top ");
   const titleRight = createHtmlElement("h2", "my-profile-text-title", "", "Booked days");
-
+*/
   sectionPetsitCalendar.append(blockCalendars);
   blockCalendars.append(leftCalendarBlock);
-  blockCalendars.append(rightCalendarBlock);
+  //blockCalendars.append(rightCalendarBlock);
   leftCalendarBlock.append(leftCalendarBlockTop);
-  rightCalendarBlock.append(rightCalendarBlockTop);
+  //rightCalendarBlock.append(rightCalendarBlockTop);
   leftCalendarBlockTop.append(titleLeft);
-  rightCalendarBlockTop.append(titleRight);
+  //rightCalendarBlockTop.append(titleRight);
   leftCalendarBlockTop.append(titleHint);
   titleHint.append(hint);
   leftCalendarBlockTop.append(divMonth);
@@ -101,20 +101,22 @@ export async function petsittersCalendar() {
       console.log("noActvDay-", noActvDay); //сортированные даты
     }
         //сортированные даты отправлять на сервер
-    const fecthData = {
+    const fetchData = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
+        //_id: localStorage.getItem("curr-user-id"),
         _id: localStorage.getItem("curr-user-id"),
         availableDates: noActvDay,
       }),
     };
-    fetch(`http://localhost:5000/petsitter/add-data`, fecthData).then((response) => {
-      return response.json();
-    })
+    fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+        .then((response) => {
+          return response.json();
+        })
   });
 
   preMonth.addEventListener("click", () => {
@@ -152,7 +154,7 @@ export async function petsittersCalendar() {
       if (target.tagName == "SPAN") {
         createCalendar(leftCalendar, y, m);
         changeWorkDay(userInfo.petsitterData.availableDates); //получение с сервера выходных дней и отметить в календаре
-        //console.log("*****---petsitterDates.availableDates",  userInfo.petsitterData.availableDates);
+        console.log("*****---petsitterDates.availableDates",  userInfo.petsitterData.availableDates);
       }
     }
   });
