@@ -47,7 +47,7 @@ async function renderOrdersPage() {
   sectionOrdersBlock.append(sectionOrdersTitle);
   const ordersItemsWrapper = createHtmlElement("div", "orders-items-wrapper");
   sectionOrdersBlock.append(ordersItemsWrapper);
-  fetch(`http://localhost:5000/auth/user`, {
+  fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -226,7 +226,7 @@ async function renderOrdersPage() {
                 _id: object.ownerId,
             }),
         };
-        const response = await fetch(`http://localhost:5000/auth/user`, fecthData);
+        const response = await fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fecthData);
         return {
                    item: await response.json()
                }

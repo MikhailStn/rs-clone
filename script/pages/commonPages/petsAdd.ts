@@ -639,16 +639,16 @@ async function renderPetsAddPage() {
         method: "POST",
         body: formData,
       };
-      fetch(`http://localhost:5000/auth/register/add-photo`, fetchData)
+      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`, fetchData)
         .then((response) => {
           return response.json();
         })
         .then((data) => {
           photoContainer.setAttribute(
             "style",
-            `background-image: url('http://localhost:5000/${data.filePath}'); background-blend-mode:normal`
+            `background-image: url('https://rs-clone-api-production-3ab8.up.railway.app/${data.filePath}'); background-blend-mode:normal`
           );
-          petsObj.avatarPath = `http://localhost:5000/${data.filePath}`;
+          petsObj.avatarPath = `https://rs-clone-api-production-3ab8.up.railway.app/${data.filePath}`;
           btnConfirm.setAttribute("style", "pointer-events:all");
         });
       return btnAddPhoto.files[0];
@@ -756,7 +756,7 @@ async function renderPetsAddPage() {
           petsObj: petsObj,
         }),
       };
-      fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
         .then((response) => {
           return response.json();
         })

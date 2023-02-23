@@ -10,7 +10,7 @@ export const getUser = async()=>{
             _id: idUser,
         }),
     };
-    const response = await fetch(`http://localhost:5000/auth/user`, fecthData);
+    const response = await fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fecthData);
     return {
                item: await response.json()
            }
@@ -28,7 +28,7 @@ export const getUserFromId = async(id:string)=>{
           _id: id,
       }),
   };
-  const response = await fetch(`http://localhost:5000/auth/user`, fecthData);
+  const response = await fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fecthData);
   return {
              item: await response.json()
          }
@@ -44,7 +44,7 @@ export const getUserFromId = async(id:string)=>{
             "Access-Control-Allow-Origin": "*",
           },
         };
-        const response = await fetch(`http://localhost:5000/users/petsitters`, fetchData);
+        const response = await fetch(`https://rs-clone-api-production-3ab8.up.railway.app/users/petsitters`, fetchData);
         return {
           item: await response.json(),
         };

@@ -382,7 +382,7 @@ export const updateValues = () => {
         _id: localStorage.getItem("curr-user-id"),
       }),
     };
-    fetch(`http://localhost:5000/auth/user`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData)
       .then((response) => {
         return response.json();
       })
@@ -425,7 +425,7 @@ export const updateValues = () => {
           price_hotel: amountInput.value,
         }),
       };
-      fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
         .then((response) => {
           return response.json();
         })
@@ -472,7 +472,7 @@ export const updateValues = () => {
         _id: localStorage.getItem("curr-user-id"),
       }),
     };
-    fetch(`http://localhost:5000/auth/user`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData)
       .then((response) => {
         return response.json();
       })
@@ -623,7 +623,7 @@ export const updateValues = () => {
           price_walking: amount.value,
         }),
       };
-      fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
         .then((response) => {
           return response.json();
         })
@@ -677,7 +677,7 @@ export const updateValues = () => {
         _id: localStorage.getItem("curr-user-id"),
       }),
     };
-    fetch(`http://localhost:5000/auth/user`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData)
       .then((response) => {
         return response.json();
       })
@@ -725,7 +725,7 @@ export const updateValues = () => {
           serviceArea_homevisits: serviceArea.value,
         }),
       };
-      fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
         .then((response) => {
           return response.json();
         })

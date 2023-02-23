@@ -218,10 +218,10 @@ function renderRegistrPage(role: string) {
     let link = "";
     let role = "";
     if (btnRegistration.id == "registration-pet-owner") {
-      link = "http://localhost:5000/auth/register/owner";
+      link = "https://rs-clone-api-production-3ab8.up.railway.app/auth/register/owner";
       role = "OWNER";
     } else if (btnRegistration.id == "registration-petsitter") {
-      link = "http://localhost:5000/auth/register/petsitter";
+      link = "https://rs-clone-api-production-3ab8.up.railway.app/auth/register/petsitter";
       role = "PETSITTER";
     }
     console.log(link);

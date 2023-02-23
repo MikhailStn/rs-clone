@@ -60,7 +60,7 @@ export const createChat = (order: OrderPreview) => {
         orderNum: order.numberOfOrder,
       }),
     };
-    fetch(`http://localhost:5000/send-message`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/send-message`, fetchData)
       .then((response) => {
         return response.json();
       })
@@ -176,7 +176,7 @@ export const createChat = (order: OrderPreview) => {
 
   }
 
-  fetch(`http://localhost:5000/auth/user`, {
+  fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -195,7 +195,7 @@ export const createChat = (order: OrderPreview) => {
     });
 
   const interval = setInterval(() => {
-    fetch(`http://localhost:5000/order/`, {
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/order/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

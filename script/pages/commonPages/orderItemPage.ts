@@ -19,7 +19,7 @@ async function renderOrderItemPage(id: string) {
     const sectionItemOrdersBlock = createHtmlElement('div', 'section-item-orders-block');
     sectionOrderItem.append(sectionItemOrdersBlock);
     // Функция поиска заказа по номеру заказа
-    fetch(`http://localhost:5000/order/`, {
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/order/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -225,7 +225,7 @@ async function createUserBlock(data: OrderPreview) {
           userBlock.removeChild(p)
         }, 2000)
       } else {
-        fetch(`http://localhost:5000/petsitter/add-data`, {
+        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

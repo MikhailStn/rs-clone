@@ -66,7 +66,7 @@ function renderLoginPage() {
         password: `${inputLoginPassword.value}`,
       }),
     };
-    fetch(`http://localhost:5000/auth/login`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/login`, fetchData)
       .then((response) => {
           console.log(response.status);
           if (response.status == 200) {

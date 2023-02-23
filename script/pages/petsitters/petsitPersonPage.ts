@@ -530,7 +530,7 @@ async function renderPetsitPerson(id: string) {
             order: order,
           }),
         };
-        fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
           .then((response) => {
             return response.json();
           })
@@ -546,7 +546,7 @@ async function renderPetsitPerson(id: string) {
             order: order,
           }),
         };
-        fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
           .then((response) => {
             return response.json();
           })
@@ -686,7 +686,7 @@ async function renderPetsitPerson(id: string) {
             order: order,
           }),
         };
-        fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
           .then((response) => {
             return response.json();
           })
@@ -702,7 +702,7 @@ async function renderPetsitPerson(id: string) {
             order: order,
           }),
         };
-        fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
           .then((response) => {
             return response.json();
           })

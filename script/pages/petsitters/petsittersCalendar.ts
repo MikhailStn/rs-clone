@@ -113,7 +113,7 @@ export async function petsittersCalendar() {
         availableDates: noActvDay,
       }),
     };
-    fetch(`http://localhost:5000/petsitter/add-data`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
         .then((response) => {
           return response.json();
         })

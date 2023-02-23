@@ -549,7 +549,7 @@ export async function createMyHomeBlock() {
         otherAnimals: otherAnimalsArr,
       }),
     };
-    fetch(`http://localhost:5000/petsitter/add-data`, fecthData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fecthData)
       .then((response) => {
         return response.json();
       })
@@ -575,7 +575,7 @@ export async function createMyHomeBlock() {
       _id: localStorage.getItem("curr-user-id"),
     }),
   };
-  fetch(`http://localhost:5000/auth/user`, fetchData1)
+  fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData1)
     .then((response) => {
       return response.json();
     })

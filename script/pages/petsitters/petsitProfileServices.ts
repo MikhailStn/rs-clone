@@ -62,7 +62,7 @@ export async function createServicesBlock() {
         _id: user,
       }),
     };
-    fetch(`http://localhost:5000/auth/user`, fetchData)
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData)
       .then((response) => {
         return response.json();
       })
@@ -88,7 +88,7 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
               .then((response) => {
                 return response.json();
               })
@@ -110,7 +110,7 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`http://localhost:5000/petsitter/add-data`, fetchData2)
+            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData2)
               .then((response) => {
                 return response.json();
               })
@@ -140,7 +140,7 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
               .then((response) => {
                 return response.json();
               })
@@ -162,7 +162,7 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`http://localhost:5000/petsitter/add-data`, fetchData2)
+            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData2)
               .then((response) => {
                 return response.json();
               })
@@ -194,7 +194,7 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`http://localhost:5000/petsitter/add-data`, fetchData1)
+            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
               .then((response) => {
                 return response.json();
               })
@@ -216,7 +216,7 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`http://localhost:5000/petsitter/add-data`, fetchData2)
+            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData2)
               .then((response) => {
                 return response.json();
               })
