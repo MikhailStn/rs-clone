@@ -105,8 +105,8 @@
 
 .block-img-svg-pet-order-item{
     display: flex;
-    align-items: baseline;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .svg-pet-order-info{
@@ -212,6 +212,13 @@
 .send-review-and-rating,
 .rating-order-title{
     font-size: 0.72rem;
+}
+
+.warning {
+    color: #aa3737;
+    position: absolute;
+    padding-left: 40px;
+    margin-top: -10px;
 }
 
  .rating-block{
