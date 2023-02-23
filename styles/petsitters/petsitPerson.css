@@ -391,3 +391,7 @@ input:disabled {
   flex-wrap: wrap;
   width: 787px;
 }
+
+.common-info-pet-item-text {
+  padding-top: 8px;
+}

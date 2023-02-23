@@ -8,7 +8,7 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   const menu = await createMenu();
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
     document.querySelector('.section-menu-field')?.classList.add('active');
     document.querySelector('.overlay')?.classList.add('active');
   })
@@ -59,7 +59,7 @@ export async function header(tagParent: HTMLElement): Promise<void> {
   const menu = await createMenu();
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
+    //document.body.style.overflow = 'hidden';
     document.querySelector('.section-menu-field')?.classList.add('active');
     document.querySelector('.overlay')?.classList.add('active');
   })
@@ -140,7 +140,7 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   const menu = await createMenu();
   document.body.append(menu);
   headerMenu.addEventListener('click', () => {
-    document.body.style.overflow = 'hidden';
+    //document.body.style.overflow = 'hidden';
     document.querySelector('.section-menu-field')?.classList.add('active');
     document.querySelector('.overlay')?.classList.add('active');
   })

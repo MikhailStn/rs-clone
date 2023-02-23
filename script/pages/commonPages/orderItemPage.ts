@@ -62,7 +62,7 @@ async function renderOrderItemPage(id: string) {
 async function createBlockCommoninfo(data: OrderPreview) {
     const blockCommonInfo = createHtmlElement('div','block-common-info-order');
     const block1 = await createBlockItemInfoOrder('img/iCharacterGrey.svg', `Service type: ${data.service}`);
-    const block2 = await createBlockItemInfoOrder('img/calendar2Grey.svg', `Deadline: ${data.dates}`); 
+    const block2 = await createBlockItemInfoOrder('img/calendar2Grey.svg', `Deadline: ${data.dates.join(` - `)}`); 
     const block3 = await createBlockItemInfoOrder('img/geoloc.svg', `${data.city}`); 
     const blockImgPet = createHtmlElement('div', 'block-img-svg-pet-order-item');
     const imgPetSvg = new Image();
@@ -145,12 +145,14 @@ async function createUserBlock(data: OrderPreview) {
         petsitPhpotoBlock.src = petsitInfo.avatarPath;
       }
     const nameOfPetsitter = createHtmlElement('div', 'name-of-petsitter-order-item','', data.nameOfPetsitter);
+    nameOfPetsitter.setAttribute("style", "margin-top:-20px")
     const linkViewProfile = createHtmlElement(
       "div",
       "link-view-profile-order",
       "",
       "View profile"
     );
+    linkViewProfile.setAttribute("style", "margin-left:60px; margin-top:-40px")
     linkViewProfile.addEventListener('click', ()=>{
               history.pushState('','',`/petsitter/n/${petsitId}`); 
               window.dispatchEvent(new Event("popstate"));
@@ -159,16 +161,32 @@ async function createUserBlock(data: OrderPreview) {
     const starRateBlock = createHtmlElement('div', 'stars-rate-block');
     const sendReviwBlockTitle = createHtmlElement('div', 'send-review-and-rating', '', 'Here you can evaluate the work of the petsitter and write a review.');
     const starBlock = createHtmlElement('div', 'star-block-item-order rating');
+    let mark = 0
     const istar1 = createHtmlElement('i', 'rating-star far fa-star');
     istar1.dataset.star = '0';
+    istar1.addEventListener("click", () => {
+      mark = 1
+    })
     const istar2 = createHtmlElement('i', 'rating-star far fa-star');
     istar2.dataset.star = '1';
+    istar2.addEventListener("click", () => {
+      mark = 2
+    })
     const istar3 = createHtmlElement('i', 'rating-star far fa-star');
     istar3.dataset.star = '2';
+    istar3.addEventListener("click", () => {
+      mark = 3
+    })
     const istar4 = createHtmlElement('i', 'rating-star far fa-star');
     istar4.dataset.star = '3';
+    istar4.addEventListener("click", () => {
+      mark = 4
+    })
     const istar5 = createHtmlElement('i', 'rating-star far fa-star');
     istar5.dataset.star = '4';
+    istar5.addEventListener("click", () => {
+      mark = 5
+    })
     starBlock.append(istar1, istar2, istar3, istar4, istar5);
     const ratingBlock = createHtmlElement('div', 'rating-block');
     const ratingTitle = createHtmlElement('div', 'rating-order-title','', 'Your rating of petsitter is:  ');
@@ -197,6 +215,44 @@ async function createUserBlock(data: OrderPreview) {
      const inputReview = createHtmlElement('textarea', 'input-petsitter-review','input-review') as HTMLTextAreaElement;
      inputReview.placeholder='Leave your review here';
      const btnSaveRateReview = createHtmlElement('button', 'btn-save-rate-review', 'btn-save-review','Save Review and Rate');
+     btnSaveRateReview.addEventListener("click", () => {
+      if (mark == 0 || inputReview.value == '') {
+        const p = createHtmlElement("p", "warning");
+        p.textContent = "Please, set star and fill the review field";
+        const userBlock = document.querySelector(".user-info-block-order") as HTMLDivElement
+        userBlock.append(p)
+        setTimeout(() => {
+          userBlock.removeChild(p)
+        }, 2000)
+      } else {
+        fetch(`http://localhost:5000/petsitter/add-data`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: data.petsitterId,
+            review: [
+              `${data.nameOfOwner}`,
+              `${inputReview.value}`,
+              mark
+            ]
+          }),
+        })
+        .then((response) => {return response.json()}).then(() => {
+          const p = createHtmlElement("p", "warning");
+          p.textContent = "Review saved";
+          p.setAttribute("style", "color:green; padding-left:130px")
+          const userBlock = document.querySelector(".user-info-block-order") as HTMLDivElement
+          userBlock.append(p)
+          inputReview.value = ''
+          setTimeout(() => {
+            userBlock.removeChild(p)
+          }, 2000)
+        })
+      }
+     })
      starRateBlock.append(starBlock, ratingBlock);
       userBlockWrapper.append(linkViewProfile, sendReviwBlockTitle,starRateBlock, inputReview, btnSaveRateReview);
     }
@@ -212,12 +268,14 @@ async function createUserBlock(data: OrderPreview) {
           ownerPhpotoBlock.src = ownerInfo.avatarPath;
         }
       const nameOfOwner = createHtmlElement('div', 'name-of-petsitter-order-item','', data.nameOfOwner);
+      nameOfOwner.setAttribute("style", "margin-top:-20px")
       const linkViewProfile = createHtmlElement(
         "div",
         "link-view-profile-order",
         "",
         "View profile"
       );
+      linkViewProfile.setAttribute("style", "margin-left:60px; margin-top:-40px")
       linkViewProfile.addEventListener('click', ()=>{
                 history.pushState('','',`/owner/n/${ownerId}`); 
                 window.dispatchEvent(new Event("popstate"));
