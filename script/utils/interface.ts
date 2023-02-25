@@ -38,16 +38,16 @@ export interface IPetsitters1 {
   avatarPath: { type: string };
   petsitterData: {
     birth: { type: string };
-    gender: { type: string };
+    gender: string;
     services: {
       servicesArr: string[];
       hotel: {
-        active: { type: string };
+        active: string;
         animals: string[];
         price: { type: string };
       };
       walking: {
-        active: { type: string };
+        active: string;
         serviceArea: { type: string };
         kindOfDogs: string[];
         ageOfDogs: string[];
@@ -55,13 +55,13 @@ export interface IPetsitters1 {
         price: { type: string };
       };
       homevisits: {
-        active: { type: string };
+        active: string;
         serviceArea: { type: string };
         animals: string[];
         price: { type: string };
       };
       training: {
-        active: { type: string };
+        active: string;
         price: { type: string };
       };
     };
