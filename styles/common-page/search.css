@@ -23,7 +23,7 @@ main {
   background: linear-gradient(45deg, #fddb9263, #d1fdff48);
   height: auto;
   box-shadow: 0 0 0px #84818a;
-  max-height: 870px;
+  /*max-height: 870px;*/
   overflow: auto;
 }
 

@@ -86,7 +86,7 @@ export function mainOwner(): void {
       <p>A petsitter comes to your house to keep your pets company, give food, take a break for a walk or clean up the litter box.</p>
   </div>
 </div>`;
-  const section2Right = createHtmlElement("div", "rightImg");
+  const section2Right = createHtmlElement("div", "rightImg find-a-trust");
   section2Right.innerHTML = `<div class="center">
   <div class="line">
       <div class="svg">
@@ -230,6 +230,8 @@ export function mainOwner(): void {
         console.log("notification");
       } else if (buttons[i].innerHTML === "Browse pet sitters") {
         console.log("Browse pet sitters");
+        history.pushState("", "", "/search");
+        window.dispatchEvent(new Event("popstate"));
       } else if (buttons[i].innerHTML === "view profile") {
         console.log("view profile");
       } else if (buttons[i].id === "leftArrow") {

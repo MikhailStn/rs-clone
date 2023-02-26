@@ -17,6 +17,7 @@ import petsitterPerson from "./pages/petsitters/petsitPersonPage";
 import ownerPerson from "./pages/owners/ownerPage";
 import { settingsPerson } from "./pages/commonPages/settings";
 import petsEditShowPage from "./pages/commonPages/editPet";
+import petsitterReview from "./pages/petsitters/petsitReview";
 
 export const router = () => {
   type Rout = {
@@ -63,6 +64,10 @@ export const router = () => {
     {
       path: "/owner/orders",
       template: createOrdersPage,
+    },
+    {
+      path: "/petsitter/reviews",
+      template: petsitterReview ,
     },
     {
       path: `/petsitter/orders/n`,

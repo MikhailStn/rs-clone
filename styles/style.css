@@ -26,6 +26,7 @@
 @import './petsitters/petsitPerson.css';
 @import './owner/ownerPage.css';
 @import './common-page/settings.css';
+@import './petsitters/petsitReview.css';
 
 
 body:nth-child(2) {

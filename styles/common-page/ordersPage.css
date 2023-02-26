@@ -58,7 +58,7 @@
     padding: 6px 0px 4px 16px;
     font-size: 0.75rem;
     color: #ffffff;
-    background-color: #f37059;
+    background-color: #fbdd7a;
 }
 
 .service-order-text{
@@ -98,7 +98,7 @@
 .link-view-profile-order{
     color: #ca96e1;
     margin-left: 45px;
-    margin-top: -15px;
+    /*margin-top: -15px;*/
     transition: .5s;
     cursor: pointer;
 }
@@ -126,4 +126,24 @@
 .user-order-photo {
     width: 35px;
     height: 35px;
+}
+
+.rate-petsitter-order{
+    color: #fbdd7a;
+    margin-left: 45px;
+    margin-top: -15px
+}
+
+.no-order-text{
+    padding-top: 30px;
+}
+
+.add-pet-text-order{
+    color: #ca96e1;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.add-pet-text-order:hover{
+    color: #a278b4;
 }

@@ -1,5 +1,6 @@
 import { createHtmlElement } from "../../utils";
 import { IPetsitters1 } from "../../utils/interface";
+import { Review } from "../petsitters/petsitReview";
 
 export async function createSortItem(
   tagParent: HTMLElement,
@@ -30,6 +31,7 @@ export async function createSortItem(
     const foto = new Image();
     if (mas[i].avatarPath) {
       foto.src = `${mas[i].avatarPath}`;
+      foto.setAttribute("style", "border-radius:50%");
     } else {
       foto.src = `./img/icons/photo.png`;
       if (mas[i].gender == "Male") {
@@ -52,8 +54,14 @@ export async function createSortItem(
     );
     const city = createHtmlElement("p", "", "", `${mas[i].city}`);
     const stars = createHtmlElement("p", "starsSearchCart");
-    if (mas[i].petsitterData.rate) {
-      stars.innerHTML = "★".repeat(+mas[i].petsitterData.rate);
+    let rateSum = 0;
+    const rateCount = mas[i].petsitterData.reviews.length;
+    mas[i].petsitterData.reviews.forEach((elem:Review)=>{
+        rateSum += elem[2];
+    })
+    const rate = Math.round(rateSum / rateCount);
+    if (rate !== 0) {
+      stars.innerHTML = "★".repeat(rate);
     } else {
       stars.innerHTML = "no ratings";
     }

@@ -85,8 +85,8 @@ export async function createMyPetsBlock() {
   return basicPetsBlock;
 }
 
-export function createItemPetsCard(petsObject: Pets) {
-  const itemPetBlock = createHtmlElement("div", "item-pet-block");
+export function createItemPetsCard(petsObject: Pets, className?:string) {
+  const itemPetBlock = createHtmlElement("div", `item-pet-block ${className}`);
   const namePetItem = createHtmlElement(
     "h4",
     "name-pet-item",

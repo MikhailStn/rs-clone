@@ -9,6 +9,7 @@ import { getUser } from "../../commonFunction/getUser";
 import { Pets } from "../pageComponents/ownerPetsitPets";
 import { petsittersCalendar } from "../pageComponents/calendar";
 import { createItemPetsCard } from "../pageComponents/ownerPetsitPets";
+import { createItemReview, Review } from "./petsitReview";
 
 const sectionPetsitPerson = createHtmlElement(
   "section",
@@ -60,13 +61,30 @@ async function renderPetsitPerson(id: string) {
     "",
     `${userInfo.firstName}`
   );
+  const starBlock = createHtmlElement("div", "star-block-item-order rating");
+  let rateSum = 0;
+    const rateCount = userInfo.petsitterData.reviews.length;
+    userInfo.petsitterData.reviews.forEach((elem:Review)=>{
+        rateSum += elem[2];
+    })
+    const rate = Math.round(rateSum / rateCount);
+    const istar1 = createHtmlElement("i", "rating-star far fa-star");
+    const istar2 = createHtmlElement("i", "rating-star far fa-star");
+    const istar3 = createHtmlElement("i", "rating-star far fa-star");
+    const istar4 = createHtmlElement("i", "rating-star far fa-star");
+    const istar5 = createHtmlElement("i", "rating-star far fa-star");
+    starBlock.append(istar1, istar2, istar3, istar4, istar5);
+    const ratingStars = [...starBlock.getElementsByClassName("rating-star")];
+    for(let i = 0; i< rate; i++){
+        ratingStars[i].className = "rating-star fas fa-star";
+    }
   const qwalificCityText = createHtmlElement(
     "h3",
     "qualific-city-person-text",
     "",
     `Professional petsitter, ${userInfo.city}`
   );
-  petsitPersonNameQwalifBlock.append(namePetsitPerson, qwalificCityText);
+  petsitPersonNameQwalifBlock.append(namePetsitPerson, starBlock, qwalificCityText);
   imgNamePetsitPersonBlock.append(
     imgPersonWrapper,
     petsitPersonNameQwalifBlock
@@ -701,11 +719,27 @@ async function renderPetsitPerson(id: string) {
     );
     const petsitterPets = createHtmlElement("div", "petsit-pets-wrapper");
     userInfo.pets.forEach(async (elem: Pets) => {
-      const petsPetsiterItem = await createItemPetsCard(elem);
+      const petsPetsiterItem = await createItemPetsCard(elem, 'petsit-page');
       petsitterPets.append(petsPetsiterItem);
     });
 
     commonInfoPersonBlock.append(petsitterPetsTitle, petsitterPets);
+  }
+
+  //review
+  if(userInfo.petsitterData.reviews.length !== 0){
+    const petsitterReviewTitle = createHtmlElement(
+      "div",
+      "my-service-title home-condition-block",
+      "",
+      "My reviews"
+    );
+    const petsitterReview = createHtmlElement("div", "petsit-review-wrapper");
+    userInfo.petsitterData.reviews.forEach(async (elem: Review) => {
+      const petsPetsiterItem = await createItemReview(elem);
+      petsitterReview.append(petsPetsiterItem);
+    });
+    commonInfoPersonBlock.append(petsitterReviewTitle, petsitterReview);
   }
   petsitPersonBlock.append(commonInfoPersonBlock);
 
