@@ -40,7 +40,7 @@ async function renderPetsitPerson(id: string) {
     "img-person-petsit"
   ) as HTMLImageElement;
   if (userInfo.avatarPath === "" || userInfo.avatarPath === undefined) {
-    if (userInfo.petsitterData.gender === "Male") {
+    if (userInfo.gender === "Male") {
       imgPersonPetsit.src = "img/images/manDog.jpg";
       imgPersonPetsit.style.background = "#ffffff";
     } else {
