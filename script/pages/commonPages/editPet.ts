@@ -872,7 +872,7 @@ async function renderPetsEditPage() {
             }),
           };
           fetch(
-            `https://rs-clone-api-production-3ab8.up.railway.app`,
+            `https://rs-clone-api-production-3ab8.up.railway.app/update-pet`,
             fetchData
           ).then((response) => {
             return response.json();
