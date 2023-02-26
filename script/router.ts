@@ -16,7 +16,7 @@ import { createOrderItemPage } from "./pages/commonPages/orderItemPage";
 import petsitterPerson from "./pages/petsitters/petsitPersonPage";
 import ownerPerson from "./pages/owners/ownerPage";
 import { settingsPerson } from "./pages/commonPages/settings";
-
+import petsEditShowPage from "./pages/commonPages/editPet";
 
 export const router = () => {
   type Rout = {
@@ -113,6 +113,10 @@ export const router = () => {
       template: authPetsitterForm,
     },
     {
+      path: "/pets/edit",
+      template: petsEditShowPage,
+    },
+    {
       path: "/",
       template: mainOwner,
     },
@@ -141,7 +145,9 @@ export const router = () => {
   });
 
   const renderUI = () => {
-    const route = routes.find((route) => window.location.pathname.includes(route.path));
+    const route = routes.find((route) =>
+      window.location.pathname.includes(route.path)
+    );
 
     if (route) {
       route.template();

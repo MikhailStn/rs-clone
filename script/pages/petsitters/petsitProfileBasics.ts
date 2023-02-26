@@ -163,7 +163,10 @@ async function createBasicInfoBlock() {
         method: "POST",
         body: formData,
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`, fetchData)
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`,
+        fetchData
+      )
         .then((response) => {
           return response.json();
         })
@@ -352,7 +355,10 @@ async function createBasicInfoBlock() {
         qualifications: qualificationsArr,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+      fetchData
+    )
       .then((response) => {
         return response.json();
       })

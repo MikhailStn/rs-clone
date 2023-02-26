@@ -18,6 +18,26 @@ const fetchPetsitterData: PetsitterData = {
   avatarPath: "",
 };
 
+const regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+const isEmail = (value: string) => {
+  if (regEmail.test(value)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const regNum = /^\+?\d+$/;
+
+function isPhone(str: string) {
+  if (regNum.test(str)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export async function settingsPerson() {
   const User = await getUser();
   const userInfo = User.item;
@@ -29,33 +49,35 @@ export async function settingsPerson() {
     lastName: userInfo.lastName,
     phone: userInfo.phone,
     city: userInfo.city,
-    address: userInfo.petsitterData.address,
-    birth: userInfo.petsitterData.birth,
+    address: userInfo.address,
+    birth: userInfo.birth,
     role: userInfo.role,
-    gender: userInfo.petsitterData.gender,
+    gender: userInfo.gender,
     avatarPath: userInfo.avatarPath,
   };
-  console.log("objData", objData);
 
   document.body.innerHTML = "";
 
   headerPetsitter(document.body);
-  const sectionSettings = createHtmlElement("section", "section-petsit-profile-basic");
+  const sectionSettings = createHtmlElement(
+    "section",
+    "section-petsit-profile-basic"
+  );
   document.body.append(sectionSettings);
-  const sectionSettingsBlock = createHtmlElement("div", "section-profile-basic-block");
+  const sectionSettingsBlock = createHtmlElement(
+    "div",
+    "section-profile-basic-block"
+  );
   sectionSettings.append(sectionSettingsBlock);
   const profileTitleWrap = createHtmlElement("div", "profile-title-wrapper");
   sectionSettingsBlock.append(profileTitleWrap);
-  const myProfileTitle = createHtmlElement("h2", "my-profile-text-title", "", "Account settings");
+  const myProfileTitle = createHtmlElement(
+    "h2",
+    "my-profile-text-title",
+    "",
+    "Account settings"
+  );
   profileTitleWrap.append(myProfileTitle);
-
-  /*можно без него
-  const profileTitleWrap2 = createHtmlElement("div", "profile-title-wrapper");
-  sectionPetsitCalendarBlock.append(profileTitleWrap2);
-  const changeSettings = createHtmlElement("h3", "my-profile-text-title", "", "changeSettings");
-  profileTitleWrap2.append(changeSettings);
-  можно без него*/
-
   const divSettings = createHtmlElement("div", "left-right-settings");
   const divLeftSettings = createHtmlElement("div", "left-settings");
   const divRightSettings = createHtmlElement("div", "right-settings");
@@ -63,20 +85,44 @@ export async function settingsPerson() {
   divSettings.append(divLeftSettings);
   divSettings.append(divRightSettings);
 
-  const title1 = createHtmlElement("h3", "title-child-settings", "", "Personal data");
+  const title1 = createHtmlElement(
+    "h3",
+    "title-child-settings",
+    "",
+    "Personal data"
+  );
   divLeftSettings.append(title1);
 
   const divOldEmail = createHtmlElement("div", "old-date-settings");
-  const container1 = createHtmlElement("div", "container"); //, "active-container-set container1");
+  const container1 = createHtmlElement("div", "container email-container");
   const divInfo1 = createHtmlElement("div", "");
   const titleOldEmail = createHtmlElement("p", "", "", "E-mail");
-  const dateOldEmail = createHtmlElement("p", "", "", `${objData.email ? objData.email : ""}`); //-----------------
+  const dateOldEmail = createHtmlElement(
+    "p",
+    "",
+    "",
+    `${objData.email ? objData.email : ""}`
+  );
   const divBtn1 = createHtmlElement("div", "", "", "");
-  const btnOldEmail = createHtmlElement("button", "btnSetChange ", "", "change");
+  const btnOldEmail = createHtmlElement(
+    "button",
+    "btnSetChange ",
+    "",
+    "Change"
+  );
+  const inputEm = createInputElement("email", "settings-input");
+  inputEm.value = `${objData.email}`;
+  inputEm.addEventListener("input", () => {
+    if (isEmail(inputEm.value)) {
+      inputEm.removeAttribute("style");
+      objData.email = inputEm.value;
+    } else {
+      inputEm.setAttribute("style", "border:1px solid red");
+    }
+  });
   divLeftSettings.append(divOldEmail);
   divOldEmail.append(container1);
-  container1.append(divInfo1);
-  container1.append(divBtn1);
+  container1.append(inputEm);
   divInfo1.append(titleOldEmail);
   divInfo1.append(dateOldEmail);
   divBtn1.append(btnOldEmail);
@@ -89,13 +135,18 @@ export async function settingsPerson() {
     const titleMain = createHtmlElement("p", "title-main", "", "Change email");
     const title1 = createHtmlElement("p", "", "", "E-mail");
     const fieldEmail = createInputElement("email", "");
-    fieldEmail.value = `${objData.email ? objData.email : ""}`; //-----------------
-    const text = createHtmlElement("p", "", "", "The change of the e-mail address must be confirmed by entering the current account password.");
+    fieldEmail.value = `${objData.email ? objData.email : ""}`;
+    const text = createHtmlElement(
+      "p",
+      "",
+      "",
+      "The change of the e-mail address must be confirmed by entering the current account password."
+    );
     const title2 = createHtmlElement("p", "", "", "Current password");
     const fieldPassword = createInputElement("password", "");
-    fieldPassword.value = ``; //`********`; //-----------------
+    fieldPassword.value = ``;
     const blockButtons = createHtmlElement("div", "btns-settings");
-    const save = createHtmlElement("button", "btnSetChange", "", "Save"); //btnSetChange
+    const save = createHtmlElement("button", "btnSetChange", "", "Save");
     const cancel = createHtmlElement("button", " btnSetChange", "", "Cancel");
     divOldEmail.append(container2);
     container2.append(titleMain);
@@ -108,28 +159,6 @@ export async function settingsPerson() {
     blockButtons.append(save);
     blockButtons.append(cancel);
 
-    /*
-    save.addEventListener('click', ()=>{
-
-    //  if(fieldPassword.value ==)
-      const fetchData = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          //email:
-          //password:
-        }),
-      };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData).then((response) => {
-        return response.json();
-      });
-    });
-*/
-
     cancel.addEventListener("click", () => {
       container1.style.display = "flex";
       container2.style.display = "none";
@@ -141,9 +170,14 @@ export async function settingsPerson() {
   const container12 = createHtmlElement("div", "container");
   const divInfo2 = createHtmlElement("div", "");
   const titleOldPassword = createHtmlElement("p", "", "", "Current password");
-  const dateOldPassword = createHtmlElement("p", "", "", "****");//-----------------
+  const dateOldPassword = createHtmlElement("p", "", "", "****"); //-----------------
   const divBtn2 = createHtmlElement("div", "", "", "");
-  const btnOldPassword = createHtmlElement("button", "btnSetChange", "", "change");
+  const btnOldPassword = createHtmlElement(
+    "button",
+    "btnSetChange",
+    "",
+    "Change"
+  );
   divLeftSettings.append(divOldPassword);
   divOldPassword.append(container12);
   container12.append(divInfo2);
@@ -156,16 +190,86 @@ export async function settingsPerson() {
     container12.style.display = "none";
     divOldPassword.style.backgroundColor = "rgb(232, 244, 253)";
 
-    const container22 = createHtmlElement("div", "");
-    const titleMain2 = createHtmlElement("p", "title-main", "", "Change Password");
+    const container22 = createHtmlElement("div", "password-container");
+    const titleMain2 = createHtmlElement(
+      "p",
+      "title-main",
+      "",
+      "Change Password"
+    );
     const title21 = createHtmlElement("p", "", "", "Current password");
-    const fieldPassword1 = createInputElement("password", ""); //-----------------
+    const fieldPassword1 = createInputElement("password", "password-input"); //-----------------
     const title22 = createHtmlElement("p", "", "", "A new password");
-    const fieldPassword2 = createInputElement("password", "");//-----------------
+    const fieldPassword2 = createInputElement("password", "password-input"); //-----------------
     const title23 = createHtmlElement("p", "", "", "Repeat password");
-    const fieldPassword3 = createInputElement("password", "");//-----------------
+    const fieldPassword3 = createInputElement("password", "password-input"); //-----------------
     const blockButtons2 = createHtmlElement("div", "btns-settings");
     const save2 = createHtmlElement("button", "btnSetChange", "", "Save"); //btnSetChange
+    save2.addEventListener("click", () => {
+      if (fieldPassword2.value.length < 4 || fieldPassword2.value.length > 10) {
+        const p = createHtmlElement("p", "warning-password");
+        p.textContent =
+          "New password length should be more than 4 and less than 10 characters";
+        p.setAttribute("style", "color:red");
+        container22.append(p);
+        setTimeout(() => {
+          container22.removeChild(p);
+        }, 2000);
+        return;
+      }
+      if (fieldPassword2.value != fieldPassword3.value) {
+        const p = createHtmlElement("p", "warning-password");
+        p.textContent = "Error: new passwords do not match";
+        p.setAttribute("style", "color:red");
+        container22.append(p);
+        setTimeout(() => {
+          container22.removeChild(p);
+        }, 2000);
+        return;
+      }
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/check-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: localStorage.getItem("curr-user-id"),
+            currPassword: fieldPassword1.value,
+          }),
+        }
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          if (data.message == "Incorrect Password") {
+            const p = createHtmlElement("p", "warning-password");
+            p.textContent = "Incorrect current password";
+            p.setAttribute("style", "color:red");
+            container22.append(p);
+            setTimeout(() => {
+              container22.removeChild(p);
+            }, 2000);
+            return;
+          } else {
+            const p = createHtmlElement("p", "warning-password");
+            p.textContent =
+              "New password accepted. Press button 'Save' below to save changes";
+            p.setAttribute("style", "color:green");
+            container22.append(p);
+            objData.password = fieldPassword2.value;
+            setTimeout(() => {
+              container12.style.display = "flex";
+              container22.style.display = "none";
+              divOldPassword.style.backgroundColor = "#fff";
+              container22.removeChild(p);
+            }, 4000);
+          }
+        });
+    });
     const cancel2 = createHtmlElement("button", " btnSetChange", "", "Cancel");
     divOldPassword.append(container22);
     container22.append(titleMain2);
@@ -179,28 +283,6 @@ export async function settingsPerson() {
     blockButtons2.append(save2);
     blockButtons2.append(cancel2);
 
-    /*
-    save2.addEventListener('click', ()=>{
-      //if(fieldPassword1==)
-      //if(fieldPassword2 == fieldPassword3)
-      const fetchData = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          //email:
-          //password:
-        }),
-      };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData).then((response) => {
-        return response.json();
-      });
-    });
-*/
-
     cancel2.addEventListener("click", () => {
       container12.style.display = "flex";
       container22.style.display = "none";
@@ -210,33 +292,54 @@ export async function settingsPerson() {
 
   const divOldName = createHtmlElement("div", "old-date-settings");
   const divInfo3 = createHtmlElement("div", "first-child");
-  const titleOldName = createHtmlElement("p", "", "", "First name and last name");
+  const titleOldName = createHtmlElement(
+    "p",
+    "",
+    "",
+    "First name and last name"
+  );
   const divInputName = createHtmlElement("div", "div-input-text");
-  const inputName = createInputElement("text", "first-child"); //-----------------
-  inputName.value = `${objData.firstName ? objData.firstName : ""} ${objData.lastName ? objData.lastName : ""} `;
+  const inputName = createInputElement("text", "first-child settings-input"); //-----------------
+  inputName.value = `${objData.firstName ? objData.firstName : ""} ${
+    objData.lastName ? objData.lastName : ""
+  } `;
+  inputName.addEventListener("input", () => {
+    const arr = inputName.value.split(" ");
+    if (arr.length != 2 || arr[1] == "") {
+      inputName.setAttribute("style", "border:1px solid red");
+    } else {
+      inputName.removeAttribute("style");
+      objData.firstName = arr[0];
+      objData.lastName = arr[1];
+    }
+  });
   const divBtn3 = createHtmlElement("div", "", "", "");
-  const btnOldName = createHtmlElement("button", "btnSetChange", "", "change");
   divLeftSettings.append(divOldName);
   divOldName.append(divInfo3);
   divOldName.append(divBtn3);
   divInfo3.append(titleOldName);
   divInfo3.append(divInputName);
   divInputName.append(inputName);
-  divBtn3.append(btnOldName);
 
   if (objData.role == "PETSITTER") {
-    const divOldSex = createHtmlElement("div", "old-date-settings block-sex"); /*у петса*/ //-----------------
+    const divOldSex = createHtmlElement("div", "old-date-settings block-sex");
     const divInfo4 = createHtmlElement("div", "");
     const titleOldSex = createHtmlElement("p", "", "", "Sex");
     const formSex = createHtmlElement("form", "form-sex-settings", "", "");
     const divForMan = createHtmlElement("div", "div-input-radio");
     const secMan = createInputElement("radio", "", "Male"); /**/
+    secMan.addEventListener("click", () => {
+      objData.gender = "Male";
+    });
     secMan.setAttribute("name", "sex");
     const labelMan = createHtmlElement("label", "", "", "Man");
     labelMan.setAttribute("for", "Male");
     const divForWoman = createHtmlElement("div", "div-input-radio");
     const secWoman = createInputElement("radio", "", "Female"); /**/
     secWoman.setAttribute("name", "sex");
+    secWoman.addEventListener("click", () => {
+      objData.gender = "Female";
+    });
     const labelWoman = createHtmlElement("label", "", "", "Woman");
     labelWoman.setAttribute("for", "Female");
     divLeftSettings.append(divOldSex);
@@ -267,10 +370,10 @@ export async function settingsPerson() {
 
     const divOldDateOfBirth = createHtmlElement("div", "old-date-settings");
     const divInfo5 = createHtmlElement("div", "first-child");
-    const titleOldDateOfBirth = createHtmlElement("p", "", "", "Date of birth"); /*у петса*/
+    const titleOldDateOfBirth = createHtmlElement("p", "", "", "Date of birth");
     const divInputDate = createHtmlElement("div", "div-input-date");
-    const inputDateOfBirth = createInputElement("date", "");
-    inputDateOfBirth.value = `${objData.birth ? objData.birth : ""}`; //-----------------
+    const inputDateOfBirth = createInputElement("date", "settings-input");
+    inputDateOfBirth.value = `${objData.birth ? objData.birth : ""}`;
     divLeftSettings.append(divOldDateOfBirth);
     divOldDateOfBirth.append(divInfo5);
     divInfo5.append(titleOldDateOfBirth);
@@ -282,15 +385,32 @@ export async function settingsPerson() {
     });
   }
 
-  const title2 = createHtmlElement("h3", "title-child-settings", "", "Contact details");
+  const title2 = createHtmlElement(
+    "h3",
+    "title-child-settings",
+    "",
+    "Contact details"
+  );
   divLeftSettings.append(title2);
 
   const divOldNumber = createHtmlElement("div", "old-date-settings");
   const divInfo6 = createHtmlElement("div", "first-child");
   const titleOldNumber = createHtmlElement("p", "", "", "Phone number");
   const divInputNumber = createHtmlElement("div", "div-input-text");
-  const inputNumber = createInputElement("text", "");
-  inputNumber.value = `+ ${objData.phone ? objData.phone : ""}`; //-----------------
+  const inputNumber = createInputElement("text", "settings-input");
+  inputNumber.value = `+${objData.phone ? objData.phone : ""}`;
+  inputNumber.addEventListener("input", () => {
+    if (
+      isPhone(inputNumber.value) &&
+      inputNumber.value.length > 6 &&
+      inputNumber.value.length < 15
+    ) {
+      inputNumber.removeAttribute("style");
+      objData.phone = inputNumber.value;
+    } else {
+      inputNumber.setAttribute("style", "border:1px solid red");
+    }
+  });
   divLeftSettings.append(divOldNumber);
   divOldNumber.append(divInfo6);
   divInfo6.append(titleOldNumber);
@@ -299,10 +419,21 @@ export async function settingsPerson() {
 
   const divOldAdress = createHtmlElement("div", "old-date-settings");
   const divInfo7 = createHtmlElement("div", "first-child");
-  const titleOldAdress = createHtmlElement("p", "", "", "Adress");
+  const titleOldAdress = createHtmlElement("p", "", "", "Address");
   const divInputAdress = createHtmlElement("div", "div-input-text");
-  const inputAdress = createInputElement("text", "");
-  inputAdress.value = `${objData.address ? objData.address : ""}`; //-----------------
+  const inputAdress = createInputElement("text", "settings-input");
+  inputAdress.addEventListener("input", () => {
+    if (
+      inputAdress.value.split(" ").length < 2 ||
+      inputAdress.value.split(" ")[1] == ""
+    ) {
+      inputAdress.setAttribute("style", "border:1px solid red");
+    } else {
+      inputAdress.removeAttribute("style");
+      objData.address = inputAdress.value;
+    }
+  });
+  inputAdress.value = `${objData.address ? objData.address : ""}`;
   divLeftSettings.append(divOldAdress);
   divOldAdress.append(divInfo7);
   divInfo7.append(titleOldAdress);
@@ -313,17 +444,29 @@ export async function settingsPerson() {
   const divInfo8 = createHtmlElement("div", "first-child");
   const titleOldCity = createHtmlElement("p", "", "", "City");
   const divInputCity = createHtmlElement("div", "div-input-text");
-  const inputCity = createInputElement("text", "first-child");
-  inputCity.value = `${objData.city ? objData.city : ""}`; //-----------------
+  const inputCity = createInputElement("text", "first-child settings-input");
+  inputCity.value = `${objData.city ? objData.city : ""}`;
+  inputCity.addEventListener("input", () => {
+    if (inputCity.value.length < 3) {
+      inputCity.setAttribute("style", "border:1px solid red");
+    } else {
+      inputCity.removeAttribute("style");
+      objData.city = inputCity.value;
+    }
+  });
   divLeftSettings.append(divOldCity);
   divOldCity.append(divInfo8);
   divInfo8.append(titleOldCity);
   divInfo8.append(divInputCity);
   divInputCity.append(inputCity);
 
-/*-------------------------------------------------------------*/
-  const tempTitle = createHtmlElement("p", "title-photo-profile-block", '', "Photo");
-  //tempTitle.textContent = "Photo";
+  /*-------------------------------------------------------------*/
+  const tempTitle = createHtmlElement(
+    "p",
+    "title-photo-profile-block",
+    "",
+    "Photo"
+  );
   const photoTextProfileBlock = createHtmlElement(
     "div",
     "photo-text-profile-block"
@@ -335,12 +478,34 @@ export async function settingsPerson() {
   );
   photoContainer.setAttribute(
     "style",
-    "background-image: url('../img/icons/photo.png')"
+    `background-image: url('${objData.avatarPath}'); background-blend-mode:normal`
   );
+  const divBtnsPhotos = createHtmlElement("div", "btns-add-remove-container");
   const btnAddPhoto = createHtmlElement(
     "input",
     "button-add-photo"
   ) as HTMLInputElement;
+  const btnRemovePhoto = createHtmlElement(
+    "button",
+    "button-remove-photo"
+  ) as HTMLInputElement;
+  btnRemovePhoto.textContent = "Remove";
+  btnRemovePhoto.addEventListener("click", () => {
+    btnAddPhoto.files = null;
+    if (objData.gender == "Male") {
+      photoContainer.setAttribute(
+        "style",
+        `background-image: url('img/images/manDog.jpg'); background-blend-mode:normal`
+      );
+      objData.avatarPath = "";
+    } else {
+      photoContainer.setAttribute(
+        "style",
+        `background-image: url('img/images/dogHaveFive.jpg'); background-blend-mode:normal`
+      );
+      objData.avatarPath = "";
+    }
+  });
   btnAddPhoto.type = "file";
   btnAddPhoto.accept = ".png,.jpg,.jpeg";
   btnAddPhoto.id = "photo";
@@ -349,10 +514,13 @@ export async function settingsPerson() {
       const formData = new FormData();
       formData.append("image", btnAddPhoto.files[0], btnAddPhoto.files[0].name);
       const fetchData = {
-        method: "POST",/*** */
+        method: "POST",
         body: formData,
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`, fetchData)/*** */
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`,
+        fetchData
+      )
         .then((response) => {
           return response.json();
         })
@@ -362,6 +530,7 @@ export async function settingsPerson() {
             `background-image: url('https://rs-clone-api-production-3ab8.up.railway.app/${data.filePath}'); background-blend-mode:normal`
           );
           fetchPetsitterData.avatarPath = `https://rs-clone-api-production-3ab8.up.railway.app/${data.filePath}`;
+          objData.avatarPath = `https://rs-clone-api-production-3ab8.up.railway.app/${data.filePath}`;
         });
       return btnAddPhoto.files[0];
     }
@@ -373,16 +542,10 @@ export async function settingsPerson() {
   ) as HTMLLabelElement;
   btnAddPhotoLabel.setAttribute("for", "photo");
   btnAddPhotoLabel.textContent = "Add photo";
-  photoContainer.append(btnAddPhoto, btnAddPhotoLabel);
-/*
-  const textPhotoProfile = createHtmlElement(
-    "div",
-    "text-photo-profile",
-    "",
-    "A profile photo allows other members of the Petsi community to get to know you. It is especially important for your relationship with customers, as it will make it easier for you to get to know each other when you first meet."
-  );*/
-  photoTextProfileBlock.append(photoContainer/*, textPhotoProfile*/);
-/*-------------------------------------------------------------*/
+  divBtnsPhotos.append(btnAddPhoto, btnAddPhotoLabel, btnRemovePhoto);
+  photoContainer.append(divBtnsPhotos);
+  photoTextProfileBlock.append(photoContainer);
+  /*-------------------------------------------------------------*/
 
   const btnSave = createHtmlElement("button", "rectangle", "", "Save");
   divLeftSettings.append(btnSave);
@@ -392,7 +555,12 @@ export async function settingsPerson() {
   const imgMessage = new Image();
   imgMessage.src = "img/iCharacter.svg";
   const divTextMessage = createHtmlElement("div", "");
-  const titleMessage = createHtmlElement("div", "text-profile-medium", "", "What information is shared with others?");
+  const titleMessage = createHtmlElement(
+    "div",
+    "text-profile-medium",
+    "",
+    "What information is shared with others?"
+  );
   const textMessage = createHtmlElement(
     "div",
     "text-profile text-profile-li",
@@ -405,13 +573,43 @@ export async function settingsPerson() {
   blockMessagediv.append(divTextMessage);
   divTextMessage.append(titleMessage);
   divTextMessage.append(textMessage);
+  const p1 = createHtmlElement("p", "settings-changes-successfuly");
+  p1.textContent = "Changes saved!";
+  divLeftSettings.append(p1);
 
   footerFun(document.body);
 
   btnSave.addEventListener("click", () => {
-    objData.firstName = inputName.value.replace(/ +/g, " ").trim().split(" ")[0];
-    objData.lastName = inputName.value.replace(/ +/g, " ").trim().split(" ")[1];
-    objData.phone = (inputNumber.value.match(/\d/g)?.join(''));
+    let newData = {};
+
+    if (objData.password.length > 12) {
+      newData = {
+        _id: localStorage.getItem("curr-user-id"),
+        address: objData.address,
+        city: objData.city,
+        phone: objData.phone,
+        email: objData.email,
+        firstName: objData.firstName,
+        lastName: objData.lastName,
+        birth: objData.birth,
+        gender: objData.gender,
+        avatarPath: objData.avatarPath,
+      };
+    } else {
+      newData = {
+        _id: localStorage.getItem("curr-user-id"),
+        address: objData.address,
+        city: objData.city,
+        phone: objData.phone,
+        email: objData.email,
+        password: objData.password,
+        firstName: objData.firstName,
+        lastName: objData.lastName,
+        birth: objData.birth,
+        gender: objData.gender,
+        avatarPath: objData.avatarPath,
+      };
+    }
 
     if (objData.role == "PETSITTER") {
       //PETSITTER
@@ -421,23 +619,21 @@ export async function settingsPerson() {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          address: inputAdress.value,
-          city: inputCity.value,
-          phone:objData.phone,
-          //email:
-          //password:
-          firstName: objData.firstName,
-          lastName: objData.lastName,
-          birth: objData.birth,
-          gender: objData.gender,
-          //avatarPath:
-        }),
+        body: JSON.stringify(newData),
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData).then((response) => {
-        return response.json();
-      });
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+        fetchData
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          p1.setAttribute("style", "opacity:1");
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        });
     }
 
     if (objData.role == "OWNER") {
@@ -448,21 +644,21 @@ export async function settingsPerson() {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          address: inputAdress.value,
-          city: inputCity.value, //-
-          phone: objData.phone,
-          //email:
-          //password:
-          firstName: objData.firstName,
-          lastName: objData.lastName,
-          //avatarPath:
-        }),
+        body: JSON.stringify(newData),
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData).then((response) => {
-        return response.json();
-      });
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+        fetchData
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          p1.setAttribute("style", "opacity:1");
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        });
     }
   });
 

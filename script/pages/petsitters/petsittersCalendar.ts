@@ -14,22 +14,43 @@ export async function petsittersCalendar() {
   const masDate: string[] = [];
 
   headerPetsitter(document.body);
-  const sectionPetsitCalendar = createHtmlElement("section", "section-petsit-profile-basic");
+  const sectionPetsitCalendar = createHtmlElement(
+    "section",
+    "section-petsit-profile-basic"
+  );
   document.body.append(sectionPetsitCalendar);
-  const sectionPetsitCalendarBlock = createHtmlElement("div", "section-profile-basic-block");
+  const sectionPetsitCalendarBlock = createHtmlElement(
+    "div",
+    "section-profile-basic-block"
+  );
   sectionPetsitCalendar.append(sectionPetsitCalendarBlock);
   const profileTitleWrap = createHtmlElement("div", "profile-title-wrapper");
   sectionPetsitCalendarBlock.append(profileTitleWrap);
-  const myProfileTitle = createHtmlElement("h2", "my-profile-text-title", "", "My calendar");
+  const myProfileTitle = createHtmlElement(
+    "h2",
+    "my-profile-text-title",
+    "",
+    "My calendar"
+  );
   profileTitleWrap.append(myProfileTitle);
 
   const blockCalendars = createHtmlElement("div", "block-calendars");
 
   const leftCalendarBlock = createHtmlElement("div", "block-calendar ");
   const leftCalendarBlockTop = createHtmlElement("div", "block-calendar-top ");
-  const titleLeft = createHtmlElement("h2", "my-profile-text-title ", "", "Work days");
+  const titleLeft = createHtmlElement(
+    "h2",
+    "my-profile-text-title ",
+    "",
+    "Work days"
+  );
   const titleHint = createHtmlElement("p", "tooltip", "", "?");
-  const hint = createHtmlElement("span", "tooltiptext", "", "Mark the days when you want to relax");
+  const hint = createHtmlElement(
+    "span",
+    "tooltiptext",
+    "",
+    "Mark the days when you want to relax"
+  );
   const divMonth = createHtmlElement("div", "block-Month");
   const divYear = createHtmlElement("div", "block-Year");
   const preMonth = createHtmlElement("span", "preMonth", "preMonth", "‹");
@@ -42,7 +63,7 @@ export async function petsittersCalendar() {
   const leftCalendar = createHtmlElement("div");
   createCalendar(leftCalendar, y, m);
   const btnLeftCalendar = createHtmlElement("button", "rectangle", "", "SAVE");
-/*
+  /*
   const rightCalendarBlock = createHtmlElement("div", "block-calendar");
   const rightCalendarBlockTop = createHtmlElement("div", "block-calendar-top ");
   const titleRight = createHtmlElement("h2", "my-profile-text-title", "", "Booked days");
@@ -91,16 +112,17 @@ export async function petsittersCalendar() {
     const d = document.getElementsByClassName("noActive");
     for (let i = 0; i < d.length; i++) {
       const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
-      const day = Number(d[i].innerHTML) < 10 ? "0" + d[i].innerHTML : String(d[i].innerHTML);
+      const day =
+        Number(d[i].innerHTML) < 10
+          ? "0" + d[i].innerHTML
+          : String(d[i].innerHTML);
       const value = year.innerHTML + "-" + month + "-" + day;
       masDate.push(value);
-      //console.log("------", masDate);
       const masUnic = new Set(masDate);
       const newM = Array.from(masUnic);
       noActvDay = newM.sort((a, b) => (a > b ? 1 : -1));
-      console.log("noActvDay-", noActvDay); //сортированные даты
     }
-        //сортированные даты отправлять на сервер
+    //сортированные даты отправлять на сервер
     const fetchData = {
       method: "PATCH",
       headers: {
@@ -113,10 +135,12 @@ export async function petsittersCalendar() {
         availableDates: noActvDay,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
-        .then((response) => {
-          return response.json();
-        })
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+      fetchData
+    ).then((response) => {
+      return response.json();
+    });
   });
 
   preMonth.addEventListener("click", () => {
@@ -154,7 +178,6 @@ export async function petsittersCalendar() {
       if (target.tagName == "SPAN") {
         createCalendar(leftCalendar, y, m);
         changeWorkDay(userInfo.petsitterData.availableDates); //получение с сервера выходных дней и отметить в календаре
-        console.log("*****---petsitterDates.availableDates",  userInfo.petsitterData.availableDates);
       }
     }
   });
@@ -165,12 +188,16 @@ export async function petsittersCalendar() {
       const allTD = leftCalendarBlock.getElementsByTagName("TD");
       const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
       //const qwe = mas.filter(el => el !==`${y}-${month}`);
-      const redDate = mas.filter((el) => el.slice(0, 4).includes(String(y)) && el.slice(5, 7).includes(String(month))); // !==`${y}-${month}`);
-      //console.log("*****", redDate);
+      const redDate = mas.filter(
+        (el) =>
+          el.slice(0, 4).includes(String(y)) &&
+          el.slice(5, 7).includes(String(month))
+      ); // !==`${y}-${month}`);
 
       Array.prototype.forEach.call(allTD, function (e) {
         for (let i = 0; i < redDate.length; i++) {
-          if (+e.innerHTML === +redDate[i].slice(8)) e.setAttribute("class", "noActive");
+          if (+e.innerHTML === +redDate[i].slice(8))
+            e.setAttribute("class", "noActive");
         }
       });
     }
@@ -182,14 +209,28 @@ export async function petsittersCalendar() {
 /*-------------------------------------------------------*/
 
 function nameMonth(n: number) {
-  const Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const Months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return Months[n];
 }
 
 function createCalendar(elem: HTMLElement, year: number, month: number): void {
   const mon = month; //- 1; // месяцы в JS идут от 0 до 11
   const day = new Date(year, mon); // полная запись дня
-  let table = "<table><tr><th>Mon</th><th>Tues</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th><th>Sun</th></tr><tr>";
+  let table =
+    "<table><tr><th>Mon</th><th>Tues</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th><th>Sun</th></tr><tr>";
 
   // пробелы для 1го ряда с пн до 1го дня месяца * * * 1  2  3  4
   for (let i = 0; i < getDay1(day); i++) {

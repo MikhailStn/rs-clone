@@ -3,18 +3,25 @@ import { createHtmlElement } from "../../utils";
 import { getUserFromId } from "../../commonFunction/getUser";
 
 //не уверена как правильно по id. функция на  95 строке
-export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
+export async function petsittersCalendar(tagParent: HTMLElement, id: string) {
   const User = await getUserFromId(id);
   const userInfo = User.item;
-  console.log('userInfo', userInfo);
+  console.log("userInfo", userInfo);
 
   let m = new Date().getMonth();
   let y = new Date().getFullYear();
 
-
-  const leftCalendarBlock = createHtmlElement("div", "block-calendar calendar-petsit-item-page");
+  const leftCalendarBlock = createHtmlElement(
+    "div",
+    "block-calendar calendar-petsit-item-page"
+  );
   const leftCalendarBlockTop = createHtmlElement("div", "block-calendar-top ");
-  const titleLeft = createHtmlElement("h2", "my-profile-text-title ", "", "Work days");
+  const titleLeft = createHtmlElement(
+    "h2",
+    "my-profile-text-title ",
+    "",
+    "Work days"
+  );
   const divMonth = createHtmlElement("div", "block-Month");
   const divYear = createHtmlElement("div", "block-Year");
   const preMonth = createHtmlElement("span", "preMonth", "preMonth", "‹");
@@ -39,7 +46,6 @@ export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
   divYear.append(nextYear);
   leftCalendarBlock.append(leftCalendar);
 
-
   /*function noActiveBox(tag: HTMLElement) {
     if (tag.classList.contains("noActive")) {
       tag.classList.remove("noActive");
@@ -59,7 +65,6 @@ export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
     }
   
   });*/
-
 
   preMonth.addEventListener("click", () => {
     m--;
@@ -103,11 +108,16 @@ export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
     if (mas) {
       const allTD = leftCalendarBlock.getElementsByTagName("TD");
       const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
-      const redDate = mas.filter((el) => el.slice(0, 4).includes(String(y)) && el.slice(5, 7).includes(String(month))); // !==`${y}-${month}`);
+      const redDate = mas.filter(
+        (el) =>
+          el.slice(0, 4).includes(String(y)) &&
+          el.slice(5, 7).includes(String(month))
+      ); // !==`${y}-${month}`);
 
       Array.prototype.forEach.call(allTD, function (e) {
         for (let i = 0; i < redDate.length; i++) {
-          if (+e.innerHTML === +redDate[i].slice(8)) e.setAttribute("class", "noActive");
+          if (+e.innerHTML === +redDate[i].slice(8))
+            e.setAttribute("class", "noActive");
         }
       });
     }
@@ -119,14 +129,28 @@ export async function petsittersCalendar(tagParent: HTMLElement, id:string) {
 /*-------------------------------------------------------*/
 
 function nameMonth(n: number) {
-  const Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const Months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return Months[n];
 }
 
 function createCalendar(elem: HTMLElement, year: number, month: number): void {
   const mon = month;
   const day = new Date(year, mon);
-  let table = "<table><tr><th>Mon</th><th>Tues</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th><th>Sun</th></tr><tr>";
+  let table =
+    "<table><tr><th>Mon</th><th>Tues</th><th>Wed</th><th>Thurs</th><th>Fri</th><th>Sat</th><th>Sun</th></tr><tr>";
 
   for (let i = 0; i < getDay1(day); i++) {
     table += "<td></td>";

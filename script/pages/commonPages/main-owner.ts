@@ -5,14 +5,13 @@ import { footerFun } from "../pageComponents/footer";
 import { filterHow } from "../pageComponents/filter";
 
 export function mainOwner(): void {
-  document.body.innerHTML = '';
+  document.body.innerHTML = "";
 
-  if(!localStorage.getItem('curr-user-id')) {
-      header(document.body);
+  if (!localStorage.getItem("curr-user-id")) {
+    header(document.body);
   } else {
-      headerOwner(document.body);
+    headerOwner(document.body);
   }
-
 
   const banner = createHtmlElement("section", "wrapper wrapper-main-owner");
   const bannerContent = createHtmlElement("div", "content");
@@ -29,16 +28,16 @@ export function mainOwner(): void {
     "",
     "Petsi gives you the freedom to choose. Here you will find real enthusiasts who will take care of your pet the way you want."
   );
-  const banimgs = createHtmlElement('div', 'banImgs');
+  const banimgs = createHtmlElement("div", "banImgs");
   const banimg1 = new Image();
   const banimg2 = new Image();
   const banimg3 = new Image();
   banimg1.className = "banImg";
-  banimg1.src ="img/images/homeService.jpg";
+  banimg1.src = "img/images/homeService.jpg";
   banimg2.className = "banImg";
-  banimg2.src ="img/images/hotelService.jpg";
+  banimg2.src = "img/images/hotelService.jpg";
   banimg3.className = "banImg";
-  banimg3.src ="img/images/walkService.jpg";
+  banimg3.src = "img/images/walkService.jpg";
 
   const bannerRight = createHtmlElement("div", "rightImg");
   const bannerImg = createHtmlElement("div", "imgDiv");
@@ -48,7 +47,7 @@ export function mainOwner(): void {
 
   const section1 = createHtmlElement("section", "wrapper section1");
   const section1Content = createHtmlElement("div", "content");
-  
+
   filterHow(section1Content);
 
   const section2 = createHtmlElement("section", "wrapper section2");
@@ -222,7 +221,6 @@ export function mainOwner(): void {
   footerFun(document.body);
 
   const buttons = document.getElementsByTagName("button");
-  console.log(buttons); /** */
 
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function () {
