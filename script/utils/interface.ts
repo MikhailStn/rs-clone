@@ -36,9 +36,9 @@ export interface IPetsitters1 {
   role: { type: string; require: true };
   pets: string[];//--------
   avatarPath: { type: string };
+  gender: string;
   petsitterData: {
     birth: { type: string };
-    gender: string;
     services: {
       servicesArr: string[];
       hotel: {

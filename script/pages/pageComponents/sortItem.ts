@@ -32,7 +32,7 @@ export async function createSortItem(
       foto.src = `${mas[i].avatarPath}`;
     } else {
       foto.src = `./img/icons/photo.png`;
-      if (mas[i].petsitterData.gender === "Male") {
+      if (mas[i].gender == "Male") {
         foto.src = "img/images/manDog.jpg";
         foto.style.background = "#ffffff";
       } else {
