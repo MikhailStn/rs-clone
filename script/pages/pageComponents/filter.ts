@@ -9,9 +9,19 @@ export const firstVal = {
 export function filterHow(tagParent: HTMLElement): void {
   const boxFilter = createHtmlElement("div", "boxFilter");
   const selectionBox = createHtmlElement("div", "selectionBox ");
-  const boxAccomodation = createHtmlElement("div", "selectionBoxN ActivSelectionBox", "", "Accomodation");
+  const boxAccomodation = createHtmlElement(
+    "div",
+    "selectionBoxN ActivSelectionBox",
+    "",
+    "Accomodation"
+  );
   const boxWalk = createHtmlElement("div", "selectionBoxN", "", "Walk");
-  const boxHomevisits = createHtmlElement("div", "selectionBoxN", "", "Home visits");
+  const boxHomevisits = createHtmlElement(
+    "div",
+    "selectionBoxN",
+    "",
+    "Home visits"
+  );
   const line = createHtmlElement("hr");
   const inputsBox = createHtmlElement("div", "inputsBox");
 
@@ -19,7 +29,7 @@ export function filterHow(tagParent: HTMLElement): void {
   const namePetBox = createHtmlElement("p", "nameInputBox", "", "Dog Cat");
   const divPetBox = createHtmlElement("div", "petBox");
   const divMenuPets = createHtmlElement("ul", "menuPets");
-  setMenuPets(divMenuPets); //, myPets);
+  setMenuPets(divMenuPets);
   const imgNamePetBox = new Image();
   imgNamePetBox.src = "img/paw.svg";
   const inputPetBox = createInputElement("text");
@@ -179,11 +189,6 @@ export function filterHow(tagParent: HTMLElement): void {
   });
 
   btnSearch.addEventListener("click", () => {
-    /*  console.log("способ выгула = ", selectedBox.innerHTML);
-    console.log("time= ", inputTimeBox.value);
-    console.log("date= ", inputDeadlineBox.value);
-    console.log("search= ", inputAddressBox.value);
-    console.log("pet= ", inputPetBox.value);*/
     firstVal.type = selectedBox.innerHTML;
     firstVal.date = inputDeadlineBox.value;
     firstVal.city = inputAddressBox.value;

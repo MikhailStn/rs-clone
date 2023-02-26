@@ -56,7 +56,6 @@
   padding: 30px 10px;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
 }
 
 .item-pet-block {
@@ -67,6 +66,16 @@
   color: #27272e;
   padding: 14px;
   height: fit-content;
+  height: 490px;
+  overflow: auto;
+}
+
+.item-pet-block::-webkit-scrollbar {
+  width: 2px;
+}
+
+.item-pet-block::-webkit-scrollbar-thumb {
+  background-color: #ca96e177;
 }
 
 .div-img-pet {
@@ -190,4 +199,8 @@
 .btn-delete-pet:hover,
 .btn-edit-pet:hover{
   background-color: #ebeaed;
+}
+
+.animals-photo-container {
+  height: 270px;
 }

@@ -1,12 +1,8 @@
 import { createHtmlElement } from "../../utils";
-import { getUser } from "../../commonFunction/getUser";
 import { updateValues } from "./petsitProfileServiceEdit";
 
 export async function createServicesBlock() {
   const servicesArr: string[] = [];
-  const user = await getUser();
-  const userInfo = user.item;
-  console.log("userInfo", userInfo);
   const basicServiceBlock = createHtmlElement("div", "basic-info-block");
   const serviceBlockTitle = createHtmlElement(
     "h3",
@@ -62,7 +58,10 @@ export async function createServicesBlock() {
         _id: user,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/auth/user`,
+      fetchData
+    )
       .then((response) => {
         return response.json();
       })
@@ -88,13 +87,12 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
+            fetch(
+              `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+              fetchData1
+            ).then((response) => {
+              return response.json();
+            });
           } else if (!inputs[0].firstElementChild?.getAttribute("checked")) {
             servicesArr.push("hotel");
             inputs[0].firstElementChild?.setAttribute("checked", "true");
@@ -110,13 +108,12 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData2)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
+            fetch(
+              `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+              fetchData2
+            ).then((response) => {
+              return response.json();
+            });
           }
         });
         if (data.petsitterData.services.walking.active == "true") {
@@ -140,13 +137,12 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
+            fetch(
+              `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+              fetchData1
+            ).then((response) => {
+              return response.json();
+            });
           } else if (!inputs[1].firstElementChild?.getAttribute("checked")) {
             servicesArr.push("walking");
             inputs[1].firstElementChild?.setAttribute("checked", "true");
@@ -162,25 +158,22 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData2)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
+            fetch(
+              `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+              fetchData2
+            ).then((response) => {
+              return response.json();
+            });
           }
         });
         if (data.petsitterData.services.homevisits.active == "true") {
           inputs[2].firstElementChild?.setAttribute("checked", "true");
           servicesArr.push("homevisits");
-          console.log(servicesArr)
         }
         inputs[2].firstElementChild?.addEventListener("click", () => {
           if (inputs[2].firstElementChild?.getAttribute("checked")) {
             const i = servicesArr.indexOf("homevisits");
             servicesArr.splice(i, 1);
-            console.log(servicesArr)
             inputs[2].firstElementChild?.removeAttribute("checked");
             const fetchData1 = {
               method: "PATCH",
@@ -194,13 +187,12 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
+            fetch(
+              `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+              fetchData1
+            ).then((response) => {
+              return response.json();
+            });
           } else if (!inputs[2].firstElementChild?.getAttribute("checked")) {
             servicesArr.push("homevisits");
             inputs[2].firstElementChild?.setAttribute("checked", "true");
@@ -216,13 +208,12 @@ export async function createServicesBlock() {
                 servicesArr: servicesArr,
               }),
             };
-            fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData2)
-              .then((response) => {
-                return response.json();
-              })
-              .then((data) => {
-                console.log(data);
-              });
+            fetch(
+              `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+              fetchData2
+            ).then((response) => {
+              return response.json();
+            });
           }
         });
       });

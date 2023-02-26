@@ -7,11 +7,10 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
   document.body.append(menu);
-  headerMenu.addEventListener('click', () => {
-    // document.body.style.overflow = 'hidden';
-    document.querySelector('.section-menu-field')?.classList.add('active');
-    document.querySelector('.overlay')?.classList.add('active');
-  })
+  headerMenu.addEventListener("click", () => {
+    document.querySelector(".section-menu-field")?.classList.add("active");
+    document.querySelector(".overlay")?.classList.add("active");
+  });
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -30,17 +29,8 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   notificationImg.src = "img/notification.svg";
   notificationImg.src = "img/notification.svg";
   const flagNotification = createHtmlElement("span", "", "", "1");
-  //const promo = createHtmlElement("div", "");
-  /*const promoText = createHtmlElement(
-    "span",
-    "promo",
-    "",
-    "PROMOTION -10% FOR THE FIRST SERVICE"
-  );*/
 
   tagParent.append(header);
-  //header.append(promo);
- // promo.append(promoText);
   header.append(head);
   head.append(headerMenu);
   head.append(headerLink);
@@ -52,17 +42,15 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
 }
 
 export async function header(tagParent: HTMLElement): Promise<void> {
-  //let isOpenMenu = false;
   const header = createHtmlElement("header", "header header2");
   const head = createHtmlElement("div", "head");
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
   document.body.append(menu);
-  headerMenu.addEventListener('click', () => {
-    //document.body.style.overflow = 'hidden';
-    document.querySelector('.section-menu-field')?.classList.add('active');
-    document.querySelector('.overlay')?.classList.add('active');
-  })
+  headerMenu.addEventListener("click", () => {
+    document.querySelector(".section-menu-field")?.classList.add("active");
+    document.querySelector(".overlay")?.classList.add("active");
+  });
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -110,7 +98,6 @@ export async function header(tagParent: HTMLElement): Promise<void> {
   const path = window.location.pathname;
   const rolePath1 = path.split("/")[1];
   const rolePath2 = path.split("/")[3];
-  console.log("role1", rolePath1);
   btnCreateAccount.addEventListener("click", () => {
     if (rolePath1 === "petsitter" || rolePath2 === "petsitter") {
       history.pushState("", "", "/auth/register/petsitter");
@@ -139,11 +126,10 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   const headerMenu = createHtmlElement("button", "btn menu first", "menu");
   const menu = await createMenu();
   document.body.append(menu);
-  headerMenu.addEventListener('click', () => {
-    //document.body.style.overflow = 'hidden';
-    document.querySelector('.section-menu-field')?.classList.add('active');
-    document.querySelector('.overlay')?.classList.add('active');
-  })
+  headerMenu.addEventListener("click", () => {
+    document.querySelector(".section-menu-field")?.classList.add("active");
+    document.querySelector(".overlay")?.classList.add("active");
+  });
   const menuImg = new Image();
   menuImg.src = "img/line.svg";
   const headerLink = createHtmlElement("a", "first", "pets", "Petsi");
@@ -162,17 +148,8 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   notificationImg.src = "img/notification.svg";
   const flagNotification = createHtmlElement("span", "", "", "1");
   flagNotification.style.display = "none";
-  /*const promo = createHtmlElement("div", "");
-  const promoText = createHtmlElement(
-    "span",
-    "promo",
-    "",
-    "SEND A FRIEND PLN 20 TO USE ON PETSI!"
-  );*/
 
   tagParent.append(header);
-  //header.append(promo);
-  //promo.append(promoText);
   header.append(head);
   head.append(headerMenu);
   head.append(headerLink);

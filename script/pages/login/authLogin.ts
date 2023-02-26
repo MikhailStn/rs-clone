@@ -47,7 +47,6 @@ function renderLoginPage() {
   );
   inputLoginPassword.after(passwordTextError);
 
-
   const btnLogin = createHtmlElement("button", "btn-login", "", "Log in");
   if (btnLogin instanceof HTMLButtonElement) {
     btnLogin.type = "submit";
@@ -66,25 +65,32 @@ function renderLoginPage() {
         password: `${inputLoginPassword.value}`,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/login`, fetchData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/auth/login`,
+      fetchData
+    )
       .then((response) => {
-          console.log(response.status);
-          if (response.status == 200) {
-            return response.json();
-          } else {
-            const errorText = createHtmlElement('div', 'error-text-login', '', 'Something went wrong, try again');
-            document.body.append(errorText);
-            setTimeout(() => {
-              document.body.removeChild(errorText);
-            }, 2000);
-            return;
-          }
+        if (response.status == 200) {
+          return response.json();
+        } else {
+          const errorText = createHtmlElement(
+            "div",
+            "error-text-login",
+            "",
+            "Something went wrong, try again"
+          );
+          document.body.append(errorText);
+          setTimeout(() => {
+            document.body.removeChild(errorText);
+          }, 2000);
+          return;
+        }
       })
       .then((data) => {
-        console.log(data);
         localStorage.setItem("curr-user-id", `${data.id}`);
-        console.log(localStorage.getItem("curr-user-id"));
-        document.querySelector('.section-menu-field')?.classList.remove('active');
+        document
+          .querySelector(".section-menu-field")
+          ?.classList.remove("active");
         history.pushState("", "", "");
         window.dispatchEvent(new Event("popstate"));
       });

@@ -223,7 +223,6 @@ function appearSecondView() {
       );
       fetchPetsitterData.services.hotel.active = "true";
       fetchPetsitterData.services.servicesArr.push("hotel");
-      console.log(fetchPetsitterData.services.servicesArr)
     } else {
       checkBoxLabelHotel.setAttribute(
         "style",
@@ -232,7 +231,6 @@ function appearSecondView() {
       fetchPetsitterData.services.hotel.active = "false";
       const i = fetchPetsitterData.services.servicesArr.indexOf("hotel");
       fetchPetsitterData.services.servicesArr.splice(i, 1);
-      console.log(fetchPetsitterData.services.servicesArr)
     }
   });
   const checkBoxLabelHotel = createHtmlElement(
@@ -311,8 +309,8 @@ function appearSecondView() {
   checkBoxLabelHome.textContent = "Home visits";
   checkBoxLabelHome.style.backgroundImage = `url('../img/images/homeService.jpg')`;
 
-  const checkBoxServiceTraining = createHtmlElement("div", "check-box-service");
-  const checkBoxInputTraining = createHtmlElement(
+  //const checkBoxServiceTraining = createHtmlElement("div", "check-box-service");
+  /* const checkBoxInputTraining = createHtmlElement(
     "input",
     "check-box-input-service"
   ) as HTMLInputElement;
@@ -340,18 +338,18 @@ function appearSecondView() {
   );
   checkBoxLabelTraining.setAttribute("for", "training");
   checkBoxLabelTraining.textContent = "Training";
-  checkBoxLabelTraining.style.backgroundImage = `url('../img/images/dreesingService.jpg')`;
+  checkBoxLabelTraining.style.backgroundImage = `url('../img/images/dreesingService.jpg')`; */
 
   checkBoxServiceHotel.append(checkBoxInputHotel, checkBoxLabelHotel);
   checkBoxServiceWalk.append(checkBoxInputWalk, checkBoxLabelWalk);
   checkBoxServiceHome.append(checkBoxInputHome, checkBoxLabelHome);
-  checkBoxServiceTraining.append(checkBoxInputTraining, checkBoxLabelTraining);
+  //checkBoxServiceTraining.append(checkBoxInputTraining, checkBoxLabelTraining);
 
   services.append(
     checkBoxServiceHotel,
     checkBoxServiceWalk,
     checkBoxServiceHome,
-    checkBoxServiceTraining
+    //checkBoxServiceTraining
   );
 
   const btnGoNext = createHtmlElement("div", "form-btn-next");
@@ -360,7 +358,6 @@ function appearSecondView() {
     if (
       !checkBoxInputHotel.checked &&
       !checkBoxInputWalk.checked &&
-      !checkBoxInputTraining.checked &&
       !checkBoxInputHome.checked
     ) {
       const p = createHtmlElement("p", "error-enter-fields");
@@ -421,7 +418,10 @@ function appearThirdView() {
         _id: `${localStorage.getItem("curr-user-id")}`,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/auth/user`,
+      fetchData
+    )
       .then((response) => {
         return response.json();
       })
@@ -742,15 +742,17 @@ function appearSeventhView() {
         servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+      fetchData
+    )
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        history.pushState("", "", "");
+        window.dispatchEvent(new Event("popstate"));
       });
-    history.pushState("", "", "");
-    window.dispatchEvent(new Event("popstate"));
   });
   const handleUpload = () => {
     if (btnAddPhoto.files) {
@@ -760,7 +762,10 @@ function appearSeventhView() {
         method: "POST",
         body: formData,
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`, fetchData)
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`,
+        fetchData
+      )
         .then((response) => {
           return response.json();
         })
@@ -818,16 +823,17 @@ function appearSeventhView() {
         servicesArr: fetchPetsitterData.services.servicesArr,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+      fetchData
+    )
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        history.pushState("", "", "");
+        window.dispatchEvent(new Event("popstate"));
       });
-
-    history.pushState("", "", "");
-    window.dispatchEvent(new Event("popstate"));
   });
   temporaryContainer.append(
     tempTitle,

@@ -39,7 +39,7 @@ export async function createSortItem(
         foto.src = "img/images/dogHaveFive.jpg";
       }
       foto.setAttribute("class", "noPhoto");
-      foto.setAttribute("style", "border-radius:50%")
+      foto.setAttribute("style", "border-radius:50%");
     }
     const descriptionBlock = createHtmlElement("div", "descriptionSearchCart");
     const priceBlock = createHtmlElement("div", "priceSearchCart");

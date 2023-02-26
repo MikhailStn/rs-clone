@@ -56,7 +56,7 @@ async function renderPetsAddPage() {
     breed: "",
     size: "",
     age: "",
-    avatarPath: "",
+    avatarPath: "img/images/noPetPhoto.jpg",
     about: "",
     other: {
       neutered: "false",
@@ -639,7 +639,10 @@ async function renderPetsAddPage() {
         method: "POST",
         body: formData,
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`, fetchData)
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`,
+        fetchData
+      )
         .then((response) => {
           return response.json();
         })
@@ -664,7 +667,7 @@ async function renderPetsAddPage() {
   ) as HTMLTextAreaElement;
   inputTextAboutPet.placeholder = "Tell us about your pet";
   inputTextAboutPet.setAttribute("required", "");
-  inputTextAboutPet.minLength = 50;
+  inputTextAboutPet.minLength = 10;
   inputTextAboutPet.maxLength = 1000;
   inputTextAboutPet.wrap = "soft";
   inputTextAboutPet.addEventListener("input", () => {
@@ -684,7 +687,7 @@ async function renderPetsAddPage() {
     "div",
     "mandatory-text-pet",
     "",
-    "* Minimum number of characters: 50"
+    "* Minimum number of characters: 10"
   );
   const mandatoryText6 = createHtmlElement(
     "div",
@@ -715,7 +718,6 @@ async function renderPetsAddPage() {
     ".mandatory-text-pet"
   );
   btnSaveMyHome.addEventListener("click", async () => {
-    console.log(petsObj);
     let numberOfInvalid = 0;
     inputs.forEach((el) => {
       if (el instanceof HTMLInputElement) {
@@ -727,8 +729,8 @@ async function renderPetsAddPage() {
       }
     });
     if (
-      (numberOfInvalid > 0 && inputTextAboutPet.value.length < 50) ||
-      (numberOfInvalid === 0 && inputTextAboutPet.value.length < 50)
+      (numberOfInvalid > 0 && inputTextAboutPet.value.length < 10) ||
+      (numberOfInvalid === 0 && inputTextAboutPet.value.length < 10)
     ) {
       allRequiredTexts.forEach((elem) => {
         if (elem instanceof HTMLElement) elem.style.color = "#f04a2d";
@@ -737,7 +739,7 @@ async function renderPetsAddPage() {
       errorText.innerHTML = "";
       errorText.innerHTML = "Please fill in all required fields";
     }
-    if (numberOfInvalid === 0 && inputTextAboutPet.value.length >= 50) {
+    if (numberOfInvalid === 0 && inputTextAboutPet.value.length >= 10) {
       allRequiredTexts.forEach((elem) => {
         if (elem instanceof HTMLElement) elem.style.color = "#696869";
       });
@@ -756,13 +758,12 @@ async function renderPetsAddPage() {
           petsObj: petsObj,
         }),
       };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        });
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+        fetchData
+      ).then((response) => {
+        return response.json();
+      });
 
       const user = await getUser();
       const userInfo = user.item;

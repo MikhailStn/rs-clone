@@ -549,12 +549,14 @@ export async function createMyHomeBlock() {
         otherAnimals: otherAnimalsArr,
       }),
     };
-    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fecthData)
+    fetch(
+      `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
+      fecthData
+    )
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         const div = document.querySelector(".fieldset-condition-my-home");
         const p = createHtmlElement("p", "comment-saved-settings");
         p.textContent = "Settings saved";
@@ -575,7 +577,10 @@ export async function createMyHomeBlock() {
       _id: localStorage.getItem("curr-user-id"),
     }),
   };
-  fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, fetchData1)
+  fetch(
+    `https://rs-clone-api-production-3ab8.up.railway.app/auth/user`,
+    fetchData1
+  )
     .then((response) => {
       return response.json();
     })

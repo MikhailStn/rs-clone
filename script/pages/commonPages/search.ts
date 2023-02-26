@@ -26,9 +26,19 @@ export async function searchShowPage() {
   const th = createHtmlElement("hr");
   const type = createHtmlElement("p", "", "", "The type of service");
   const divType = createHtmlElement("div", "divType");
-  const boxAccomodation = createHtmlElement("div", "typeBoxN ActivTypeBoxN Accomodation", "hotel", "Accomodation");
+  const boxAccomodation = createHtmlElement(
+    "div",
+    "typeBoxN ActivTypeBoxN Accomodation",
+    "hotel",
+    "Accomodation"
+  );
   const boxWalk = createHtmlElement("div", "typeBoxN Walk", "walking", "Walk");
-  const boxHomevisits = createHtmlElement("div", "typeBoxN HomeVisits", "homevisits", "Home visits");
+  const boxHomevisits = createHtmlElement(
+    "div",
+    "typeBoxN HomeVisits",
+    "homevisits",
+    "Home visits"
+  );
 
   const petBox = createHtmlElement("div", "box1");
   const namePetBox = createHtmlElement("p", "nameInputBox", "", "Dog Cat");
@@ -42,25 +52,43 @@ export async function searchShowPage() {
   const addressBox = createHtmlElement("div", "box1");
   const addressPetBox = createHtmlElement("p", "nameInputBox", "", "Address");
   const divAddressBox = createHtmlElement("div");
-  const inputAddressBox = createInputElement("text", "search");//----------'v-model="text"'---------------
+  const inputAddressBox = createInputElement("text", "search"); //----------'v-model="text"'---------------
   inputAddressBox.setAttribute("placeholder", "city");
   const imgAddressPetBox = new Image();
   imgAddressPetBox.src = "img/geoloc.svg";
 
-  const deadlineBoxFromTo = createHtmlElement("div", "deadlineBoxFromTo FromTo");
+  const deadlineBoxFromTo = createHtmlElement(
+    "div",
+    "deadlineBoxFromTo FromTo"
+  );
   const deadlineBox1 = createHtmlElement("div", "box1");
-  const deadlinePetBox1 = createHtmlElement("p", "nameInputBox", "", "Deadline from");
+  const deadlinePetBox1 = createHtmlElement(
+    "p",
+    "nameInputBox",
+    "",
+    "Deadline from"
+  );
   const divDeadlineBox1 = createHtmlElement("div");
   const inputDeadlineBox1 = createInputElement("date", "");
   inputDeadlineBox1.value = currentDay();
   const deadlineBox2 = createHtmlElement("div", "box1");
-  const deadlinePetBox2 = createHtmlElement("p", "nameInputBox", "", "Deadline to");
+  const deadlinePetBox2 = createHtmlElement(
+    "p",
+    "nameInputBox",
+    "",
+    "Deadline to"
+  );
   const divDeadlineBox2 = createHtmlElement("div");
   const inputDeadlineBox2 = createInputElement("date");
   inputDeadlineBox2.value = currentDay();
 
   const walkTime = createHtmlElement("div", "box1 box2");
-  const nameWalkTime = createHtmlElement("p", "nameInputBox", "", "The duration of the walk");
+  const nameWalkTime = createHtmlElement(
+    "p",
+    "nameInputBox",
+    "",
+    "The duration of the walk"
+  );
   const divWalkTime = createHtmlElement("div", "petBox");
   const divMenuWalkTime = createHtmlElement("ul", "menuPets");
   const li1 = createHtmlElement("li", "menuWalkTime", "", "30 minutes");
@@ -187,15 +215,14 @@ export async function searchShowPage() {
     priceMin: rangeBoxs[0].value,
     priceMax: rangeBoxs[1].value,
     hours: inputWalkTime.value,
-    //days: ((new Date (inputDeadlineBox2.value)) - new Date (inputDeadlineBox1.value));
-  };//console.log('///////',inputDeadlineBox2.value, typeof(inputDeadlineBox2.value));
+  };
 
   if (firstVal.type) {
     switch (firstVal.type) {
       case "Accomodation":
         obj.type = "hotel";
         break;
-      case "Walk": 
+      case "Walk":
         obj.type = "walking";
         walkTime.style.display = "block";
         break;
@@ -231,7 +258,7 @@ export async function searchShowPage() {
       if (target.tagName == "LI") {
         inputPetBox.value = target.innerHTML;
         //inputPetBox.setAttribute("animal", target.className);
-        obj.animal = target.innerHTML;//target.className;
+        obj.animal = target.innerHTML; //target.className;
       }
     }
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
@@ -261,7 +288,10 @@ export async function searchShowPage() {
       const tag = event.target;
       if (tag.classList.contains("Walk")) {
         walkTime.style.display = "block";
-      } else if (tag.classList.contains("HomeVisits") || tag.classList.contains("Accomodation")) {
+      } else if (
+        tag.classList.contains("HomeVisits") ||
+        tag.classList.contains("Accomodation")
+      ) {
         walkTime.style.display = "none";
       }
       if (tag.classList.contains("ActivTypeBoxN")) return;
@@ -293,8 +323,8 @@ export async function searchShowPage() {
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
   });
 
-  blockFilter.addEventListener("change", async () => {  //на любое изменение в инпут
-    obj.city = inputAddressBox.value; 
+  blockFilter.addEventListener("change", async () => {
+    obj.city = inputAddressBox.value;
     obj.dateFrom = inputDeadlineBox1.value;
     obj.dateTo = inputDeadlineBox2.value;
     obj.priceMin = rangeBoxs[0].value;

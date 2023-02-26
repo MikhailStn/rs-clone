@@ -55,7 +55,6 @@ export async function settingsPerson() {
     gender: userInfo.gender,
     avatarPath: userInfo.avatarPath,
   };
-  console.log("objData", objData);
 
   document.body.innerHTML = "";
 
@@ -79,14 +78,6 @@ export async function settingsPerson() {
     "Account settings"
   );
   profileTitleWrap.append(myProfileTitle);
-
-  /*можно без него
-  const profileTitleWrap2 = createHtmlElement("div", "profile-title-wrapper");
-  sectionPetsitCalendarBlock.append(profileTitleWrap2);
-  const changeSettings = createHtmlElement("h3", "my-profile-text-title", "", "changeSettings");
-  profileTitleWrap2.append(changeSettings);
-  можно без него*/
-
   const divSettings = createHtmlElement("div", "left-right-settings");
   const divLeftSettings = createHtmlElement("div", "left-settings");
   const divRightSettings = createHtmlElement("div", "right-settings");
@@ -103,7 +94,7 @@ export async function settingsPerson() {
   divLeftSettings.append(title1);
 
   const divOldEmail = createHtmlElement("div", "old-date-settings");
-  const container1 = createHtmlElement("div", "container email-container"); //, "active-container-set container1");
+  const container1 = createHtmlElement("div", "container email-container");
   const divInfo1 = createHtmlElement("div", "");
   const titleOldEmail = createHtmlElement("p", "", "", "E-mail");
   const dateOldEmail = createHtmlElement(
@@ -111,7 +102,7 @@ export async function settingsPerson() {
     "",
     "",
     `${objData.email ? objData.email : ""}`
-  ); //-----------------
+  );
   const divBtn1 = createHtmlElement("div", "", "", "");
   const btnOldEmail = createHtmlElement(
     "button",
@@ -144,7 +135,7 @@ export async function settingsPerson() {
     const titleMain = createHtmlElement("p", "title-main", "", "Change email");
     const title1 = createHtmlElement("p", "", "", "E-mail");
     const fieldEmail = createInputElement("email", "");
-    fieldEmail.value = `${objData.email ? objData.email : ""}`; //-----------------
+    fieldEmail.value = `${objData.email ? objData.email : ""}`;
     const text = createHtmlElement(
       "p",
       "",
@@ -153,9 +144,9 @@ export async function settingsPerson() {
     );
     const title2 = createHtmlElement("p", "", "", "Current password");
     const fieldPassword = createInputElement("password", "");
-    fieldPassword.value = ``; //`********`; //-----------------
+    fieldPassword.value = ``;
     const blockButtons = createHtmlElement("div", "btns-settings");
-    const save = createHtmlElement("button", "btnSetChange", "", "Save"); //btnSetChange
+    const save = createHtmlElement("button", "btnSetChange", "", "Save");
     const cancel = createHtmlElement("button", " btnSetChange", "", "Cancel");
     divOldEmail.append(container2);
     container2.append(titleMain);
@@ -167,28 +158,6 @@ export async function settingsPerson() {
     container2.append(blockButtons);
     blockButtons.append(save);
     blockButtons.append(cancel);
-
-    /*
-    save.addEventListener('click', ()=>{
-
-    //  if(fieldPassword.value ==)
-      const fetchData = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          //email:
-          //password:
-        }),
-      };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData).then((response) => {
-        return response.json();
-      });
-    });
-*/
 
     cancel.addEventListener("click", () => {
       container1.style.display = "flex";
@@ -258,17 +227,20 @@ export async function settingsPerson() {
         }, 2000);
         return;
       }
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/check-password`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          currPassword: fieldPassword1.value,
-        }),
-      })
+      fetch(
+        `https://rs-clone-api-production-3ab8.up.railway.app/check-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: localStorage.getItem("curr-user-id"),
+            currPassword: fieldPassword1.value,
+          }),
+        }
+      )
         .then((response) => {
           return response.json();
         })
@@ -311,28 +283,6 @@ export async function settingsPerson() {
     blockButtons2.append(save2);
     blockButtons2.append(cancel2);
 
-    /*
-    save2.addEventListener('click', ()=>{
-      //if(fieldPassword1==)
-      //if(fieldPassword2 == fieldPassword3)
-      const fetchData = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          _id: localStorage.getItem("curr-user-id"),
-          //email:
-          //password:
-        }),
-      };
-      fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData).then((response) => {
-        return response.json();
-      });
-    });
-*/
-
     cancel2.addEventListener("click", () => {
       container12.style.display = "flex";
       container22.style.display = "none";
@@ -358,27 +308,21 @@ export async function settingsPerson() {
     if (arr.length != 2 || arr[1] == "") {
       inputName.setAttribute("style", "border:1px solid red");
     } else {
-      console.log(arr);
       inputName.removeAttribute("style");
       objData.firstName = arr[0];
       objData.lastName = arr[1];
     }
   });
   const divBtn3 = createHtmlElement("div", "", "", "");
-  //const btnOldName = createHtmlElement("button", "btnSetChange", "", "change");
   divLeftSettings.append(divOldName);
   divOldName.append(divInfo3);
   divOldName.append(divBtn3);
   divInfo3.append(titleOldName);
   divInfo3.append(divInputName);
   divInputName.append(inputName);
-  //divBtn3.append(btnOldName);
 
   if (objData.role == "PETSITTER") {
-    const divOldSex = createHtmlElement(
-      "div",
-      "old-date-settings block-sex"
-    ); /*у петса*/ //-----------------
+    const divOldSex = createHtmlElement("div", "old-date-settings block-sex");
     const divInfo4 = createHtmlElement("div", "");
     const titleOldSex = createHtmlElement("p", "", "", "Sex");
     const formSex = createHtmlElement("form", "form-sex-settings", "", "");
@@ -426,15 +370,10 @@ export async function settingsPerson() {
 
     const divOldDateOfBirth = createHtmlElement("div", "old-date-settings");
     const divInfo5 = createHtmlElement("div", "first-child");
-    const titleOldDateOfBirth = createHtmlElement(
-      "p",
-      "",
-      "",
-      "Date of birth"
-    ); /*у петса*/
+    const titleOldDateOfBirth = createHtmlElement("p", "", "", "Date of birth");
     const divInputDate = createHtmlElement("div", "div-input-date");
     const inputDateOfBirth = createInputElement("date", "settings-input");
-    inputDateOfBirth.value = `${objData.birth ? objData.birth : ""}`; //-----------------
+    inputDateOfBirth.value = `${objData.birth ? objData.birth : ""}`;
     divLeftSettings.append(divOldDateOfBirth);
     divOldDateOfBirth.append(divInfo5);
     divInfo5.append(titleOldDateOfBirth);
@@ -459,7 +398,7 @@ export async function settingsPerson() {
   const titleOldNumber = createHtmlElement("p", "", "", "Phone number");
   const divInputNumber = createHtmlElement("div", "div-input-text");
   const inputNumber = createInputElement("text", "settings-input");
-  inputNumber.value = `+${objData.phone ? objData.phone : ""}`; //-----------------
+  inputNumber.value = `+${objData.phone ? objData.phone : ""}`;
   inputNumber.addEventListener("input", () => {
     if (
       isPhone(inputNumber.value) &&
@@ -494,7 +433,7 @@ export async function settingsPerson() {
       objData.address = inputAdress.value;
     }
   });
-  inputAdress.value = `${objData.address ? objData.address : ""}`; //-----------------
+  inputAdress.value = `${objData.address ? objData.address : ""}`;
   divLeftSettings.append(divOldAdress);
   divOldAdress.append(divInfo7);
   divInfo7.append(titleOldAdress);
@@ -506,7 +445,7 @@ export async function settingsPerson() {
   const titleOldCity = createHtmlElement("p", "", "", "City");
   const divInputCity = createHtmlElement("div", "div-input-text");
   const inputCity = createInputElement("text", "first-child settings-input");
-  inputCity.value = `${objData.city ? objData.city : ""}`; //-----------------
+  inputCity.value = `${objData.city ? objData.city : ""}`;
   inputCity.addEventListener("input", () => {
     if (inputCity.value.length < 3) {
       inputCity.setAttribute("style", "border:1px solid red");
@@ -528,7 +467,6 @@ export async function settingsPerson() {
     "",
     "Photo"
   );
-  //tempTitle.textContent = "Photo";
   const photoTextProfileBlock = createHtmlElement(
     "div",
     "photo-text-profile-block"
@@ -542,7 +480,7 @@ export async function settingsPerson() {
     "style",
     `background-image: url('${objData.avatarPath}'); background-blend-mode:normal`
   );
-  const divBtnsPhotos = createHtmlElement("div", "btns-add-remove-container")
+  const divBtnsPhotos = createHtmlElement("div", "btns-add-remove-container");
   const btnAddPhoto = createHtmlElement(
     "input",
     "button-add-photo"
@@ -551,7 +489,7 @@ export async function settingsPerson() {
     "button",
     "button-remove-photo"
   ) as HTMLInputElement;
-  btnRemovePhoto.textContent = "Remove"
+  btnRemovePhoto.textContent = "Remove";
   btnRemovePhoto.addEventListener("click", () => {
     btnAddPhoto.files = null;
     if (objData.gender == "Male") {
@@ -559,15 +497,15 @@ export async function settingsPerson() {
         "style",
         `background-image: url('img/images/manDog.jpg'); background-blend-mode:normal`
       );
-      objData.avatarPath = ''
+      objData.avatarPath = "";
     } else {
       photoContainer.setAttribute(
         "style",
         `background-image: url('img/images/dogHaveFive.jpg'); background-blend-mode:normal`
       );
-      objData.avatarPath = ''
+      objData.avatarPath = "";
     }
-  })
+  });
   btnAddPhoto.type = "file";
   btnAddPhoto.accept = ".png,.jpg,.jpeg";
   btnAddPhoto.id = "photo";
@@ -576,13 +514,13 @@ export async function settingsPerson() {
       const formData = new FormData();
       formData.append("image", btnAddPhoto.files[0], btnAddPhoto.files[0].name);
       const fetchData = {
-        method: "POST" /*** */,
+        method: "POST",
         body: formData,
       };
       fetch(
         `https://rs-clone-api-production-3ab8.up.railway.app/auth/register/add-photo`,
         fetchData
-      ) /*** */
+      )
         .then((response) => {
           return response.json();
         })
@@ -604,16 +542,9 @@ export async function settingsPerson() {
   ) as HTMLLabelElement;
   btnAddPhotoLabel.setAttribute("for", "photo");
   btnAddPhotoLabel.textContent = "Add photo";
-  divBtnsPhotos.append(btnAddPhoto, btnAddPhotoLabel, btnRemovePhoto)
+  divBtnsPhotos.append(btnAddPhoto, btnAddPhotoLabel, btnRemovePhoto);
   photoContainer.append(divBtnsPhotos);
-  /*
-  const textPhotoProfile = createHtmlElement(
-    "div",
-    "text-photo-profile",
-    "",
-    "A profile photo allows other members of the Petsi community to get to know you. It is especially important for your relationship with customers, as it will make it easier for you to get to know each other when you first meet."
-  );*/
-  photoTextProfileBlock.append(photoContainer /*, textPhotoProfile*/);
+  photoTextProfileBlock.append(photoContainer);
   /*-------------------------------------------------------------*/
 
   const btnSave = createHtmlElement("button", "rectangle", "", "Save");
@@ -643,20 +574,13 @@ export async function settingsPerson() {
   divTextMessage.append(titleMessage);
   divTextMessage.append(textMessage);
   const p1 = createHtmlElement("p", "settings-changes-successfuly");
-  p1.textContent = "Changes saved!"
-  divLeftSettings.append(p1)
+  p1.textContent = "Changes saved!";
+  divLeftSettings.append(p1);
 
   footerFun(document.body);
 
   btnSave.addEventListener("click", () => {
-    /* objData.firstName = inputName.value
-      .replace(/ +/g, " ")
-      .trim()
-      .split(" ")[0];
-    objData.lastName = inputName.value.replace(/ +/g, " ").trim().split(" ")[1];
-    objData.phone = inputNumber.value.match(/\d/g)?.join(""); */
-
-    let newData = {}
+    let newData = {};
 
     if (objData.password.length > 12) {
       newData = {
@@ -669,7 +593,7 @@ export async function settingsPerson() {
         lastName: objData.lastName,
         birth: objData.birth,
         gender: objData.gender,
-        avatarPath: objData.avatarPath
+        avatarPath: objData.avatarPath,
       };
     } else {
       newData = {
@@ -683,7 +607,7 @@ export async function settingsPerson() {
         lastName: objData.lastName,
         birth: objData.birth,
         gender: objData.gender,
-        avatarPath: objData.avatarPath
+        avatarPath: objData.avatarPath,
       };
     }
 
@@ -700,14 +624,16 @@ export async function settingsPerson() {
       fetch(
         `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
         fetchData
-      ).then((response) => {
-        return response.json();
-      }).then(() => {
-        p1.setAttribute("style", "opacity:1")
-        setTimeout(() => {
-          location.reload()
-        }, 2000)
-      });
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          p1.setAttribute("style", "opacity:1");
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        });
     }
 
     if (objData.role == "OWNER") {
@@ -723,14 +649,16 @@ export async function settingsPerson() {
       fetch(
         `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
         fetchData
-      ).then((response) => {
-        return response.json();
-      }).then(() => {
-        p1.setAttribute("style", "opacity:1")
-        setTimeout(() => {
-          location.reload()
-        }, 2000)
-      });
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then(() => {
+          p1.setAttribute("style", "opacity:1");
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        });
     }
   });
 
