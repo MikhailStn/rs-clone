@@ -272,3 +272,44 @@
     display: flex;
     gap: 20px;
   }
+
+  @media (max-width: 1213px) {
+    
+    .order-item-info-block{
+        grid-template-columns: 386px 600px;
+        justify-content: center;
+    }
+
+    .section-item-orders-block{
+        padding: 40px 20px;
+    }
+
+    .chat-block-order{
+        max-width: 100%;
+    }
+
+  }
+
+  @media (max-width: 1026px) {
+
+    .order-item-info-block{
+        grid-template-columns: 386px 450px;
+    }
+
+  }
+
+  @media (max-width: 876px) {
+
+    .order-item-info-block{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .block-price-order,
+    .user-info-block-order,
+    .block-common-info-order{
+        width: 100%;
+    }
+
+  }

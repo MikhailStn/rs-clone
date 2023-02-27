@@ -149,9 +149,7 @@
   color: #f37059;
   top: 197px;
   font-size: 1.5rem;
-  left: 10%;
-
-}
+  }
 
 @media (max-width: 900px) {
   .login-block-wrapper {

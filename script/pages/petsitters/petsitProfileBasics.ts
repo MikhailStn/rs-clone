@@ -303,13 +303,17 @@ async function createBasicInfoBlock() {
     const behaviorist = document.getElementById(
       "behaviorist"
     ) as HTMLInputElement;
+
     const course = document.getElementById("petsit-course") as HTMLInputElement;
+
     const veterinary = document.getElementById(
       "veterinary-technician"
     ) as HTMLInputElement;
+
     const firstAidCource = document.getElementById(
       "first-aid-course"
     ) as HTMLInputElement;
+
     behaviorist.addEventListener("input", () => {
       if (behaviorist.checked) {
         qualificationsArr.push("Behaviorist");
