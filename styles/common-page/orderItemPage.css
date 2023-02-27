@@ -2,15 +2,15 @@
     background-color: #ffffff;
     color: #000000;
     width: 100%;
-    min-height: calc(100vh - 160px);
+    min-height: 100vh;
+    padding-top: 64px;
 }
 
 .section-item-orders-block {
     max-width: 1270px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 16px;
-    padding-bottom: 36px;
+    padding: 40px 0;
     width: 100%;
 }
 
@@ -60,6 +60,10 @@
     box-shadow: 0 1px 4px 1px rgb(27 28 29 / 11%);
 }
 
+
+.user-info-block-order {
+    min-height: 143px;
+}
 
 .block-common-info-order{
     grid-area: info;
