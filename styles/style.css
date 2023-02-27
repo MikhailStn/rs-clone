@@ -102,3 +102,11 @@ a {
 .rectangle:hover {
   background-color: #a15fbd;
 }
+
+
+@media (max-width: 1310px) {
+  .forMediaPad{
+padding-left: 15px;
+  }
+
+}

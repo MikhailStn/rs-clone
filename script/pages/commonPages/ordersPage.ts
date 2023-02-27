@@ -37,7 +37,7 @@ async function renderOrdersPage() {
   sectionOrder.innerHTML = "";
   const user = await getUser();
   const currentUserInfo = user.item;
-  const sectionOrdersBlock = createHtmlElement("div", "section-orders-block");
+  const sectionOrdersBlock = createHtmlElement("div", "section-orders-block forMediaPad");/*forMediaPad*/
   sectionOrder.append(sectionOrdersBlock);
   const sectionOrdersTitle = createHtmlElement(
     "h1",
@@ -64,7 +64,7 @@ async function renderOrdersPage() {
     .then(async(data) => {
       orders = data.orders;
       const block = document.querySelector(".section-orders");
-      const container = createHtmlElement("div", "orders-container");
+      const container = createHtmlElement("div", "orders-container forMediaPad");/*forMediaPad*/
       block?.append(container);
       if(orders.length === 0){
         container.style.flexDirection = 'column';
