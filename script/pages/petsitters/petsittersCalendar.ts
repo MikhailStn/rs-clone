@@ -2,17 +2,19 @@ import { createHtmlElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
 import { getUser } from "../../commonFunction/getUser";
-import {createSplashScreen} from "../commonPages/splashScreen";
+import {
+  createSplashScreen,
+  removeSplashScreen,
+} from "../commonPages/splashScreen";
 
 export async function petsittersCalendar() {
   const User = await getUser();
   const userInfo = User.item;
-
+  const availableDates = User.item.petsitterData.availableDates;
+  console.log(availableDates);
   let m = new Date().getMonth();
   let y = new Date().getFullYear();
-  let noActvDay: string[];
   document.body.innerHTML = "";
-  const masDate: string[] = [];
 
   headerPetsitter(document.body);
   const sectionPetsitCalendar = createHtmlElement(
@@ -64,18 +66,10 @@ export async function petsittersCalendar() {
   const leftCalendar = createHtmlElement("div");
   createCalendar(leftCalendar, y, m);
   const btnLeftCalendar = createHtmlElement("button", "rectangle", "", "SAVE");
-  /*
-  const rightCalendarBlock = createHtmlElement("div", "block-calendar");
-  const rightCalendarBlockTop = createHtmlElement("div", "block-calendar-top ");
-  const titleRight = createHtmlElement("h2", "my-profile-text-title", "", "Booked days");
-*/
   sectionPetsitCalendar.append(blockCalendars);
   blockCalendars.append(leftCalendarBlock);
-  //blockCalendars.append(rightCalendarBlock);
   leftCalendarBlock.append(leftCalendarBlockTop);
-  //rightCalendarBlock.append(rightCalendarBlockTop);
   leftCalendarBlockTop.append(titleLeft);
-  //rightCalendarBlockTop.append(titleRight);
   leftCalendarBlockTop.append(titleHint);
   titleHint.append(hint);
   leftCalendarBlockTop.append(divMonth);
@@ -86,7 +80,6 @@ export async function petsittersCalendar() {
   divYear.append(preYear);
   divYear.append(year);
   divYear.append(nextYear);
-  //rightCalendarBlockTop.append(titleRight);
   leftCalendarBlock.append(leftCalendar);
   leftCalendarBlock.append(btnLeftCalendar);
 
@@ -110,22 +103,6 @@ export async function petsittersCalendar() {
   });
 
   btnLeftCalendar.addEventListener("click", () => {
-    const d = document.getElementsByClassName("noActive");
-    console.log(d)
-    for (let i = 0; i < d.length; i++) {
-      const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
-      const day =
-        Number(d[i].innerHTML) < 10
-          ? "0" + d[i].innerHTML
-          : String(d[i].innerHTML);
-      const value = year.innerHTML + "-" + month + "-" + day;
-      masDate.push(value);
-      const masUnic = new Set(masDate);
-      const newM = Array.from(masUnic);
-      noActvDay = newM.sort((a, b) => (a > b ? 1 : -1));
-    }
-    console.log(noActvDay)
-    //сортированные даты отправлять на сервер
     const fetchData = {
       method: "PATCH",
       headers: {
@@ -133,22 +110,18 @@ export async function petsittersCalendar() {
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
-        //_id: localStorage.getItem("curr-user-id"),
         _id: localStorage.getItem("curr-user-id"),
-        availableDates: noActvDay,
+        availableDates: availableDates,
       }),
     };
     createSplashScreen();
+    setTimeout(removeSplashScreen, 1000);
     fetch(
       `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
       fetchData
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then(() => {
-        location.reload()
-      });
+    ).then((response) => {
+      return response.json();
+    });
   });
 
   preMonth.addEventListener("click", () => {
@@ -185,7 +158,7 @@ export async function petsittersCalendar() {
       const target = e.target;
       if (target.tagName == "SPAN") {
         createCalendar(leftCalendar, y, m);
-        changeWorkDay(userInfo.petsitterData.availableDates); //получение с сервера выходных дней и отметить в календаре
+        changeWorkDay(userInfo.petsitterData.availableDates);
       }
     }
   });
@@ -195,7 +168,6 @@ export async function petsittersCalendar() {
     if (mas) {
       const allTD = leftCalendarBlock.getElementsByTagName("TD");
       const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
-      //const qwe = mas.filter(el => el !==`${y}-${month}`);
       const redDate = mas.filter(
         (el) =>
           el.slice(0, 4).includes(String(y)) &&
@@ -204,7 +176,30 @@ export async function petsittersCalendar() {
       Array.prototype.forEach.call(allTD, function (e) {
         for (let i = 0; i < redDate.length; i++) {
           if (+e.innerHTML === +redDate[i].slice(8))
-            e.setAttribute("class", "noActive");
+            e.setAttribute("class", "table-element noActive");
+        }
+      });
+    }
+    const allTD = document.querySelectorAll(".table-element");
+    for (let i = 0; i < allTD.length; i++) {
+      allTD[i].addEventListener("click", () => {
+        if (allTD[i].classList.contains("noActive")) {
+          console.log(allTD[i].innerHTML);
+          console.log("теперь не активно");
+          const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
+          const day = Number(allTD[i].innerHTML) < 10 ? "0" + allTD[i].innerHTML : String(allTD[i].innerHTML);
+          const currentDate = `${y}-${month}-${day}`
+          const index = availableDates.indexOf(currentDate);
+          availableDates.splice(index, 1)
+          console.log(availableDates)
+        } else {
+          console.log(allTD[i].innerHTML);
+          console.log("теперь активно");
+          const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
+          const day = Number(allTD[i].innerHTML) < 10 ? "0" + allTD[i].innerHTML : String(allTD[i].innerHTML);
+          const currentDate = `${y}-${month}-${day}`
+          availableDates.push(currentDate)
+          console.log(availableDates)
         }
       });
     }
@@ -245,7 +240,7 @@ function createCalendar(elem: HTMLElement, year: number, month: number): void {
   }
   // <td> ячейки календаря с датами
   while (day.getMonth() == mon) {
-    table += "<td class='activeDay'>" + day.getDate() + "</td>";
+    table += "<td class='table-element activeDay'>" + day.getDate() + "</td>";
 
     if (getDay1(day) % 7 == 6) {
       // вс, последний день - перевод строки

@@ -2,7 +2,6 @@ import { createHtmlElement } from "../../utils";
 //import { getUser } from "../../commonFunction/getUser";
 import { getUserFromId } from "../../commonFunction/getUser";
 
-//не уверена как правильно по id. функция на  95 строке
 export async function petsittersCalendar(tagParent: HTMLElement, id: string) {
   const User = await getUserFromId(id);
   const userInfo = User.item;
