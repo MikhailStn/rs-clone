@@ -5,6 +5,7 @@ import { createChat } from "./createChat";
 import { OrderPreview } from "./ordersPage";
 import { getUser } from "../../commonFunction/getUser";
 import { getUserFromId } from "../../commonFunction/getUser";
+import { createSplashScreen, removeSplashScreen } from "./splashScreen";
 
 // orders = [{numberOrders: 123456, city:'Minsk', status: 'rejected', service: 'accomodation', period: '1 day', dates: '20 febr - 21 febr', pet: ['cat', 'Masia'], ownerOrPetsitterId: '63eb4b2a8759fea28d255766'}];
 
@@ -14,10 +15,7 @@ async function renderOrderItemPage(id: string) {
   const user = await getUser();
   const curUserInfo = user.item;
   sectionOrderItem.innerHTML = "";
-  const sectionItemOrdersBlock = createHtmlElement(
-    "div",
-    "section-item-orders-block"
-  );
+  const sectionItemOrdersBlock = createHtmlElement("div", "section-item-orders-block");
   sectionOrderItem.append(sectionItemOrdersBlock);
   // Функция поиска заказа по номеру заказа
   fetch(`https://rs-clone-api-production-3ab8.up.railway.app/order/`, {
@@ -46,10 +44,7 @@ async function renderOrderItemPage(id: string) {
           window.dispatchEvent(new Event("popstate"));
         }
       });
-      const orderItemInfoBlock = createHtmlElement(
-        "div",
-        "order-item-info-block"
-      );
+      const orderItemInfoBlock = createHtmlElement("div", "order-item-info-block");
       sectionItemOrdersBlock.append(orderItemInfoBlock);
       const blockCommonInfo = await createBlockCommoninfo(data);
       const blockPriceOrder = createHtmlElement("div", "block-price-order");
@@ -58,29 +53,15 @@ async function renderOrderItemPage(id: string) {
       userBlock.append(await createUserBlock(data));
       const chatBlock = createHtmlElement("div", "chat-block-order");
       chatBlock.append(createChat(data));
-      orderItemInfoBlock.append(
-        blockCommonInfo,
-        blockPriceOrder,
-        userBlock,
-        chatBlock
-      );
+      orderItemInfoBlock.append(blockCommonInfo, blockPriceOrder, userBlock, chatBlock);
     });
 }
 
 async function createBlockCommoninfo(data: OrderPreview) {
   const blockCommonInfo = createHtmlElement("div", "block-common-info-order");
-  const block1 = await createBlockItemInfoOrder(
-    "img/iCharacterGrey.svg",
-    `Service type: ${data.service}`
-  );
-  const block2 = await createBlockItemInfoOrder(
-    "img/calendar2Grey.svg",
-    `Deadline: ${data.dates.join(` - `)}`
-  );
-  const block3 = await createBlockItemInfoOrder(
-    "img/geoloc.svg",
-    `${data.city}`
-  );
+  const block1 = await createBlockItemInfoOrder("img/iCharacterGrey.svg", `Service type: ${data.service}`);
+  const block2 = await createBlockItemInfoOrder("img/calendar2Grey.svg", `Deadline: ${data.dates.join(` - `)}`);
+  const block3 = await createBlockItemInfoOrder("img/geoloc.svg", `${data.city}`);
   const blockImgPet = createHtmlElement("div", "block-img-svg-pet-order-item");
   const imgPetSvg = new Image();
   imgPetSvg.className = "svg-pet-order-info";
@@ -100,44 +81,22 @@ async function createBlockCommoninfo(data: OrderPreview) {
   return blockCommonInfo;
 }
 
-async function createBlockItemInfoOrder(
-  src: string,
-  text: string,
-  className?: string
-) {
+async function createBlockItemInfoOrder(src: string, text: string, className?: string) {
   const blockInfoWrapper = createHtmlElement("div", "block-info-order-wrapper");
   const blockSvg = new Image();
   blockSvg.src = src;
   blockSvg.className = `block-info-order-svg ${className}`;
   blockInfoWrapper.append(blockSvg);
-  const textBlockMenu = createHtmlElement(
-    "div",
-    "text-block-info-order",
-    "",
-    `${text}`
-  );
+  const textBlockMenu = createHtmlElement("div", "text-block-info-order", "", `${text}`);
   blockInfoWrapper.append(textBlockMenu);
   return blockInfoWrapper;
 }
 
 async function createBlockPriceOrder(data: OrderPreview) {
-  const priceOrderBlockWrapper = createHtmlElement(
-    "div",
-    "price-order-block-wrapper"
-  );
-  const priceTotal = createHtmlElement(
-    "h4",
-    "price-order-title",
-    "",
-    "Order price"
-  );
+  const priceOrderBlockWrapper = createHtmlElement("div", "price-order-block-wrapper");
+  const priceTotal = createHtmlElement("h4", "price-order-title", "", "Order price");
   const blockCostModule = createHtmlElement("div", "block-cost-module");
-  const nameServiceInPrice = createHtmlElement(
-    "div",
-    "name-service-in-price",
-    "",
-    data.service
-  );
+  const nameServiceInPrice = createHtmlElement("div", "name-service-in-price", "", data.service);
   const pricePerDay = createHtmlElement("div", "price-per-day-order");
   const numberOfTotalPrice = createHtmlElement("div", "number-of-total-price");
   let dayOfService: number;
@@ -162,16 +121,8 @@ async function createBlockPriceOrder(data: OrderPreview) {
   }
 
   blockCostModule.append(nameServiceInPrice, pricePerDay);
-  const blockTotalrice = createHtmlElement(
-    "div",
-    "total-price-order-item-block"
-  );
-  const totalPriceOrder = createHtmlElement(
-    "div",
-    "total-price-order-item-title",
-    "",
-    "Total price"
-  );
+  const blockTotalrice = createHtmlElement("div", "total-price-order-item-block");
+  const totalPriceOrder = createHtmlElement("div", "total-price-order-item-title", "", "Total price");
   blockTotalrice.append(totalPriceOrder, numberOfTotalPrice);
   priceOrderBlockWrapper.append(priceTotal, blockCostModule, blockTotalrice);
   return priceOrderBlockWrapper;
@@ -192,28 +143,15 @@ async function createUserBlock(data: OrderPreview) {
     const petsitId = data.petsitterId;
     const user = await getUserFromId(petsitId);
     const petsitInfo = user.item;
-    const petsitPhpotoBlock = createHtmlElement(
-      "img",
-      "img-petsit-order-info-item"
-    ) as HTMLImageElement;
+    const petsitPhpotoBlock = createHtmlElement("img", "img-petsit-order-info-item") as HTMLImageElement;
     if (petsitInfo.avatarPath === "" || petsitInfo.avatarPath === undefined) {
       petsitPhpotoBlock.src = "img/personLogo.svg";
     } else {
       petsitPhpotoBlock.src = petsitInfo.avatarPath;
     }
-    const nameOfPetsitter = createHtmlElement(
-      "div",
-      "name-of-petsitter-order-item",
-      "",
-      data.nameOfPetsitter
-    );
+    const nameOfPetsitter = createHtmlElement("div", "name-of-petsitter-order-item", "", data.nameOfPetsitter);
     nameOfPetsitter.setAttribute("style", "margin-top:-20px");
-    const linkViewProfile = createHtmlElement(
-      "div",
-      "link-view-profile-order",
-      "",
-      "View profile"
-    );
+    const linkViewProfile = createHtmlElement("div", "link-view-profile-order", "", "View profile");
     linkViewProfile.setAttribute("style", "margin-left:60px; margin-top:-40px");
     linkViewProfile.addEventListener("click", () => {
       history.pushState("", "", `/petsitter/n/${petsitId}`);
@@ -256,12 +194,7 @@ async function createUserBlock(data: OrderPreview) {
     });
     starBlock.append(istar1, istar2, istar3, istar4, istar5);
     const ratingBlock = createHtmlElement("div", "rating-block");
-    const ratingTitle = createHtmlElement(
-      "div",
-      "rating-order-title",
-      "",
-      "Your rating of petsitter is:  "
-    );
+    const ratingTitle = createHtmlElement("div", "rating-order-title", "", "Your rating of petsitter is:  ");
     const ratingCount = createHtmlElement("div", "rating-count", "", "  0");
     ratingBlock.append(ratingTitle, ratingCount);
 
@@ -269,11 +202,7 @@ async function createUserBlock(data: OrderPreview) {
     starBlock.addEventListener("click", (event: Event) => {
       const ratingStars = [...starBlock.getElementsByClassName("rating-star")];
       const starsLength = ratingStars.length;
-      if (
-        event.target &&
-        event.target instanceof HTMLElement &&
-        event.target.classList.contains("rating-star")
-      ) {
+      if (event.target && event.target instanceof HTMLElement && event.target.classList.contains("rating-star")) {
         i = Number(event.target.dataset.star);
         if (event.target.className === "rating-star far fa-star") {
           ratingCount.textContent = `${i + 1}`;
@@ -283,17 +212,12 @@ async function createUserBlock(data: OrderPreview) {
           }
         } else {
           ratingCount.textContent = `${i}`;
-          for (i; i < starsLength; ++i)
-            ratingStars[i].className = "rating-star far fa-star";
+          for (i; i < starsLength; ++i) ratingStars[i].className = "rating-star far fa-star";
         }
       }
     });
 
-    const inputReview = createHtmlElement(
-      "textarea",
-      "input-petsitter-review",
-      "input-review"
-    ) as HTMLTextAreaElement;
+    const inputReview = createHtmlElement("textarea", "input-petsitter-review", "input-review") as HTMLTextAreaElement;
     inputReview.placeholder = "Leave your review here";
     const btnSaveRateReview = createHtmlElement(
       "button",
@@ -305,28 +229,23 @@ async function createUserBlock(data: OrderPreview) {
       if (mark == 0 || inputReview.value == "") {
         const p = createHtmlElement("p", "warning");
         p.textContent = "Please, set star and fill the review field";
-        const userBlock = document.querySelector(
-          ".user-info-block-order"
-        ) as HTMLDivElement;
+        const userBlock = document.querySelector(".user-info-block-order") as HTMLDivElement;
         userBlock.append(p);
         setTimeout(() => {
           userBlock.removeChild(p);
         }, 2000);
       } else {
-        fetch(
-          `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({
-              _id: data.petsitterId,
-              review: [`${data.nameOfOwner}`, `${inputReview.value}`, mark],
-            }),
-          }
-        )
+        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            _id: data.petsitterId,
+            review: [`${data.nameOfOwner}`, `${inputReview.value}`, mark],
+          }),
+        })
           .then((response) => {
             return response.json();
           })
@@ -334,9 +253,7 @@ async function createUserBlock(data: OrderPreview) {
             const p = createHtmlElement("p", "warning");
             p.textContent = "Review saved";
             p.setAttribute("style", "color:green; padding-left:130px");
-            const userBlock = document.querySelector(
-              ".user-info-block-order"
-            ) as HTMLDivElement;
+            const userBlock = document.querySelector(".user-info-block-order") as HTMLDivElement;
             userBlock.append(p);
             inputReview.value = "";
             setTimeout(() => {
@@ -346,40 +263,21 @@ async function createUserBlock(data: OrderPreview) {
       }
     });
     starRateBlock.append(starBlock, ratingBlock);
-    userBlockWrapper.append(
-      linkViewProfile,
-      sendReviwBlockTitle,
-      starRateBlock,
-      inputReview,
-      btnSaveRateReview
-    );
+    userBlockWrapper.append(linkViewProfile, sendReviwBlockTitle, starRateBlock, inputReview, btnSaveRateReview);
   }
   if (curUserInfo.role === "PETSITTER") {
     const ownerId = data.ownerId;
     const user = await getUserFromId(ownerId);
     const ownerInfo = user.item;
-    const ownerPhpotoBlock = createHtmlElement(
-      "img",
-      "img-petsit-order-info-item"
-    ) as HTMLImageElement;
+    const ownerPhpotoBlock = createHtmlElement("img", "img-petsit-order-info-item") as HTMLImageElement;
     if (ownerInfo.avatarPath === "" || ownerInfo.avatarPath === undefined) {
       ownerPhpotoBlock.src = "img/personLogo.svg";
     } else {
       ownerPhpotoBlock.src = ownerInfo.avatarPath;
     }
-    const nameOfOwner = createHtmlElement(
-      "div",
-      "name-of-petsitter-order-item",
-      "",
-      data.nameOfOwner
-    );
+    const nameOfOwner = createHtmlElement("div", "name-of-petsitter-order-item", "", data.nameOfOwner);
     nameOfOwner.setAttribute("style", "margin-top:-20px");
-    const linkViewProfile = createHtmlElement(
-      "div",
-      "link-view-profile-order",
-      "",
-      "View profile"
-    );
+    const linkViewProfile = createHtmlElement("div", "link-view-profile-order", "", "View profile");
     linkViewProfile.setAttribute("style", "margin-left:60px; margin-top:-40px");
     linkViewProfile.addEventListener("click", () => {
       history.pushState("", "", `/owner/n/${ownerId}`);
@@ -393,13 +291,13 @@ async function createUserBlock(data: OrderPreview) {
 }
 
 export async function createOrderItemPage() {
-  const numberOfOrder = window.location.href.substring(
-    window.location.href.length - 6
-  ); // ПОЛУЧЕНИЕ ID ЗАКАЗА
+  const numberOfOrder = window.location.href.substring(window.location.href.length - 6); // ПОЛУЧЕНИЕ ID ЗАКАЗА
   document.body.innerHTML = "";
   await headerPetsitter(document.body);
   await renderOrderItemPage(numberOfOrder);
   document.body.append(sectionOrderItem);
   footerFun(document.body);
+  createSplashScreen();
+  setTimeout(removeSplashScreen, 2000);
   return document.body;
 }

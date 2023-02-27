@@ -26,12 +26,24 @@
 @import './petsitters/petsitPerson.css';
 @import './owner/ownerPage.css';
 @import './common-page/settings.css';
+
 @import './petsitters/petsitReview.css';
 
+@import './splash-screen/splash-screen.css';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@500&display=swap');
 
-body:nth-child(2) {
+
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+main {
   padding-top: 64px;
 }
+
+
 /*
 body:nth-child(2){ 
     padding-top: 64px; 
@@ -46,6 +58,7 @@ h1,
 h2,
 h3 {
   font-family: "Noto Sans", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
@@ -53,12 +66,10 @@ body {
   width: 100%;
   background-color: #fff;
   font-family: "Lato", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
-body:nth-child(2) {
-  padding-top: 64px;
-  background-color: #fbfafc;
-}
+
 
 .btn {
   cursor: pointer;
@@ -68,6 +79,7 @@ h1,
 h2,
 h3 {
   font-family: "Noto Sans", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 a {

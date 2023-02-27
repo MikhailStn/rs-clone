@@ -4,7 +4,8 @@
   padding: 50px 24px;
 }
 .wrapper-main-owner {
-  padding: 90px 24px;;
+  padding: 90px 24px;
+  padding-top: 64px;
 }
 span {
   font-family: HalenoirExpanded;
@@ -24,6 +25,7 @@ span {
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 40px;
 }
 
 .leftText {

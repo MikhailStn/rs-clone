@@ -250,7 +250,7 @@
   width: 350px;
   height: 45px;
   padding: 10px;
-  box-shadow: 1px 2px 5px grey;
+  box-shadow: 1px 1px 3px rgb(158, 158, 158);
 }
 
 .input-contact-email:focus:invalid {

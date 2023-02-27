@@ -2,6 +2,7 @@ import { createHtmlElement, createInputElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
 import { getUser } from "../../commonFunction/getUser";
+import { createSplashScreen, removeSplashScreen } from "./splashScreen";
 
 interface PetsitterData {
   birth: string;
@@ -227,6 +228,7 @@ export async function settingsPerson() {
         }, 2000);
         return;
       }
+      createSplashScreen()
       fetch(
         `https://rs-clone-api-production-3ab8.up.railway.app/check-password`,
         {
@@ -242,6 +244,7 @@ export async function settingsPerson() {
         }
       )
         .then((response) => {
+          removeSplashScreen()
           return response.json();
         })
         .then((data) => {
@@ -266,7 +269,7 @@ export async function settingsPerson() {
               container22.style.display = "none";
               divOldPassword.style.backgroundColor = "#fff";
               container22.removeChild(p);
-            }, 4000);
+            }, 3000);
           }
         });
     });
