@@ -147,7 +147,6 @@ async function renderOrdersPage() {
         } else if (data.role == "OWNER") {
           const user = await getUserFromId(orders[i].petsitterId);
             const UserInfo = user.item;
-            console.log(UserInfo);
             commonInfoOrderWrapper.append(ratePetsitter);
             let rateSum = 0;
             const rateCount = UserInfo.petsitterData.reviews.length;

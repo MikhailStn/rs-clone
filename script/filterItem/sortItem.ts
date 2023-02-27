@@ -113,13 +113,6 @@ export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
       break;
   }
 
-  /*
-  result = result.filter((elem) => elem.petsitterData.availableDates.includes({ //(filter.type));
-  //if (elem.petsitterData.availableDates) {
-    //for (let i = 0; i < elem.petsitterData.availableDates.length; i++) {
-      //if (new Date(elem.petsitterData.availableDates[i].slice(0, 10)) <= new Date(filter.dateFrom) && new Date(elem.petsitterData.availableDates[i].slice(11)) >= new Date(filter.dateTo)) return elem;
-*/
-
   const diapazonDate: string[] = [`${filter.dateFrom}`];
   const nDay1: Date = new Date(
     `${filter.dateFrom.slice(0, 4)}, ${+filter.dateFrom.slice(
@@ -153,12 +146,9 @@ export async function filterItem(mas: IPetsitters1[], filter: IFilter) {
 
   result = result.filter((elem) =>
     elem.petsitterData.availableDates.filter((el) => {
-      //не отрабатывает
-      //console.log("elem", elem, "el", el, `diapazonDate`, diapazonDate);
       if (!diapazonDate.includes(el)) {
         return true;
       }
-      //return false;
     })
   );
   return result;

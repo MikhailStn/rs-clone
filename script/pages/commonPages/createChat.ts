@@ -197,15 +197,6 @@ export const createChat = (order: OrderPreview) => {
       p.textContent = "No messages yet";
       chatMessagesContainer.append(p);
     }
-    /*chatMessagesContainer.scrollTo(0, chatMessagesContainer.scrollHeight);
-    const scrollH = chatMessagesContainer.scrollHeight;
-    const posTop = chatMessagesContainer.scrollTop
-    const h = chatMessagesContainer.offsetHeight
-    console.log (scrollH, posTop + h)
-    if (scrollH > posTop + h) {
-      console.log(1)
-      chatMessagesContainer.scrollTo(0, chatMessagesContainer.scrollHeight);
-    } */
   }
 
   fetch(`https://rs-clone-api-production-3ab8.up.railway.app/auth/user`, {

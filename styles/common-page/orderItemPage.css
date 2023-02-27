@@ -38,7 +38,6 @@
     flex-wrap: wrap;
     column-gap: 40px;
     row-gap: 20px;
-    justify-content: space-evenly;/**/
 }
 
 .order-item-info-block{

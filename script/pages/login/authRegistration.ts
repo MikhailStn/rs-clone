@@ -310,7 +310,6 @@ function renderRegistrPage(role: string) {
             response.json()
             .then((data) => {
              const message = data.message;
-             console.log(message);
              const errorText = createHtmlElement(
               "div",
               "error-text-registration",

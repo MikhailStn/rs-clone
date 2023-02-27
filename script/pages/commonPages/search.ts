@@ -45,7 +45,7 @@ export async function searchShowPage() {
   const namePetBox = createHtmlElement("p", "nameInputBox", "", "Dog Cat");
   const divPetBox = createHtmlElement("div", "petBox");
   const divMenuPets = createHtmlElement("ul", "menuPets");
-  setMenuPets(divMenuPets); //, myPets);
+  setMenuPets(divMenuPets);
   const inputPetBox = createInputElement("text", "petBoxInput");
   const img2NamePetBox = new Image();
   img2NamePetBox.src = "img/down.svg";
@@ -233,7 +233,6 @@ export async function searchShowPage() {
     }
     const a = document.getElementById(`${obj.type}`);
     if (a) activeBox(a);
-    //if (firstVal.type === 'walking') walkTime.style.display = "block";
   }
   if (firstVal.date) {
     obj.dateFrom = firstVal.date;
@@ -258,8 +257,7 @@ export async function searchShowPage() {
       const target = event.target;
       if (target.tagName == "LI") {
         inputPetBox.value = target.innerHTML;
-        //inputPetBox.setAttribute("animal", target.className);
-        obj.animal = target.innerHTML; //target.className;
+        obj.animal = target.innerHTML;
       }
     }
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
@@ -332,15 +330,5 @@ export async function searchShowPage() {
     obj.priceMax = rangeBoxs[1].value;
     createSortItem(blockPetsitters, await filterItem(petsit, obj), obj.hours);
   });
-
-  /*const itemsBtn = document.getElementsByClassName("btnSearchCart"); // обработчик перенесен в SortItem!
-  for (let i = 0; i < itemsBtn.length; i++) {
-    itemsBtn[i].addEventListener("click", () => {  console.log("obj=", obj);
-      console.log(".....", itemsBtn[i].id); //переход на страницу петситтера
-
-      history.pushState("", "", `/petsitter/n/${itemsBtn[i].id}`);
-      window.dispatchEvent(new Event("popstate"));
-    });
-  }*/
   return document.body;
 }

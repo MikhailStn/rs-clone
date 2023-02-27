@@ -224,35 +224,9 @@ export function mainOwner(): void {
 
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function () {
-      if (buttons[i].id === "menu") {
-        console.log("menu");
-      } else if (buttons[i].id === "notification") {
-        console.log("notification");
-      } else if (buttons[i].innerHTML === "Browse pet sitters") {
-        console.log("Browse pet sitters");
+      if (buttons[i].innerHTML === "Browse pet sitters") {
         history.pushState("", "", "/search");
         window.dispatchEvent(new Event("popstate"));
-      } else if (buttons[i].innerHTML === "view profile") {
-        console.log("view profile");
-      } else if (buttons[i].id === "leftArrow") {
-        localStorage.reviewsN--;
-        console.log(localStorage.reviewsN);
-
-        if (localStorage.reviewsN < 0) {
-          //localStorage.reviewsN = reviews.length-1;
-          console.log("<0", localStorage.reviewsN);
-          //slider(section6);
-          //slider(section6, z);
-        }
-        if (localStorage.reviewsN >= 0) {
-          console.log(">=0", localStorage.reviewsN);
-          //  slider(section6);
-          //slider(section6, z);
-        }
-      } else if (buttons[i].id === "rightArrow") {
-        console.log("rightArrow");
-        //section6.innerHTML = "";
-        //slider(section6);
       }
     });
   }

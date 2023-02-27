@@ -6,7 +6,6 @@ import { getUserFromId } from "../../commonFunction/getUser";
 export async function petsittersCalendar(tagParent: HTMLElement, id: string) {
   const User = await getUserFromId(id);
   const userInfo = User.item;
-  console.log("userInfo", userInfo);
 
   let m = new Date().getMonth();
   let y = new Date().getFullYear();
@@ -97,8 +96,7 @@ export async function petsittersCalendar(tagParent: HTMLElement, id: string) {
       const target = e.target;
       if (target.tagName == "SPAN") {
         createCalendar(leftCalendar, y, m);
-        changeWorkDay(userInfo.petsitterData.availableDates); //получение с сервера выходных дней и отметить в календаре
-        //console.log("*****", await userInfo.petsitterData.availableDates);
+        changeWorkDay(userInfo.petsitterData.availableDates);
       }
     }
   });
@@ -112,7 +110,7 @@ export async function petsittersCalendar(tagParent: HTMLElement, id: string) {
         (el) =>
           el.slice(0, 4).includes(String(y)) &&
           el.slice(5, 7).includes(String(month))
-      ); // !==`${y}-${month}`);
+      );
 
       Array.prototype.forEach.call(allTD, function (e) {
         for (let i = 0; i < redDate.length; i++) {
@@ -168,7 +166,7 @@ function createCalendar(elem: HTMLElement, year: number, month: number): void {
       table += "<td></td>";
     }
   }
-  table += "</tr></table>"; // закрыть таблицу
+  table += "</tr></table>";
   elem.innerHTML = table;
 }
 

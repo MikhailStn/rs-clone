@@ -344,3 +344,9 @@
     padding-top: 0px;
   }
 }
+
+@media (max-width: 450px) {
+  .img-top-petsit {
+    display: none;
+  }
+}

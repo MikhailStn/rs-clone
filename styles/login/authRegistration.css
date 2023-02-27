@@ -403,3 +403,8 @@
 
 }
 
+@media (max-width: 450px) {
+  .block-link-role-registration {
+    max-width: 250px;
+  }
+}

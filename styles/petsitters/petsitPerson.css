@@ -465,4 +465,8 @@ input:disabled {
     left: 20px;
   }
 
+  .my-profile-text-title {
+    font-size: 10px;
+  }
+
 }

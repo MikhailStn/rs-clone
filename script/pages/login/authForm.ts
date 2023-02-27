@@ -138,20 +138,13 @@ function renderPetsitterForm() {
     genderContainer,
     btnNext
   );
-  const linkBackHome = createHtmlElement(
-    "a",
-    "go-main-page-link"
-  ) as HTMLAnchorElement;
-  linkBackHome.textContent = "Back to main page";
-  linkBackHome.href = "/";
 
   formContainer.append(
     progress,
     subtitle,
     formTitle,
     icon,
-    temporaryContainer,
-    linkBackHome
+    temporaryContainer
   );
 
   formSection.append(formContainer);

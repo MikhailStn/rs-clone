@@ -2,6 +2,7 @@ import { createHtmlElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
 import { getUser } from "../../commonFunction/getUser";
+import {createSplashScreen} from "../commonPages/splashScreen";
 
 export async function petsittersCalendar() {
   const User = await getUser();
@@ -110,6 +111,7 @@ export async function petsittersCalendar() {
 
   btnLeftCalendar.addEventListener("click", () => {
     const d = document.getElementsByClassName("noActive");
+    console.log(d)
     for (let i = 0; i < d.length; i++) {
       const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
       const day =
@@ -122,6 +124,7 @@ export async function petsittersCalendar() {
       const newM = Array.from(masUnic);
       noActvDay = newM.sort((a, b) => (a > b ? 1 : -1));
     }
+    console.log(noActvDay)
     //сортированные даты отправлять на сервер
     const fetchData = {
       method: "PATCH",
@@ -135,12 +138,17 @@ export async function petsittersCalendar() {
         availableDates: noActvDay,
       }),
     };
+    createSplashScreen();
     fetch(
       `https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`,
       fetchData
-    ).then((response) => {
-      return response.json();
-    });
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then(() => {
+        location.reload()
+      });
   });
 
   preMonth.addEventListener("click", () => {
@@ -192,8 +200,7 @@ export async function petsittersCalendar() {
         (el) =>
           el.slice(0, 4).includes(String(y)) &&
           el.slice(5, 7).includes(String(month))
-      ); // !==`${y}-${month}`);
-
+      );
       Array.prototype.forEach.call(allTD, function (e) {
         for (let i = 0; i < redDate.length; i++) {
           if (+e.innerHTML === +redDate[i].slice(8))
