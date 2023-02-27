@@ -22,7 +22,7 @@
 
 .input-pets-name,
 .input-breed-of-pets{
-    width: 509px;
+    width: 100%;/**/
     height: 53px;
     border: 1px solid #ece8ec;
     border-radius: 8px;
@@ -64,6 +64,8 @@
     justify-content: space-between;
     padding: 20px 0px 0px 0px;
     flex-direction: row;
+    flex-wrap: wrap;/**/
+
 }
 
 .pets-img-wrapper-service ~ label{
@@ -110,7 +112,7 @@
 
 .input-text-about-pet{
     outline: none !important;
-    width: 509px;
+    width: 100%;/**/
     height: 113px;
     margin-top: 50px;
     border: 1px solid #ece8ec;
@@ -160,4 +162,16 @@
     font-weight: 500;
     margin-top: 20px;
     color: #5e9229;
+}
+
+
+
+.section-pets-add .count-motto-profile{/**/
+    width: 100%;
+}
+
+@media (max-width: 550px) {
+    .additional-qualification-block.cat-or-dog-fieldset{
+        justify-content: center;    
+    }
 }

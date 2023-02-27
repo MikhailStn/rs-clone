@@ -67,7 +67,7 @@ export async function settingsPerson() {
   document.body.append(sectionSettings);
   const sectionSettingsBlock = createHtmlElement(
     "div",
-    "section-profile-basic-block"
+    "section-profile-basic-block forMediaPad"
   );
   sectionSettings.append(sectionSettingsBlock);
   const profileTitleWrap = createHtmlElement("div", "profile-title-wrapper");

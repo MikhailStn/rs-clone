@@ -23,6 +23,8 @@
   width: 40%;
   margin-top: 30px;
   margin-bottom: 30px;
+  padding: 10px;
+margin-left: 30px;
 }
 
 .container{/*.old-date-settings {*/
@@ -182,6 +184,7 @@
   transition: 0.2s;
   cursor: default;
   opacity: 0;
+  display: none;
 }
 
 .btns-add-remove-container {
@@ -205,6 +208,20 @@
   align-items: center;
 }
 
+.left-right-settings .photo-text-profile-block {
+  width: 100%;
+  /*justify-content: center;*/
+
+}
+
+.left-right-settings .text-block-profile-wrapper{
+  width: auto;
+  margin: 0;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .button-remove-photo:hover {
   background-color: #b276cc;
 }
@@ -212,6 +229,10 @@
 @media (max-width: 1200px) {
   .left-right-settings {
     flex-direction: column;
+
+    justify-content: center;/**/
+    padding-left: 50px;
+    padding-right: 50px;
   }
 
   .left-settings {
@@ -222,6 +243,30 @@
   .right-settings {
     margin-top: 0px;
     width: 100%;
+    margin-left: 0;
+  }
+
+  .left-right-settings .text-block-profile-wrapper{
+    width: 425px;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
+@media (max-width: 600px) {
+  .left-right-settings {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .left-right-settings .text-block-profile-wrapper{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .left-right-settings .text-3-wrapper-profile{
+    width: 100%;
+  }
+  .left-right-settings  .text-profile-li{
+    width: 100%;
+  }
+}
