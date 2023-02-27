@@ -143,4 +143,91 @@
   .block-calendar th {
     height: 80px;
   }
+
+  .block-calendars {
+    padding-left: 100px;
+  }
+}
+
+@media(max-width: 800px){
+  
+  .block-calendar td,
+  .block-calendar th {
+    height: 60px;
+  }
+
+  .block-calendars {
+    padding-left: 100px;
+  }
+}
+
+@media(max-width: 600px){
+  
+  .block-calendar td,
+  .block-calendar th {
+    height: 40px;
+    font-weight:300;
+  }
+
+  .block-calendars {
+    padding-left: 60px;
+  }
+
+  .block-calendars .my-profile-text-title{
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .block-calendars .tooltip{
+    display: none;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .block-calendars {
+    padding-left: 30px;
+  }
+  .block-calendar{
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .block-calendars {
+    padding-left: 5px;
+    width: 100%;
+  }
+  .block-calendar td,
+  .block-calendar th {
+    height: 30px;
+    font-weight:300;
+  }
+  .block-calendar{
+    width: 100%;
+  }
+}
+
+@media(max-width: 360px){
+  .block-calendar{
+    width: 320px;
+  }
+  .block-calendar td,
+  .block-calendar th {
+    height: 30px;
+    font-weight:300;
+  }
+
+  .block-calendars {
+    padding-left: 15px;
+  }
+
+  .block-calendars .my-profile-text-title{
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .block-calendars .tooltip{
+    display: none;
+  }
 }
