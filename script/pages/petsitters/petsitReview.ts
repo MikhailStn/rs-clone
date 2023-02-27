@@ -42,7 +42,7 @@ async function renderPetsitReview(){
     reviewItemsWrapper.append(noReviewText);
   } else {
     reviewItemsWrapper.innerHTML = "";
-    userReview.forEach(async(elem: Review) => {
+    userReview.reverse().forEach(async(elem: Review) => {
       const itemReview = await createItemReview(elem);
       reviewItemsWrapper.append(itemReview);
     });

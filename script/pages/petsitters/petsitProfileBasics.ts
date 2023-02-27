@@ -6,6 +6,7 @@ import { infoProfileText2 } from "../../utils/arrProfileInfoText";
 import { createServicesBlock } from "./petsitProfileServices";
 import { createMyHomeBlock } from "./petsitProfileHouse";
 import { createMyPetsBlock } from "../pageComponents/ownerPetsitPets";
+import { getUser } from "../../commonFunction/getUser";
 
 const sectionPetsitProfileBasic = createHtmlElement(
   "section",
@@ -31,6 +32,8 @@ const fetchPetsitterData: PetsitterData = {
 const qualificationsArr: string[] = [];
 
 async function renderPetsitProfileBasic() {
+
+
   sectionPetsitProfileBasic.innerHTML = "";
   const sectionPetsitProfileBasicBlock = createHtmlElement(
     "div",
@@ -126,6 +129,9 @@ async function renderPetsitProfileBasic() {
 }
 
 async function createBasicInfoBlock() {
+  const user = await getUser();
+  const userInfo = user.item;
+  console.log(userInfo);
   const basicInfoBlock = createHtmlElement("div", "basic-info-block");
   const photoPetsitBlock = createHtmlElement(
     "div",
@@ -214,6 +220,9 @@ async function createBasicInfoBlock() {
   mottoInput.placeholder = "Motto";
   mottoInput.maxLength = 100;
   mottoInput.wrap = "soft";
+  if(userInfo.petsitterData.aboutMe !== "" && userInfo.petsitterData.aboutMe !== undefined){
+    mottoInput.value = userInfo.petsitterData.aboutMe;
+  }
   aboutMeBlock.append(mottoInput);
 
   const countMotto = createHtmlElement(
@@ -243,6 +252,10 @@ async function createBasicInfoBlock() {
     infoProfileText1,
     "petsit-about-text"
   );
+ const textAreaProfileAbout = blockText1.querySelector('#petsit-about-text');
+ if(userInfo.petsitterData.carers !== '' && userInfo.petsitterData.carers !== undefined && textAreaProfileAbout instanceof HTMLTextAreaElement){
+  textAreaProfileAbout.value = userInfo.petsitterData.carers;
+ }
   aboutMeBlock.append(blockText1);
 
   const blockText2 = createTextInputInfoBlock(
@@ -252,6 +265,10 @@ async function createBasicInfoBlock() {
     infoProfileText2,
     "petsit-advantages"
   );
+  const textAreaProfileAdvantage = blockText2.querySelector('#petsit-advantages');
+ if(userInfo.petsitterData.skills !== '' && userInfo.petsitterData.skills !== undefined && textAreaProfileAdvantage instanceof HTMLTextAreaElement){
+  textAreaProfileAdvantage.value = userInfo.petsitterData.skills;
+ }
   aboutMeBlock.append(blockText2);
 
   const qualificationBlock = createHtmlElement(

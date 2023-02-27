@@ -735,7 +735,7 @@ async function renderPetsitPerson(id: string) {
       "My reviews"
     );
     const petsitterReview = createHtmlElement("div", "petsit-review-wrapper");
-    userInfo.petsitterData.reviews.forEach(async (elem: Review) => {
+    userInfo.petsitterData.reviews.reverse().forEach(async (elem: Review) => {
       const petsPetsiterItem = await createItemReview(elem);
       petsitterReview.append(petsPetsiterItem);
     });

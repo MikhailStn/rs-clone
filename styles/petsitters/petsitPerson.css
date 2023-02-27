@@ -120,6 +120,7 @@
 .qualific-person-block {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .qualification-item,
@@ -340,10 +341,12 @@ input:disabled {
 .tooltip-text{
     background-color: #fbfafc;
     position: absolute;
+    width: 220px;
     z-index: 2;
     padding: 8px;
     border-radius: 15px;
     transition: .5s;
+    text-align: center;
     display: none;
 }
 
@@ -353,7 +356,7 @@ input:disabled {
 
 .accom-tooltip,
 .walk-tooltip{
-    top: -35px;
+    top: -40px;
     left: calc(100% - 180px);
 }
 
@@ -367,6 +370,7 @@ input:disabled {
 .walk-tooltip-svg{
     top: 5px;
     left: calc(100% - 20px);
+    cursor: pointer;
 }
 
 .btn-profile-save.btn-create-order{
@@ -405,5 +409,60 @@ input:disabled {
 .petsit-review-wrapper{
   display: flex;
   flex-direction: column;
+  max-height: 552px;
   gap: 10px;
+  overflow: auto;
+}
+
+.petsit-review-wrapper::-webkit-scrollbar {
+  width: 2px;
+}
+
+.petsit-review-wrapper::-webkit-scrollbar-thumb {
+  background-color: #ca96e177;
+}
+
+@media (max-width: 1194px) {
+
+  .petsit-person-block{
+    flex-direction: column-reverse;
+    align-items: center;
+    
+  }
+
+  .common-info-person-block{
+    width: 100%;
+  }
+
+  .block-calendar.calendar-petsit-item-page{
+    width: 100%;
+  }
+
+  .rezerve-order-block{
+    width: 100%;
+    background-color: #ffffff;
+    position: static;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .item-pet-block.petsit-page{
+    flex-basis: 100%;
+  }
+
+}
+
+@media (max-width: 410px) {
+
+  .date-inputs-block {
+    flex-direction: column;
+  }
+
+  .to-text{
+    top: 40px;
+    left: 20px;
+  }
+
 }

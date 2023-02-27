@@ -241,3 +241,42 @@
   margin-top: -40px;
   transition: 0.2s;
 }
+
+@media (max-width: 696px) {
+
+  .section-profile-basic-block{
+      padding: 0 15px;
+    }
+    
+  .input-motto-profile{
+    width: 100%;
+  }
+
+  .count-motto-profile, 
+  .motto-profile-text{
+    width: 100%;
+  }
+
+  .photo-text-profile-block{
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .input-text-block-wrapper{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .text-profile{
+    width: 100%;
+  }
+
+  .textarea-profile-block{
+    width: 100%;
+  }
+  .text-block-profile-wrapper{
+    width: 100%;
+    margin-left: 0;
+  }
+
+}

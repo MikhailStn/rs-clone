@@ -79,9 +79,9 @@ function renderLoginPage() {
             "",
             "Something went wrong, try again"
           );
-          document.body.append(errorText);
+          formLogin.append(errorText);
           setTimeout(() => {
-            document.body.removeChild(errorText);
+            formLogin.removeChild(errorText);
           }, 2000);
           return;
         }

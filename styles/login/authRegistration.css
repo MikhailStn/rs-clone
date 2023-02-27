@@ -9,6 +9,7 @@
   height: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 64px;
   color: #27272e;
 }
 
@@ -210,7 +211,7 @@
   left: 28%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-height: 1141px) {
 
   .img-registration-wrapper {
     display: none;
@@ -233,25 +234,28 @@
     width: 100%;
   }
   .last-name-text-error-registration {
-    top: 120px;
-    left: 20px;
+    top: 65px;
+    left: 180px;
+    width: 160px;
   }
   .phone-text-error-registration {
-    top: 190px;
+    top: 135px;
   }
   .email-error-registration {
-    top: 294px;
+    top: 240px;
   }
   .sec-passw-error-registration {
-    top: 439px;
+    top: 445px;
   }
   .password-error-registration {
-    top: 367px;
+    top: 339px;
+    width: 320px;
+    font-size: 0.9rem;
   }
 
 }
 
-@media (max-width: 436px) {
+@media (max-width: 436px) and (min-height: 1141px) {
 
   .block-inputs-text-registration {
     padding: 30px 0px;
@@ -284,7 +288,8 @@
 
   .last-name-text-error-registration {
     top: 38px;
-    left: 260px;
+    left: 180px;
+    width: 200px;
   }
 
   .phone-text-error-registration {
@@ -297,6 +302,8 @@
 
   .password-error-registration {
     top: 179px;
+    width: 320px;
+    font-size: 0.9rem;
   }
 
   .sec-passw-error-registration {
@@ -305,3 +312,94 @@
   }
 
 }
+
+@media (max-width: 436px) and (max-height: 1140px) {
+
+  .text-for-registration-role{
+    font-size: 1.5rem;
+  }
+
+  .block-inputs-text-registration {
+    padding: 30px 0px;
+  }
+
+}
+
+
+@media (max-width: 900px) and (max-height: 1140px){
+
+  .registration-block-wrapper {
+    flex-direction: column;
+  }
+
+  .img-registration-wrapper {
+    display: none;
+  }
+  .block-inputs-text-registration {
+    padding: 48px 40px;
+  }
+  .block-link-role-registration {
+    display: flex;
+    justify-content: center;
+    width: 330px;
+    margin: 0;
+  }
+  .link-owner-registration,
+  .link-petsitter-registration {
+    width: 100%;
+  }
+  .input-registration,
+  .btn-registration {
+    width: 100%;
+  }
+
+  .registration-form {
+    gap: 5px;
+  }
+  .input-registration{
+    margin-top: 5px;
+    height: 40px;
+  }
+
+  section h1{
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .text-error-registration{
+    font-size: 0.8rem;
+  }
+
+  .first-name-text-error-registration {
+    top: 38px;
+  }
+
+  .last-name-text-error-registration {
+    top: 38px;
+    left: 160px;
+    width: 120px;
+    font-size: 0.75rem;
+  }
+
+  .phone-text-error-registration {
+    top: 80px;
+  }
+
+  .email-error-registration {
+    top: 130px;
+  }
+
+  .password-error-registration {
+    top: 179px;
+    width: 270px;
+    font-size: 0.75rem;
+  }
+
+  .sec-passw-error-registration {
+    top: 230px;
+    display: none;
+  }
+
+
+}
+
