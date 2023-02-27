@@ -18,6 +18,7 @@ export async function searchShowPage() {
   }
 
   const main = createHtmlElement("main");
+  main.className = "search-main"
   const blockFilter = createHtmlElement("div", "blockFilter", "", "");
   const blockPetsitters = createHtmlElement("div", "blockPetsitters");
   const blockMap = createHtmlElement("div", "blockMap", "map");

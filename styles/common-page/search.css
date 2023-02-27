@@ -202,3 +202,26 @@ main {
   position: relative;
   height: 150%;
 }
+
+
+@media (max-width: 760px) {
+  .search-main {
+    flex-direction: column;
+  }
+  .blockPetsitters {
+    width: auto;
+  }
+  .blockFilter {
+    width: auto;
+  }
+  .containerSearchCart {
+    flex-direction: column;
+    align-items: center;
+  }
+  .blockMap {
+    display: none;
+  }
+  .descriptionSearchCart{
+    width: auto !important;
+  }
+}
