@@ -56,13 +56,15 @@ export async function createSortItem(
     const stars = createHtmlElement("p", "starsSearchCart");
     let rateSum = 0;
     const rateCount = mas[i].petsitterData.reviews.length;
+    
     mas[i].petsitterData.reviews.forEach((elem:Review)=>{
         rateSum += elem[2];
     })
     const rate = Math.round(rateSum / rateCount);
-    if (rate !== 0) {
+    console.log(rate);
+    if (rateCount !== 0) {
       stars.innerHTML = "★".repeat(rate);
-    } else {
+    } else{
       stars.innerHTML = "no ratings";
     }
 
