@@ -108,8 +108,14 @@ async function createBlockPriceOrder(data: OrderPreview) {
     const from = new Date(data.dates[0]);
     const to = new Date(data.dates[1]);
     const timeDiff = Math.abs(to.getTime() - from.getTime());
-    const diffInDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-    pricePerDay.textContent = `${diffInDays} x ${data.pricePerDay} byn`;
+    let diffInDays;
+    if(from.getTime() == to.getTime()){
+      diffInDays = 1;
+      pricePerDay.textContent = `${diffInDays} x ${data.pricePerDay} byn`;
+    }else{
+      diffInDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      pricePerDay.textContent = `${diffInDays} x ${data.pricePerDay} byn`;
+    }
     const totalPrice = diffInDays * Number(data.pricePerDay);
     numberOfTotalPrice.textContent = `${totalPrice} byn`;
   }

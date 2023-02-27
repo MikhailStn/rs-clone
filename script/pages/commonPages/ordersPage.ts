@@ -2,6 +2,8 @@ import { createHtmlElement } from "../../utils";
 import { headerPetsitter } from "../pageComponents/headers";
 import { footerFun } from "../pageComponents/footer";
 import { getUser } from "../../commonFunction/getUser";
+import { getUserFromId } from "../../commonFunction/getUser";
+import { Review } from "../petsitters/petsitReview";
 
 const sectionOrder = createHtmlElement("section", "section-orders");
 
@@ -59,11 +61,33 @@ async function renderOrdersPage() {
     .then((response) => {
       return response.json();
     })
-    .then((data) => {
+    .then(async(data) => {
       orders = data.orders;
       const block = document.querySelector(".section-orders");
       const container = createHtmlElement("div", "orders-container");
       block?.append(container);
+      if(orders.length === 0){
+        container.style.flexDirection = 'column';
+        const noOrderText = createHtmlElement('div', 'no-order-text', '', 'You don\'t have any orders yet');
+        container.append(noOrderText);
+        if(currentUserInfo.role === 'OWNER'){
+          if(currentUserInfo.pets.length === 0){
+            const addPetText = createHtmlElement('div', 'add-pet-text-order','', 'You can add your pet and place an order');
+            container.append(addPetText);
+            addPetText.addEventListener('click', ()=>{
+              history.pushState("", "", "/pets/add");
+              window.dispatchEvent(new Event("popstate"));
+            })
+          }else{
+            const createOrderText = createHtmlElement('div', 'add-pet-text-order', '', 'You can place a new order');
+            container.append(createOrderText);
+            createOrderText.addEventListener('click',()=>{
+              history.pushState("", "", "/search");
+              window.dispatchEvent(new Event("popstate"));
+            })
+          }
+        }
+      }else{
       for (let i = 0; i < orders.length; i++) {
         const itemOrderBlock = createHtmlElement("div", "item-order-block");
         const commonInfoOrderWrapper = createHtmlElement(
@@ -75,7 +99,7 @@ async function renderOrdersPage() {
           "div",
           "status-order-text",
           "",
-          `${orders[i].status}`
+          `${orders[i].numberOfOrder}`
         );
         const serviceText = createHtmlElement(
           "div",
@@ -112,22 +136,39 @@ async function renderOrdersPage() {
           "user-order-photo"
         ) as HTMLImageElement;
         if (data.role == "PETSITTER") {
-          commonInfoOrderWrapper.append(ratePetsitter);
+          const user = await getUserFromId(orders[i].ownerId);
+          const UserInfo = user.item;
           name = orders[i].nameOfOwner;
-          if (data.avatarOwner === "" || data.avatarOwner === undefined) {
+          if (UserInfo.avatarPath === "" || UserInfo.avatarPath === undefined) {
             userPhoto.src = "img/personLogo.svg";
           } else {
-            userPhoto.src = orders[i].avatarOwner;
+            userPhoto.src = UserInfo.avatarPath;
           }
         } else if (data.role == "OWNER") {
+          const user = await getUserFromId(orders[i].petsitterId);
+            const UserInfo = user.item;
+            console.log(UserInfo);
+            commonInfoOrderWrapper.append(ratePetsitter);
+            let rateSum = 0;
+            const rateCount = UserInfo.petsitterData.reviews.length;
+            UserInfo.petsitterData.reviews.forEach((elem: Review)=>{
+                rateSum += elem[2];
+            })
+            const rate = Math.round(rateSum / rateCount);
+            if (rate !== 0) {
+              ratePetsitter.innerHTML = "★".repeat(rate);
+            } else {
+              ratePetsitter.innerHTML = "no ratings";
+            }
+            userPhoto.src = UserInfo.avatarPath;
           name = orders[i].nameOfPetsitter;
           if (
-            orders[i].avatarPetsitter === "" ||
-            orders[i].avatarPetsitter === undefined
+            UserInfo.avatarPath === "" ||
+            UserInfo.avatarPath === undefined
           ) {
             userPhoto.src = "img/personLogo.svg";
           } else {
-            userPhoto.src = orders[i].avatarPetsitter;
+            userPhoto.src = UserInfo.avatarPath;
           }
         }
         const userName = createHtmlElement(
@@ -191,6 +232,7 @@ async function renderOrdersPage() {
         });
         container?.append(itemOrderBlock);
       }
+    }
     });
 }
 

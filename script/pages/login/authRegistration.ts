@@ -296,12 +296,37 @@ function renderRegistrPage(role: string) {
       fetch(`${link}`, fecthData)
         .then((response) => {
           if (response.status == 200) {
-            return response.json();
+             response.json()
+            .then((data) => {
+              localStorage.setItem("curr-user-id", `${data.id}`);
+              if (btnRegistration.id == "registration-petsitter") {
+                document.location.href = "/auth/register/form";
+              } else {
+                history.pushState("", "", "");
+                window.dispatchEvent(new Event("popstate"));
+              }
+            });
           } else {
+            response.json()
+            .then((data) => {
+             const message = data.message;
+             console.log(message);
+             const errorText = createHtmlElement(
+              "div",
+              "error-text-registration",
+              "",
+              `${message}`
+            );
+            formRegistration.append(errorText);
+           setTimeout(() => {
+              formRegistration.removeChild(errorText);
+            }, 2000);
+            })
+
             return;
           }
         })
-        .then((data) => {
+        /*.then((data) => {
           localStorage.setItem("curr-user-id", `${data.id}`);
           if (btnRegistration.id == "registration-petsitter") {
             document.location.href = "/auth/register/form";
@@ -309,7 +334,7 @@ function renderRegistrPage(role: string) {
             history.pushState("", "", "");
             window.dispatchEvent(new Event("popstate"));
           }
-        });
+        });*/
     } else {
       alert("Пароли не совпадают");
     }

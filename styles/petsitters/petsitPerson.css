@@ -390,9 +390,20 @@ input:disabled {
 .petsit-pets-wrapper{
   display: flex;
   flex-wrap: wrap;
-  width: 787px;
+  max-width: 787px;
+  gap: 20px;
 }
 
 .common-info-pet-item-text {
   padding-top: 8px;
+}
+
+.item-pet-block.petsit-page{
+  flex-basis: 48%;
+}
+
+.petsit-review-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

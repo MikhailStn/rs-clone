@@ -1,0 +1,46 @@
+.section-petsit-review{
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    min-height: calc(100vh - 160px);
+    padding-bottom: 40px;
+}
+
+.section-petsit-review-block{
+    max-width: 1270px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+.title-section-review{
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding-bottom: 40px;
+}
+
+.orders-review-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #ebeaed;
+}
+
+.item-review-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #ebeaed;
+    border-radius: 8px;
+}
+
+.block-rating-name-review{
+    display: flex;
+    justify-content: space-between;
+}

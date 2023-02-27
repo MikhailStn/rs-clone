@@ -28,7 +28,7 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   const notificationImg = new Image();
   notificationImg.src = "img/notification.svg";
   notificationImg.src = "img/notification.svg";
-  const flagNotification = createHtmlElement("span", "", "", "1");
+  //const flagNotification = createHtmlElement("span", "", "", "1");
 
   tagParent.append(header);
   header.append(head);
@@ -38,7 +38,7 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   headerMenu.append(menuImg);
   headerNotification.append(btnNotification);
   btnNotification.append(notificationImg);
-  headerNotification.append(flagNotification);
+  //headerNotification.append(flagNotification);
 }
 
 export async function header(tagParent: HTMLElement): Promise<void> {
@@ -146,8 +146,8 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   const btnNotification = createHtmlElement("button", "btn ", "notification");
   const notificationImg = new Image();
   notificationImg.src = "img/notification.svg";
-  const flagNotification = createHtmlElement("span", "", "", "1");
-  flagNotification.style.display = "none";
+  /*const flagNotification = createHtmlElement("span", "", "", "1");
+  flagNotification.style.display = "none";*/
 
   tagParent.append(header);
   header.append(head);
@@ -157,5 +157,5 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   headerMenu.append(menuImg);
   headerNotification.append(btnNotification);
   btnNotification.append(notificationImg);
-  headerNotification.append(flagNotification);
+  //headerNotification.append(flagNotification);
 }

@@ -26,8 +26,12 @@
 @import './petsitters/petsitPerson.css';
 @import './owner/ownerPage.css';
 @import './common-page/settings.css';
+
+@import './petsitters/petsitReview.css';
+
 @import './splash-screen/splash-screen.css';
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@500&display=swap');
+
 
 
 * {
