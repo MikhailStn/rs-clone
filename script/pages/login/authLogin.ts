@@ -71,29 +71,34 @@ function renderLoginPage() {
     )
       .then((response) => {
         if (response.status == 200) {
-          return response.json();
+          response.json()
+          .then((data) => {
+            localStorage.setItem("curr-user-id", `${data.id}`);
+            document
+              .querySelector(".section-menu-field")
+              ?.classList.remove("active");
+            history.pushState("", "", "");
+            window.dispatchEvent(new Event("popstate"));
+          });
         } else {
-          const errorText = createHtmlElement(
-            "div",
-            "error-text-login",
-            "",
-            "Something went wrong, try again"
-          );
+          response.json()
+            .then((data) => {
+             const message = data.message;
+             console.log(message);
+             const errorText = createHtmlElement(
+              "div",
+              "error-text-login",
+              "",
+              `${message}`
+            );
           formLogin.append(errorText);
           setTimeout(() => {
             formLogin.removeChild(errorText);
           }, 2000);
           return;
-        }
-      })
-      .then((data) => {
-        localStorage.setItem("curr-user-id", `${data.id}`);
-        document
-          .querySelector(".section-menu-field")
-          ?.classList.remove("active");
-        history.pushState("", "", "");
-        window.dispatchEvent(new Event("popstate"));
-      });
+        })
+      }})
+      
   });
 
   inputLoginEmail.type = "email";

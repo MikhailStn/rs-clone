@@ -238,3 +238,20 @@
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 540px) {
+
+    .section-service-text-title-wrapper{
+        padding: 0 20px;
+    }
+
+    .input-area-service{
+        width: 100%;
+    }
+
+    .check-pet-box{
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

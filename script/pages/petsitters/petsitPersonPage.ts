@@ -20,6 +20,7 @@ async function renderPetsitPerson(id: string) {
   sectionPetsitPerson.innerHTML = "";
   const user = await getUserFromId(id);
   const userInfo = user.item;
+  console.log(userInfo);
   const petsitPersonBlock = createHtmlElement("div", "petsit-person-block");
   const imgWallWrapper = createHtmlElement("div", "img-wall-wrapper");
   const imgWalpaper = createHtmlElement(
