@@ -340,10 +340,12 @@ input:disabled {
 .tooltip-text{
     background-color: #fbfafc;
     position: absolute;
+    width: 220px;
     z-index: 2;
     padding: 8px;
     border-radius: 15px;
     transition: .5s;
+    text-align: center;
     display: none;
 }
 
@@ -353,7 +355,7 @@ input:disabled {
 
 .accom-tooltip,
 .walk-tooltip{
-    top: -35px;
+    top: -40px;
     left: calc(100% - 180px);
 }
 
@@ -367,6 +369,7 @@ input:disabled {
 .walk-tooltip-svg{
     top: 5px;
     left: calc(100% - 20px);
+    cursor: pointer;
 }
 
 .btn-profile-save.btn-create-order{
@@ -405,5 +408,15 @@ input:disabled {
 .petsit-review-wrapper{
   display: flex;
   flex-direction: column;
+  max-height: 552px;
   gap: 10px;
+  overflow: auto;
+}
+
+.petsit-review-wrapper::-webkit-scrollbar {
+  width: 2px;
+}
+
+.petsit-review-wrapper::-webkit-scrollbar-thumb {
+  background-color: #ca96e177;
 }

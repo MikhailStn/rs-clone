@@ -728,6 +728,7 @@ async function renderPetsAddPage() {
         }
       }
     });
+    console.log(numberOfInvalid);
     if (
       (numberOfInvalid > 0 && inputTextAboutPet.value.length < 10) ||
       (numberOfInvalid === 0 && inputTextAboutPet.value.length < 10)
