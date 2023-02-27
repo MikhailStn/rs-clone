@@ -127,10 +127,10 @@
 
 .block-calendar .rectangle{
     margin-top: 15px;
-    background-color: rgb(247, 233, 187);
+    background-color: #ca96e1;
 }
 .block-calendar .rectangle:hover{
-    background-color: rgb(251, 221, 122);
+    background-color: #b57bce;
 }
 
 

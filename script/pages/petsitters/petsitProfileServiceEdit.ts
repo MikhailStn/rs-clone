@@ -80,7 +80,7 @@ async function renderPetsitProfileServiceEdit(service: string) {
     areaOfServiceWrapper.append(areaOfServiceCommonText);
     const inputAreaService = createHtmlElement(
       "textarea",
-      "input-area-service",
+      `${currService} input-area-service`,
       "service-area"
     ) as HTMLTextAreaElement;
     inputAreaService.placeholder = "Service area";
@@ -449,7 +449,7 @@ export const updateValues = () => {
     });
   } else if (currService == "walk") {
     const serviceArea = document.querySelector(
-      ".input-area-service"
+      ".walk"
     ) as HTMLTextAreaElement;
     let sizeOfDog: string[] = [];
     let ageOfDog: string[] = [];
@@ -677,7 +677,7 @@ export const updateValues = () => {
     }
 
     const serviceArea = document.querySelector(
-      ".input-area-service"
+      ".drop-in"
     ) as HTMLTextAreaElement;
     const fetchData = {
       method: "POST",
