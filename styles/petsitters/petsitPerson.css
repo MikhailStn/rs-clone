@@ -120,6 +120,7 @@
 .qualific-person-block {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .qualification-item,
@@ -419,4 +420,49 @@ input:disabled {
 
 .petsit-review-wrapper::-webkit-scrollbar-thumb {
   background-color: #ca96e177;
+}
+
+@media (max-width: 1194px) {
+
+  .petsit-person-block{
+    flex-direction: column-reverse;
+    align-items: center;
+    
+  }
+
+  .common-info-person-block{
+    width: 100%;
+  }
+
+  .block-calendar.calendar-petsit-item-page{
+    width: 100%;
+  }
+
+  .rezerve-order-block{
+    width: 100%;
+    background-color: #ffffff;
+    position: static;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  .item-pet-block.petsit-page{
+    flex-basis: 100%;
+  }
+
+}
+
+@media (max-width: 410px) {
+
+  .date-inputs-block {
+    flex-direction: column;
+  }
+
+  .to-text{
+    top: 40px;
+    left: 20px;
+  }
+
 }

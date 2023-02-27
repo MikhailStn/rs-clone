@@ -204,3 +204,19 @@
 .animals-photo-container {
   height: 270px;
 }
+
+@media (max-width: 1028px) {
+
+  .item-pet-block{
+    flex-basis: 45%;
+  }
+
+}
+
+@media (max-width: 698px) {
+
+  .item-pet-block{
+    flex-basis: 100%;
+  }
+
+}

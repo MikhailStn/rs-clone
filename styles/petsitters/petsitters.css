@@ -338,7 +338,7 @@
     flex-direction: column;
   }
   .input-contact-email {
-    max-width: 100%;
+    max-width: 200px;
   }
   .img-contact-main-petsit-wrapper {
     padding-top: 0px;

@@ -220,7 +220,7 @@ async function createBasicInfoBlock() {
   mottoInput.placeholder = "Motto";
   mottoInput.maxLength = 100;
   mottoInput.wrap = "soft";
-  if(userInfo.petsitterData.aboutMe !== ""){
+  if(userInfo.petsitterData.aboutMe !== "" && userInfo.petsitterData.aboutMe !== undefined){
     mottoInput.value = userInfo.petsitterData.aboutMe;
   }
   aboutMeBlock.append(mottoInput);
@@ -253,7 +253,7 @@ async function createBasicInfoBlock() {
     "petsit-about-text"
   );
  const textAreaProfileAbout = blockText1.querySelector('#petsit-about-text');
- if(userInfo.petsitterData.carers !== 0 && textAreaProfileAbout instanceof HTMLTextAreaElement){
+ if(userInfo.petsitterData.carers !== '' && userInfo.petsitterData.carers !== undefined && textAreaProfileAbout instanceof HTMLTextAreaElement){
   textAreaProfileAbout.value = userInfo.petsitterData.carers;
  }
   aboutMeBlock.append(blockText1);
@@ -266,7 +266,7 @@ async function createBasicInfoBlock() {
     "petsit-advantages"
   );
   const textAreaProfileAdvantage = blockText2.querySelector('#petsit-advantages');
- if(userInfo.petsitterData.skills !== 0 && textAreaProfileAdvantage instanceof HTMLTextAreaElement){
+ if(userInfo.petsitterData.skills !== '' && userInfo.petsitterData.skills !== undefined && textAreaProfileAdvantage instanceof HTMLTextAreaElement){
   textAreaProfileAdvantage.value = userInfo.petsitterData.skills;
  }
   aboutMeBlock.append(blockText2);
