@@ -106,6 +106,11 @@
   width: 240px;
 }
 
+.block-names-inputs{
+  display: flex;
+  justify-content: space-between;
+}
+
 .text-error-registration {
   display: none;
   color: #f37059;
@@ -196,6 +201,15 @@
   margin: 20px 0;
 }
 
+.error-text-registration{
+  position: absolute;
+  color: #f37059;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: -28px;
+  left: 28%;
+}
+
 @media (max-width: 900px) {
 
   .img-registration-wrapper {
@@ -237,7 +251,7 @@
 
 }
 
-@media (max-width: 420px) {
+@media (max-width: 436px) {
 
   .block-inputs-text-registration {
     padding: 30px 0px;
@@ -262,6 +276,32 @@
 
   .block-inputs-text-registration{
     padding: 80px 80px;
+  }
+
+  .first-name-text-error-registration {
+    top: 38px;
+  }
+
+  .last-name-text-error-registration {
+    top: 38px;
+    left: 260px;
+  }
+
+  .phone-text-error-registration {
+    top: 80px;
+  }
+
+  .email-error-registration {
+    top: 130px;
+  }
+
+  .password-error-registration {
+    top: 179px;
+  }
+
+  .sec-passw-error-registration {
+    top: 230px;
+    display: none;
   }
 
 }

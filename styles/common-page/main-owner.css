@@ -64,6 +64,11 @@ span {
   width: 50%;
   padding-left: 100px;
 }
+
+.rightImg.find-a-trust{
+  padding-left: 230px;
+}
+
 .imgDiv {
   overflow: hidden;
   display: flex;
