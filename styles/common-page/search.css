@@ -21,17 +21,25 @@ main {
   background: linear-gradient(45deg, #a8edea, #fed6e3);
   background: linear-gradient(45deg, #f5f7fa, #c3cfe2);
   background: linear-gradient(45deg, #fddb9263, #d1fdff48);
-  height: auto;
+  min-height: 100vh;
   box-shadow: 0 0 0px #84818a;
   max-height: 870px;
   overflow: auto;
+}
+
+.blockPetsitters::-webkit-scrollbar {
+  width: 5px;
+}
+
+.blockPetsitters::-webkit-scrollbar-thumb {
+  background-color: #ca96e1
 }
 
 .blockMap {
   padding: 0;
   margin: 0;
   z-index: 0;
-  height: calc(100vh - 100px);
+  height: 100vh;
   width: calc(100vw - 900px);
   overflow: hidden;
 }

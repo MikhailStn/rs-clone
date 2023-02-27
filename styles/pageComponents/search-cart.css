@@ -3,11 +3,11 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid gray;
+  min-height: 200px;
 }
 
 .fotoSearchCart {
   width: 160px;
-  height: 200px;
   overflow: hidden;
 }
 
