@@ -17,10 +17,11 @@
 .title-section-review{
     text-align: left;
     font-weight: 600;
-    font-size: 1.35rem;
+    font-size: 32px;
     margin-top: 40px;
     margin-bottom: 0;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
+    color: #696869;
 }
 
 .orders-review-wrapper{

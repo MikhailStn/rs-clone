@@ -25,7 +25,7 @@ async function renderPetsitReview(){
     "h1",
     "title-section-review",
     "",
-    "My review"
+    "My reviews"
   );
   sectionPetsitReviewBlock.append(sectionOrdersTitle);
   const reviewItemsWrapper = createHtmlElement("div", "orders-review-wrapper");
