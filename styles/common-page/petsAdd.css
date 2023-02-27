@@ -16,6 +16,10 @@
     margin-top: 30px;
 }
 
+.section-pets-add {
+    padding-top: 64px;
+}
+
 .input-pets-name,
 .input-breed-of-pets{
     width: 509px;
