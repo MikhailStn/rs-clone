@@ -218,6 +218,28 @@ export function mainOwner(): void {
   section3Content.append(section3Left);
   section3Content.append(section3Right);
 
+
+  const devDiv = createHtmlElement("div", "developers");
+  const detTitle = createHtmlElement("h2", "developers-title");
+  const devName = createHtmlElement("p", "developers-name");
+  const devName1 = createHtmlElement("p", "developers-name");
+  const devName2 = createHtmlElement("p", "developers-name");
+  detTitle.textContent = "Developers";
+  devName.textContent = "Hannah";
+  devName1.textContent = "Mikhail";
+  devName2.textContent = "Lisa"
+  devDiv.append(devName, devName1, devName2)
+
+  const div = createHtmlElement("div", "developers-container");
+  const image1 = createHtmlElement("img", "developers-photo") as HTMLImageElement
+  const image2 = createHtmlElement("img", "developers-photo") as HTMLImageElement
+  const image3 = createHtmlElement("img", "developers-photo") as HTMLImageElement
+  image1.src = 'img/developers/hanna.jpg'
+  image2.src = 'img/developers/misha.png'
+  image3.src = 'img/developers/lisa.jpg'
+  div.append(image1, image2, image3)
+  document.body.append(detTitle, devDiv, div)
+
   footerFun(document.body);
 
   const buttons = document.getElementsByTagName("button");

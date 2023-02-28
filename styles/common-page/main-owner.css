@@ -290,3 +290,39 @@ section h2 {
     column-gap: 20px;
   }
 }
+
+
+.developers-container {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  column-gap: 20px;
+  padding-top: 40px;
+}
+
+.developers-photo {
+  width: 200px;
+  height: 270px;
+  border-radius: 50px;
+}
+
+.developers {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  column-gap: 120px;
+}
+
+.developers-title {
+  width: 100%;
+}
+
+.developers-title {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.developers-name {
+  width: 100px;
+  text-align: center;
+}
