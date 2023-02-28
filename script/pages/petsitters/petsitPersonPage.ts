@@ -21,7 +21,7 @@ async function renderPetsitPerson(id: string) {
   const user = await getUserFromId(id);
   const userInfo = user.item;
   console.log(userInfo);
-  if(userInfo.id === undefined){
+  if(userInfo._id === undefined){
     console.log('nonono');
     const NoUser = createHtmlElement('div','no-user-id','','Sorry, but this user does not exist');
     sectionPetsitPerson.append(NoUser);
