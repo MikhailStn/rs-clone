@@ -228,7 +228,7 @@ export async function settingsPerson() {
         }, 2000);
         return;
       }
-      createSplashScreen()
+      createSplashScreen();
       fetch(
         `https://rs-clone-api-production-3ab8.up.railway.app/check-password`,
         {
@@ -244,7 +244,7 @@ export async function settingsPerson() {
         }
       )
         .then((response) => {
-          removeSplashScreen()
+          removeSplashScreen();
           return response.json();
         })
         .then((data) => {
@@ -549,9 +549,70 @@ export async function settingsPerson() {
   photoContainer.append(divBtnsPhotos);
   photoTextProfileBlock.append(photoContainer);
   /*-------------------------------------------------------------*/
+  const btnRemoveProfile = createHtmlElement("button", "button-remove-profile");
 
+  btnRemoveProfile.textContent = "Delete account";
   const btnSave = createHtmlElement("button", "rectangle", "", "Save");
-  divLeftSettings.append(btnSave);
+  divLeftSettings.append(btnRemoveProfile, btnSave);
+
+  const modalRemoveProfile = createHtmlElement("div", "modal-remove-container");
+  const modalWindow = createHtmlElement("div", "modal-remove");
+  const modalBg = createHtmlElement("div", "modal-bg");
+  modalRemoveProfile.append(modalWindow, modalBg);
+  const removeTitle = createHtmlElement("h2", "remove-title");
+  removeTitle.textContent = "Account deleting";
+  const currPassInp = createHtmlElement(
+    "input",
+    "remove-curr-pass"
+  ) as HTMLInputElement;
+  currPassInp.placeholder = "Enter the current password";
+  currPassInp.type = "password";
+  const removeAccConfirm = createHtmlElement("button", "remove-confirm");
+  removeAccConfirm.textContent = "Confirm";
+
+  removeAccConfirm.addEventListener("click", () => {
+    fetch(`http://localhost:5000/delete-user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        _id: localStorage.getItem("curr-user-id"),
+        password: currPassInp.value,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.message == "Incorrect password") {
+          const p = createHtmlElement("p", "warning-password");
+          p.textContent = `${data.message}`;
+          modalWindow.append(p);
+          setTimeout(() => {
+            modalWindow.removeChild(p);
+          }, 1000);
+        } else if (data.message == "Correct password") {
+          createSplashScreen();
+          setTimeout(() => {
+            localStorage.clear();
+            history.pushState("", "", "/");
+            window.dispatchEvent(new Event("popstate"));
+          }, 1000);
+        }
+      });
+  });
+  modalWindow.append(removeTitle, currPassInp, removeAccConfirm);
+  document.body.append(modalRemoveProfile);
+
+  btnRemoveProfile.addEventListener("click", () => {
+    modalRemoveProfile.setAttribute("style", "visibility:visible; opacity:1");
+  });
+
+  modalBg.addEventListener("click", () => {
+    modalRemoveProfile.removeAttribute("style");
+  });
 
   const blockMessage = createHtmlElement("div", "text-block-profile-wrapper");
   const blockMessagediv = createHtmlElement("div", "text-3-wrapper-profile");

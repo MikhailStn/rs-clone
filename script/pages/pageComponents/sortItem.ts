@@ -38,8 +38,10 @@ export async function createSortItem(
       if (mas[i].gender == "Male") {
         //foto.src = "img/images/manDog.jpg";
         //foto.style.background = "#ffffff";
+        fotoBox.setAttribute("style", `background-image:url('img/images/manDog.jpg`)
       } else {
         //.src = "img/images/dogHaveFive.jpg";
+        fotoBox.setAttribute("style", `background-image:url('img/images/dogHaveFive.jpg`)
       }
       //foto.setAttribute("class", "noPhoto");
       //foto.setAttribute("style", "border-radius:50%");

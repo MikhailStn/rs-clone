@@ -21,14 +21,6 @@ interface PetsitterData {
   avatarPath: string;
 }
 
-const fetchPetsitterData: PetsitterData = {
-  birth: "",
-  gender: "",
-  services: [],
-  address: "",
-  avatarPath: "",
-};
-
 const qualificationsArr: string[] = [];
 
 async function renderPetsitProfileBasic() {
@@ -130,6 +122,13 @@ async function renderPetsitProfileBasic() {
 
 async function createBasicInfoBlock() {
   const user = await getUser();
+  const fetchPetsitterData: PetsitterData = {
+    birth: "",
+    gender: "",
+    services: [],
+    address: "",
+    avatarPath: user.item.avatarPath,
+  };
   const userInfo = user.item;
   const basicInfoBlock = createHtmlElement("div", "basic-info-block");
   const photoPetsitBlock = createHtmlElement(

@@ -15,5 +15,7 @@ export const removeSplashScreen = () => {
   const splash = document.querySelector(
     ".splash-screen-container"
   ) as HTMLDivElement;
-  document.body.removeChild(splash);
+  if (splash) {
+    document.body.removeChild(splash);
+  }
 };

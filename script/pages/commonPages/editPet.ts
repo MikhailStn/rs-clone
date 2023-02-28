@@ -3,37 +3,11 @@ import { createDivInputs } from "../../commonFunction/inputsCreate";
 import { createDogSizeBtn } from "../petsitters/petsitProfileServiceEdit";
 import { getUser } from "../../commonFunction/getUser";
 
-interface IPetsObj {
-  petId: string;
-  name: string;
-  type: string;
-  gender: string;
-  breed: string;
-  size: string;
-  age: string;
-  avatarPath: string;
-  about: string;
-  other: {
-    neutered: string;
-    canBeInHerd: string;
-    hasMotionSickness: string;
-    takesMedication: string;
-    isAgressive: string;
-    isExcitable: string;
-    isTimid: string;
-    tendsToRunAway: string;
-    hasVaccinationBoolket: string;
-    withYellowRibbon: string;
-    inMidstOfHeat: string;
-    defecatesAtHome: string;
-    arr: string[];
-  };
-}
 
 const sectionPetsAdd = createHtmlElement("div", "section-pets-add");
 
 async function renderPetsEditPage() {
-  const currPetId = document.location.href.substring(32);
+  const currPetId = `${localStorage.getItem("curr-user-id") + '__' + document.location.href.substring(document.location.href.length - 7)}`;
   fetch(`https://rs-clone-api-production-3ab8.up.railway.app/get-pet`, {
     method: "POST",
     headers: {
@@ -49,7 +23,7 @@ async function renderPetsEditPage() {
       return response.json();
     })
     .then((data) => {
-      const petsObj: IPetsObj = {
+      const petsObj = {
         petId: data.petId,
         name: data.name,
         type: data.type,

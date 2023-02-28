@@ -184,7 +184,6 @@ margin-left: 30px;
   transition: 0.2s;
   cursor: default;
   opacity: 0;
-  display: none;
 }
 
 .btns-add-remove-container {
@@ -224,6 +223,86 @@ margin-left: 30px;
 
 .button-remove-photo:hover {
   background-color: #b276cc;
+}
+
+.button-remove-profile {
+  margin-top: 20px;
+  border: none;
+  background-color: transparent;
+  transition: 0.2s;
+  color: #000000;
+}
+
+.button-remove-profile:hover {
+  color: #b276cc;
+}
+
+.modal-remove-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-remove {
+  width: 500px;
+  height: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 80px;
+  padding-top: 40px;
+}
+
+.remove-curr-pass {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.modal-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #dfdfdfab;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.remove-confirm {
+  color: #fff;
+    background-color: #ca96e1;
+    border: 0;
+    padding: 15px 20px;
+    width: 200px;
+    border-radius: 8px;
+    display: block;
+    font-family: "Lato", sans-serif;
+    transition: 0.5s;
+}
+
+.remove-confirm:hover {
+  background-color: #a983b9;
+}
+
+.warning-password {
+  position: absolute;
+  color: red;
+  margin-top: 180px
 }
 
 @media (max-width: 1200px) {

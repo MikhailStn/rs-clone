@@ -51,7 +51,7 @@ export async function petsittersCalendar() {
     "span",
     "tooltiptext",
     "",
-    "Mark the days when you want to relax"
+    "Mark the days when you want to work"
   );
   const divMonth = createHtmlElement("div", "block-Month");
   const divYear = createHtmlElement("div", "block-Year");

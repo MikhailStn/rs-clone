@@ -62,7 +62,7 @@ export function mainOwner(): void {
   section2Left.innerHTML = `    <div class="line">
   <div class="svg">
 
-  <embed type="image/svg+xml" src="img/home.svg" />
+  <img style="width:100%" src="img/home.svg" />
   </div><div class="text">
       <h3>Accommodation for a dog or cat</h3>
       <p>Your pets stay overnight at the petsitter's house. They will be treated like family members in comfortable conditions.</p>
@@ -70,7 +70,7 @@ export function mainOwner(): void {
 </div>
 <div class="line">
   <div class="svg">
-      <embed type="image/svg+xml" src="img/paw.svg" />
+      <img style="width:100%" src="img/paw.svg" />
   </div>
   <div class="text">
       <h3>Walking the dog</h3>
@@ -79,7 +79,7 @@ export function mainOwner(): void {
 </div>
 <div class="line">
   <div class="svg">
-  <embed type="image/svg+xml" src="img/user_house.svg" />
+  <img style="width:100%" src="img/user_house.svg" />
   </div>
   <div class="text">
       <h3>Home visits</h3>
@@ -90,25 +90,25 @@ export function mainOwner(): void {
   section2Right.innerHTML = `<div class="center">
   <div class="line">
       <div class="svg">
-      <embed type="image/svg+xml" src="img/hand_heart.svg" />
+      <img style="width:100%" src="img/hand_heart.svg" />
       </div>
       <h3>Find a trusted local pet sitter</h3>
   </div>
   <div class="line">
       <div class="svg">
-      <embed type="image/svg+xml" src="img/ok.svg" />
+      <img style="width:100%" src="img/ok.svg" />
       </div>
       <p>Only verified pet sitters</p>
   </div>
   <div class="line">
       <div class="svg">
-      <embed type="image/svg+xml" src="img/ok.svg" />
+      <img style="width:100%" src="img/ok.svg" />
       </div>
       <p>We talk to everyone personally</p>
   </div>
   <div class="line">
       <div class="svg">
-      <embed type="image/svg+xml" src="img/ok.svg" />
+      <img style="width:100%" src="img/ok.svg" />
       </div>
       <p>Browse verified reviews</p>
   </div>
