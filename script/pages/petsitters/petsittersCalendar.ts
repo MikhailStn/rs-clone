@@ -151,8 +151,8 @@ export async function petsittersCalendar() {
 
   leftCalendarBlockTop.addEventListener("click", async (e) => {
     const User = await getUser();
+    removeSplashScreen()
     const userInfo = User.item;
-
     if (e.target && e.target instanceof HTMLElement) {
       const target = e.target;
       if (target.tagName == "SPAN") {
