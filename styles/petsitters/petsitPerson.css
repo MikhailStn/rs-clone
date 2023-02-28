@@ -321,7 +321,7 @@ input:disabled {
 
 .under-input-text{
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     background-color: #ffffff;
     color: #ca96e1;
     padding: 3px;
@@ -455,7 +455,6 @@ input:disabled {
 }
 
 @media (max-width: 410px) {
-
   .date-inputs-block {
     flex-direction: column;
   }
@@ -468,5 +467,4 @@ input:disabled {
   .my-profile-text-title {
     font-size: 20px;
   }
-
 }
