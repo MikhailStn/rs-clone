@@ -172,10 +172,12 @@
   align-items: stretch;
   border-bottom: 1px solid #ebeaed;
   cursor: pointer;
+  align-items: center;
 }
 
 .arrow-down-person {
   width: 20px;
+  height: 20px;
 }
 
 .title-accom-kind-of-pet-person.what-dog-walk-text {
