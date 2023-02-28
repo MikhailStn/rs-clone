@@ -315,6 +315,7 @@ section h2 {
 
 .developers-title {
   width: 100%;
+  font-weight: 500;
 }
 
 .developers-title {
@@ -325,4 +326,5 @@ section h2 {
 .developers-name {
   width: 100px;
   text-align: center;
+  font-size: 20px;
 }
