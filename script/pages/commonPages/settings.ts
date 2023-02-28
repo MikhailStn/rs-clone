@@ -571,7 +571,7 @@ export async function settingsPerson() {
   removeAccConfirm.textContent = "Confirm";
 
   removeAccConfirm.addEventListener("click", () => {
-    fetch(`http://localhost:5000/delete-user`, {
+    fetch(`https://rs-clone-api-production-3ab8.up.railway.app/delete-user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
