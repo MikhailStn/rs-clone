@@ -422,6 +422,16 @@ input:disabled {
   background-color: #ca96e177;
 }
 
+.no-user-id{
+  color: #ca96e1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  font-size: 2rem;
+  padding: 15px;
+  max-width: 550px;
+}
+
 @media (max-width: 1194px) {
 
   .petsit-person-block{

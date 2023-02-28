@@ -232,7 +232,7 @@ export function mainOwner(): void {
   }
 }
 
-function createBtnViewProf() {
+function createBtnViewProf(id: string) {
   const btnViewProf = createHtmlElement(
     "a",
     "btn-view-profile",
@@ -240,7 +240,7 @@ function createBtnViewProf() {
     "View profile"
   );
   if (btnViewProf instanceof HTMLAnchorElement) {
-    btnViewProf.href = "/p/"; //надо добавить корректную ссылку на человека!!!!
+    btnViewProf.href = `/petsitter/n/${id}`; //надо добавить корректную ссылку на человека!!!!
   }
   return btnViewProf;
 }
@@ -320,7 +320,7 @@ function createSliderPetsitItem(index: number) {
   }
   imgBtnSliderContainer.append(imgPetsitContainer);
   imgPetsitContainer.append(imgPetsitItem);
-  const btnViewProf = createBtnViewProf();
+  const btnViewProf = createBtnViewProf(petsitArrForReview[index].id);
   imgBtnSliderContainer.append(btnViewProf);
   const textBoxSliderItem = createHtmlElement("div", "text-box-slider-item");
   sliderItem.append(textBoxSliderItem);
