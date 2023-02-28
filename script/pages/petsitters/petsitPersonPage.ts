@@ -20,7 +20,6 @@ async function renderPetsitPerson(id: string) {
   sectionPetsitPerson.innerHTML = "";
   const user = await getUserFromId(id);
   const userInfo = user.item;
-  console.log(userInfo);
   const petsitPersonBlock = createHtmlElement("div", "petsit-person-block");
   const imgWallWrapper = createHtmlElement("div", "img-wall-wrapper");
   const imgWalpaper = createHtmlElement(
@@ -928,76 +927,6 @@ async function renderPetsitPerson(id: string) {
         "btn-order",
         "Create an order"
       ) as HTMLButtonElement;
-
-      //btnOrder.style.pointerEvents = "none"
-      /*btnOrder.addEventListener("click", () => {
-
-        function randomInteger(min: number, max: number) {
-          let res = ''
-          for (let i = 0; i < 6; i++) {
-            const rand = min + Math.random() * (max + 1 - min);
-            res = res + Math.floor(rand)
-          }
-          return res;
-        }
-        const inputsDate = document.querySelectorAll(".input-date-order") as NodeListOf<HTMLInputElement>
-        const resDates: string[] = []
-        for(let i = 0; i < inputsDate.length; i++) {
-          resDates.push(inputsDate[i].value)
-        }
-        const orderNum = randomInteger(0, 9)
-        const petName = document.querySelector(".input-owner-pet") as HTMLInputElement;
-        const order = {
-          numberOfOrder: orderNum,
-          status: "New",
-          petsitterId: userInfoOwner._id,
-          ownerId: userInfo._id,
-          pet: petName.value,
-          nameOfOwner: `${userInfoOwner.firstName} ${userInfoOwner.lastName}`,
-          nameOfPetsitter: `${userInfo.firstName} ${userInfo.lastName}`,
-          dates: resDates,
-          service: currentService,
-          pricePerDay: currentPrice,
-          messages: [],
-          city: `${userInfo.city}`
-        };
-        const fetchData = {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            _id: userInfoOwner._id,
-            order: order,
-          }),
-        };
-        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => console.log(data));
-        const fetchData1 = {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            _id: userInfo._id,
-            order: order,
-          }),
-        };
-        fetch(`https://rs-clone-api-production-3ab8.up.railway.app/petsitter/add-data`, fetchData1)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => console.log(data))
-          .then(() => {
-            history.pushState("", "", "");
-            window.dispatchEvent(new Event("popstate"));
-          })
-      });*/
       rezervOrderBlock.append(btnOrder);
       petsitPersonBlock.append(commonInfoPersonBlock, rezervOrderBlock);
       //выбор даты в зависимости от услуги

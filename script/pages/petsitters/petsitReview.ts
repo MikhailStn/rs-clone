@@ -15,7 +15,6 @@ async function renderPetsitReview(){
     sectionPetsitReview.innerHTML = "";
     const user = await getUser();
   const userInfo = user.item;
-  console.log(userInfo);
   const sectionPetsitReviewBlock = createHtmlElement(
     "div",
     "section-petsit-review-block"

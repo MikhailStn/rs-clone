@@ -11,7 +11,6 @@ export async function petsittersCalendar() {
   const User = await getUser();
   const userInfo = User.item;
   const availableDates = User.item.petsitterData.availableDates;
-  console.log(availableDates);
   let m = new Date().getMonth();
   let y = new Date().getFullYear();
   document.body.innerHTML = "";
@@ -184,22 +183,16 @@ export async function petsittersCalendar() {
     for (let i = 0; i < allTD.length; i++) {
       allTD[i].addEventListener("click", () => {
         if (allTD[i].classList.contains("noActive")) {
-          console.log(allTD[i].innerHTML);
-          console.log("теперь не активно");
           const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
           const day = Number(allTD[i].innerHTML) < 10 ? "0" + allTD[i].innerHTML : String(allTD[i].innerHTML);
           const currentDate = `${y}-${month}-${day}`
           const index = availableDates.indexOf(currentDate);
           availableDates.splice(index, 1)
-          console.log(availableDates)
         } else {
-          console.log(allTD[i].innerHTML);
-          console.log("теперь активно");
           const month = m + 1 < 10 ? "0" + (+m + 1) : String(m + 1);
           const day = Number(allTD[i].innerHTML) < 10 ? "0" + allTD[i].innerHTML : String(allTD[i].innerHTML);
           const currentDate = `${y}-${month}-${day}`
           availableDates.push(currentDate)
-          console.log(availableDates)
         }
       });
     }

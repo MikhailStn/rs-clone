@@ -131,7 +131,6 @@ async function renderPetsitProfileBasic() {
 async function createBasicInfoBlock() {
   const user = await getUser();
   const userInfo = user.item;
-  console.log(userInfo);
   const basicInfoBlock = createHtmlElement("div", "basic-info-block");
   const photoPetsitBlock = createHtmlElement(
     "div",

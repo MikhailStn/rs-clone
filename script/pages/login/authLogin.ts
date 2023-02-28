@@ -84,7 +84,6 @@ function renderLoginPage() {
           response.json()
             .then((data) => {
              const message = data.message;
-             console.log(message);
              const errorText = createHtmlElement(
               "div",
               "error-text-login",

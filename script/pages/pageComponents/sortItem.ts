@@ -28,20 +28,21 @@ export async function createSortItem(
   for (let i = 0; i < mas.length; i++) {
     const container = createHtmlElement("div", "containerSearchCart");
     const fotoBox = createHtmlElement("div", "fotoSearchCart");
-    const foto = new Image();
+    //const foto = new Image();
     if (mas[i].avatarPath) {
-      foto.src = `${mas[i].avatarPath}`;
-      foto.setAttribute("style", "border-radius:50%");
+      //foto.src = `${mas[i].avatarPath}`;
+      //foto.setAttribute("style", "border-radius:50%");
+      fotoBox.setAttribute("style", `background-image:url('${mas[i].avatarPath}')`)
     } else {
-      foto.src = `./img/icons/photo.png`;
+      //foto.src = `./img/icons/photo.png`;
       if (mas[i].gender == "Male") {
-        foto.src = "img/images/manDog.jpg";
-        foto.style.background = "#ffffff";
+        //foto.src = "img/images/manDog.jpg";
+        //foto.style.background = "#ffffff";
       } else {
-        foto.src = "img/images/dogHaveFive.jpg";
+        //.src = "img/images/dogHaveFive.jpg";
       }
-      foto.setAttribute("class", "noPhoto");
-      foto.setAttribute("style", "border-radius:50%");
+      //foto.setAttribute("class", "noPhoto");
+      //foto.setAttribute("style", "border-radius:50%");
     }
     const descriptionBlock = createHtmlElement("div", "descriptionSearchCart");
     const priceBlock = createHtmlElement("div", "priceSearchCart");
@@ -61,7 +62,6 @@ export async function createSortItem(
         rateSum += elem[2];
     })
     const rate = Math.round(rateSum / rateCount);
-    console.log(rate);
     if (rateCount !== 0) {
       stars.innerHTML = "★".repeat(rate);
     } else{
@@ -126,7 +126,7 @@ export async function createSortItem(
     container.append(fotoBox);
     container.append(descriptionBlock);
     container.append(priceBlock);
-    fotoBox.append(foto);
+    //fotoBox.append(foto);
     descriptionBlock.append(name);
     descriptionBlock.append(city);
     descriptionBlock.append(stars);
