@@ -10,6 +10,7 @@ import { Pets } from "../pageComponents/ownerPetsitPets";
 import { petsittersCalendar } from "../pageComponents/calendar";
 import { createItemPetsCard } from "../pageComponents/ownerPetsitPets";
 import { createItemReview, Review } from "./petsitReview";
+import { header } from "../pageComponents/headers";
 
 const sectionPetsitPerson = createHtmlElement(
   "section",
@@ -1173,7 +1174,11 @@ function randomInteger(min: number, max: number) {
 
 export default async function petsitterPerson() {
   document.body.innerHTML = "";
-  await headerPetsitter(document.body);
+  if(!localStorage.getItem("curr-user-id")){
+    await header(document.body);
+  }else{
+    await headerPetsitter(document.body);
+  }
   const path = window.location.pathname;
   const id = path.split("/")[3];
   renderPetsitPerson(id);
