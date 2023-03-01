@@ -51,7 +51,7 @@ function renderCommonMenu() {
   );
   sectionMenu.append(block1);
   block1.addEventListener("click", () => {
-    history.pushState("", "", "");
+    history.pushState("", "", "/search");
     window.dispatchEvent(new Event("popstate"));
     sectionMenuField.classList.remove("active");
     document.body.style.overflow = "";
