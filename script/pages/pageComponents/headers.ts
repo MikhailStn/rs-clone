@@ -36,7 +36,6 @@ export async function headerOwner(tagParent: HTMLElement): Promise<void> {
   head.append(headerLink);
   head.append(headerNotification);
   headerMenu.append(menuImg);
-  headerNotification.append(btnNotification);
   btnNotification.append(notificationImg);
   //headerNotification.append(flagNotification);
 }
@@ -65,7 +64,7 @@ export async function header(tagParent: HTMLElement): Promise<void> {
     "Find a pet sitter"
   );
   btnFind.addEventListener("click", () => {
-    history.pushState("", "", "");
+    history.pushState("", "", "/search");
     window.dispatchEvent(new Event("popstate"));
   });
   const btnBecome = createHtmlElement(
@@ -155,7 +154,6 @@ export async function headerPetsitter(tagParent: HTMLElement): Promise<void> {
   head.append(headerLink);
   head.append(headerNotification);
   headerMenu.append(menuImg);
-  headerNotification.append(btnNotification);
   btnNotification.append(notificationImg);
   //headerNotification.append(flagNotification);
 }

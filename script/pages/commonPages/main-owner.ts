@@ -262,7 +262,7 @@ function createBtnViewProf(id: string) {
     "View profile"
   );
   if (btnViewProf instanceof HTMLAnchorElement) {
-    btnViewProf.href = `/petsitter/n/${id}`; //надо добавить корректную ссылку на человека!!!!
+    btnViewProf.href = `/petsitter/n/${id}`;
   }
   return btnViewProf;
 }
