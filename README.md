@@ -1,4 +1,5 @@
 # Petsi
+## https://petsi-rs-clone.netlify.app
 
 ## 1. Состав команды
 - https://github.com/MikhailStn
