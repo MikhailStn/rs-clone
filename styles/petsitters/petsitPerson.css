@@ -276,14 +276,15 @@ input:disabled {
 
 .no-pet-text {
   color: #696869;
+  font-weight: bold;
 }
 
 .no-pet-text span {
   color: #ca96e1;
   cursor: pointer;
   line-height: 1.25;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.99rem;
+  font-weight: bold;
   letter-spacing: 0.95px;
   text-transform: none;
 }
@@ -432,6 +433,14 @@ input:disabled {
   font-size: 2rem;
   padding: 15px;
   max-width: 550px;
+}
+
+.date-warning-text{
+  font-size: 0.7rem;
+}
+
+.date-warning-text span{
+  color: #ca96e1;
 }
 
 @media (max-width: 1194px) {

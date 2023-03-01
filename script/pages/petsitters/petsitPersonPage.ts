@@ -927,12 +927,15 @@ async function renderPetsitPerson(id: string) {
         inputOwnerPet.setAttribute("required", "");
         rezervOrderBlock.append(inputOwnerPet, dataListPet);
       }
+      const dateWarningText =createHtmlElement('p', 'date-warning-text')
+      dateWarningText.innerHTML='<span>!</span> Please note that petsitter may not work on the selected dates. Check the petsitter\'s calendar and contact him in the chat after ordering.';
       const btnOrder = createHtmlElement(
         "button",
         "btn-profile-save",
         "btn-order",
         "Create an order"
       ) as HTMLButtonElement;
+
       rezervOrderBlock.append(btnOrder);
       petsitPersonBlock.append(commonInfoPersonBlock, rezervOrderBlock);
       //выбор даты в зависимости от услуги
@@ -942,6 +945,7 @@ async function renderPetsitPerson(id: string) {
         "",
         "Select the date you need"
       );
+      
       const dateInputsBlock = createHtmlElement("div", "date-inputs-block");
       const dateToday = new Date().toISOString().slice(0, -14);
       const errorText = createHtmlElement("p", "error-order-text", "", "");
@@ -1037,13 +1041,15 @@ async function renderPetsitPerson(id: string) {
           }
         }
       });
-      rezervOrderBlock.append(dateTitle, dateInputsBlock, errorText);
+      rezervOrderBlock.append(dateTitle, dateInputsBlock, dateWarningText, errorText);
       // кнопка оформления заказа
       if (userInfoOwner.pets.length === 0) {
+        console.log(userInfoOwner.pets.length);
         btnOrder.disabled = true;
       }
       const inputs = rezervOrderBlock.querySelectorAll(".order-input");
       const dateInputs = rezervOrderBlock.querySelectorAll(".input-date-order");
+
       btnOrder.addEventListener("click", () => {
         let numberOfInvalidInput = 0;
         let numberActivBtn = 0;

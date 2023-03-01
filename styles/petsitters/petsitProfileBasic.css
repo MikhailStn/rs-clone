@@ -234,6 +234,11 @@
   background-color: #a278b4;
 }
 
+.btn-profile-save:disabled{
+  background-color: #ebeaed;
+  color: #eac9f8;
+}
+
 .comment-saved-settings {
   color: #328f0da4;
   font-size: 24px;
