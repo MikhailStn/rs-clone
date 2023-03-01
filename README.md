@@ -1,5 +1,4 @@
-# rs-clone
-[Repo for final task RS-Clone](https://petsi-rs-clone.netlify.app/)
+# Petsi
 
 ## 1. Состав команды
 - https://github.com/MikhailStn
@@ -39,7 +38,6 @@ https://github.com/MikhailStn/rs-clone-api
 ## 4. Стек технологий
 * Frontend
     - HTML, CSS, TypeScript
-    - БЭМ
     - Webpack ( ESLinter  )
     - Роутинг
     - SPA приложение
@@ -47,4 +45,7 @@ https://github.com/MikhailStn/rs-clone-api
     - Deploy на netlify.com
 * Backend
     - TypeScript
-    - ...
+    - Node Js
+    - Express
+    - JWT
+    - MongoDB, Mongoose
