@@ -1,0 +1,234 @@
+.boxFilter{
+    width: 100%;
+    background-color:#eaccf7;
+    padding: 20px;
+    color: #84818a;
+    border-radius: 25px;
+}
+
+.boxFilter img, .menuTime li, .menuPets li{
+    cursor: pointer;
+}
+
+.deadlineBoxFromTo input {
+    font-size: 14px;
+}
+
+.selectionBox{
+    display: flex;
+    width: auto;
+}
+
+.timeBox{
+    display: none;
+}
+
+.ActivSelectionBox{ /*active paragraph*/
+    color: #c07fdb;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-bottom-color: #c07fdb;
+}
+
+.selectionBox:hover{
+    display: flex;
+}
+
+.selectionBox .selectionBoxN{
+    padding: 10px;
+    cursor: pointer;
+}
+
+hr{
+    width: 100%;
+}
+
+.inputsBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inputsBox .box1{
+    margin: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    padding: 3px;
+    height: 40px;
+    background-color: #fff;
+}
+
+.inputsBox .rectangle{
+    margin-left: 15px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.rectangle img{
+    width: 15px;
+    margin-right: 5px;
+}
+
+.inputsBox button{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    margin: 0;
+    height: 50px;
+}
+
+.inputsBox button:hover{
+    background-color:#c07fdb;
+}
+
+.inputsBox input{
+    /*background-color:#eaccf7;*/
+    width: 270px;
+}
+
+.nameInputBox{
+    font-size: 12px;
+    color: #84818a;
+    position: relative;
+    top: -16px;
+    background-color: #eaccf7;
+    padding: 0 6px;
+    display: inline-block;
+    border-radius: 15px;
+    box-shadow: 0px 1px 1.5px grey;
+    margin-bottom: 5px;
+}
+
+.inputsBox img{
+    width: 15px;
+    position: relative;
+}
+
+.box1 div{
+    position: relative;
+    top: -15px;
+}
+
+.box1 div img{
+    margin: 0 3px;
+}
+
+.menuTime, .menuPets{
+    display: none;
+    height: 200px;
+    position: relative;
+    left: 30px;
+    width: 190px;
+    background-color:#fff;
+    overflow: auto;
+    color: black;
+    padding: 15px;
+    box-shadow:0 0 10px #84818a;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.menuPets p{
+    font-weight: 900;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.timeBox:hover .menuTime, .petBox:hover .menuPets{
+    display: flex;
+}
+
+.menuPets::-webkit-scrollbar {
+    width: 2px;
+}
+
+.menuPets::-webkit-scrollbar-thumb {
+    background-color: #c07fdb;
+}
+
+.menuPets li {
+    padding: 5px;
+    transition: 0.2s;
+    border-radius: 10px;
+}
+
+.menuTime li:hover, .menuPets li:hover{
+    background-color:#eaccf7;
+    box-shadow: 0 0 10px #84818a;
+}
+
+.itTime{
+    padding-left: 10px;
+}
+
+.boxFilter input{
+    border-radius: 3px;
+}
+
+.search{
+    padding: 0 10px;
+    font-size: 14px
+}
+
+.menuWalkTime{
+    padding: 15px;
+  }
+
+  .box2{
+    display: none;
+  }
+
+/*
+
+  @media(max-width: 1200px){
+  
+    .inputsBox input{
+        width: 190px;
+    }
+  }
+
+  @media(max-width: 992px){
+  
+    .inputsBox input{
+        width: 190px;
+    }
+  }
+*/
+  @media(max-width: 768px){
+  
+    .inputsBox input{
+        width: 190px;
+    }
+
+  .inputsBox{
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+    .inputsBox .box1, .inputsBox .rectangle, .inputsBox input[type='date']{
+        min-width: 220px;
+    }
+    .inputsBox .rectangle{
+        margin-right: 10px;
+    }
+}
+
+  @media(max-width: 480px){
+    .inputsBox{
+        flex-direction: column;
+        align-items:flex-start;
+    }
+
+    .inputsBox .box1{
+        width: 95%;
+    }
+  
+    .inputsBox input{
+        width: 300px;
+    }
+
+    .inputsBox input[type='date']{
+        width: 95%;
+    }
+  }

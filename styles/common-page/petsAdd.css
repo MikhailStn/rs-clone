@@ -1,0 +1,177 @@
+.title-service-edit.pets-add-title{
+    text-align: center;
+}
+
+.section-service-text-title-wrapper.add-pets{
+    height: 268px;
+}
+
+.section-kind-of-pet-service.pets-add-block{
+    margin-top: -110px;
+    margin-bottom: 64px;
+    padding: 20px;
+}
+
+.input-breed-of-pets#pets-breed{
+    margin-top: 30px;
+}
+
+.section-pets-add {
+    padding-top: 64px;
+}
+
+.input-pets-name,
+.input-breed-of-pets{
+    width: 100%;/**/
+    height: 53px;
+    border: 1px solid #ece8ec;
+    border-radius: 8px;
+    padding: 16px 14px;
+    transition: .5s;
+}
+
+.input-pets-name:hover,
+.input-pets-name:valid,
+.input-pets-name:focus,
+.input-breed-of-pets:hover,
+.input-breed-of-pets:valid,
+.input-breed-of-pets:focus{
+    border: 1px solid #ca96e1;
+}
+
+.input-pets-name:invalid,
+.input-breed-of-pets:invalid {
+    border: 2px solid #f37059;
+  }
+  
+.input-pets-name:placeholder-shown,
+.input-breed-of-pets:placeholder-shown {
+    border: 1px solid #ebeaed;
+  }
+
+.mandatory-text-pet{
+    color: #696869;
+    line-height: 1.25;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.95px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.additional-qualification-block.cat-or-dog-fieldset{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px 0px 0px;
+    flex-direction: row;
+    flex-wrap: wrap;/**/
+
+}
+
+.pets-img-wrapper-service ~ label{
+    margin-left: 10px;
+}
+
+.dog-gender-title.cat-or-dog-gender,
+.dog-size-title.dog-size-pet,
+.dog-age-title.pet-age-title,
+.temp-title.pet-photo-title{
+    margin-top: 30px;
+}
+
+.other-info-pet-add-field{
+    display: flex;
+    margin-top: 30px;
+    padding-left: 0;
+    border: none;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.other-info-pet-title,
+.pet-photo-title{
+    color: #5e5d5e;
+    line-height: 1.25;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.95px;
+    margin-bottom: 15px;
+}
+
+.div-other-info-pets{
+    color: #696869;
+    line-height: 1.1;
+    font-size: 0.87rem;
+    font-weight: 500;
+    letter-spacing: 0.95px;
+}
+
+.div-other-info-pets label{
+    margin-left: 10px;
+}
+
+.input-text-about-pet{
+    outline: none !important;
+    width: 100%;/**/
+    height: 113px;
+    margin-top: 50px;
+    border: 1px solid #ece8ec;
+    border-radius: 8px;
+    padding: 16px 14px;
+    resize: none;
+    transition: .5s;
+}
+
+.input-text-about-pet:focus,
+.input-text-about-pet:hover,
+.input-text-about-pet:valid{
+    border: 1px solid #ca96e1;
+}
+
+.input-text-about-pet:invalid{
+    border: 2px solid #f37059;
+  }
+  
+.input-text-about-pet:placeholder-shown{
+    border: 1px solid #ebeaed;
+  }
+
+.btn-save-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btn-save-pet{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.error-text-pets{
+    line-height: 1.1;
+    font-size: 1.87rem;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #f04a2d;
+}
+
+.save-text-pets{
+    line-height: 1.1;
+    font-size: 1.57rem;
+    font-weight: 500;
+    margin-top: 20px;
+    color: #5e9229;
+}
+
+
+
+.section-pets-add .count-motto-profile{/**/
+    width: 100%;
+}
+
+@media (max-width: 550px) {
+    .additional-qualification-block.cat-or-dog-fieldset{
+        justify-content: center;    
+    }
+}

@@ -1,0 +1,151 @@
+.section-orders{
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 40px;
+    padding-top: 64px;
+}
+
+.section-orders-block{
+    max-width: 1270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-section-order{
+    text-align: left;
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    color: #696869;
+}
+
+.orders-items-wrapper{
+    width: 100%;
+    border-top: 2px solid #ebeaed;
+}
+
+.item-order-block{
+    margin-top: 20px;
+    width: 287px;
+}
+
+.common-info-order-item-wrapper{
+    width: 100%;
+    height: 283px;
+    padding: 16px;
+    border: 1px solid #ebeaed;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.btn-order-info-chat{
+    width: 100%;
+    height: 49px;
+    padding: 12px 8px;
+    border: 1px solid #ebeaed;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0px 3px 3px #d4d3d6;
+}
+
+.status-order-text{
+    width: 74px;
+    height: 24px;
+    border-radius: 16px;
+    padding: 6px 0px 4px 16px;
+    font-size: 0.75rem;
+    color: #ffffff;
+    background-color: #fbdd7a;
+}
+
+.service-order-text{
+    margin-top: 24px;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.2;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.svg-pet-order{
+    width: 35px;
+    height: 31px;
+}
+
+.pet-info-order-block{
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.owner-or-petsitter-block{
+    display: flex;
+    margin-top: 24px;
+    gap: 10px;
+}
+
+.user-name-order,
+.link-view-profile-order{
+    font-size: 0.79rem;
+    line-height: 1.7;
+    color: #696869;
+}
+
+.link-view-profile-order{
+    color: #ca96e1;
+    margin-left: 45px;
+    /*margin-top: -15px;*/
+    transition: .5s;
+    cursor: pointer;
+}
+
+.link-view-profile-order:hover{
+    text-decoration: underline;
+}
+
+.btn-order-info-chat{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1.75px;
+    color: #ca96e1;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn-order-info-chat:hover{
+    background-color: #ca96e10a;
+}
+
+.user-order-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.rate-petsitter-order{
+    color: #fbdd7a;
+    margin-left: 45px;
+    margin-top: -15px
+}
+
+.no-order-text{
+    padding-top: 30px;
+}
+
+.add-pet-text-order{
+    color: #ca96e1;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.add-pet-text-order:hover{
+    color: #a278b4;
+}

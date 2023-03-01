@@ -1,0 +1,410 @@
+.registration-section {
+  height: 100vh;
+}
+
+.registration-block-wrapper {
+  display: flex;
+  flex-direction: row;
+  max-width: 1240px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 64px;
+  color: #27272e;
+}
+
+.text-for-registration-role {
+  text-align: center;
+  max-width: 450px;
+}
+
+.img-registration-wrapper {
+  max-width: 620px;
+}
+
+.img-registration {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: -1;
+  max-width: 540px;
+}
+
+.block-inputs-text-registration {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 48px 80px;
+  align-items: center;
+}
+
+.link-owner-registration,
+.link-petsitter-registration {
+  cursor: pointer;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  font-family: "Lato", sans-serif;
+  color: #27272e;
+  width: 220px;
+  height: 50px;
+  border: 1px solid #ebeaed;
+  border-radius: 5px;
+  padding: 15px 16px;
+  font-size: 20px;
+  font-size: 1rem;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.link-owner-registration.active,
+.link-petsitter-registration.active {
+  background-color: #fbdd7a;
+}
+
+.link-owner-registration:hover,
+.link-petsitter-registration:hover {
+  background: #fdf1ca;
+}
+
+.registration-form {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-registration {
+  background-clip: padding-box;
+  border: 1px solid #ebeaed;
+  border-radius: 5px;
+  margin-top: 30px;
+  padding-left: 10px;
+  transition: 0.5s;
+  outline: none;
+  width: 485px;
+  height: 53px;
+  transition: 0.5s;
+}
+
+.input-registration:invalid {
+  border: 2px solid #f37059;
+}
+
+.input-registration:placeholder-shown {
+  border: 2px solid #ebeaed;
+}
+
+.input-registration:valid,
+.input-registration:hover {
+  border: 2px solid #ca96e1;
+}
+
+.input-firstname,
+.input-lastname {
+  width: 240px;
+}
+
+.block-names-inputs{
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-error-registration {
+  display: none;
+  color: #f37059;
+  position: absolute;
+  left: 20px;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.text-error-registration.active {
+  display: block;
+}
+
+#second-password-error {
+  display: block;
+}
+
+#second-password-error.active {
+  display: none;
+}
+
+.city-text-error-registration {
+  top: -9px;
+}
+
+.first-name-text-error-registration {
+  top: 65px;
+}
+
+.last-name-text-error-registration {
+  top: 65px;
+  left: 260px;
+}
+
+.phone-text-error-registration {
+  top: 138px;
+}
+
+.email-error-registration {
+  top: 241px;
+}
+
+.sec-passw-error-registration {
+  top: 446px;
+  display: none;
+}
+
+.password-error-registration {
+  top: 344px;
+}
+
+.btn-registration {
+  background-color: #ca96e1;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 485px;
+  height: 50px;
+  border: 0;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.btn-registration:hover {
+  background-color: #a278b4;
+}
+
+.btn-registration:disabled {
+  background-color: #ebeaed;
+}
+
+.link-sign-in-registration {
+  color: #ca96e1;
+  transition: 0.5s;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.link-sign-in-registration {
+  color: #a278b4;
+}
+
+.block-link-role-registration {
+  margin: 20px 0;
+}
+
+.error-text-registration{
+  position: absolute;
+  color: #f37059;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: -28px;
+  left: 28%;
+}
+
+@media (max-width: 900px) and (min-height: 1141px) {
+
+  .img-registration-wrapper {
+    display: none;
+  }
+  .block-inputs-text-registration {
+    padding: 48px 40px;
+  }
+  .block-link-role-registration {
+    display: flex;
+    justify-content: center;
+    width: 330px;
+    margin: 0;
+  }
+  .link-owner-registration,
+  .link-petsitter-registration {
+    width: 100%;
+  }
+  .input-registration,
+  .btn-registration {
+    width: 100%;
+  }
+  .last-name-text-error-registration {
+    top: 65px;
+    left: 180px;
+    width: 160px;
+  }
+  .phone-text-error-registration {
+    top: 135px;
+  }
+  .email-error-registration {
+    top: 240px;
+  }
+  .sec-passw-error-registration {
+    top: 445px;
+  }
+  .password-error-registration {
+    top: 339px;
+    width: 320px;
+    font-size: 0.9rem;
+  }
+
+}
+
+@media (max-width: 436px) and (min-height: 1141px) {
+
+  .block-inputs-text-registration {
+    padding: 30px 0px;
+  }
+
+}
+
+@media (max-height: 1140px) {
+
+  .registration-form {
+    gap: 5px;
+  }
+  .input-registration{
+    margin-top: 5px;
+    height: 40px;
+  }
+
+  section h1{
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .block-inputs-text-registration{
+    padding: 80px 80px;
+  }
+
+  .first-name-text-error-registration {
+    top: 38px;
+  }
+
+  .last-name-text-error-registration {
+    top: 38px;
+    left: 180px;
+    width: 200px;
+  }
+
+  .phone-text-error-registration {
+    top: 80px;
+  }
+
+  .email-error-registration {
+    top: 130px;
+  }
+
+  .password-error-registration {
+    top: 179px;
+    width: 320px;
+    font-size: 0.9rem;
+  }
+
+  .sec-passw-error-registration {
+    top: 230px;
+    display: none;
+  }
+
+}
+
+@media (max-width: 436px) and (max-height: 1140px) {
+
+  .text-for-registration-role{
+    font-size: 1.5rem;
+  }
+
+  .block-inputs-text-registration {
+    padding: 30px 0px;
+  }
+
+}
+
+
+@media (max-width: 900px) and (max-height: 1140px){
+
+  .registration-block-wrapper {
+    flex-direction: column;
+  }
+
+  .img-registration-wrapper {
+    display: none;
+  }
+  .block-inputs-text-registration {
+    padding: 48px 40px;
+  }
+  .block-link-role-registration {
+    display: flex;
+    justify-content: center;
+    width: 330px;
+    margin: 0;
+  }
+  .link-owner-registration,
+  .link-petsitter-registration {
+    width: 100%;
+  }
+  .input-registration,
+  .btn-registration {
+    width: 100%;
+  }
+
+  .registration-form {
+    gap: 5px;
+  }
+  .input-registration{
+    margin-top: 5px;
+    height: 40px;
+  }
+
+  section h1{
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .text-error-registration{
+    font-size: 0.8rem;
+  }
+
+  .first-name-text-error-registration {
+    top: 38px;
+  }
+
+  .last-name-text-error-registration {
+    top: 38px;
+    left: 160px;
+    width: 120px;
+    font-size: 0.75rem;
+  }
+
+  .phone-text-error-registration {
+    top: 80px;
+  }
+
+  .email-error-registration {
+    top: 130px;
+  }
+
+  .password-error-registration {
+    top: 179px;
+    width: 270px;
+    font-size: 0.75rem;
+  }
+
+  .sec-passw-error-registration {
+    top: 230px;
+    display: none;
+  }
+
+
+}
+
+@media (max-width: 450px) {
+  .block-link-role-registration {
+    max-width: 250px;
+  }
+}

@@ -1,0 +1,222 @@
+.basic-info-block.my-pets {
+  color: #696869;
+  line-height: 1.3;
+  font-size: 0.95rem;
+  padding: 5px;
+}
+
+.title-photo-profile-block.my-pets-title {
+  color: #696869;
+  text-align: left;
+  font-weight: 600;
+  font-size: 32px;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.basic-info-block.my-pets .my-pet-text-btn-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 2px solid #ebeaed;
+}
+
+.common-text-my-pets {
+  width: 467px;
+}
+
+.btn-add-pet {
+  background-color: #ca96e1;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border: 0;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.btn-add-pet:hover {
+  background-color: #a278b4;
+}
+
+.no-pets-text {
+  margin-top: 40px;
+}
+
+.pets-item-count-block {
+  display: flex;
+  padding: 30px 0px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.item-pet-block {
+  position: relative;
+  flex-basis: 32%;
+  border: 2px solid #ebeaed;
+  border-radius: 8px;
+  color: #27272e;
+  padding: 14px;
+  height: fit-content;
+  height: 490px;
+  overflow: auto;
+}
+
+.item-pet-block::-webkit-scrollbar {
+  width: 2px;
+}
+
+.item-pet-block::-webkit-scrollbar-thumb {
+  background-color: #ca96e177;
+}
+
+.div-img-pet {
+  height: 194px;
+  width: 100%;
+}
+
+.img-pet-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description-text-item-pet {
+  max-width: 350px;
+}
+
+.name-pet-item,
+.description-title-item,
+.other-info-pet-item-title {
+  font-size: 1.1rem;
+  line-height: 1.625;
+  letter-spacing: 0.013;
+  font-weight: 700;
+}
+
+.breed-pet-item {
+  font-size: 0.8rem;
+  line-height: 1.4285714285714286;
+  letter-spacing: 0.013rem;
+  padding-bottom: 16px;
+  color: #84818a;
+}
+
+.div-common-info-pet {
+  display: flex;
+  padding-top: 16px;
+  padding-bottom: 10px;
+  gap: 10px;
+}
+
+.common-info-pet-item-text {
+  width: fit-content;
+  padding: 6px 9px;
+  height: 32px;
+  font-size: 0.8rem;
+  color: #27272e;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.description-title-item{
+  padding-bottom: 8px;
+}
+
+.description-text-item-pet{
+  font-size: 0.788rem;
+  line-height: 1.7142857142857142;
+  word-wrap: break-word;
+  padding-bottom: 8px;
+  color: #696869;
+}
+
+.other-pet-item{
+  list-style: inside;
+  font-size: 0.8rem;
+  line-height: 1.66;
+  font-weight: 500;
+  padding-left: 8px;
+  color: #696869;
+}
+
+.svg-btn-edit-delete{
+  position: absolute;
+  top: 15px;
+  left: calc(100% - 40px);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.svg-btn-edit-delete:hover{
+  background-color: #ebeaed;
+  border-radius: 50%;
+}
+
+.delete-edit-wrapper{
+  display: none;
+}
+
+.delete-edit-wrapper.active{
+  display: block;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 45px;
+  left: calc(100% - 100px);
+  width: 75px;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
+  z-index: 2;
+}
+
+.btn-delete-pet,
+.btn-edit-pet{
+  border: none;
+  width: 100%;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  background-color: #ffffff;
+  font-family: "Lato", sans-serif;
+  transition: .3s;
+}
+
+.btn-delete-pet:hover,
+.btn-edit-pet:hover{
+  background-color: #ebeaed;
+}
+
+.animals-photo-container {
+  height: 270px;
+}
+
+@media (max-width: 1028px) {
+
+  .item-pet-block{
+    flex-basis: 45%;
+  }
+
+}
+
+@media (max-width: 698px) {
+
+  .item-pet-block{
+    flex-basis: 100%;
+  }
+
+}
