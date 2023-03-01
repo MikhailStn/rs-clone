@@ -12,6 +12,10 @@ const sectionPetsitReview = createHtmlElement(
 export type Review = [string, string, number];
 
 async function renderPetsitReview(){
+  if(!localStorage.getItem("curr-user-id")){
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
+  }else{
     sectionPetsitReview.innerHTML = "";
     const user = await getUser();
   const userInfo = user.item;
@@ -47,7 +51,7 @@ async function renderPetsitReview(){
     });
   }
   sectionPetsitReviewBlock.append(reviewItemsWrapper);
-
+  }
 }
 
 export async function createItemReview(review:Review){

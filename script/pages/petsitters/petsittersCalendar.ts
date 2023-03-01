@@ -8,6 +8,7 @@ import {
 } from "../commonPages/splashScreen";
 
 export async function petsittersCalendar() {
+
   const User = await getUser();
   const userInfo = User.item;
   const availableDates = User.item.petsitterData.availableDates;
@@ -83,6 +84,7 @@ export async function petsittersCalendar() {
   leftCalendarBlock.append(btnLeftCalendar);
 
   footerFun(document.body);
+  
 
   leftCalendarBlock.addEventListener("click", (e) => {
     if (e.target && e.target instanceof HTMLElement) {
@@ -200,6 +202,8 @@ export async function petsittersCalendar() {
   changeWorkDay(userInfo.petsitterData.availableDates);
 
   return document.body;
+
+
 }
 /*-------------------------------------------------------*/
 

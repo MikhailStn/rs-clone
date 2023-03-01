@@ -40,6 +40,10 @@ function isPhone(str: string) {
 }
 
 export async function settingsPerson() {
+  if(!localStorage.getItem("curr-user-id")){
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
+  }else{
   const User = await getUser();
   const userInfo = User.item;
 
@@ -727,5 +731,6 @@ export async function settingsPerson() {
   });
 
   return document.body;
+}
 }
 /*-------------------------------------------------------*/

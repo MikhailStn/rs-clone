@@ -34,6 +34,10 @@ let orders: OrderPreview[] = [];
 export let numberOfOrder1 = "";
 
 async function renderOrdersPage() {
+  if(!localStorage.getItem("curr-user-id")){
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
+  }else{
   sectionOrder.innerHTML = "";
   const user = await getUser();
   const currentUserInfo = user.item;
@@ -233,6 +237,7 @@ async function renderOrdersPage() {
       }
     }
     });
+  }
 }
 
 export async function createOrdersPage() {

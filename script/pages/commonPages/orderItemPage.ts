@@ -12,6 +12,10 @@ import { createSplashScreen, removeSplashScreen } from "./splashScreen";
 const sectionOrderItem = createHtmlElement("section", "section-order-item");
 
 async function renderOrderItemPage(id: string) {
+  if(!localStorage.getItem("curr-user-id")){
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
+  }else{
   const user = await getUser();
   const curUserInfo = user.item;
   sectionOrderItem.innerHTML = "";
@@ -55,6 +59,7 @@ async function renderOrderItemPage(id: string) {
       chatBlock.append(createChat(data));
       orderItemInfoBlock.append(blockCommonInfo, blockPriceOrder, userBlock, chatBlock);
     });
+  }
 }
 
 async function createBlockCommoninfo(data: OrderPreview) {

@@ -24,8 +24,10 @@ interface PetsitterData {
 const qualificationsArr: string[] = [];
 
 async function renderPetsitProfileBasic() {
-
-
+  if(!localStorage.getItem("curr-user-id")){
+    history.pushState("", "", "");
+    window.dispatchEvent(new Event("popstate"));
+  }else{
   sectionPetsitProfileBasic.innerHTML = "";
   const sectionPetsitProfileBasicBlock = createHtmlElement(
     "div",
@@ -118,6 +120,7 @@ async function renderPetsitProfileBasic() {
   sectionPetsitProfileBasicBlock.append(commonInfoBlock);
   const blockInfo = await createBasicInfoBlock();
   commonInfoBlock.append(blockInfo);
+  }
 }
 
 async function createBasicInfoBlock() {
